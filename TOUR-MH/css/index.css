@@ -28,7 +28,7 @@ header {
 }
 #section{
     display: flex;
-    box-shadow: 0 0 10px rgba(0,0,0, 0.1);
+    box-shadow: 0 0 20px rgba(0,0,0, 0.1);
     justify-content: space-between;
     padding: 50px;   
 }
@@ -53,22 +53,35 @@ a:hover{
     color: orange;
 }
 #poster{
-     background-image: url(../assets/poster.jpg);
-     background-size: cover;
-     box-sizing: border-box;
-     background-position: center;
-     width: 100wh;
-     height: 80vh;
-}
-#pos-text h1,h3{
+    background-image: url(/assets/poster.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width:auto;
+    height: 80vh;
     display: flex;
-    flex-direction: column;
-    justify-content:center ;
+    justify-content: center;
     align-items: center;
 }
-.text{
-    
+#temples{
+    text-align: center;
+    margin-top: 30px;
+    font-family: "Dongle-bold";
+    font-size: xx-large;
 }
+
+.card{
+     
+    background-color: red;
+    height:100px;
+    width: 100px;
+    gap: 20px;
+}
+
+
+
+
+
 
 
 
