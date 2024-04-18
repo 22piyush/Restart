@@ -83,6 +83,30 @@ width: 100%;
     height: 90%;
     width: 38%;
     background-color: blue;
+    position: relative;
     
 }
+#right-top{
+    height: 80px;
+    width: 100%;
+    background-color: red;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+#right-top-h4{
+    font-size:30px ;
+    font-family: work sans-serif;
+    font-weight: 500;
+
+}
+#right-top-h5{
+    font-size: 16px;
+}
+#right-top-h5 i{
+    color: gold;
+    
+}
+
+
 
