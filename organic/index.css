@@ -10,7 +10,7 @@ html,body{
     height: 100%;
 }
 .main{
-    margin-left: 9vw;
+    margin-left: 6vw;
     margin-right: 9vw;
  
     padding: 15px;
@@ -51,6 +51,23 @@ html,body{
     text-align: center;
     font-size: larger;
 }
+.main-nav{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    height: 10vh;   
+}
+a{
+    text-decoration:none;
+}
+/* .poster{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100vw;
+    height: 200px;
+} */
 
 
 
