@@ -65,23 +65,25 @@ a{
 }
 .body-container{
     width: 95%;
-    margin: 80px auto;
+    margin: 60px auto 0 auto;
+    
 }
 .body-heading{
     text-align: center;
     font-size:40px;
     font-weight: 100;
-    margin-bottom: 60px;
 }
 .body-books{
+     
     display: flex;
     justify-content: space-between;
+    margin-top: 60px;
    
 }
 .book{
-    height: 9vh;
     width: 210px;
     padding:20px;
+    background-color: antiquewhite;
 
 }
 .book img{
@@ -93,15 +95,16 @@ a{
 .book h3{
     text-align: center;
     padding: 15px 0;
+ 
 }
 .book-detail{
     text-align: justify;
+
 }
 .book-prize{
     color: rgb(250, 69, 3);
     text-align: center;
     padding-top: 10px;
-    padding-bottom: 20px;
 
-}
+} 
 
