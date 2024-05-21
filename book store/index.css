@@ -161,6 +161,7 @@ a{
     width: 145px;
     display: block;
     margin: 0 auto;
+    box-shadow: 0 0 6px 2px rgb(184, 183, 183);
 }
 .feature-books h3{
     text-align: center;
