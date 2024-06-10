@@ -8,13 +8,17 @@ html,body {
     background-color: #f5f7fb;
 }
 .navbar-container{
+    width: 100%;
     padding: 25px;
     background-color: aqua;
+    position: fixed;
+
 }
 .navbar{
-    width: 100%;
+   
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+
 }
 .navbar-links{
     display: flex;
@@ -24,6 +28,45 @@ html,body {
 a{
     text-decoration: none;
 }
+
+
+
+
+
+
+
+
+.navbar-container1{
+    width: 100%;
+    padding: 25px;
+    background-color: aqua;
+    position: fixed;
+    bottom: 0;
+    display: none;
+}
+.navbar1{
+   
+    display: flex;
+    justify-content: space-around;
+
+}
+.navbar-links1{
+    display: flex;
+    list-style: none;
+    gap: 70px; 
+}
+a{
+    text-decoration: none;
+}
+
+
+
+
+
+
+
+
+
 .main-container{
     padding-left:50px ;
     padding-right:40px ;
@@ -33,6 +76,7 @@ a{
 .container{
     width: 100%;
     display: flex;
+    margin-top: 60px;
     justify-content: space-between;
 }
 .container-text{    
@@ -40,6 +84,7 @@ a{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100%;
 }
 .container-text h1{
     font-size:60px;
@@ -58,9 +103,13 @@ a{
     border: none;
     background-color: pink;
 }
+.container-img{
+    width: 100%;
+}
 .container-img img{
-    height: 500px;
-    width: 600px;
+    /* height: 500px;
+    width: 600px; */
+    width: 100%;
     border-radius: 15px;
 }
 .body-container{
@@ -180,9 +229,38 @@ a{
     width: 100%;
     background-color: rgb(118, 111, 111);
 }
-.footer-container{
+
+@media screen and (max-width: 600px) 
+{
+   
+    .navbar-container1{
+        width: 100%;
+        padding: 20px 0px;
+        background-color: aqua;
+        position: fixed;
+        bottom: 0;
+        display: block;
+    }
+    .navbar1{
        
+        display: flex;
+        justify-content: space-around;
+    
+    }
+    .navbar-links1{
+        display: flex;
+        list-style: none;
+        gap: 70px; 
+    }
+    .navbar-container1 img{
+        height: 30px;
+    }
+    .navbar-container{
+      display: none;
+    }
 }
+
+
 
 
 
