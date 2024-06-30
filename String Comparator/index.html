@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .app-container{
+        border: 2px solid black;
+        width: fit-content;
+        padding: 70px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 120px;
+        background-color: rgb(207, 207, 218);
+        border-radius: 10px;
+    }
+    .text-container{
+        display: flex;
+        justify-content: space-around;   
+        gap: 70px;
+        margin-top: 50px;
+    }
+    .input-text{
+        width:300px;
+        height: 100px;
+        font-size: 30px;
+        padding: 5px;
+        border: 2px solid black;
+        border-radius: 10px;
+
+    }
+    .match-result{
+        font-size: 30px;
+        text-align: center;
+        font-weight: 900;
+        margin-top: 50px;
+    }
+    .app-heading{
+        text-align: center;
+        margin-top: 0;
+        color:red;
+        
+    }
+   
+
+</style>
+<body>
+    <div class="app-container">
+         
+        <h1 class="app-heading">#String Container#</h1>
+     
+        <div class="text-container">
+            <input type="text" class="input-text" id="input1" onkeyup="CompareText()"/>
+            <input type="text" class="input-text" id="input2" onkeyup="CompareText()"/>
+        </div>
+        <p class="match-result" id="match-text"></p>
+    </div>
+
+    <script>
+        function CompareText(){
+               const input1 = document.getElementById("input1")
+               const input2 = document.getElementById("input2")
+
+               const result = document.getElementById("match-text")
+               
+
+               if(input1.value == input2.value)
+               {
+                    result.innerText = "MATCHED"
+                    result.style.color="green"
+               }
+               else{
+                    result.innerText = "NOT MATCHED"
+                    result.style.color="red"
+               }
+        }
+    </script>
+</body>
+</html>
