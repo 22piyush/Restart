@@ -5,27 +5,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        *{
+            margin: 0;
+            padding: 0;
+            
+            
+        }
         .app-container{
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            border: 2px solid black;
+            width: fit-content;
+            padding: 40px;
+            padding-bottom: 50px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 150px;
+            background-color: aquamarine;
+            border-radius: 10px;
+            
         }
         .input-box{
-            width: 200px;
+            width: 230px;
             margin: 10px auto;
+            padding: 12px;
+            border-radius: 10px;
+            border: 2px solid black;
+            font-size: 20px;
+            font-weight: 900;
+           
         }
         h1{
             text-align: center;
+            margin-bottom: 30px;
         }
         .btn-calculate{
             width: 150px;
             margin-top: 30px;
+            padding: 10px;
+            font-size: 20px;
+            border-radius: 10px;
+            background-color: bisque;
+            border: 2px solid black;
+            color: green;
         }
         .text-result{
                margin: 0;
                padding: 0;
                font-size: 30px;
+               margin-top: 20px;
+               font-weight:900 ;
+               color: green;
         }
     </style>
 </head>
@@ -54,7 +86,7 @@
 
              const resultElement = document.getElementById("result")
             
-             resultElement.innerText = `sum: ${sum}`
+             resultElement.innerText = `Sum: ${sum}`
         }
         function Reset(){
             const num1Element = document.getElementById("input-num1");
