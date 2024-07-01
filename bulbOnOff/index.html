@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .title{
+            text-align: center;
+        }
+        .img-bulb{
+            height: 150px;
+            display: block;
+            margin: 10px auto;
+        }
+        .btn-container{
+            display: flex;
+            justify-content: center;
+        }
+        .btn{
+            margin: 10x 30px;
+            width: 100px;
+            cursor: pointer;
+            border-radius: 20px;
+            border: none;
+            padding: 10px 20px;
+        }
+        .theme-select-icon{
+            height: 30px;
+            cursor: pointer;
+        }
+        .theme-select-container{
+            position: fixed;
+            right:5px ;
+            top: 5px;
+        }
+        .bg-dark{
+            background-color: #1a1a1a;
+            color: #fff;
+        }
+        .bg-light{
+            background-color: #ccd9ff;
+            color: #000;
+        }
+        .btn-dark{
+            background-color: #990099;
+            color: #fff;
+        }
+        .btn-light{
+            background-color: #ff751a;
+            color: #000;
+        }
+    </style>
+</head>
+<body class="" id="main-body">
+    <h1 class="title">Bulb Toggler</h1>
+
+    <div class="theme-select-container">
+        <img src="sun.png" alt="" class="theme-select-icon" onclick="light()">
+        <img src="moon.png" alt="" class="theme-select-icon" onclick="dark()">
+    </div>
+
+    <img src="bulbOff.png" alt="" class="img-bulb" id="img-bulb">
+
+    <div class="btn-container">
+        <button type="button" class="btn" class="btn-light" id="btn-toggle" onclick="toggleBulb()">ON</button>
+    </div>
+
+
+
+
+    <!-- <div class="btn-container">
+        <button type="button" class="btn" onclick="bulbOn()">ON</button>
+        <button type="button" class="btn" onclick="bulbOff()">OFF</button>
+    </div> -->
+
+
+    <script>
+        function toggleBulb(){
+            const bulbElement = document.getElementById("img-bulb")
+
+            bulbElement.src = bulbElement.src.includes("bulbOff.png") ?
+            "bulbOn.png" : "bulbOff.png"
+        }
+
+        function dark(){
+           const mainBody = document.getElementById("main-body");
+          mainBody.classList.remove("bg-light")
+           mainBody.classList.add("bg-dark")
+
+           const togglebtn = document.getElementById("btn-toggle")
+           togglebtn.classList.remove("btn-light")
+           togglebtn.classList.add("btn-dark")
+        }
+        function light(){
+            const mainBody = document.getElementById("main-body"); 
+            mainBody.classList.remove("bg-dark")
+            mainBody.classList.add("bg-light")
+
+            const togglebtn = document.getElementById("btn-toggle")
+           togglebtn.classList.remove("btn-dark")
+           togglebtn.classList.add("btn-light")
+        }
+
+
+
+        // function bulbOn(){
+        //     const bulbElement = document.getElementById("img-bulb")
+        //     bulbElement.src = "bulbOn.png"
+        // }
+        // function bulbOff(){
+        //     const bulbElement = document.getElementById("img-bulb")
+        //     bulbElement.src = "bulbOff.png"
+        // }
+    </script>
+</body>
+</html>

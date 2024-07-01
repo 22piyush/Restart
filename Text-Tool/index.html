@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .text-container {
+            border: 2px solid black;
+            width: fit-content;
+            padding: 30px;
+            margin: 150px auto;
+            border-radius: 10px;
+            background-color: rgb(217, 232, 237);
+        }
+
+        .input-text {
+            height: 100px;
+            width: 30vw;
+            border: 2px solid black;
+            border-radius: 10px;
+            font-weight: 900;
+            font-size: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .result-text {
+            height: 100px;
+            width: 30vw;
+            font-weight: 900;
+            font-size: 20px;
+            color: green;
+
+        }
+
+        .btn {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+
+        }
+
+        button {
+            padding: 10px;
+            border-radius: 10px;
+            border: 2px solid black;
+            font-size: 12px;
+            color: black;
+            font-weight: 900;
+            background-color: rgb(158, 230, 206);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="text-container">
+        <h1>Text Tool</h1>
+        <input type="text" class="input-text" id="input-text">
+        <p id="result-text" class="result-text"></p>
+
+        <div class="btn">
+            <button onclick="giveActionResult('uppercase')">UPPERCASE</button>
+            <button onclick="giveActionResult('lowercase')">lowercase</button>
+            <button onclick="giveActionResult('charcount')">Character Count</button>
+            <button onclick="giveActionResult('wordcount')">Word Count</button>
+        </div>
+    </div>
+
+    <script>
+
+        function giveActionResult(action) {
+          
+            const inputVal = document.getElementById("input-text").value;
+            const resultTarget = document.getElementById("result-text");
+
+            switch (action) {
+                case 'uppercase':
+                    resultTarget.innerText = inputVal.toUpperCase()
+                    break;
+                case 'lowercase':
+                    resultTarget.innerText = inputVal.toLowerCase()
+                    break;
+                case 'charcount':
+                    resultTarget.innerText = `Total Character: ${inputVal.length}`
+                    break;
+                default :
+                    resultTarget.innerText = `Total Word: ${inputVal.split(" ").length}`
+
+            }
+        }
+    </script>
+</body>
+
+</html>
