@@ -152,9 +152,14 @@
 // function saaretexthatao(){
 
 
+// }
+
+var anc = document.querySelectorAll('a')
+
+for(let i =0; i< anc.length ;i++)
+{
+            anc[i].style.color = "red";
 }
-
-
 
 
 
