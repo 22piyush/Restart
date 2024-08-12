@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Slider</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+}
+
+.card-container {
+    display: flex;
+    overflow: hidden;
+    width: 500px;
+}
+
+.card {
+    min-width: 100px;
+    height: 100px;
+    margin: 5px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.nav-button {
+    padding: 10px 20px;
+    margin: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button id="leftBtn" class="nav-button">Left</button>
+        <div class="card-container">
+            <div class="card" style="background-color: red;"></div>
+            <div class="card" style="background-color: blue;"></div>
+            <div class="card" style="background-color: green;"></div>
+            <div class="card" style="background-color: yellow;"></div>
+            <div class="card" style="background-color: purple;"></div>
+            <div class="card" style="background-color: orange;"></div>
+            <div class="card" style="background-color: pink;"></div>
+            <div class="card" style="background-color: brown;"></div>
+            <div class="card" style="background-color: gray;"></div>
+            <div class="card" style="background-color: black;"></div>
+        </div>
+        <button id="rightBtn" class="nav-button">Right</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

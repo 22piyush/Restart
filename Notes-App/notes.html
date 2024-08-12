@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes App</title>
+    <style>
+        .note-item {
+            border: 4px double black;
+            padding: 10px;
+            margin: 5px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 90%;
+            text-align: justify;
+        }
+        .note-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .btn-del {
+            color: #fff;
+            background-color: #d9534f;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            padding: 5px 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .tasks-container {
+            height: 300px;
+            overflow-y: auto;
+            margin-bottom: 10px;
+        }
+        .main-container {
+            width: 50%;
+            border: 2px solid black;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #969797;
+            box-shadow:  var(--bs-box-shadow-lg) ;
+        }
+        .main-container h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        #note-title, #note-body {
+            width: 95%;
+            margin: 10px auto;
+            display: block;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #a69f9f;
+            font-size: 16px;
+        }
+        #note-body {
+            height: 100px;
+            resize: none;
+        }
+        .input-button {
+            display: block;
+            margin: 10px auto;
+            padding: 10px 20px;
+            background-color: #179ac2;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+      
+    <div class="main-container">
+        <h1>Notes App</h1>
+
+        <div id="tasks-container" class="tasks-container"></div>
+
+        <input type="text" id="note-title" placeholder="Enter Note Title">
+        <textarea id="note-body" placeholder="Enter Note Details"></textarea>
+        <button onclick="addNote()" class="input-button">Add Note</button>
+    </div>
+
+    <script>
+        const notes = [];
+
+        function loadFromLocalStorage() {
+            const allNotes = JSON.parse(localStorage.getItem('allNotes'));
+            if (allNotes) {
+                notes.push(...allNotes);
+            }
+            loadNotes();
+        }
+
+        loadFromLocalStorage();
+
+        function loadNotes() {
+            localStorage.setItem('allNotes', JSON.stringify(notes));
+
+            const tasksContainer = document.getElementById('tasks-container');
+            tasksContainer.innerHTML = '';
+
+            for (const note of notes) {
+                tasksContainer.innerHTML += `
+                <div class="note-item">
+                    <div class="note-header">
+                        <strong>${note.title}</strong>
+                        <button class="btn-del" type="button" onclick="deleteNote('${note.title}')">Delete</button>
+                    </div>
+                    <p>${note.body}</p>
+                </div>
+                `;
+            }
+        }
+
+        function deleteNote(title) {
+            const noteIndex = notes.findIndex(note => note.title === title);
+            notes.splice(noteIndex, 1);
+            loadNotes();
+        }
+
+        function addNote() {
+            const noteTitleElement = document.getElementById('note-title');
+            const noteBodyElement = document.getElementById('note-body');
+            const title = noteTitleElement.value.trim();
+            const body = noteBodyElement.value.trim();
+
+            if (!title || !body) {
+                alert('Please enter both a title and details for the note.');
+                return;
+            }
+
+            notes.unshift({ title, body });
+            loadNotes();
+            noteTitleElement.value = '';
+            noteBodyElement.value = '';
+        }
+    </script>
+</body>
+</html>

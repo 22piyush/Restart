@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="LR.css">
+</head>
+<body>
+
+
+    <section>
+        <div class="navbar"></div>
+        <div class="main-container">
+            <div class="sub-container">
+                <nav class="container">
+                    <ul>
+                        <li><a href="">Home</a></li>
+                        <li><a href="">About</a></li>
+                        <li><a href="">Contact</a></li>
+                        <li><a href="">Services</a></li>
+                        <li><a href=""><img src="user.png" onclick="Card()"></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </section>
+
+    <section class="con">
+        <div class="card-container" >
+          <div class="card-content" id="card">
+            <img src="user.png" alt="" onclick="none()">
+
+            <button>Login</button>
+
+            <a href="">Don have account Regester here</a>
+          </div>
+        </div>
+    </section>
+
+    <div class="cards">
+
+          <div style="height: 500px; width: 300px; background-color: gray;"></div>
+          <div style="height: 500px; width: 300px; background-color: pink;"></div>
+          <div style="height: 500px; width: 300px; background-color: red;"></div>
+          <div style="height: 500px; width: 300px; background-color: blue;"></div>
+        </div>
+     <script>
+            function Card() {
+               
+                const element = document.getElementById("card")
+                element.style.display = 'block';
+            }
+            function none() {
+                const element = document.getElementById("card")
+                element.style.display = 'none';
+            }
+     </script>
+
+</body>
+
+</html>
