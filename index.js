@@ -59,3 +59,18 @@
 // swapObj({name:"Piyush",age:22,city:"NAgpur"})
 
 
+//Challenge-5
+//Check if all values of an object are numeric values.
+// function hasonlyNumber(obj){
+
+//     for(const value of Object.values(obj)){
+//         if(typeof value !=="number" || isNaN(value)){
+//             console.log(false);
+//             return
+            
+//         }
+//     }
+//     console.log(true);
+// }
+// hasonlyNumber({a:20,b:"30",c:40})
+
