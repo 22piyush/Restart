@@ -1,76 +1,181 @@
-// Challenge-1
-//Merge Two Object In one object.
-// function mergedObjects(obj1,obj2){
-//    const merged = {...obj1,...obj2}
-//    console.log(merged);
-   
-// }
+const online = {
+    "users": [
+      {
+        "id": 1,
+        "name": "Alice Johnson",
+        "email": "alice@example.com",
+        "orders": [
+          {
+            "orderId": 101,
+            "date": "2024-03-10",
+            "total": 250.75,
+            "status": "Shipped",
+            "items": [
+              {
+                "productId": 1001,
+                "name": "Wireless Headphones",
+                "category": {
+                  "id": 10,
+                  "name": "Electronics"
+                },
+                "price": 150.5,
+                "quantity": 1
+              },
+              {
+                "productId": 1002,
+                "name": "Bluetooth Speaker",
+                "category": {
+                  "id": 10,
+                  "name": "Electronics"
+                },
+                "price": 100.25,
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Bob Smith",
+        "email": "bob@example.com",
+        "orders": [
+          {
+            "orderId": 102,
+            "date": "2024-03-12",
+            "total": 89.99,
+            "status": "Processing",
+            "items": [
+              {
+                "productId": 1003,
+                "name": "Smartphone Case",
+                "category": {
+                  "id": 11,
+                  "name": "Accessories"
+                },
+                "price": 19.99,
+                "quantity": 2
+              },
+              {
+                "productId": 1004,
+                "name": "Wireless Charger",
+                "category": {
+                  "id": 11,
+                  "name": "Accessories"
+                },
+                "price": 50,
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "products": [
+      {
+        "id": 1001,
+        "name": "Wireless Headphones",
+        "category": "Electronics",
+        "price": 150.5,
+        "stock": 25,
+        "reviews": [
+          {
+            "userId": 1,
+            "rating": 5,
+            "comment": "Excellent sound quality!"
+          }
+        ]
+      },
+      {
+        "id": 1002,
+        "name": "Bluetooth Speaker",
+        "category": "Electronics",
+        "price": 100.25,
+        "stock": 40,
+        "reviews": []
+      },
+      {
+        "id": 1003,
+        "name": "Smartphone Case",
+        "category": "Accessories",
+        "price": 19.99,
+        "stock": 100,
+        "reviews": [
+          {
+            "userId": 2,
+            "rating": 4,
+            "comment": "Good quality, but a bit pricey."
+          }
+        ]
+      }
+    ]
+  }
 
-// mergedObjects({a:1,b:2},{c:3,d:4})
-// mergedObjects({a:5,b:6},{c:7,d:8})
+  
+  // 1. Loop through all users and their orders
+online.users.forEach(user => {
+  console.log(`User: ${user.name}`);
 
+  user.orders.forEach(order => {
+      console.log(`  Order ID: ${order.orderId}, Total: $${order.total}`);
 
-// challenge-2
-// Print same object from two object.
-// function objCompare(obj1,obj2){
+      order.items.forEach(item => {
+          console.log(`    Product: ${item.name}, Quantity: ${item.quantity}`);
+      });
+  });
+});
 
-//     const sameObj = {}
-//     for(let key in obj1)
-//     {
-//         if(obj1.hasOwnProperty(key) && obj2.hasOwnProperty(key) && obj1[key] === obj2[key]){
-//             sameObj[key] = obj1[key]; 
-//         }
-//     }
-//     console.log(sameObj);
-    
-// }
-// obj1={a:20,b:30,c:40}
-// obj2={a:20,c:40,d:50}
-// objCompare(obj1,obj2)
+// 2. Find all products in the "Electronics" category
+const electronicsProducts = online.products.filter(product => product.category === "Electronics");
+electronicsProducts.forEach(product => {
+  console.log(`Electronics Product: ${product.name} - $${product.price}`);
+});
 
+// 3. Calculate the total revenue from all orders
+let totalRevenue = 0;
+online.users.forEach(user => {
+  user.orders.forEach(order => {
+      totalRevenue += order.total;
+  });
+});
+console.log(`Total Revenue: $${totalRevenue}`);
 
-// challenge-3
-// Javascript Object Convert into two array one for key and second for value in array.
-// function conObjToArr(obj){
-//    let keys = Object.keys(obj)
- 
-//    let values = Object.values(obj)
-   
-//    let result = [keys,values]
-//    console.log(result);  
-// }
-// conObjToArr({a:1,b:2,c:3})
-// conObjToArr({name:"Piyush Aglawe",date:"ncn"})
+// 4. Get all product reviews with user details
+online.products.forEach(product => {
+  product.reviews.forEach(review => {
+      const user = online.users.find(user => user.id === review.userId);
+      console.log(`Review for ${product.name} by ${user.name}: ${review.comment}`);
+  });
+});
 
+// 5. Find all orders with a specific status (e.g., "Processing")
+const processingOrders = [];
+online.users.forEach(user => {
+  user.orders.forEach(order => {
+      if (order.status === "Processing") {
+          processingOrders.push(order);
+      }
+  });
+});
+console.log("Processing Orders:", processingOrders);
 
-//Challenge-4
-//Swap the Keys and Values of an Objects
-// function swapObj(obj){
-//    let swapped = {}
-//    console.log(Object.entries(obj));
-   
-//    for(const [key,value] of Object.entries(obj)){
-//     console.log(key,value);
-//     swapped[value] = key
-//    }
-// console.log(swapped);   
-// }
-// swapObj({a:1,b:2,c:3})
-// swapObj({name:"Piyush",age:22,city:"NAgpur"})
+// 6. Count the total quantity of each product sold
+const productSales = {};
+online.users.forEach(user => {
+  user.orders.forEach(order => {
+      order.items.forEach(item => {
+          if (!productSales[item.productId]) {
+              productSales[item.productId] = 0;
+          }
+          productSales[item.productId] += item.quantity;
+      });
+  });
+});
 
+Object.entries(productSales).forEach(([productId, quantity]) => {
+  const product = online.products.find(p => p.id === parseInt(productId));
+  console.log(`${product.name} sold: ${quantity}`);
+});
 
-//Challenge-5
-//Check if all values of an object are numeric values.
-// function hasonlyNumber(obj){
-
-//     for(const value of Object.values(obj)){
-//         if(typeof value !=="number" || isNaN(value)){
-//             console.log(false);
-//             return
-            
-//         }
-//     }
-//     console.log(true);
-// }
-// hasonlyNumber({a:20,b:"30",c:40})
-
+  
+  
