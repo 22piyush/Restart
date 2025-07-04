@@ -1,8 +1,15 @@
-import React from 'react'
+import React,{useContext} from 'react'
+import { UserContext } from '../Context'
+
 
 function ChildC() {
+
+    const user = useContext(UserContext);
+
   return (
-    <div>Hello</div>
+    <div>
+        {user.name}
+    </div>
   )
 }
 
