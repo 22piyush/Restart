@@ -1,5 +1,6 @@
 import React from 'react';
 import Product from './newComponent/Product';
+import NewProduct from './newComponent/NewProduct';
 // import ImageSlider from './ImageSlider';
 
 function App() {
@@ -31,7 +32,7 @@ function App() {
     <div >
       {/* <ImageSlider /> */}
       <Product item={product}/>
-      
+       <NewProduct/>
     </div>
   );
 }

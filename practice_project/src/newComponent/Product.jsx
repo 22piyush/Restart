@@ -1,17 +1,23 @@
-import React from 'react';
+
 import './Product.css';
+import ProductCard from './ProductCard';
 
 function Product({ item }) {
   return (
     <div className="product-container">
       {item.map((product) => (
-        <div key={product.id} className="product-card">
-          <h3>{product.title}</h3>
-          <p>{product.date.toDateString()}</p>
-        </div>
+        
+        <ProductCard
+          key={product.id}
+          title={product.title}
+          date={product.date}
+        />
+
       ))}
     </div>
   );
 }
+
+
 
 export default Product;
