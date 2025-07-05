@@ -3,13 +3,19 @@ import './Product.css'
 
 
 function ProductForm() {
+
+    function titleChangeHandler(){
+        console.log("Title Change Handler");
+        
+    }
+
   return (
     <>
         <div className='cardss'>
             <form action="" className='product-card'>
                 <div>
                     <label>Title</label>
-                    <input type="text"/>
+                    <input type="text" onChange={titleChangeHandler}/>
                 </div>
                 <div>
                     <label>Date</label>
