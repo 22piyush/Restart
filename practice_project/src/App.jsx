@@ -28,11 +28,18 @@ function App() {
     },
   ]
 
+  function printProductData(data){
+    console.log('i am insid outside app.js');
+    
+    console.log(data);
+    
+  }
+
   return (
     <div >
       {/* <ImageSlider /> */}
-      <Product item={product}/>
-       <NewProduct/>
+        <Product item={product}/>
+        <NewProduct pranay={printProductData}/>
     </div>
   );
 }
