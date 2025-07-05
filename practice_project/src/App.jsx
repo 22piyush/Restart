@@ -1,10 +1,37 @@
 import React from 'react';
-import ImageSlider from './ImageSlider';
+import Product from './newComponent/Product';
+// import ImageSlider from './ImageSlider';
 
 function App() {
+
+  const product = [
+    {
+      id:'p1',
+      title:'nirma',
+      date:new Date(2022 , 8, 10)
+    },
+    {
+      id:'p2',
+      title:'Sirf Excel',
+      date:new Date(2022 , 8, 10)
+    },
+    {
+      id:'p3',
+      title:'Tide',
+      date:new Date(2022 , 8, 10)
+    },
+    {
+      id:'p4',
+      title:'maggi',
+      date:new Date(2022 , 8, 10)
+    },
+  ]
+
   return (
-    <div className="App">
-      <ImageSlider />
+    <div >
+      {/* <ImageSlider /> */}
+      <Product item={product}/>
+      
     </div>
   );
 }
