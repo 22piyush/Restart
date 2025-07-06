@@ -3,9 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>3D Transformation</title>
+    <style>
+        #box{
+            width: 250px;
+            height: 150px;
+            background: gray;
+            margin: 100px;
+        }
+        #content{
+            width: 100%;
+            height: 100%;
+            background: tomato;
+            text-align: center;
+            /* transform-origin: left bottom; */
+            /* transform: perspective(800px) rotateY(80deg) translate3d(50px , 50px,100px); */
+            transform: perspective(800px) scale3d(2,2,1) rotateX(0deg);
+        }
+    </style>
 </head>
 <body>
-    
+    <!-- 3D Transfrm Properties  -->
+     <!-- rotateX(angel)
+     rotateY(angel)
+     rotateZ(angel)
+     rotate3d(x,y,z,angle)
+     translateZ(z)
+     translate3d(x,y,z)
+     scale3d(x,y,z)
+     scaleZ(z)
+     perspective(n)
+     matrix3d(n,n,n,n,n,n,n,n,,n,n,n)
+     none -->
+
+    <div id="box">
+        <div id="content">Hello</div>
+    </div>
+
 </body>
 </html>
