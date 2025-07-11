@@ -1,19 +1,31 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 
 function App() {
-
-  const [text,setText] = useState('');
-  function changeHandler() {
-    console.log(text); 
-  }
+  const changeHandler = (event) => {
+    console.log(event.target.value);
+  };
 
   return (
-    <div>
-        <div>
-          <input type="text" onChange={changeHandler}/>
-        </div>
-    </div>
-  )
+    <>
+      <div>
+        <form action="">
+          <input
+            type="text"
+            placeholder="First Name"
+            onChange={changeHandler}
+          />
+          <br />
+
+          <input type="text" 
+            placeholder="Last Name" 
+            onChange={changeHandler} 
+          />
+          <br />
+          
+        </form>
+      </div>
+    </>
+  );
 }
 
-export default App
+export default App;
