@@ -1,8 +1,14 @@
 import React, { useState } from "react";
 
 function App() {
+
+  const[firstName, setFirstName] = useState("");
+  const[lastName, setLastName] = useState("");
+
   const changeHandler = (event) => {
-    console.log(event.target.value);
+
+    setFirstName(event.target.value)
+
   };
 
   return (
@@ -21,7 +27,7 @@ function App() {
             onChange={changeHandler} 
           />
           <br />
-          
+
         </form>
       </div>
     </>
