@@ -1,109 +1,121 @@
-import React, { useState } from "react";
+import React, { useState } from 'react'
 
 function App() {
+
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    checkbox: false,
-    gender: "",
-    country: ""
-  });
+    firstName:"", 
+    lastName:"", 
+    email:"", 
+    country:"India", 
+    streetAddress:"", 
+    city:"", 
+    state:"", 
+    postalCode:"",
+    comments:false,
+    candidates:false,
+    offers:false,
+    pushNotifications:"",
 
-  const changeHandler = (event) => {
-    const { name, value, checked, type } = event.target;
 
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: type === "checkbox" ? checked : value
-    }));
-  };
+  })
 
-  const submitHandler = (e) => {
-    e.preventDefault();
-    console.log("Form Submitted:", formData);
-    // You can also store formData in a state/DB here
-  };
+  function changeHandler(event){
+    const {name, value, checked, type} = event.target;
+
+    setFormData( (prev) => ({...prev, [name]:type === "checkbox" ? checked: value}))
+  }
+
+  function submitHandler(event){
+    event.preventDefault();
+
+    console.log(formData);
+    
+  }
 
   return (
-    <div>
+
+    <div style={{display:'flex', justifyContent:'center'}}>
       <form onSubmit={submitHandler}>
-        <input
-          type="text"
-          placeholder="First Name"
-          name="firstName"
-          value={formData.firstName}
-          onChange={changeHandler}
-        />
-        <br />
+        <label htmlFor="firstName">First Name</label><br/>
+        <input type="text" name='firstName' 
+          id='firstName' placeholder='First Name' value={formData.firstName}
+          onChange={changeHandler}/><br/>
 
-        <input
-          type="text"
-          placeholder="Last Name"
-          name="lastName"
-          value={formData.lastName}
-          onChange={changeHandler}
-        />
-        <br />
+          <label htmlFor="lastName">Last Name</label><br/>
+        <input type="text" name='lastName' 
+          id='lastName' placeholder='Last Name' value={formData.lastName}
+          onChange={changeHandler}/><br />
 
-        <input
-          type="text"
-          placeholder="Email"
-          name="email"
-          value={formData.email}
-          onChange={changeHandler}
-        />
-        <br />
+          <label htmlFor="email">Email</label><br/>
+        <input type="email" name='email' 
+          id='email' placeholder='email' value={formData.email}
+          onChange={changeHandler}/><br />
 
-        <label>
-          <input
-            type="radio"
-            name="gender"
-            value="male"
-            onChange={changeHandler}
-            checked={formData.gender === "male"}
-          />
-          Male
-        </label>
 
-        <label>
-          <input
-            type="radio"
-            name="gender"
-            value="female"
-            onChange={changeHandler}
-            checked={formData.gender === "female"}
-          />
-          Female
-        </label>
-        <br />
+        <label htmlFor="country">Country</label><br/>
+        <select id='country' name='country' value={formData.country} onChange={changeHandler}>
+          <option value="India">India</option>
+          <option value="US">United States</option>
+          <option value="Canada">Canada</option>
+          <option value="Dubai">Dubai</option>
+        </select><br/>
 
-        <label>
-          Country:
-          <select name="country" value={formData.country} onChange={changeHandler}>
-            <option value="">Select</option>
-            <option value="India">India</option>
-            <option value="USA">USA</option>
-            <option value="Germany">Germany</option>
-          </select>
-        </label>
-        <br />
+        <label htmlFor="streetAddress">Street Address</label><br/>
+        <input type="text" name='streetAddress' 
+          id='streetAddress' placeholder='Street Address' value={formData.streetAddress}
+          onChange={changeHandler}/><br />
 
-        <label>
-          <input
-            type="checkbox"
-            name="checkbox"
-            checked={formData.checkbox}
-            onChange={changeHandler}
-          />
-          Accept Terms & Conditions
-        </label>
-        <br />
+          <label htmlFor="city">city</label><br/>
+        <input type="text" name='city' 
+          id='city' placeholder='city' value={formData.city}
+          onChange={changeHandler}/><br />
 
-        <button type="submit">Submit</button>
+        <label htmlFor="state">State</label><br/>
+        <input type="text" name='state' 
+          id='state' placeholder='State' value={formData.state}
+          onChange={changeHandler}/><br />
+
+        <label htmlFor="postalCode">Postal Code</label><br/>
+        <input type="text" name='postalCode' 
+          id='postalCode' placeholder='112233' value={formData.postalCode}
+          onChange={changeHandler}/><br />
+
+          <fieldset>
+
+            <legend>By Email</legend>
+
+           Comments <input id='comments' name='comments' 
+             type='checkbox' value={formData.comments} onChange={changeHandler}/><br/>
+           
+           Candidates <input id='candidates' name='candidates' 
+              type='checkbox' value={formData.candidates} onChange={changeHandler}/><br/>
+
+           Offers <input id='offers' name='offers' 
+             type='checkbox' value={formData.offers} onChange={changeHandler}/><br/>
+
+          </fieldset><br/>
+
+          <fieldset>
+            <legend>Push Notification</legend>
+
+            <input type="radio" 
+              onChange={changeHandler} id='pushEverything'
+               name='pushNotifications' value="Everything" /> Everything <br/>
+
+              <input type="radio" 
+              onChange={changeHandler} id='pushEmail'
+               name='pushNotifications' value="same as email" /> Same as email <br/>
+
+              <input type="radio" 
+               onChange={changeHandler} id='pushNothing'
+               name='pushNotifications' value="No Push Nothing" /> Nothing <br/>   
+          </fieldset> <br/>
+
+          <button >Save</button>
       </form>
     </div>
-  );
+    
+  )
 }
 
-export default App;
+export default App
