@@ -5,7 +5,8 @@ function Home() {
   return (
    
     <div>
-         <Navbar/>
+         {/* <Navbar/> */}
+         
         Home
     </div>
   )

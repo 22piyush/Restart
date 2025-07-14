@@ -1,34 +1,37 @@
 import React from 'react'
-import { Route , Routes} from 'react-router-dom'
+import { NavLink, Route , Routes} from 'react-router-dom'
 import Home from './components/Home'
 import About from './components/About'
 import Labs from './components/Labs'
+import Header from './components/Header'
 
 function App() {
   return (
     <div>
 
-      {/* <div>
+      <div>
         <nav>
           <ul>
             <li>
-              <Link to="/">Home</Link>
+              <NavLink to="/">Home</NavLink>
             </li>
              <li>
-              <Link to="/about">About</Link>
+              <NavLink to="/about">About</NavLink>
             </li>
              <li>
-              <Link to="/labs">Labs</Link>
+              <NavLink to="/labs">Labs</NavLink>
             </li>
           </ul>
         </nav>
-      </div> */}
+      </div>
 
       <Routes>
-        <Route path="/" element={<Home/>}></Route>
-        <Route path="/about" element={<About/>}></Route>
-        <Route path="/labs" element={<Labs/>}></Route>
-        <Route path="*" element={<div>Not Found</div>}></Route>
+        <Route path="/" element={<Header/>}>
+          <Route index element={<Home/>}/>
+          <Route path="/about" element={<About/>} />
+          <Route path="/labs" element={<Labs/>} />
+          <Route path="*" element={<div>Not Found</div>} />
+        </Route>
       </Routes>
 
     </div>
