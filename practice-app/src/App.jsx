@@ -5,7 +5,10 @@ function App() {
     <div>
 
       <Routes>
-        <Route path="/" ></Route>
+        <Route path="/" element={<div>Home Page</div>}></Route>
+        <Route path="/" element={<div>Support Page</div>}></Route>
+        <Route path="/" element={<div>About Page</div>}></Route>
+        <Route path="/" element={<div>Labs Page</div>}></Route>
       </Routes>
 
     </div>
