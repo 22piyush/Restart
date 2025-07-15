@@ -27,7 +27,8 @@ function Navbar(props) {
                 <button>Login</button>
                 <button>Sign Up</button>
                 <button>Log Out</button>
-                <button>Dashboard</button>
+                <button>Dashboard</button>yukukiuk
+                dglmgerogmerpiogv
             </div>
         </div>
     </div>
