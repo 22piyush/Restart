@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom'
 
 function Navbar(props) {
 
-    const
+    let isLoggedIn = props.isLoggedIn;
+    let setLoggedIn = props.setIsLoggedIn;
 
   return (
     <div>
