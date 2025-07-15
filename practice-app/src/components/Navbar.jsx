@@ -23,11 +23,20 @@ function Navbar(props) {
                     <Link to="#">Contact</Link>
                 </li>
             </div>
-            <div >
-                {!isLoggedIn && <Link to={"/login"}><button>Login</button></Link>}
-                {!isLoggedIn && <Link to={"/signup"}><button>Sign Up</button></Link>}
-                {!isLoggedIn && <Link to={"/"}><button>Log Out</button></Link>}
-                {!isLoggedIn && <Link to={"/dashboard"}><button>Dashboard</button></Link>}
+            <div>
+                {!isLoggedIn && (
+                    <>
+                    <Link to="/login"><button>Login</button></Link>
+                    <Link to="/signup"><button>Sign Up</button></Link>
+                    </>
+                )}
+
+                {isLoggedIn && (
+                    <>
+                    <Link to="/dashboard"><button>Dashboard</button></Link>
+                    <Link to="/"><button onClick={() => { setLoggedIn(false); alert('Logged Out'); }}>Log Out</button></Link>
+                    </>
+                )}
             </div>
         </div>
     </div>
