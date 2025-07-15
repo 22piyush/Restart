@@ -24,10 +24,10 @@ function Navbar(props) {
                 </li>
             </div>
             <div >
-                <button>Login</button>
-                <button>Sign Up</button>
-                <button>Log Out</button>
-                <button>Dashboard</button>
+                {!isLoggedIn && <Link to={"/login"}><button>Login</button></Link>}
+                {!isLoggedIn && <Link to={"/signup"}><button>Sign Up</button></Link>}
+                {!isLoggedIn && <Link to={"/"}><button>Log Out</button></Link>}
+                {!isLoggedIn && <Link to={"/dashboard"}><button>Dashboard</button></Link>}
             </div>
         </div>
     </div>
