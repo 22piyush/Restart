@@ -7,7 +7,7 @@ function Blogs() {
   const {loading} = useContext(AppContext)
 
   return (
-    <div className="w-full h-full flex justify-center items-center p-4">
+    <div className="w-full h-[calc(100vh-115px)] flex justify-center items-center p-4">
       {loading ? <CircularProgress /> : <p>Blog content will appear here.</p>}
     </div>
   )
