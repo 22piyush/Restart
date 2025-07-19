@@ -1,6 +1,6 @@
 const express = require('express');
 
-const PORT = 3006
+const PORT = 3007
 
 const app = express();
 
