@@ -1,15 +1,16 @@
-const http = require('http');
+const express = require('express');
 
-const PORT = 3009;
+const PORT = 3006
 
-const server = http.createServer(function listener(){
+const app = express();
 
-
-
+app.get('/home', (req,res)=>{
+    res.json({
+        message:"Hello"
+    })
 })
 
-server.listen(PORT, function exec(){
-
-    console.log(`Server is Running on PORT: ${PORT}`);
+app.listen(PORT,() => {
+    console.log(PORT);
     
-});
+})
