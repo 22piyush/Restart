@@ -1,13 +1,10 @@
 
-function getObjects(name , city){
-    return {
-        name:name,
-        city:city
-    }
+let user = {
+    name:"piyus"
 }
 
+user.city = 'pune'
 
-const obj = getObject('prakash' , 'mumbai')
-console.log(obj);
 
+console.log(user);
 
