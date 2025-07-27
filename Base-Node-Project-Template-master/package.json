@@ -6,9 +6,10 @@
   "scripts": {
     "dev": "npx nodemon src/index.js"
   },
-  "author": "Sanket",
+  "author": "Piyush",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "http-status-codes": "^2.2.0",
