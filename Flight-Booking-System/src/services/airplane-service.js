@@ -1,4 +1,4 @@
-const { AirplaneRepository } = require('../repositories');
+const { AirplaneRepository } = require("../repositories");
 
 const airplaneRepository = new AirplaneRepository();
 
@@ -8,7 +8,7 @@ async function createAirplane(data) {
         return airplane;
     }catch(error){
         throw error;
-    } 
+    }
 }
 
 module.exports = {

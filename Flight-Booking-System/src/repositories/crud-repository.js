@@ -1,7 +1,6 @@
-const { where } = require('sequelize');
-const { Logger } = require('../config')
+const { Logger } = require("../config");
 
-class CrudRepository {
+class CrudRepository{
     constructor(model){
         this.model = model;
     }
@@ -11,7 +10,7 @@ class CrudRepository {
             const response = await this.model.create(data);
             return response;
         }catch(error){
-            Logger.error('Something went wrong in the crud Repo : create');
+            Logger.error('Something went wrong in crud Repo : create');
             throw error;
         }
     }
@@ -20,12 +19,12 @@ class CrudRepository {
         try{
             const response = await this.model.destroy({
                 where: {
-                    id: data
+                    id:data
                 }
             });
             return response;
         }catch(error){
-            Logger.error('Something went wrong in the crud Repo : delete');
+            Logger.error('Something went wrong in crud Repo : destroy');
             throw error;
         }
     }
@@ -35,7 +34,7 @@ class CrudRepository {
             const response = await this.model.findByPk(data);
             return response;
         }catch(error){
-            Logger.error('Something went wrong in the crud Repo : getOne');
+            Logger.error('Something went wrong in crud Repo : get');
             throw error;
         }
     }
@@ -45,21 +44,21 @@ class CrudRepository {
             const response = await this.model.findAll(data);
             return response;
         }catch(error){
-            Logger.error('Something went wrong in the crud Repo : getAll');
+            Logger.error('Something went wrong in crud Repo : getAll');
             throw error;
         }
     }
 
-    async update(data){
+    async update(id, data){
         try{
-            const response = await this.model.update(data , {
+            const response = await this.model.update(data, {
                 where: {
                     id: id
                 }
             });
             return response;
         }catch(error){
-            Logger.error('Something went wrong in the crud Repo : Update');
+            Logger.error('Something went wrong in crud Repo : update');
             throw error;
         }
     }
