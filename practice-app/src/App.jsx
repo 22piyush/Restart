@@ -7,7 +7,7 @@ function App() {
   const [data , setData] = useState(tourData)
 
   function removeTour(id){
-    const newData = data.filter(n => n != id)
+    const newData = data.filter(n => n.id != id)
     setData(newData)
   }
 

@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 
-function Card({ id, name, desc, img, price }) {
+function Card({ id, name, desc, img, price , removeTour }) {
 
   const [readMore, setReadMore] = useState(false);
-  // Show first 100 characters if not expanded
-  const description = `${desc.substring(0, 40)}...`;
+  const description = readMore ? desc : `${desc.substring(0, 40)}...`;
+
 
   function readMoreHandler(){
         setReadMore(!readMore)
@@ -51,6 +51,7 @@ function Card({ id, name, desc, img, price }) {
             borderRadius: "6px",
             cursor: "pointer"
           }}
+          onClick={()=>removeTour(id)}
         >
           Not Interested
         </button>

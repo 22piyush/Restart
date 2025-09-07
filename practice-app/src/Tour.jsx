@@ -1,7 +1,7 @@
 import React from 'react'
 import Card from './Card'
 
-function Tour({tours}) {
+function Tour({tours , removeTour}) {
   return (
     <div>
         <div>
@@ -13,7 +13,7 @@ function Tour({tours}) {
             {
                 tours.map((tour) => {
 
-                    return <Card {...tour} />
+                    return <Card {...tour} removeTour={removeTour}/>
 
                 })
             }
