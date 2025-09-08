@@ -1,22 +1,21 @@
-import React, { useEffect, useState } from 'react'
+import Card from "./Card"
+import Header from "./Header"
+import { data, filterData } from "./Data"
+import { useState } from "react";
 
 function New() {
 
-    const [text , setText] = useState('');
+  const [category, setCategory] = useState("all"); // default: All
 
-    useEffect(() => {
-        console.log("Render"); 
-    },[])
-
-    function changeHandler(event){
-        console.log(event.target.value);
-        setText(event.target.value);  
-    }
+  // filter logic
+  const filteredData =  category == "all"  ? data : data.filter((course) => course.id === category);
 
   return (
-    <div style={{display:'flex' , justifyContent:'center'}}>
-        <input type='text' onChange={changeHandler}/>
-        <div>{text}</div>
+    <div>
+      <Header filterData={filterData} category={category} setCategory={setCategory} />
+      <div>
+        <Card data={filteredData}/>
+      </div>
     </div>
   )
 }
