@@ -2,11 +2,8 @@ import React from 'react'
 import Card from './Card'
 
 function Testimonial(props) {
-
-    console.log(props);
     
-
-    let reviews = props.reviews;
+  let reviews = props.reviews;
     
   return (
     <div>

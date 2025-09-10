@@ -8,15 +8,24 @@ function Card(props) {
     <div>
 
         <div>
-            <img />
+            <img style={{height:'200px',width:'200px'}} src={review.image}/>
         </div>
 
         <div>
-            <p></p>
+            <p>{review.name}</p>
         </div>
 
         <div>
-            <p></p>
+            <p>{review.job}</p>
+        </div>
+
+        <div>
+            <p>{review.text}</p>
+        </div>
+
+        <div>
+            <button>+</button>
+             <button>*</button>
         </div>
 
     </div>
