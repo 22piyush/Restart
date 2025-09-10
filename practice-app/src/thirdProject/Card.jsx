@@ -23,11 +23,6 @@ function Card(props) {
             <p>{review.text}</p>
         </div>
 
-        <div>
-            <button>+</button>
-             <button>*</button>
-        </div>
-
     </div>
   )
 }
