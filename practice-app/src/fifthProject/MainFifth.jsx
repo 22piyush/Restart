@@ -7,14 +7,19 @@ function MainFifth() {
         lastName:'',
         email:'',
         comments:'',
-        isVisible:true
+        isVisible:true,
+        gender: '',
+        country: '' 
     })
 
     const handleFormData = (event) =>{
+
+        const {name , value , checked , type} = event.target
+
         setFormData(prevData => ({
 
             ...prevData,
-            [event.target.name]:event.target.value
+            [name]: type == 'checkbox' ? checked : value
 
         }))
     }
@@ -25,7 +30,10 @@ function MainFifth() {
             firstName: '',
             lastName: '',
             email: '',
-            comments: ''
+            comments: '',
+            isVisible: false,
+            gender: '',
+            country: '' 
         }) 
     }
 
@@ -38,8 +46,28 @@ function MainFifth() {
             <input type="email" value={formData.email} placeholder='Enter Your Email' name="email" id="email" onChange={handleFormData}/><br/><br/>
             <textarea name="comments" value={formData.comments} placeholder='Enter Your Comments' id="comments" onChange={handleFormData}></textarea><br/><br/>
 
-            <input type="checkbox" name="isVisible" id="isVisible" onChange={handleFormData} checked={formData.isVisible}/>
+            <label>
+                <input type="radio" name="gender" value="male" checked={formData.gender == "male"} onChange={handleFormData} />
+                Male
+            </label>
+            <label>
+                <input type="radio" name="gender" value="female" checked={formData.gender == "female"} onChange={handleFormData} />
+                Female
+            </label><br/><br/>
 
+            <label>
+                Select Country: 
+                <select name="country" value={formData.country} onChange={handleFormData} >
+                    <option value="">--Choose Country--</option>
+                    <option value="india">India</option>
+                    <option value="usa">USA</option>
+                    <option value="uk">UK</option>
+                    <option value="australia">Australia</option>
+                </select>
+            </label>
+        <br/><br/>
+
+            <input type="checkbox" name="isVisible" id="isVisible" onChange={handleFormData} checked={formData.isVisible}/><br/><br/>
 
             <button onClick={handleFormSubmit}>Submit</button>
         </div>
