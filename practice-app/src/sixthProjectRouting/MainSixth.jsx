@@ -5,7 +5,8 @@ import Support from './components/Support'
 import About from './components/About'
 import NotFound from './components/NotFound'
 import { Link , NavLink } from 'react-router-dom'
-import "./components/MainSixth.css"
+import "./MainSixth.css"
+import MainHeader from './components/MainHeader'
 
 
 function MainSixth() {
@@ -32,10 +33,11 @@ function MainSixth() {
       </div>
 
       <Routes>
-        <Route path="/" element={<Home/>}>
+        <Route path="/" element={<MainHeader/>}>
+          <Route index element={<Home/>}/>
           <Route path="/support" element={<Support/>}/>
           <Route path="/about" element={<About/>}/>
-          <Route path="/*" element={<NotFound/>}/>
+          <Route path="*" element={<NotFound/>}/>
         </Route>
       </Routes>
     </div>
