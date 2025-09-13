@@ -7,9 +7,7 @@ function Tour({tours , removeTour}) {
         <div>
             <h1>Plan With Piyush</h1>
         </div>
-        <div style={{display:'flex',     flexWrap: "wrap",     // allows wrapping to the next line
-    justifyContent: "center", // centers cards horizontally
-    gap: "20px" }}>
+        <div style={{display:'flex',flexWrap: "wrap", justifyContent: "center", gap: "20px" }}>
             {
                 tours.map((tour) => {
 
