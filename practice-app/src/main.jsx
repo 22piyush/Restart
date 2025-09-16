@@ -6,10 +6,11 @@ import MainFifth from './fifthProject/MainFifth.jsx'
 import MainSixth from './sixthProjectRouting/MainSixth.jsx'
 import { BrowserRouter } from 'react-router-dom'
 import PracticeApp from './practiceProjects/PracticeApp.jsx'
+import MainMeme from './MemeGenerator/MainMeme.jsx'
 
 createRoot(document.getElementById('root')).render(
     <BrowserRouter>
-        <PracticeApp/>
+        <MainMeme/>
     </BrowserRouter>
 )
 
