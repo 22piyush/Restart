@@ -18,7 +18,7 @@ export default function AppContextProvider({children}){
             setPage(data.page);
             setPosts(data.posts);
             setTotalPages(data.totalPages)
-            console.log(data);
+            console.log(data);dfssv
             
         }catch(error){
             console.log(error);
