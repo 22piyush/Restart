@@ -1,22 +1,30 @@
-public class practice {
-    public static void main(String[] args) {
-        
-       int arr[] = {2,3,4,5,6,7,8,9};
-        subarray(arr);
 
+public class practice {
+
+    public static int removeDuplicates(int nums[]) {
+        int i = 0; int j = i+1; int temp =0;
+
+        while (i<=j) {
+
+            if(nums[i] == nums[j]){
+                nums[temp] = nums[i];
+            }
+
+            if(nums[i] != nums[j]){
+                nums[temp] = nums[i];
+            }
+            
+            i++;
+            j++;
+        }
+        return temp;
+        
     }
 
-    public static void subarray(int arr[]){
-
-        for(int i=0; i<arr.length; i++){
-            for(int j=0; j<arr.length; j++){
-                for(int k=i; k<=j; k++){
-                    System.out.print(arr[k]+" ");
-                }
-                System.out.println();
-            }
-        }
-        System.out.println();
+    public static void main(String[] args) {
+       
+        int number[] = {1,1,2};
+        System.out.println(removeDuplicates(number));
 
     }
 }
