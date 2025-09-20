@@ -32,7 +32,7 @@ function Product({post}) {
       <img 
         src={post.image} 
         alt={post.title} 
-        style={{ height: "150px", objectFit: "contain", marginBottom: "10px" }}
+        style={{ height: "150px", width:"100%", objectFit: "contain", marginBottom: "10px" }}
       />
       <h3 style={{ fontSize: "16px", marginBottom: "10px" }}>{post.title}</h3>
       <p style={{ fontWeight: "bold", color: "green", marginBottom: "10px" }}>${post.price}</p>

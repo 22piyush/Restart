@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 import { remove } from '../redux/Slices/CartSlices';
 import toast from "react-hot-toast";
 
-function CartItem({ item, itemIndex }) {
+function CartItem({ item}) {
 
   const dispatch = useDispatch();
 
@@ -21,7 +21,7 @@ function CartItem({ item, itemIndex }) {
       borderRadius: "8px",
       padding: "15px",
       marginBottom: "15px",
-      boxShadow: "0 2px 5px rgba(0,0,0,0.1)"
+      boxShadow: "0 2px 5px rgba(0,0,0,0.1)",
     }}>
       
       {/* Image */}

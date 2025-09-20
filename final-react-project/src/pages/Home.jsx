@@ -29,7 +29,7 @@ function Home() {
     <>
       <div>
         
-        {loading ? (<h2>Loading...</h2> ) :
+        {loading ? (<h2 style={{textAlign:'center'}}>Loading...</h2> ) :
           posts.length > 0 ?  (
             <div style={{ margin: '0 auto',boxSizing: 'border-box',display:'flex',gap:'20px', flexWrap:'wrap',justifyContent:'center',padding:'35px 20px'}}>
                 {posts.map((post) => (
