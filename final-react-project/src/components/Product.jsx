@@ -1,6 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { add, remove } from "../redux/Slices/CartSlices.js";
+import toast from "react-hot-toast";
 
 function Product({post}) {
 
@@ -10,12 +11,12 @@ function Product({post}) {
   const handleAddToCart = () => {
 
     dispatch(add(post));
-    alert("Item Added to Cart")
+    toast.success("Item Added to Cart!");
   };
 
   const removeFromCart = () =>{
      dispatch(remove(post.id))
-     alert("Remove From Cart")
+     toast.error("Item Removed from Cart!");
   }
 
   return (

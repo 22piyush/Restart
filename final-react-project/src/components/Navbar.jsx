@@ -1,7 +1,11 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import { useSelector } from "react-redux";
 
 function Navbar() {
+
+  const { cart } = useSelector((state) => state);
+
   return (
     <>
         <section>
@@ -38,7 +42,7 @@ function Navbar() {
                             fontWeight: "bold",
                             }}
                         >
-                            3
+                            {cart.length}
                         </span>
                     </div>
                 </div>
