@@ -1,11 +1,22 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { add, remove } from "../redux/Slices/CartSlices.js";
 
 function Product({post}) {
 
+  const {cart} = useSelector((state) => state)
+  const dispatch = useDispatch();
+
   const handleAddToCart = () => {
-    console.log("Added to cart:", post);
-    // You can dispatch this to Redux if needed
+
+    dispatch(add(post));
+    alert("Item Added to Cart")
   };
+
+  const removeFromCart = () =>{
+     dispatch(remove(post.id))
+     alert("Remove From Cart")
+  }
 
   return (
     <>
@@ -25,8 +36,12 @@ function Product({post}) {
       <h3 style={{ fontSize: "16px", marginBottom: "10px" }}>{post.title}</h3>
       <p style={{ fontWeight: "bold", color: "green", marginBottom: "10px" }}>${post.price}</p>
       <p style={{ fontSize: "12px", color: "#555", marginBottom: "15px" }}>{post.description}</p>
-      <button 
-        onClick={handleAddToCart} 
+      <button
+        onClick={() =>
+          cart.some((p) => p.id === post.id)
+            ? removeFromCart()
+            : handleAddToCart()
+        }
         style={{
           padding: "8px 12px",
           backgroundColor: "#7d2ae8",
@@ -36,8 +51,9 @@ function Product({post}) {
           cursor: "pointer"
         }}
       >
-        Add to Cart
+        {cart.some((p) => p.id === post.id) ? "Remove Item" : "Add to Cart"}
       </button>
+
     </div>
     </>
   )
