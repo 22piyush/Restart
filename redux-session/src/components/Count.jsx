@@ -1,11 +1,11 @@
 import React from 'react'
 
-function App() {
+function Count() {
   return (
     <div>
-        
+        <h1>0</h1>
     </div>
   )
 }
 
-export default App
+export default Count
