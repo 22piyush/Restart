@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { Component } from "react";
 
-function Class() {
-  return (
-    <div>Class</div>
-  )
+class Class extends Component {
+  render() {
+    return <h1>Class Component</h1>;
+  }
 }
 
-export default Class
+export default Class;
