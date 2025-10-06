@@ -4,7 +4,7 @@ import Class from './classComponents/Class'
 function App() {
   return (
     <div>
-      <Class/>
+      <Class name="Class Components"/>
     </div>
   )
 }
