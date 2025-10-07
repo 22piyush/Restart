@@ -1,8 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-function Todo() {
+function Todo(addTodo) {
+
+    const [input , setInput] = useState("")
+
   return (
-    <div>Todo</div>
+    <div>
+        <input type='text' value={input} onChange={(e) => setInput(e.target.value)}/>
+        <button onSubmit={()=>addTodo(input)}>Submit</button>
+    </div>
   )
 }
 
