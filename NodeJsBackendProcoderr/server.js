@@ -1,3 +1,3 @@
 const fs = require('fs');
 
-const text = fs.readFileSync('./text.text')
+const text = fs.readFileSync('./text.txt')
