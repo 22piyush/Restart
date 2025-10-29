@@ -1,11 +1,21 @@
 const express = require('express');
 const app = express();
 
-app.listen(5000, () => {
-    console.log("Server Started At 4000");
-    
-})
+// Middleware to parse JSON request bodies
+app.use(express.json());
 
-app.get('/',(req,res) => {
-    res.send("Hello jee, kaise ho saare")
-})
+app.listen(5000, () => {
+    console.log("Server started at port 5000");
+});
+
+app.get('/', (req, res) => {
+    res.send("Hello jee, kaise ho saare");
+});
+
+app.post('/api/cars', (req, res) => {
+    const { name, brand } = req.body;
+    console.log(name);
+    console.log(brand);
+    
+    res.send("Car Submitted");
+});
