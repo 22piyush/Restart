@@ -1,4 +1,5 @@
 const express = require('express');
+const mongoose = require('mongoose');
 const app = express();
 
 // Parse JSON request bodies
@@ -22,6 +23,14 @@ app.post('/api/cars', (req, res) => {
 
   res.send("Car Submitted");
 });
+
+// Connect to MongoDB Atlas
+mongoose.connect('', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+})
+.then(() => console.log('✅ MongoDB Connected Successfully'))
+.catch((err) => console.error('❌ MongoDB Connection Error:', err));
 
 
 
