@@ -1,26 +1,24 @@
 const express = require('express');
 const app = express();
 
-const bodyParser = require('body-parser');
-
-// Specifically Parse JSON data & add to request.Body Object 
-app.use(bodyParser.json());
-
-// Middleware to parse JSON request bodies
+// Parse JSON request bodies
 app.use(express.json());
 
+// Start the server
 app.listen(5000, () => {
-    console.log("Server started at port 5000");
+  console.log("Server started at port 5000");
 });
 
-app.get('/', (res) => {
-    res.send("Hello jee, kaise ho saare");
+// GET route
+app.get('/', (req, res) => {
+  res.send("Hello jee, kaise ho saare");
 });
 
+// POST route
 app.post('/api/cars', (req, res) => {
-    const { name, brand } = req.body;
-    console.log(name);
-    console.log(brand);
-    
-    res.send("Car Submitted");
+  const { name, brand } = req.body;
+  console.log("Car Name:", name);
+  console.log("Car Brand:", brand);
+
+  res.send("Car Submitted");
 });
