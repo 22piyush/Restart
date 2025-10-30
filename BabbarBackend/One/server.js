@@ -27,7 +27,7 @@ app.post('/api/cars', (req, res) => {
 // Connect to MongoDB Atlas
 mongoose.connect('', {
   useNewUrlParser: true,
-  useUnifiedTopology: true
+  useUnifiedTopology: true,
 })
 .then(() => console.log('✅ MongoDB Connected Successfully'))
 .catch((err) => console.error('❌ MongoDB Connection Error:', err));
