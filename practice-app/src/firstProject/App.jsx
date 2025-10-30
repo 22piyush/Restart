@@ -10,7 +10,6 @@ function App() {
     const newData = data.filter(n => n.id != id)
     setData(newData)
   }
-
   return (
     <div>
       <Tour tours={data} removeTour={removeTour}/>

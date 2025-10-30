@@ -10,7 +10,7 @@ import MainMeme from './MemeGenerator/MainMeme.jsx'
 
 createRoot(document.getElementById('root')).render(
     <BrowserRouter>
-        <MainMeme/>
+        <New/>
     </BrowserRouter>
 )
 

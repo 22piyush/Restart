@@ -1,24 +1,24 @@
 import React, { useState } from 'react'
-import Todo from './Todo'
 import TodoCard from './TodoCard'
+import Todo from './Todo.jsx'
 
 function TodoHandle() {
 
   const [todoData , setTodoData] = useState([])
 
   const addTodo = (val) =>{
-    console.log(val);
-    
+    setTodoData([...todoData , val])
   }
 
-  const removeTodo =()=>{
-
+  const removeTodo =(index)=>{
+    const newList = todoData.filter((_,i) => i !== index);
+    setTodoData(newList);
   }
 
   return (
     <div>
         <Todo addTodo={addTodo}/>
-        <TodoCard removeTodod={removeTodo} todo={todoData}/>
+        <TodoCard removeTodo={removeTodo} todo={todoData}/>
     </div>
   )
 }
