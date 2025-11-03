@@ -1,6 +1,15 @@
 const express = require("express");
 const app = express();
 
-app.listen(3000, () => {
-    console.log("App is running Successfully");
+require("dotenv").config();
+const PORT = process.env.PORT || 4000
+
+app.use(express.json());
+
+const todoRoutes = require("./routes/todo");
+
+app.use("/api/v1", todoRoutes);
+
+app.listen(PORT, () => {
+    console.log(`Server started at ${PORT}`);
 })
