@@ -2,7 +2,9 @@ import express from 'express';
 
 const app = express();
 
-app.use()
+app.use('/',(req , res) => {
+  res.end("GLobal Middleware");
+})
 
 app.get('/',
   (req, res, next) => {
