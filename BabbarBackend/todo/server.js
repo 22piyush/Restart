@@ -13,3 +13,10 @@ app.use("/api/v1", todoRoutes);
 app.listen(PORT, () => {
     console.log(`Server started at ${PORT}`);
 })
+
+const dbConnect = require("./config/database");
+dbConnect();
+
+app.get("/",(req,res) => {
+    res.send(`<h1>This is Home PAge</h1>`)
+})
