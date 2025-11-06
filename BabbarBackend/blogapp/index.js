@@ -1,13 +1,22 @@
 const express = require("express");
 const app = express();
+require("dotenv").config();
 
-app.listen(3000, ()=>{
-    console.log("App Running Succesfully");
-});
+const PORT = process.env.PORT || 4000
+
+app.use(express.json());
 
 
-app.get('/' , (req,res) => {
-    res.send(`<h1>This is Home Page</h1>`)
+
+
+
+
+
+
+app.listen(PORT, () => {
+    console.log(`Server started at ${PORT}`);
 })
 
-
+app.get("/",(req,res) => {
+    res.send(`<h1>This is Home PAge</h1>`)
+})
