@@ -7,10 +7,12 @@ import MainSixth from './sixthProjectRouting/MainSixth.jsx'
 import { BrowserRouter } from 'react-router-dom'
 import PracticeApp from './practiceProjects/PracticeApp.jsx'
 import MainMeme from './MemeGenerator/MainMeme.jsx'
+import {Exports , Exportsdfdsf} from './exportsLearn/Exports.jsx'
 
 createRoot(document.getElementById('root')).render(
     <BrowserRouter>
-        <New/>
+        <Exports/>
+        <Exportsdfdsf/>
     </BrowserRouter>
 )
 
