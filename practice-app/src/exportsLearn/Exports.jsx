@@ -2,19 +2,8 @@ import React from 'react'
 
 function Exports() {
   return (
-    <div>
-        Hiii
-    </div>
+    <div>Exports</div>
   )
 }
 
-function Exportsdfdsf() {
-  return (
-    <div>
-        Hello
-    </div>
-  )
-}
-
-
-export {Exportsdfdsf , Exports}
+export default Exports
