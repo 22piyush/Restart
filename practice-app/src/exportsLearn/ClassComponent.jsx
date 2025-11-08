@@ -1,31 +1,28 @@
 import React from "react";
 
-class ClassComponent extends React.Component{
+class ClassComponent extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      count: 0,
+    };
 
+    // bind this to increment method
+    this.increment = this.increment.bind(this);
+  }
 
-    constructor(){
-        super();
-        this.state = {
-            count : 0,
+  increment() {
+    this.setState({ count: this.state.count + 1 });
+  }
 
-        }
-    }
-
-    increment(){
-        this.setState(() => {
-            count: this.state.count + 1,
-        });
-    }
-
-    render(){
-        return (
-            <div>
-                <button onClick={increment}>Click Me</button>
-                <p>{this.state.count}</p>
-            </div>
-        )
-    }
-
+  render() {
+    return (
+      <div style={{ textAlign: "center" }}>
+        <button onClick={this.increment}>Click Me</button>
+        <p>{this.state.count}</p>
+      </div>
+    );
+  }
 }
 
 export default ClassComponent;
