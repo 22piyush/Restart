@@ -17,10 +17,10 @@ class ClassComponent extends React.Component {
 
   render() {
     return (
-      <div style={{ textAlign: "center" }}>
-        <button onClick={this.increment}>Click Me</button>
-        <p>{this.state.count}</p>
-      </div>
+        <div style={{ textAlign: "center" }}>
+            <button onClick={this.increment}>Click Me</button>
+            <p>{this.state.count}</p>
+        </div>
     );
   }
 }
