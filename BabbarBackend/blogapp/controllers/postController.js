@@ -24,22 +24,22 @@ exports.createPost = async (req,res) => {
     }
 };
 
-exports.getAllPosts = async (req,res) => {
+// exports.getAllPosts = async (req,res) => {
 
-    try{
+//     try{
 
-        const posts = await Post.find().populate("likes").populate("comments").exec();
-        res.json({
-            posts,
-        });
+//         const posts = await Post.find().populate("likes").populate("comments").exec();
+//         res.json({
+//             posts,
+//         });
 
-    }catch(error){
+//     }catch(error){
 
-        console.log(error);
-        return res.status(500).json({
-            error: "Error while fetching Posts",
-        });
+//         console.log(error);
+//         return res.status(500).json({
+//             error: "Error while fetching Posts",
+//         });
 
-    }
+//     }
 
-}
+// }
