@@ -8,6 +8,11 @@ router.post("/login", login);
 router.post("/signup", signup);
 
 // Protected Route 
-router.post("/student", isStudent)
+router.post("/student", auth, isStudent, (req,res) => {
+    res.json({
+        success: true,
+        message:"Welcome to the protected route students"
+    });
+});
 
 module.exports = router;
