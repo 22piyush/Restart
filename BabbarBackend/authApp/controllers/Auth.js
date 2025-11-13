@@ -54,7 +54,8 @@ exports.signup = async (req,res) => {
 
 exports.login = async (req,res) => {
     try{
-
+        console.log("11111111111111");
+        
         const {email, password} = req.body;
 
         if(!email || !password){
@@ -75,7 +76,7 @@ exports.login = async (req,res) => {
 
         const payload = {
             email:user.email,
-            id:user_id,
+            id:user._id,
             role:user.role,
         }
         if(await bcrypt.compare(password,user.password)){
@@ -89,7 +90,7 @@ exports.login = async (req,res) => {
 
                expires: new Date( Date.now() + 3 * 24 * 60 * 60 * 1000),
                httpOnly: true,  
-                       
+
             }
 
             res.cookie("token", token, options).status(200).json({
