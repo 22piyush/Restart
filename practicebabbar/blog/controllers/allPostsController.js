@@ -1,4 +1,4 @@
-const Post = require("../models/postModel");
+const Post = require("../modules/postModel");
 
 exports.getAllPosts = async (req,res) => {
 
@@ -7,7 +7,7 @@ exports.getAllPosts = async (req,res) => {
         const posts = await Post.find().populate("likes").populate("comments").exec();
         res.json({
             posts,
-        })
+        });
 
     }catch(error){
 
