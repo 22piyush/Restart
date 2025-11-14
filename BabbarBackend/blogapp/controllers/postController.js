@@ -19,7 +19,7 @@ exports.createPost = async (req,res) => {
 
         console.log(error);
         return res.status(500).json({
-            error: "Error while creating comment",
+            error: "Error while creating post",
         })
     }
 };
