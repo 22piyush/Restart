@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 
 require("dotenv").config({ silent: true });
+const PORT = process.env.PORT || 4000
 
 app.use(express.json());
 
@@ -9,7 +10,7 @@ app.use(express.json());
 
 // app.use("/api/v1", blog);
 
-app.listen(prompt, () => {
+app.listen(PORT, () => {
     console.log(`Server started at PORT ${PORT}`);
 });
 
