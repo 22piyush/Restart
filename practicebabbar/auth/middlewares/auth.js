@@ -38,3 +38,43 @@ exports.auth = (req,res,next) => {
 }
 
 
+exports.isStudent = (req,res,next) => {
+    try{
+
+        if(req.user.role != 'Student'){
+            return res.status(401).json({
+                success:false,
+                message:"This is protected route for students"
+            })
+        }
+        next();
+
+    }
+    catch(error){
+        return res.status(401).json({
+            success:false,
+            message:"User Role is not Matching"
+        });
+    }
+}
+
+
+exports.isAdmin = (req,res,next) => {
+    try{
+
+        if(req.user.role != 'Admin'){
+            return res.status(401).json({
+                success:false,
+                message:"This is protected route for Admin"
+            })
+        }
+        next();
+
+    }
+    catch(error){
+        return res.status(401).json({
+            success:false,
+            message:"User Role is not Matching"
+        });
+    }
+}
