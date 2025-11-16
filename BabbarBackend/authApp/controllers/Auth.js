@@ -49,7 +49,7 @@ exports.signup = async (req,res) => {
             message:'Something wend wrong while creating User'
         })
     }
-}
+};
 
 
 exports.login = async (req,res) => {
@@ -114,4 +114,4 @@ exports.login = async (req,res) => {
             message:'Something wend wrong Login'
         })
     }
-}
+};
