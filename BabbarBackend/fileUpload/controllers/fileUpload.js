@@ -35,13 +35,11 @@ function isFileTypeSupported(type, supportedTypes){
     return supportedTypes.includes(type);
 }
 
-
 async function uploadFileToCloudinary(file, folder) {
     const options = {folder}
     await cloudinary.uploader.upload(file.tempFilePath, options);
     
 }
-
 
 exports.imageUpload = async (req, res) =>{
 
@@ -64,7 +62,16 @@ exports.imageUpload = async (req, res) =>{
         }
 
         const response = await uploadFileToCloudinary(file, "codehelp");
+        console.log(response);
         
+        const fileData = await File.create({
+            
+        })
+
+        res.json({
+            success:true,
+            message:"Image Uploaded successfully."
+        })
 
         
     }
