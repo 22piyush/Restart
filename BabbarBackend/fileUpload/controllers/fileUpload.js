@@ -46,7 +46,7 @@ async function uploadFileToCloudinary(file, folder, quality) {
     // If quality is provided → compress image
     if (quality) {
         options.quality = quality;     // reduce quality
-        options.width = 600;           // reduce image width
+        options.width = 300;           // reduce image width
         options.crop = "scale";        // scale image properly
     }
 
