@@ -37,11 +37,22 @@ function isFileTypeSupported(type, supportedTypes) {
 }
 
 // Upload to Cloudinary
-async function uploadFileToCloudinary(file, folder) {
-    return await cloudinary.uploader.upload(file.tempFilePath, {
+async function uploadFileToCloudinary(file, folder, quality) {
+    let options = {
         folder: folder,
-    });
+        resource_type: "auto"   // detects image/video/pdf automatically
+    };
+
+    // If quality is provided → compress image
+    if (quality) {
+        options.quality = quality;     // reduce quality
+        options.width = 600;           // reduce image width
+        options.crop = "scale";        // scale image properly
+    }
+
+    return await cloudinary.uploader.upload(file.tempFilePath, options);
 }
+
 
 exports.imageUpload = async (req, res) => {
     try {
@@ -140,3 +151,45 @@ exports.videoUpload = async (req,res) => {
         })
     }
 }
+
+
+exports.imageSizeReducer = async (req, res) => {
+    try {
+        const { name, tags, email } = req.body;
+
+        const file = req.files.imageFile;
+        const supportedTypes = ["jpg", "jpeg", "png"];
+        const fileType = file.name.split(".").pop().toLowerCase();
+
+        if (!supportedTypes.includes(fileType)) {
+            return res.status(400).json({
+                success: false,
+                message: "File format not supported.",
+            });
+        }
+
+        // Reduce image size by 30% (quality = 30)
+        const response = await uploadFileToCloudinary(file, "codehelp", 30);
+
+        const fileData = await File.create({
+            name,
+            email,
+            tags,
+            imageUrl: response.secure_url
+        });
+
+        return res.json({
+            success: true,
+            message: "Image uploaded + compressed successfully!",
+            fileData
+        });
+
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({
+            success: false,
+            message: "Something went wrong"
+        });
+    }
+};
+
