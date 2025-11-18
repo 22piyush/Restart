@@ -88,3 +88,55 @@ exports.imageUpload = async (req, res) => {
         });
     }
 };
+
+
+
+exports.videoUpload = async (req,res) => {
+    try{
+
+        const { name, tags, email } = req.body;
+        console.log(name, tags, email);
+
+        const file = req.files.videoFile;
+
+        const supportedTypes = ["mp4", "mov"];
+        const fileType = file.name.split(".").pop().toLowerCase();
+
+        // If file type not supported → stop API
+        if (!isFileTypeSupported(fileType, supportedTypes)) {
+            return res.status(400).json({
+                success: false,
+                message: "File format not supported.",
+            });
+        }
+
+        // Upload to Cloudinary
+        const response = await cloudinary.uploader.upload(file.tempFilePath, {
+            folder: "codehelp",
+            resource_type: "video"
+        });
+        console.log("Cloudinary Response:", response);
+
+        // Save in DB
+        const fileData = await File.create({
+            name,
+            email,
+            tags,
+            videoUrl: response.secure_url,
+        });
+
+        return res.json({
+            success: true,
+            message: "Video uploaded successfully!",
+            fileData: fileData,
+        });
+
+    }
+    catch(error){
+        console.log(error);
+        res.status(400).json({
+            success:false,
+            message:"Something went wrong"
+        })
+    }
+}

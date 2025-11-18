@@ -9,6 +9,9 @@ const fileSchema = new mongoose.Schema({
     imageUrl:{
         type:String,
     },
+    videoUrl: {           // ✅ ADD THIS
+        type: String
+    },
     tags:{
         type:String,
     },
