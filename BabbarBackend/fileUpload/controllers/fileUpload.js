@@ -65,7 +65,7 @@ exports.imageUpload = async (req, res) =>{
         console.log(response);
         
         const fileData = await File.create({
-            
+
         })
 
         res.json({
@@ -76,7 +76,12 @@ exports.imageUpload = async (req, res) =>{
         
     }
     catch(error){
-
+        console.log(error);
+        res.status(400).json({
+            success:false,
+            message:"Something went Wrong"
+        })
+        
     }
 
 }
