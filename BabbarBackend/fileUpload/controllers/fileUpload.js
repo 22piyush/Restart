@@ -31,57 +31,60 @@ exports.localFileUpload = async (req , res) => {
 };
 
 
-function isFileTypeSupported(type, supportedTypes){
+// Check file type
+function isFileTypeSupported(type, supportedTypes) {
     return supportedTypes.includes(type);
 }
 
+// Upload to Cloudinary
 async function uploadFileToCloudinary(file, folder) {
-    const options = {folder}
-    await cloudinary.uploader.upload(file.tempFilePath, options);
-    
+    return await cloudinary.uploader.upload(file.tempFilePath, {
+        folder: folder,
+    });
 }
 
-exports.imageUpload = async (req, res) =>{
-
-    try{
-
-        const {name, tags, email} = req.body;
+exports.imageUpload = async (req, res) => {
+    try {
+        const { name, tags, email } = req.body;
         console.log(name, tags, email);
 
         const file = req.files.imageFile;
         console.log(file);
 
         const supportedTypes = ["jpg", "jpeg", "png"];
-        const fileType = file.name.split('.')[1].toLowerCase();
+        const fileType = file.name.split(".").pop().toLowerCase();
 
-        if(!isFileTypeSupported(fileType, supportedTypes)){
-            res.status(400).json({
-                success:false,
-                message:"File format not supported."
-            })
+        // If file type not supported → stop API
+        if (!isFileTypeSupported(fileType, supportedTypes)) {
+            return res.status(400).json({
+                success: false,
+                message: "File format not supported.",
+            });
         }
 
+        // Upload to Cloudinary
         const response = await uploadFileToCloudinary(file, "codehelp");
-        console.log(response);
-        
+        console.log("Cloudinary Response:", response);
+
+        // Save in DB
         const fileData = await File.create({
+            name,
+            email,
+            tags,
+            imageUrl: response.secure_url,
+        });
 
-        })
+        return res.json({
+            success: true,
+            message: "Image uploaded successfully!",
+            fileData: fileData,
+        });
 
-        res.json({
-            success:true,
-            message:"Image Uploaded successfully."
-        })
-
-        
-    }
-    catch(error){
+    } catch (error) {
         console.log(error);
-        res.status(400).json({
-            success:false,
-            message:"Something went Wrong"
-        })
-        
+        return res.status(500).json({
+            success: false,
+            message: "Something went wrong",
+        });
     }
-
-}
+};
