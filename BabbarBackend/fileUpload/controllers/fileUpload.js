@@ -1,5 +1,5 @@
 const File = require("../models/File");
-
+const cloudinary = require("cloudinary").v2;
 
 exports.localFileUpload = async (req , res) => {
 
@@ -36,6 +36,13 @@ function isFileTypeSupported(type, supportedTypes){
 }
 
 
+async function uploadFileToCloudinary(file, folder) {
+    const options = {folder}
+    await cloudinary.uploader.upload(file.tempFilePath, options);
+    
+}
+
+
 exports.imageUpload = async (req, res) =>{
 
     try{
@@ -56,7 +63,9 @@ exports.imageUpload = async (req, res) =>{
             })
         }
 
+        const response = await uploadFileToCloudinary(file, "codehelp");
         
+
         
     }
     catch(error){
