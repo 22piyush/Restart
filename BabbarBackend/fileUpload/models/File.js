@@ -24,15 +24,21 @@ const fileSchema = new mongoose.Schema({
 
 
 fileSchema.post("save", async function(doc) {
+
     try{
-        
+
+        let transporter = nodemailer.transporter({
+            host: process.env.MAIL_HOST
+        })
+
     }
     catch(error){
 
+
+
     }
-})
 
-
+});
 
 const File = mongoose.model("File", fileSchema);
 module.exports = File;
