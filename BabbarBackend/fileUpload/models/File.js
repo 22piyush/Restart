@@ -9,7 +9,7 @@ const fileSchema = new mongoose.Schema({
     imageUrl:{
         type:String,
     },
-    videoUrl: {           // ✅ ADD THIS
+    videoUrl: {         
         type: String
     },
     tags:{
@@ -20,6 +20,18 @@ const fileSchema = new mongoose.Schema({
     }
 
 });
+
+
+
+fileSchema.post("save", async function(doc) {
+    try{
+        
+    }
+    catch(error){
+
+    }
+})
+
 
 
 const File = mongoose.model("File", fileSchema);
