@@ -18,6 +18,10 @@ var item2Converted =+ item2;
 console.log(item+ +item2);
 
 
+var data: number | string = 30;
+data = "Piyush"
+console.log(data);
+
 
 
 

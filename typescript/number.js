@@ -12,3 +12,6 @@ var item = 100;
 var item2 = "50";
 var item2Converted = +item2;
 console.log(item + +item2);
+var data = 30;
+data = "Piyush";
+console.log(data);
