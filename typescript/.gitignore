@@ -5,3 +5,4 @@ node_modules
 Type Script
 # npm install typescript --save-dev
 # npx tsc app.ts
+# npx tsc app.ts --watch
