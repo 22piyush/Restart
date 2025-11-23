@@ -20,4 +20,5 @@ var Product = /** @class */ (function () {
     return Product;
 }());
 var product = new Product('iphone', 150000, 101);
+product.addToCart();
 console.log(product.buyProduct());
