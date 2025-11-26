@@ -38,10 +38,37 @@ exports.sendOTP = async (req, res) => {
 
         const otpPayload = {email, otp};
 
-        
-    }
-    catch(error){
+        const otpBody = await OTP.create(otpPayload);
+        console.log(otpBody);
+
+        res.status(200).json({
+            success:true,
+            message:"OTP Sent Successfully",
+            otp,
+        });
 
     }
+    catch(error){
+        console.log(error);
+        res.status(500).json({
+            success:false,
+            message:error.message
+        });
+    }
+};
+
+
+exports.signUp = async (req, res) => {
+
+    const {
+        firstName,
+        lastName,
+        email,
+        password,
+        confirmPassword,
+        accountType,
+        contactNumber,
+        otp
+    } = req.body;
 
 }
