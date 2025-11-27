@@ -61,6 +61,7 @@ exports.sendOTP = async (req, res) => {
 exports.signUp = async (req, res) => {
 
     const {
+
         firstName,
         lastName,
         email,
@@ -69,6 +70,7 @@ exports.signUp = async (req, res) => {
         accountType,
         contactNumber,
         otp
+        
     } = req.body;
 
 
@@ -89,7 +91,30 @@ exports.signUp = async (req, res) => {
 
     const existingUser = await User.findOne({email});
     if(existingUser){
-        
+        return res.status(400).json({
+            success:false,
+            message:"User is already registered",
+        });  
     }
+
+    const recentOTP = await OTP.find({email}).sort({createdAt:-1}).limit(1);
+    console.log(recentOTP);
+
+    if(recentOTP.length == 0){
+
+        return res.status(400).json({
+            success:false,
+            message:"OTP Not Found",
+        });  
+
+    }else if(otp !== recentOTP){
+        
+        return res.status(400).json({
+            success:false,
+            message:"Invalid OTP",
+        }); 
+
+    }
+    
 
 }
