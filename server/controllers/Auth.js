@@ -71,4 +71,8 @@ exports.signUp = async (req, res) => {
         otp
     } = req.body;
 
+
+    if(!firstName || !lastName || !email || !password || !confirmPassword || !otp){
+        
+    }
 }
