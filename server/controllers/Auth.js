@@ -87,6 +87,9 @@ exports.signUp = async (req, res) => {
     }
 
 
-    const 
+    const existingUser = await User.findOne({email});
+    if(existingUser){
+        
+    }
 
 }
