@@ -70,7 +70,7 @@ exports.signUp = async (req, res) => {
         accountType,
         contactNumber,
         otp
-        
+
     } = req.body;
 
 
@@ -116,5 +116,22 @@ exports.signUp = async (req, res) => {
 
     }
     
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const ProfileDetails = await Profile.create({
+        
+    })
+
+    const user = await User.create({
+
+        firstName,
+        lastName,
+        email,
+        contactNumber,
+        password:hashedPassword,
+        accountType,
+        additionalDetails,
+
+    });
 
 }
