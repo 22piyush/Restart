@@ -3,6 +3,7 @@ const OTP = require("../models/OTP");
 const otpGenerator = require("otp-generator");
 const bcrypt = require("bcrypt");
 
+
 // OTP Create And Send Function 
 exports.sendOTP = async (req, res) => {
 
@@ -227,8 +228,14 @@ exports.login = async (req, res) => {
 // Change Password Function 
 exports.changePassword = async(req, res) => {
 
-    
+    // get data from req body 
+    // get oldPassword, newPassword, confirmNewPassword
+    // validation
 
-}
+    // update pwd in DB
+    // send mail -- Password update
+    // return response 
+
+};
 
 
