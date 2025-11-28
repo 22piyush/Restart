@@ -60,6 +60,7 @@ exports.sendOTP = async (req, res) => {
 };
 
 
+
 // Register User Function 
 exports.signUp = async (req, res) => {
 
@@ -161,6 +162,7 @@ exports.signUp = async (req, res) => {
 };
 
 
+
 // Login User Function 
 exports.login = async (req, res) => {
     try{
@@ -213,11 +215,20 @@ exports.login = async (req, res) => {
         }
     }
     catch(error){
-        return res.status(401).json({
+        return res.status(500).json({
             success:false,
-            message:"Password is incorrect"
+            message:"Login failure, please try again later"
         })
     }
 };
+
+
+
+// Change Password Function 
+exports.changePassword = async(req, res) => {
+
+    
+
+}
 
 
