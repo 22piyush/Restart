@@ -43,5 +43,15 @@ exports.auth = async (req, res, next) => {
 
 
 exports.isStudent = async (req, res, next) => {
-    
+
+    try{
+
+    }
+    catch(error){
+        return res.status(500).json({
+            success:false,
+            message:"User role cannot be verified"
+        })
+    }
+
 }
