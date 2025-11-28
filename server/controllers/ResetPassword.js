@@ -3,6 +3,7 @@ const { generate } = require("otp-generator");
 const User  = require("../models/User");
 const mailSender = require("../utils/mailSender");
 
+
 exports.resetPasswordToken = async (req, res) => {
 
    try{
@@ -33,6 +34,7 @@ exports.resetPasswordToken = async (req, res) => {
         // return response 
         return res.json({
             success:true,
+            data:updatedDetails,
             message:"Email send successfully, please check email and change pwd"
         })
    }
@@ -43,4 +45,11 @@ exports.resetPasswordToken = async (req, res) => {
         })
    }
 
-}
+};
+
+
+exports.resetPassword = async (req, res) => {
+
+    
+
+};
