@@ -50,6 +50,14 @@ exports.resetPasswordToken = async (req, res) => {
 
 exports.resetPassword = async (req, res) => {
 
+    // data fetch 
+    // validation
+    // get userdetails from db using token 
+    // if no entry - invalid token 
+    // token time check
+    // hash pwd
+    // password update 
     
+
 
 };
