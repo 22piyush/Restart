@@ -2,6 +2,7 @@
 const { generate } = require("otp-generator");
 const User  = require("../models/User");
 const mailSender = require("../utils/mailSender");
+const bcrypt = require("bcrypt");
 
 
 exports.resetPasswordToken = async (req, res) => {
@@ -51,13 +52,39 @@ exports.resetPasswordToken = async (req, res) => {
 exports.resetPassword = async (req, res) => {
 
     // data fetch 
+    const {password, confirmPassword, token} = req.body;
     // validation
+    if(password !== confirmPassword){
+        return res.json({
+            success:false,
+            message:"Password not matching"
+        });
+    }
     // get userdetails from db using token 
+    const userDetails = await user.findOne({token:token});
     // if no entry - invalid token 
+    if(!userDetails){
+        return res.json({
+            success:false,
+            message:"Token is invalid"
+        });
+    }
     // token time check
+    if(userDetails.resetPasswordExpires < Date.now()){
+        return res.json({
+            success:false,
+            message:"Token is expired, please regenerate with us"
+        });
+    }
     // hash pwd
+    const hashedPassword = await bcrypt.hash(password, 10);
+
     // password update 
-    
+    await User.findByIdAndUpdate(
+        {token:token},
+        {password:hashedPassword},
+        {new:true}
+    )
 
 
 };
