@@ -1,13 +1,16 @@
-class Student{
-    login(name:string,password:string){
-
+class Auth{
+    login(name:string, password:string){
         if(name && password){
             return "Student Login"
         }else{
             return "Not Login"
         }
-
     }
+}
+
+
+class Student extends Auth{
+
     result(marks:number){
         if(marks>33){
             return "Pass"
