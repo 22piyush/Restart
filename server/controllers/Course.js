@@ -36,7 +36,27 @@ exports.createCourse = async(req, res) => {
             })
         }
 
+        const thumbnailImage = await uploadImageToCloudinary(thumbnail, process.env.FOLDER_NAME)
+
+        const newCourse = await Course.create({
+
+            courseName,
+            courseDescription,
+            instructor: instructorDetails._id,
+            whatYouWillLearn,
+            price,
+            tag:tagDetails._id,
+            thumbnail:thumbnailImage.secure_url,
+
+        });
+
+        // add the new course to user schema of instructor 
+        await User.findByIdAndUpdate(
+            {_id: instructorDetails._id},
+        )
+
         
+
 
     }
     catch(error){
