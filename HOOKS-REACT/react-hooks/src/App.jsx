@@ -1,10 +1,15 @@
-import ContextApi from "./ContextApi/ContextApi"
+import { useContext } from "react"
+import { DataContext } from "./ContextApi/ContextApi"
 
 
 function App() {
+  
+  const contextData = useContext(DataContext);
+  console.log(contextData);
+  
   return (
     <>
-      <ContextApi/>
+      <div>{contextData.data}</div>
     </>
   )
 }

@@ -1,9 +1,14 @@
-import React from 'react'
+import React, { createContext, useState } from 'react'
+const DataContext = createContext();
+export default function ContextApi({children}) {
 
-function ContextApi() {
+  const [data,setData] = useState("Code ki pathashala");
+
   return (
-    <div></div>
+    <DataContext.Provider value={{data,setData}}>
+        {children}       
+    </DataContext.Provider>
   )
 }
 
-export default ContextApi
+export {DataContext}
