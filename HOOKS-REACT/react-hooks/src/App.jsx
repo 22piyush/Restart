@@ -1,15 +1,13 @@
-import { useContext } from "react"
-import { DataContext } from "./ContextApi/ContextApi"
-
 
 function App() {
   
-  const contextData = useContext(DataContext);
-  console.log(contextData);
-  
+  const anme = "Piyush Aglawe"
+
   return (
     <>
-      <div>{contextData.data}</div>
+      <div>
+          {anme}
+      </div>
     </>
   )
 }
