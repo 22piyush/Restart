@@ -1,17 +1,16 @@
-function outsideFunction() {
-  console.log("Outside Function");
-}
+import { useState } from "react";
 
 function App() {
 
-  function insideFunction() {
-    console.log("Inside Function");
-  }
+  const [fruit, setFruit] = useState(true);
 
   return (
     <div>
-      <button onClick={insideFunction}>Inside Fn</button>
-      <button onClick={outsideFunction}>Outside Fn</button>
+      <h1>{fruit}</h1>
+      <button onClick={()=>setFruit(!fruit)}>Burron</button>
+      {
+         fruit ? <h1>Piyush</h1> : null
+      }
     </div>
   );
 }
