@@ -4,7 +4,7 @@ function App() {
 
   return (
     <div>
-        <User/>
+        <User name="Anil Bhau"/>
     </div>
   );
 }
