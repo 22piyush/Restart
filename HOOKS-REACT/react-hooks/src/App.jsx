@@ -2,15 +2,15 @@ import { useState } from "react";
 
 function App() {
 
-  const [fruit, setFruit] = useState(true);
+  const [count, setCount] = useState(0);
 
   return (
     <div>
-      <h1>{fruit}</h1>
-      <button onClick={()=>setFruit(!fruit)}>Burron</button>
-      {
-         fruit ? <h1>Piyush</h1> : null
-      }
+        <h1>Multiple conditions in React</h1>
+        <button onClick={()=>setCount(count + 1)}>Counter</button>
+        {
+           
+        }
     </div>
   );
 }
