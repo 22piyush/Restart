@@ -1,6 +1,8 @@
+import { useState } from "react";
+
 function App() {
 
-  const [val, setVal] = ("Piyush")
+  const [val, setVal] = useState("Piyush")
 
   const handleInput =(e)=> {
       setVal(e.target.value);
