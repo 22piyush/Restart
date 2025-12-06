@@ -15,7 +15,7 @@
             <!-- Buttons Row -->
                 <div style="display: flex; gap: 10px; margin-bottom: 20px;">
                     <el-button
-                        v-for="(item, index) in license_config"
+                        v-for="(item, index) in license_data"
                         :key="index"
                         :type="item.id === activeLicenseId ? 'primary' : 'default'"
                         @click="activeLicenseId = item.id"
@@ -25,14 +25,147 @@
                 </div>
 
                 <div style="width: 100%; display: flex; justify-content: center;">
-                    <el-form ref="ruleFormRef" style="max-width: 600px" :model="formData" label-position="top"  :rules="rules" label-width="auto" >
-                        <template v-if="activeLicenseId == 'deviec_license'">
-                            
+                    <el-form :model="licenseFormData" :rules="rules" ref="licenseFormRef" label-position="top" style="width: 100%;">
+
+
+                        <template v-if="activeLicenseId == 'device_license'">
+                            <div v-for="field in license_data.device_data.config" :key="field.id">
+
+                                <!-- DEVICE TYPE DROPDOWN -->
+                                <el-form-item label="Select Device Type" prop="device_type" class="input_license_number">
+                                    <el-select v-model="licenseFormData.device.device_type" placeholder="Select Device" size="large">
+                                        <el-option v-for="option in field.options" :key="option.id" :label="option.label" :value="option.id"/>
+                                    </el-select>
+                                </el-form-item>
+
+                                <!-- SUB TYPE DROPDOWN -->
+                                <el-form-item label="Select Link Type" prop="sub_type" class="input_license_number">
+                                    <el-select v-model="licenseFormData.device.sub_type" placeholder="Select Sub Type" size="large">
+                                        <el-option v-for="sub in field.options[0].subfields[0].options" :key="sub.id"
+                                            :label="sub.label" :value="sub.id"/>
+                                    </el-select>
+                                </el-form-item>
+
+                                <el-form-item v-for="lic in field.options[0].licenses" :key="lic.id"
+                                   :label="lic.label" class="input_license_number is-required">
+                                   <el-input-number v-model="licenseFormData.device[lic.id]" :min="lic.min" :max="lic.max" :value-on-clear="lic.min" size="large"  class="w-full"/>
+                                </el-form-item>
+
+                            </div>
                         </template>
-                    </el-form>  
+
+                        <template v-if="activeLicenseId == 'iccc_license'">
+                            <div v-for="field in license_data.icc_data.config" :key="field.identity">
+
+                            <!-- SWITCH -->
+                            <div v-if="field.type === 'switch'">
+                                <el-form-item :label="field.title" :prop="field.identity">
+                                    <el-switch v-model="licenseFormData.icc.icc_enable">
+                                    </el-switch>
+                                </el-form-item>
+                            </div>
+
+                            <!-- DROPDOWN -->
+                            <el-form-item v-if="field.type === 'dropdown'" :label="field.title" :prop="field.identity">
+                                <el-select v-model="licenseFormData.icc.rpa_selected" placeholder="Select License" class="w-full">
+                                    <el-option v-for="opt in field.options" :key="opt.identity" 
+                                        :label="opt.title" 
+                                        :value="opt.identity">
+                                    </el-option>
+                                </el-select>
+                            </el-form-item>
+
+                            <!-- NUMBER INPUTS -->
+                            <div v-if="licenseFormData.icc.rpa_selected">
+                                <div v-for="lic in field.license" :key="lic.identity">
+                                    <el-form-item :label="lic.title" :prop="lic.identity">
+                                        <el-input-number
+                                            :min="lic.identity === 'expiry_days' && lic.min === 0 && !lic.lock ? 1 : lic.min"
+                                            :max="lic.max"
+                                            :value-on-clear="lic.min"
+                                            v-model="licenseFormData.icc[lic.identity]"
+                                            :disabled="lic.identity === 'expiry_days' && lic.min === 0 && lic.lock"
+                                            @input="handleLicenseInput(lic , 'iccc')"
+                                            @change="handleLicenseInput(lic , 'iccc')">
+                                        </el-input-number>
+                                    </el-form-item>
+                                </div>
+                            </div>
+                            </div>
+                        </template>
+
+
+                        <template v-if="activeLicenseId === 'cloud_license'">
+  <div v-for="field in license_data.cloud_license.config" :key="field.id || field.type">
+
+    <!-- DROPDOWN FIELD -->
+    <el-form-item
+      v-if="field.type === 'dropdown'"
+      :label="field.title"
+      :prop="field.id"
+    >
+      <el-select
+        v-model="licenseFormData.cloud_license[field.id]"
+        placeholder="Select"
+        class="w-full"
+      >
+        <el-option
+          v-for="opt in field.options"
+          :key="opt.id"
+          :label="opt.title"
+          :value="opt.id"
+        />
+      </el-select>
+    </el-form-item>
+
+    <!-- NUMBER FIELDS GROUP (LICENSE COUNT + EXPIRY) -->
+    <template v-if="field.type === 'number' && field.license">
+      <div class="grid grid-cols-2 gap-4 mt-4">
+        <el-form-item
+          v-for="lic in field.license"
+          :key="lic.identity"
+          :label="lic.title"
+          :prop="lic.identity"
+        >
+          <el-input-number
+            class="w-full mt-1"
+            :min="lic.min"
+            :max="lic.max"
+            v-model="licenseFormData.cloud_license[lic.identity]"
+            @input="handleLicenseInput(lic , 'cloud')"
+            @change="handleLicenseInput(lic , 'cloud')">
+          ></el-input-number>
+        </el-form-item>
+      </div>
+    </template>
+
+    <!-- NUMBER FIELDS GROUP (FRAMERATE) -->
+    <template v-if="field.type === 'number' && field.framerate">
+      <div class="grid grid-cols-2 gap-4 mt-4">
+        <el-form-item
+          v-for="frame in field.framerate"
+          :key="frame.identity"
+          :label="frame.title"
+          :prop="frame.identity"
+        >
+          <el-input-number
+            class="w-full mt-1"
+            :min="frame.min"
+            :max="frame.max"
+            v-model="licenseFormData.cloud_license[frame.identity]"
+          ></el-input-number>
+        </el-form-item>
+      </div>
+    </template>
+
+  </div>
+</template>
+
+                        
+                    </el-form> 
                 </div>
                 <div>
-                    <el-button type="primary" @click="submitFormData">
+                    <el-button type="primary" @click="submitlicenseFormData">
                         Submit
                     </el-button>  
                 </div>
