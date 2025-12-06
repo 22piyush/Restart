@@ -3,9 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Pie Chart Example</title>
+
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </head>
-<body>
-    
+<body style="margin: 0; padding: 0; height: 100vh;">
+
+    <div style="height: 100%; width: 100%; display: flex; justify-content: center; align-items: center;">
+        <div style="width: 40%; height: 400px; background-color: antiquewhite; display:flex; justify-content:center; align-items:center;">
+            <!-- Canvas for chart -->
+            <canvas id="myPieChart" width="300" height="300"></canvas>
+        </div>
+    </div>
+
+    <script>
+        const ctx = document.getElementById('myPieChart').getContext('2d');
+
+        new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Available', 'Used'],
+                datasets: [{
+                    data: [400, 250],
+                    backgroundColor: [
+                        '#6A0DAD', 
+                        '#B266FF'  
+                    ],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+    </script>
+
 </body>
 </html>
