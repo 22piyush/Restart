@@ -42,7 +42,7 @@ const App = {
                 }
             ]
             },  
-            icc_data: {
+            iccc_data: {
                 title: "ICCC",
                 id: "iccc_license",
 
@@ -70,13 +70,13 @@ const App = {
                             {
                                 title: "Count of RPA License",
                                 identity: "no_of_license",
-                                min: 1,
+                                min: 0,
                                 max: 20000
                             },
                             {
                                 title: "Expiry ( Number of Days )",
                                 identity: "expiry_days",
-                                min: 1,
+                                min: 0,
                                 max: 36500,
                                 lock: true
                             }
@@ -102,13 +102,13 @@ const App = {
                             {
                                 title: "Count of RPA License",
                                 identity: "no_of_license",
-                                min: 1,
+                                min: 0,
                                 max: 20000
                             },
                             {
                                 title: "Expiry ( Number of Days )",
                                 identity: "expiry_days",
-                                min: 1,
+                                min: 0,
                                 max: 36500,
                                 lock: true
                             }
@@ -167,16 +167,16 @@ const App = {
                 camera_license:0,
                 
             },
-            icc:{
-                icc_enable:true,
+            iccc:{
+                iccc_enable:true,
                 rpa_selected:"agent_rpa_license",
                 no_of_license:0,
                 expiry_days:0
             },
             cloud_license: {
     cloud_pack: "",
-    no_of_license: 1,
-    expiry_days: 1,
+    no_of_license: 0,
+    expiry_days: 0,
     no_of_framerate: 1,
     stream_type: "",
     video_encoding: ""
@@ -187,50 +187,57 @@ const App = {
 
     methods:{
 
-  handleLicenseInput(lic , type) {
-   
-    if(type == 'iccc' || type == 'cloud'){
-        var value = this.licenseFormData.icc[lic.identity];
-    }
+handleLicenseInput(lic, list, type) {
 
+    console.log(lic, list, type);
+    
+
+  // form model: iccc / cloud_license / future
+  const formModel = this.licenseFormData[type];
+  const value = formModel[lic.identity];
+
+  // Pairs that use the lock logic
   const groups = [
     { count: "no_of_license", expiry: "expiry_days" },
     { count: "no_of_viewer_license", expiry: "viewer_expiry_days" }
   ];
 
-  const group = groups.find(g =>
-    lic.identity === g.count || lic.identity === g.expiry
+  // Find which pair this field belongs to (if any)
+  const currentGroup = groups.find(
+    g => lic.identity === g.count || lic.identity === g.expiry
   );
-  if (!group) return;
+  if (!currentGroup) return;
 
-  const licenseSection = this.license_data.icc_data.config[1];
-  const allFields = [
-    ...(licenseSection.license || []),
-    ...(licenseSection.viewer_license || [])
-  ];
+  // Find the pair objects from the SAME list you passed (field.license)
+  const countField  = list.find(f => f.identity === currentGroup.count);
+  const expiryField = list.find(f => f.identity === currentGroup.expiry);
 
-  const countField = allFields.find(f => f.identity === group.count);
-  const expiryField = allFields.find(f => f.identity === group.expiry);
+  if (!countField || !expiryField) return;
 
-  const countValue = this.licenseFormData.icc[group.count];
+  const countValue = formModel[currentGroup.count];
 
-  // Special logic only for min = 0
   if (countField.min === 0 || expiryField.min === 0) {
 
-    if (lic.identity === group.count) {
+    // When user changes COUNT field
+    if (lic.identity === currentGroup.count) {
       if (value === 0) {
+        // lock expiry and set 0
         expiryField.lock = true;
-        this.licenseFormData.icc[group.expiry] = 0;
+        formModel[currentGroup.expiry] = 0;
       }
+
       if (value > 0 && expiryField.lock) {
+        // first time >0 → unlock + set expiry = 1
         expiryField.lock = false;
-        this.licenseFormData.icc[group.expiry] = 1;
+        formModel[currentGroup.expiry] = 1;
       }
     }
 
-    if (lic.identity === group.expiry) {
+    // When user changes EXPIRY field
+    if (lic.identity === currentGroup.expiry) {
       if (countValue > 0 && value === 0) {
-        this.licenseFormData.icc[group.expiry] = 1;
+        // cannot make expiry 0 if count > 0
+        formModel[currentGroup.expiry] = 1;
       }
     }
   }
@@ -239,8 +246,11 @@ const App = {
 
 
 
+
+
+
         submitlicenseFormData(){
-            console.log(this.licenseFormData.icc);
+            console.log(this.licenseFormData.iccc);
             console.log(this.licenseFormData);
         }
     }

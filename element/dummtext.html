@@ -1,0 +1,747 @@
+{
+    "title": "Cloud", 
+    "id": "cloud_license",
+    "config": [
+        {
+            "identity": "is_iccc_enabled",
+            "title": "ICCC",
+            "value":""
+        },
+        {
+            "identity": "license_type",
+            "title": "License Type",
+            "value":"",
+            "options": [
+                {
+                    "identity": "agent_rpa_license",
+                    "title": "Agent RPA License"
+                },
+            ],
+
+            "license":[
+                {
+                    "title": "Count of RPA License",
+                    "identity": "no_of_license",
+                    "value": "",
+                    "min": 1,
+                    "max": 20000
+                },
+                {
+                    "value": "",
+                    "identity": "expiry_days",
+                    "min": 1,
+                    "max": 36500,
+                    "title": "Expiry ( Number of Days )",
+                }
+            ]
+        },
+    ]
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+ {
+            title: "Device",
+            id: "device_license",
+            config: [
+                {
+                    id: "device_type",
+                    label: "Select Device",
+                    input_type: "dropdown",
+                    value: "",
+                    options: [
+                        {
+                            id: "cloud_link",
+                            label: "Cloud Link",
+                            subfields: [
+                                {
+                                    id: "sub_type",
+                                    label: "Select Link Type",
+                                    input_type: "dropdown",
+                                    value: "",
+                                    options: [
+                                        { id: "virtual", label: "Virtual" },
+                                        { id: "hardware", label: "Hardware" },
+                                    ]
+                                }
+                            ],
+
+                            licenses: [
+                                {
+                                    id: "location_license",
+                                    label: "Location License",
+                                    input_type: "number",
+                                    value: 0,
+                                    min: 0,
+                                    max: Infinity,
+                                },
+                                {
+                                    id: "camera_license",
+                                    label: "Camera License",
+                                    input_type: "number",
+                                    value: 0,
+                                    min: 0,
+                                    max: Infinity,
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },    
+        { title: "Cloud", id: "cloud_license", config: [] },
+        {
+            "title": "Cloud", 
+            "id": "cloud_license",
+            "config": [
+                {
+                    "identity": "is_iccc_enabled",
+                    "title": "ICCC"
+                },
+                {
+                    "identity": "type",
+                    "title": "License Type",
+                    "options": [
+                        {
+                            "identity": "agent_rpa_license",
+                            "title": "Agent RPA License"
+                        },
+                    ],
+                },
+            ]
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                <!-- VIEWER LICENSE NUMBER INPUTS -->
+                                <div v-if="formData.icc.rpa_selected">
+                                    <div v-for="lic in field.viewer_license" :key="lic.identity">
+                                        <el-form-item :label="lic.title" :prop="lic.identity">
+                                            <el-input-number
+                                                :min="lic.identity === 'viewer_expiry_days' && lic.min === 0 && !lic.lock ? 1 : lic.min"
+                                                :max="lic.max"
+                                                :value-on-clear="lic.min"
+                                                v-model="lic.value"
+                                                :disabled="lic.identity === 'viewer_expiry_days' && lic.min === 0 && lic.lock"
+                                                @input="handleLicenseInput(lic)"
+                                                @change="handleLicenseInput(lic)">
+                                            </el-input-number>
+                                        </el-form-item>
+                                    </div>
+                                </div>             
+        viewer_license: [
+          {
+            title: "Count of Viewer License",
+            identity: "no_of_viewer_license",
+            value: 0,
+            min: 0,
+            max: 20000
+          },
+          {
+            title: "Expiry ( Number of Days )",
+            identity: "viewer_expiry_days",
+            value: 0,
+            min: 0,
+            max: 36500,
+            lock: true
+          }
+        ]
+
+
+
+
+         <el-form-item :label="lic.title" :prop="lic.identity">
+                                        <el-input-number
+                                            :min="lic.identity === 'expiry_days' && lic.min === 0 && !lic.lock ? 1 : lic.min"
+                                            :max="lic.max"
+                                            :value-on-clear="lic.min"
+                                            v-model="lic.value"
+                                            :disabled="lic.identity === 'expiry_days' && lic.min === 0 && lic.lock"
+                                            @input="handleLicenseInput(lic)"
+                                            @change="handleLicenseInput(lic) , licenseFormData.icc[lic.identity] = lic.value ">
+                                        </el-input-number>
+                                    </el-form-item>
+
+
+
+                                    
+        handleLicenseInput(lic) {
+        // this.licenseFormData[lic.identity] = lic.value;
+
+        const groups = [
+            { count: "no_of_license", expiry: "expiry_days" },
+            { count: "no_of_viewer_license", expiry: "viewer_expiry_days" }
+        ];
+
+        const group = groups.find(g =>
+            lic.identity === g.count || lic.identity === g.expiry
+        );
+        if (!group) return;
+
+        const licenseSection = this.license_data.icc_data.config[1];
+        const allFields = [
+            ...(licenseSection.license || []),
+            ...(licenseSection.viewer_license || [])
+        ];
+
+        const countField = allFields.find(f => f.identity === group.count);
+        const expiryField = allFields.find(f => f.identity === group.expiry);
+
+        // ❗ Special logic ONLY when min = 0 ❗
+        if (countField.min === 0 || expiryField.min === 0) {
+            if (lic.identity === group.count) {
+            if (lic.value === 0) {
+                expiryField.lock = true;
+                expiryField.value = 0;
+                this.licenseFormData.device[group.expiry] = 0;
+            }
+
+            if (lic.value > 0 && expiryField.lock) {
+                expiryField.lock = false;
+                expiryField.value = 1;
+                this.licenseFormData.device[group.expiry] = 1;
+            }
+            }
+
+            if (lic.identity === group.expiry) {
+            if (countField.value > 0 && lic.value === 0) {
+                lic.value = 1;
+                this.licenseFormData.device[group.expiry] = 1;
+            }
+            }
+        }
+        },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            licenses: [
+                                {
+                                    id: "location_license",
+                                    label: "Location License",
+                                    input_type: "number",
+                                    value: 0,
+                                    min: 0,
+                                    max: 1000,
+                                },
+                                {
+                                    id: "camera_license",
+                                    label: "Camera License",
+                                    input_type: "number",
+                                    value: 0,
+                                    min: 0,
+                                    max: 10000,
+                                }
+                            ]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ const App = {
+  data() {
+    return {
+        license_data: {
+
+            device_data:{
+            title: "Device",
+            id: "device_license",
+            config: [
+                {
+                    id: "device_type",
+                    options: [
+                        {
+                            id: "cloud_link",
+                            label: "Cloud Link",
+                            subfields: [
+                                {
+                                    id: "sub_type",
+                                    options: [
+                                        { id: "virtual", label: "Virtual" },
+                                        { id: "hardware", label: "Hardware" },
+                                    ]
+                                }
+                            ],
+
+                            licenses: [
+                                {
+                                    id: "location_license",
+                                    label: "Location License",
+                                    min: 1,
+                                    max: 1000,
+                                },
+                                {
+                                    id: "camera_license",
+                                    label: "Camera License",
+                                    min: 1,
+                                    max: 10000,
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+            },  
+            icc_data: {
+                title: "ICCC",
+                id: "iccc_license",
+
+                config: [
+                    {
+                        identity: "is_iccc_enabled",
+                        title: "ICCC",
+                        type: "switch",
+                        value: false
+                    },
+                    {
+                        identity: "license_type",
+                        title: "License Type",
+                        type: "dropdown",
+                        value: "",
+
+                        options: [
+                            {
+                                identity: "agent_rpa_license",
+                                title: "Agent RPA License"
+                            }
+                        ],
+
+                        license: [
+                            {
+                                title: "Count of RPA License",
+                                identity: "no_of_license",
+                                min: 0,
+                                max: 20000
+                            },
+                            {
+                                title: "Expiry ( Number of Days )",
+                                identity: "expiry_days",
+                                min: 0,
+                                max: 36500,
+                                lock: true
+                            }
+                        ],
+                    }
+                ]
+            },
+            cloud_license:{
+                title: "Cloud",
+                id: "cloud_license",
+                config:[
+                    {
+                        title:"Cloud Pack",
+                        id:"cloud_pack",
+                        type:'dropdown',
+                        options:[
+                            {title:"2 days Video" , id:'2_days_video_backup'},
+                            {title:"3 days Video" , id:'3_days_video_backup'},
+                        ],
+                    },{
+                        type:"number",
+                        license: [
+                            {
+                                title: "Count of RPA License",
+                                identity: "no_of_license",
+                                min: 0,
+                                max: 20000
+                            },
+                            {
+                                title: "Expiry ( Number of Days )",
+                                identity: "expiry_days",
+                                min: 0,
+                                max: 36500,
+                                lock: true
+                            }
+                        ],
+                    },{
+                        type:'number',
+                        framerate:[
+                            {
+                                title: "Framerate",
+                                identity: "no_of_framerate",
+                                min: 1,
+                                max: 30
+                            }
+                        ]
+                    },{
+                        title:"Stream Type",
+                        id:"stream_type",
+                        type:'dropdown',
+                        options:[
+                            {
+                                title:"Main Stream",
+                                id:"main_stream"
+                            },
+                            {
+                                title:"Sub Stream",
+                                id:"sub_stream"
+                            },
+
+                        ]
+                    },
+                    {
+                        title:"Video Encoding",
+                        id:"video_encoding",
+                        type:'dropdown',
+                        options:[
+                            {
+                                title:"H.264",
+                                id:'H.264'
+                            },
+                            {
+                                title:"H.265",
+                                id:'H.265'
+                            }
+                        ]
+                    }
+                ]
+            },
+        },
+
+        activeLicenseId: "device_license",
+        licenseFormData:{
+            device:{
+                device_type:'',
+                sub_type:'',
+                location_license:0,
+                camera_license:0,
+                
+            },
+            icc:{
+                icc_enable:true,
+                rpa_selected:"agent_rpa_license",
+                no_of_license:0,
+                expiry_days:0
+            },
+            cloud_license: {
+    cloud_pack: "",
+    no_of_license: 0,
+    expiry_days: 0,
+    no_of_framerate: 1,
+    stream_type: "",
+    video_encoding: ""
+  }
+        },
+    };
+  },
+
+    methods:{
+
+handleLicenseInput(lic, type) {
+
+  const typeMap = {
+    icc: "icc_data",
+    cloud_license: "cloud_license"
+  };
+
+  const configKey = typeMap[type];
+  if (!configKey) return;
+
+  let formModel = this.licenseFormData[type];
+  const value = formModel[lic.identity];
+
+  const moduleConfig = this.license_data[configKey].config;
+  const licenseSection = moduleConfig.find(c => c.license || c.viewer_license) || {};
+
+  const groups = [
+    { count: "no_of_license", expiry: "expiry_days" },
+    { count: "no_of_viewer_license", expiry: "viewer_expiry_days" }
+  ];
+
+  const currentGroup = groups.find(g =>
+    lic.identity === g.count || lic.identity === g.expiry
+  );
+  if (!currentGroup) return;
+
+  const allFields = [
+    ...(licenseSection.license || []),
+    ...(licenseSection.viewer_license || [])
+  ];
+
+  const countField = allFields.find(f => f.identity === currentGroup.count);
+  const expiryField = allFields.find(f => f.identity === currentGroup.expiry);
+  const countValue = formModel[currentGroup.count];
+
+  if (countField?.min === 0 || expiryField?.min === 0) {
+    if (lic.identity === currentGroup.count) {
+      if (value === 0) {
+        expiryField.lock = true;
+        formModel[currentGroup.expiry] = 0;
+      }
+      if (value > 0 && expiryField.lock) {
+        expiryField.lock = false;
+        formModel[currentGroup.expiry] = 1;
+      }
+    }
+
+    if (lic.identity === currentGroup.expiry) {
+      if (countValue > 0 && value === 0) {
+        formModel[currentGroup.expiry] = 1;
+      }
+    }
+  }
+},
+
+
+
+
+
+
+        submitlicenseFormData(){
+            console.log(this.licenseFormData.icc);
+            console.log(this.licenseFormData);
+        }
+    }
+
+};
+
+const app = Vue.createApp(App);
+app.use(ElementPlus);
+app.mount("#app");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <script src="https://unpkg.com/vue@3"></script>
+    <!-- import CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/element-plus/dist/index.css">
+    <!-- import JavaScript -->
+    <script src="https://unpkg.com/element-plus"></script>
+    <title>From Handling</title>
+  </head>
+  <body>
+    <div id="app">
+         <div style="width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; margin-top: 50px;">
+            <!-- Buttons Row -->
+                <div style="display: flex; gap: 10px; margin-bottom: 20px;">
+                    <el-button
+                        v-for="(item, index) in license_data"
+                        :key="index"
+                        :type="item.id === activeLicenseId ? 'primary' : 'default'"
+                        @click="activeLicenseId = item.id"
+                    >
+                        {{ item.title }}
+                    </el-button>
+                </div>
+
+                <div style="width: 100%; display: flex; justify-content: center;">
+                    <el-form :model="licenseFormData" :rules="rules" ref="licenseFormRef" label-position="top" style="width: 100%;">
+
+
+                        <template v-if="activeLicenseId == 'device_license'">
+                            <div v-for="field in license_data.device_data.config" :key="field.id">
+
+                                <!-- DEVICE TYPE DROPDOWN -->
+                                <el-form-item label="Select Device Type" prop="device_type" class="input_license_number">
+                                    <el-select v-model="licenseFormData.device.device_type" placeholder="Select Device" size="large">
+                                        <el-option v-for="option in field.options" :key="option.id" :label="option.label" :value="option.id"/>
+                                    </el-select>
+                                </el-form-item>
+
+                                <!-- SUB TYPE DROPDOWN -->
+                                <el-form-item label="Select Link Type" prop="sub_type" class="input_license_number">
+                                    <el-select v-model="licenseFormData.device.sub_type" placeholder="Select Sub Type" size="large">
+                                        <el-option v-for="sub in field.options[0].subfields[0].options" :key="sub.id"
+                                            :label="sub.label" :value="sub.id"/>
+                                    </el-select>
+                                </el-form-item>
+
+                                <el-form-item v-for="lic in field.options[0].licenses" :key="lic.id"
+                                   :label="lic.label" class="input_license_number is-required">
+                                   <el-input-number v-model="licenseFormData.device[lic.id]" :min="lic.min" :max="lic.max" :value-on-clear="lic.min" size="large"  class="w-full"/>
+                                </el-form-item>
+
+                            </div>
+                        </template>
+
+                        <template v-if="activeLicenseId == 'iccc_license'">
+                            <div v-for="field in license_data.icc_data.config" :key="field.identity">
+
+                            <!-- SWITCH -->
+                            <div v-if="field.type === 'switch'">
+                                <el-form-item :label="field.title" :prop="field.identity">
+                                    <el-switch v-model="licenseFormData.icc.icc_enable">
+                                    </el-switch>
+                                </el-form-item>
+                            </div>
+
+                            <!-- DROPDOWN -->
+                            <el-form-item v-if="field.type === 'dropdown'" :label="field.title" :prop="field.identity">
+                                <el-select v-model="licenseFormData.icc.rpa_selected" placeholder="Select License" class="w-full">
+                                    <el-option v-for="opt in field.options" :key="opt.identity" 
+                                        :label="opt.title" 
+                                        :value="opt.identity">
+                                    </el-option>
+                                </el-select>
+                            </el-form-item>
+
+                            <!-- NUMBER INPUTS -->
+                            <div v-if="licenseFormData.icc.rpa_selected">
+                                <div v-for="lic in field.license" :key="lic.identity">
+                                    <el-form-item :label="lic.title" :prop="lic.identity">
+                                        <el-input-number
+                                            :min="lic.identity === 'expiry_days' && lic.min === 0 && !lic.lock ? 1 : lic.min"
+                                            :max="lic.max"
+                                            :value-on-clear="lic.min"
+                                            v-model="licenseFormData.icc[lic.identity]"
+                                            :disabled="lic.identity === 'expiry_days' && lic.min === 0 && lic.lock"
+                                            @input="handleLicenseInput(lic , 'icc')"
+                                            @change="handleLicenseInput(lic , 'icc')">
+                                        </el-input-number>
+                                    </el-form-item>
+                                </div>
+                            </div>
+                            </div>
+                        </template>
+
+
+                        <template v-if="activeLicenseId === 'cloud_license'">
+  <div v-for="field in license_data.cloud_license.config" :key="field.id || field.type">
+
+    <!-- DROPDOWN FIELD -->
+    <el-form-item
+      v-if="field.type === 'dropdown'"
+      :label="field.title"
+      :prop="field.id"
+    >
+      <el-select
+        v-model="licenseFormData.cloud_license[field.id]"
+        placeholder="Select"
+        class="w-full"
+      >
+        <el-option
+          v-for="opt in field.options"
+          :key="opt.id"
+          :label="opt.title"
+          :value="opt.id"
+        />
+      </el-select>
+    </el-form-item>
+
+    <!-- NUMBER FIELDS GROUP (LICENSE COUNT + EXPIRY) -->
+    <template v-if="field.type === 'number' && field.license">
+      <div class="grid grid-cols-2 gap-4 mt-4">
+        <el-form-item
+          v-for="lic in field.license"
+          :key="lic.identity"
+          :label="lic.title"
+          :prop="lic.identity"
+        >
+          <el-input-number
+            class="w-full mt-1"
+            :min="lic.identity === 'expiry_days' && lic.min === 0 && !lic.lock ? 1 : lic.min"
+            :max="lic.max"
+            :value-on-clear="lic.min"
+            v-model="licenseFormData.cloud_license[lic.identity]"
+             :disabled="lic.identity === 'expiry_days' && lic.min === 0 && lic.lock"
+           @input="handleLicenseInput(lic , 'cloud_license')"
+@change="handleLicenseInput(lic , 'cloud_license')"></el-input-number>
+        </el-form-item>
+      </div>
+    </template>
+
+    <!-- NUMBER FIELDS GROUP (FRAMERATE) -->
+    <template v-if="field.type === 'number' && field.framerate">
+      <div class="grid grid-cols-2 gap-4 mt-4">
+        <el-form-item
+          v-for="frame in field.framerate"
+          :key="frame.identity"
+          :label="frame.title"
+          :prop="frame.identity"
+        >
+          <el-input-number
+            class="w-full mt-1"
+            :min="frame.min"
+            :max="frame.max"
+            v-model="licenseFormData.cloud_license[frame.identity]"
+          ></el-input-number>
+        </el-form-item>
+      </div>
+    </template>
+
+  </div>
+</template>
+
+                        
+                    </el-form> 
+                </div>
+                <div>
+                    <el-button type="primary" @click="submitlicenseFormData">
+                        Submit
+                    </el-button>  
+                </div>
+         </div>       
+    </div>
+    <script src="./index.js"></script>
+  </body>
+</html>
+
+
+
+
+
+
+
