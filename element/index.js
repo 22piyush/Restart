@@ -174,80 +174,66 @@ const App = {
                 expiry_days:0
             },
             cloud_license: {
-    cloud_pack: "",
-    no_of_license: 0,
-    expiry_days: 0,
-    no_of_framerate: 1,
-    stream_type: "",
-    video_encoding: ""
-  }
+                cloud_pack: "",
+                no_of_license: 0,
+                expiry_days: 0,
+                no_of_framerate: 1,
+                stream_type: "",
+                video_encoding: ""
+            }
         },
     };
   },
 
     methods:{
 
-handleLicenseInput(lic, list, type) {
+        handleLicenseInput(lic, list, type) {
 
-    console.log(lic, list, type);
-    
+            // form model: iccc / cloud_license / future
+            const formModel = this.licenseFormData[type];
+            const value = formModel[lic.identity];
 
-  // form model: iccc / cloud_license / future
-  const formModel = this.licenseFormData[type];
-  const value = formModel[lic.identity];
+            // Pairs that use the lock logic
+            const groups = [
+                { count: "no_of_license", expiry: "expiry_days" },
+                { count: "no_of_viewer_license", expiry: "viewer_expiry_days" }
+            ];
 
-  // Pairs that use the lock logic
-  const groups = [
-    { count: "no_of_license", expiry: "expiry_days" },
-    { count: "no_of_viewer_license", expiry: "viewer_expiry_days" }
-  ];
+            // Find which pair this field belongs to (if any)
+            const currentGroup = groups.find( g => lic.identity === g.count || lic.identity === g.expiry);
+            if (!currentGroup) return;
 
-  // Find which pair this field belongs to (if any)
-  const currentGroup = groups.find(
-    g => lic.identity === g.count || lic.identity === g.expiry
-  );
-  if (!currentGroup) return;
+            // Find the pair objects from the SAME list you passed (field.license)
+            const countField  = list.find(f => f.identity === currentGroup.count);
+            const expiryField = list.find(f => f.identity === currentGroup.expiry);
 
-  // Find the pair objects from the SAME list you passed (field.license)
-  const countField  = list.find(f => f.identity === currentGroup.count);
-  const expiryField = list.find(f => f.identity === currentGroup.expiry);
+            if (!countField || !expiryField) return;
+            const countValue = formModel[currentGroup.count];
 
-  if (!countField || !expiryField) return;
+            if (countField.min === 0 || expiryField.min === 0) {
+                // When user changes COUNT field
+                if (lic.identity === currentGroup.count) {
+                    if (value === 0) {
+                        // lock expiry and set 0
+                        expiryField.lock = true;
+                        formModel[currentGroup.expiry] = 0;
+                    }
 
-  const countValue = formModel[currentGroup.count];
-
-  if (countField.min === 0 || expiryField.min === 0) {
-
-    // When user changes COUNT field
-    if (lic.identity === currentGroup.count) {
-      if (value === 0) {
-        // lock expiry and set 0
-        expiryField.lock = true;
-        formModel[currentGroup.expiry] = 0;
-      }
-
-      if (value > 0 && expiryField.lock) {
-        // first time >0 → unlock + set expiry = 1
-        expiryField.lock = false;
-        formModel[currentGroup.expiry] = 1;
-      }
-    }
-
-    // When user changes EXPIRY field
-    if (lic.identity === currentGroup.expiry) {
-      if (countValue > 0 && value === 0) {
-        // cannot make expiry 0 if count > 0
-        formModel[currentGroup.expiry] = 1;
-      }
-    }
-  }
-},
-
-
-
-
-
-
+                    if (value > 0 && expiryField.lock) {
+                        // first time >0 → unlock + set expiry = 1
+                        expiryField.lock = false;
+                        formModel[currentGroup.expiry] = 1;
+                    }
+                }
+                // When user changes EXPIRY field
+                if (lic.identity === currentGroup.expiry) {
+                    if (countValue > 0 && value === 0) {
+                        // cannot make expiry 0 if count > 0
+                        formModel[currentGroup.expiry] = 1;
+                    }
+                }
+            }
+        },
 
         submitlicenseFormData(){
             console.log(this.licenseFormData.iccc);
