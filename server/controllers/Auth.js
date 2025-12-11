@@ -23,13 +23,21 @@ exports.sendOTP = async (req, res) => {
         let otp;
 
         try {
+
             otp = otpGenerator.generate(6, {
                 upperCaseAlphabets: false,
                 lowerCaseAlphabets: false,
                 specialChars: false,
             });
 
-            await OTP.create({ otp });
+            // Create OTP IN DB 
+            await OTP.create({ email , otp });
+
+            res.status(200).json({
+                success:true,
+                message:"OTP Sent Successfully"
+            });
+
         } catch (error) {
 
             // If duplicate key error, generate again only once
@@ -40,8 +48,9 @@ exports.sendOTP = async (req, res) => {
                     specialChars: false,
                 });
 
-                await OTP.create({ otp }); // second attempt
+                await OTP.create({  email , otp  });// second attempt
             }
+
         }
 
         return otp;
@@ -49,15 +58,26 @@ exports.sendOTP = async (req, res) => {
 
     }
     catch(error){
-
+        return res.status(500).json({
+            success:false,
+            message:"Error while creating OTP"
+        });   
     }
 
 }
 
 // Sign up
+exports.signUp = async (req, res) => {
+
+    // data fetch from req body 
+
+
+}
 
 
 // Login
+
+
 
 
 // change Password
