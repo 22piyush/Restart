@@ -88,7 +88,27 @@ exports.signUp = async (req, res) => {
             message: "All fields are required"
         });
     }
-gdfg
+
+    // password matching 
+    if(password !== confirmPassword){
+        return res.status(400).json({
+            success:false,
+            mesage:"Password and ConfirmPassword value does not match, please try again"
+        });
+    }
+
+    // check user already exist or not 
+    const existUser = await User.findOne({email});
+    if(existUser){
+        return res.status(400).json({
+            success: false,
+            message:"User is already registered",
+        });
+    }
+
+    // find one most recent OTP stored for User
+    
+
 
 }
 
