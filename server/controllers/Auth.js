@@ -88,7 +88,7 @@ exports.signUp = async (req, res) => {
             message: "All fields are required"
         });
     }
-
+gdfg
 
 }
 
