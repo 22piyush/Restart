@@ -152,20 +152,20 @@ exports.signUp = async (req, res) => {
             success: true,
             message: "User registered successfully",
             user,
-        })
+        });
     }
     catch(error){
         return res.status(500).json({
             success: false,
             message: "User cannot be registered. Please try again"
-        })
+        });
     }
-
 }
 
-
 // Login
-
+exports.login = async (req, res) => {
+    
+}
 
 
 
