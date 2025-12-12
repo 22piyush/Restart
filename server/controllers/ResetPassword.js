@@ -59,5 +59,8 @@ exports.resetPassword = async (req, res) => {
     // validation 
     // get userdetails from db using token 
     // if no entry - invalid token 
-    
+    // hash pwd 
+    // password update 
+    // return response 
+
 }
