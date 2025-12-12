@@ -164,7 +164,17 @@ exports.signUp = async (req, res) => {
 
 // Login
 exports.login = async (req, res) => {
-    
+    try{
+        // get data from req body 
+        // validation data 
+        // user check exist or not 
+        // generate JWT, after password matching
+        // create cookie and send response 
+
+    }
+    catch(error){
+
+    }
 }
 
 
