@@ -40,11 +40,14 @@ exports.resetPasswordToken = async (req, res) => {
         // return response 
         return res.json({
             success: true,
-            message: "Email sent successfully. "
-        })
+            message: "Email sent successfully, please check email and change pwd"
+        });
     }
     catch (error) {
-        log
+        return res.status(500).json({
+            success:false,
+            message:"Something went wrong while sending reset pwd email"
+        });
     }
 }
 
