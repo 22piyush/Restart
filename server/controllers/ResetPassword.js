@@ -5,27 +5,47 @@ const mailSender = require("../utils/mailSender");
 // resetPasswordToken
 exports.resetPasswordToken = async (req, res) => {
 
-    // get email from req body 
-    const email = req.body.email;
+    try {
+        // get email from req body 
+        const email = req.body.email;
 
-    // check user for this email, email validation 
-    const user = await User.findOne({email: email});
-    if(!user){
+        // check user for this email, email validation 
+        const user = await User.findOne({ email: email });
+        if (!user) {
+            return res.json({
+                success: false,
+                message: "Your Email is not registered with us"
+            })
+        }
+
+        // generate token 
+        const token = crypto.randomUUID();
+
+        // update user buy adding token and  expiration time
+        const updatedDetails = await User.findOneAndUpdate(
+            { email },
+            {
+                token: token,
+                resetPasswordExpires: Date.now() + 5 * 60 * 1000
+            },
+            { new: true });
+        // create url
+        const url = `http://localhost:3000/update-password/${token}`
+
+        // send mail containing the url
+        await mailSender(email,
+            "Password Reset Link",
+            `Password Reset Link: ${url}`);
+
+        // return response 
         return res.json({
-            success: false,
-            message:"Your Email is not registered with us"
+            success: true,
+            message: "Email sent successfully. "
         })
     }
-
-    // generate token 
-    
-    // update user buy adding token and  expiration time
-    // create url
-    // send mail containing the url
-    // return response 
-
-
-    const url = `http://localhost:3000/update-password/${token}`
+    catch (error) {
+        log
+    }
 }
 
 
