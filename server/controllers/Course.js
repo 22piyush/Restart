@@ -46,11 +46,49 @@ exports.createCourse = async (req, res) => {
         }
 
         // upload image to cloudinary 
-        const thumbnailImage = await uploadImageToCloudinary(thumbnail, process.env.FOLDER_NAME)
+        const thumbnailImage = await uploadImageToCloudinary(thumbnail, process.env.FOLDER_NAME);
+
+        // create an entry for new course 
+        const newCourse = await Course.create({
+            courseName,
+            courseDescription,
+            instructor: instructorDetails._id,
+            whatYouWillLearn: whatYouWillLearn,
+            price,
+            tag:tagDetails._id,
+            thumbnail:thumbnailImage.secure_url
+        });
+
+        //add the new course to the user schema of instructor
+        await User.findByIdAndUpdate(
+            {_id: instructorDetails._id},
+            {
+                $push: {
+                    courses: newCourse._id,
+                }
+            },
+            {new: true},
+        );
+
+
+        // update the TAG Schema :Homework
+        return res.status(200).json({
+            success: true,
+            message: "Course Created Successfully",
+            data: newCourse
+        });
+
 
     }
     catch(error){
 
+        console.log(error);
+        return res.status(500).json({
+            success: false,
+            message:"Failed to create Course",
+            error: error.message
+        })
+        
     }
     
 }
