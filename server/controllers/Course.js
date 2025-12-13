@@ -28,6 +28,9 @@ exports.createCourse = async (req, res) => {
         // check for instructor 
         const userId = req.user.id;
         const instructorDetails = await User.findById(userId);
+         
+        //HW Verify that userId and instructorDetails._id are same or different 
+
 
         if (!instructorDetails) {
             return res.status(404).json({
@@ -98,7 +101,7 @@ exports.createCourse = async (req, res) => {
 exports.showAllCourses = async (req, res) => {
     try {
 
-        // change the below statement incrementally 
+        //HW change the below statement incrementally 
         const allCourses = await Course.find({}, {
             courseName: true,
             price: true,
