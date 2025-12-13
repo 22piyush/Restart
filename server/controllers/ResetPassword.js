@@ -49,7 +49,7 @@ exports.resetPasswordToken = async (req, res) => {
             message: "Something went wrong while sending reset pwd email"
         });
     }
-}
+};
 
 
 // resetPassword
@@ -105,4 +105,4 @@ exports.resetPassword = async (req, res) => {
         });
     }
 
-}
+};
