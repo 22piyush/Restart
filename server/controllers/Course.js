@@ -98,6 +98,7 @@ exports.createCourse = async (req, res) => {
 exports.showAllCourses = async (req, res) => {
     try {
 
+        // change the below statement incrementally 
         const allCourses = await Course.find({}, {
             courseName: true,
             price: true,
