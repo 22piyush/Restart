@@ -1,6 +1,6 @@
 const User = require("../models/User");
 const mailSender = require("../utils/mailSender");
-
+const bcrypt = require("bcrypt");
 
 // resetPasswordToken
 exports.resetPasswordToken = async (req, res) => {
@@ -45,8 +45,8 @@ exports.resetPasswordToken = async (req, res) => {
     }
     catch (error) {
         return res.status(500).json({
-            success:false,
-            message:"Something went wrong while sending reset pwd email"
+            success: false,
+            message: "Something went wrong while sending reset pwd email"
         });
     }
 }
@@ -55,12 +55,54 @@ exports.resetPasswordToken = async (req, res) => {
 // resetPassword
 exports.resetPassword = async (req, res) => {
 
-    // data fetch 
-    // validation 
-    // get userdetails from db using token 
-    // if no entry - invalid token 
-    // hash pwd 
-    // password update 
-    // return response 
+    try {
+        // data fetch 
+        const { password, confirmPassword, token } = req.body;
+        // validation 
+        if (password !== confirmPassword) {
+            return res.json({
+                success: false,
+                message: "Password not matching"
+            });
+        }
+        // get userdetails from db using token 
+        const userdetails = await User.findOne({ token: token });
+
+        // if no entry - invalid token 
+        if (!userdetails) {
+            return res.json({
+                success: false,
+                mssage: "Token is invalid",
+            });
+        }
+        // Token time check
+        if (userdetails.resetPasswordExpires > Date.now()) {
+            return res.json({
+                success: false,
+                mssage: "Token is expired, please generate your token",
+            });
+        }
+        // hash pwd
+        const hashedPassword = await bcrypt.hash(password, 10);
+
+        // password update 
+        await User.findByIdAndUpdate(
+            { token: token },
+            { password: hashedPassword },
+            { new: true }
+        );
+        // return response 
+        return res.status(200).json({
+            success: true,
+            message: "Password reset successful"
+        });
+    }
+    catch(error){
+        console.error(error);
+        return res.status(500).json({
+            success: false,
+            message: "Error while reseting password"
+        });
+    }
 
 }
