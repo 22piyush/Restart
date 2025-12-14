@@ -26,10 +26,20 @@ exports.createSection = async (req, res) => {
             { new: true },
         );
 
+        //use populate to replace section / sub section both in the updateCourseDetails.
         // return response 
+        return res.status(200).json({
+            success: true,
+            message: "Section created successfully",
+            updatedCourseDetails,
+        })
 
     }
     catch (error) {
-
+        return res.status(500).json({
+            success: false,
+            message: "Unable to create section, please try again",
+            error: error
+        });
     }
 }
