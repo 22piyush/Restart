@@ -1,5 +1,6 @@
 const SubSection = require("../models/SubSection");
 const Section = require("../models/Section");
+const { uploadImageToCloudinary } = require("../utils/imageUploader");
 
 
 // create sub Section 
@@ -18,6 +19,7 @@ exports.createSubSection = async (req, res) => {
             });
         }
         // upload video to cloudinary 
+        const uploadDetails = await uploadImageToCloudinary(video, process.env.FOLDER_NAME);
         // create a sub-section 
         // update section with this sub section ObjectId 
         // return response 
