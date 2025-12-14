@@ -39,7 +39,43 @@ exports.createSection = async (req, res) => {
         return res.status(500).json({
             success: false,
             message: "Unable to create section, please try again",
-            error: error
+            error: error.message
         });
     }
-}
+};
+
+
+exports.updateSection = async (req, res) => {
+    try{
+
+
+
+    }
+    catch(error){
+        return res.status(500).json({
+            success: false,
+            message: "Unable to update Section, please try again",
+            error:error.message
+        })
+    }
+};
+
+
+
+exports.deleteSection = async (req, res) => {
+    try{
+
+        // data Input 
+        
+
+    }
+    catch(error){
+        return res.status(500).json({
+            success: false,
+            message: "Unable to delete Section, please try again",
+            error:error.message
+        })
+    }
+};
+
+
