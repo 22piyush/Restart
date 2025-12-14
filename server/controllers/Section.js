@@ -48,7 +48,11 @@ exports.createSection = async (req, res) => {
 exports.updateSection = async (req, res) => {
     try{
 
-
+        // data Input 
+        
+        // data validation 
+        // update data 
+        // return res 
 
     }
     catch(error){
@@ -65,8 +69,8 @@ exports.updateSection = async (req, res) => {
 exports.deleteSection = async (req, res) => {
     try{
 
-        // data Input 
         
+
 
     }
     catch(error){
