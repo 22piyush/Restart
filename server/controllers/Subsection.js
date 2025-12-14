@@ -37,15 +37,27 @@ exports.createSubSection = async (req, res) => {
             },
             {new: true}
         );
-        // return response 
 
+        //HW: log updated section here, after adding populate query 
+        // return response 
+        return res.status(200).json({
+            success: true,
+            message: "Sub Section Created Successfully",
+            updatedSection
+        });
 
     }
     catch (error) {
         return res.status(500).json({
             success: false,
-            message: "",
+            message: "Error while creating Sub Section",
             error: error.message
         })
     }
-}
+};
+
+
+//HW update Subsection 
+
+
+//HW delete sub section 
