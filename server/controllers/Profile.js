@@ -2,6 +2,7 @@ const Profile = require("../models/Profile");
 const User = require("../models/User");
 
 
+// Update account 
 exports.updateProfile = async (req, res) => {
     try {
         // get data 
@@ -43,8 +44,8 @@ exports.updateProfile = async (req, res) => {
 };
 
 
-
 // delete account 
+// EXPLORE - how can we schedule this deletion 
 exports.deleteAccount = async (req, res) => {
     try{
         // get id 
@@ -73,6 +74,33 @@ exports.deleteAccount = async (req, res) => {
             success: false,
             message: "Error while deleting account"
         });
+    }
+};
+
+
+// Get All User Data 
+exports.getAllUserDetails = async (req, res) => {
+    try{
+
+        // get id 
+        const id = req.user.id;
+
+        // validation and get user details
+        const userDetails = await User.findById(id).populate("additionalDetails").exec();
+        
+        return res.status(200).json({
+            success: true,
+            message:"Data fetch successfully",
+            userDetails
+        })
+
+    }
+    catch(error){
+        return res.status(500).json({
+            success: false,
+            message: "Error while fetching data",
+            error: error.message
+        })
     }
 }
 
