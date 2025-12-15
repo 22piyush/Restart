@@ -29,7 +29,8 @@ exports.updateProfile = async (req, res) => {
         // return response 
         return res.status(200).json({
             success:true,
-            message:"Profile updated successfully"
+            message:"Profile updated successfully",
+            profileDetails
         })
     }
     catch(error){
