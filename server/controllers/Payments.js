@@ -14,6 +14,4 @@ exports.capturePayment = async (req, res) =>{
     // valid courseDetail 
     // user already pay for the same course 
     // order created 
-    
-
 }
