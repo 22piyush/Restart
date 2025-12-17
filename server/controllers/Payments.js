@@ -95,7 +95,51 @@ exports.verifySignature = async (req, res) => {
     shasum.update(JSON.stringify(req.body));
     const digest = shasum.digest("hex");
 
-    
+    if(signature === digest){
+        console.log("Payment Authorised");
+
+        const {courseId, userId} = req.body.payload.payment.entity.notes;
+        
+        try{
+
+            //fulfill the action 
+
+
+            // find the course and enroll the student in it
+            const enrolledCourse = await Course.findByIdAndUpdate(
+                {_id: courseId},
+                {$push: {studentEnrolled: userId}},
+                {new: true}
+            );
+
+            if(!enrolledCourse){
+                return res.status(500).json({
+                    success: false,
+                    message: "Course not Found"
+                });
+            }
+
+            console.log(enrolledCourse);
+
+            // find the student and add the course to their list enrolled courses me 
+
+            const enrolledStudent = await User.findByIdAndUpdate(
+                {_id:userId},
+                {$push: {courses:courseId}},
+                {new: true},
+            );
+
+            console.log(enrolledStudent);
+
+
+            // send Confirmation Mail 
+            const emailResponse = await 
+
+        }
+        catch(error){
+            
+        }
+    }
 
 }
 
