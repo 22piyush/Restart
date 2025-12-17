@@ -83,15 +83,19 @@ exports.capturePayment = async (req, res) =>{
         });
     }
 
-    // return response 
 }
 
 
 exports.verifySignature = async (req, res) => {
-    const webhookSecret = "12345678";
 
+    const webhookSecret = "12345678";
     const signature = req.headers["x-razorpay-signature"];
+    const shasum = crypto.createHmac("sha256", webhookSecret);
+
+    shasum.update(JSON.stringify(req.body));
+    const digest = shasum.digest("hex");
 
     
+
 }
 
