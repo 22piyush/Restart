@@ -1,19 +1,19 @@
-const {instance} = require("../config/razorpay");
+const { instance } = require("../config/razorpay");
 const Course = require("../models/Course");
 const User = require("../models/User");
 const mailSender = require("../utils/mailSender");
-const {courseEnrollmentEmail} = require("../mail/templates/courseEnrollmentEmail");
+const { courseEnrollmentEmail } = require("../mail/templates/courseEnrollmentEmail");
 
 
 
 // Capture the payment and initiate the Razorpay order 
-exports.capturePayment = async (req, res) =>{
+exports.capturePayment = async (req, res) => {
     // get courseId and UserID 
-    const {course_id} = req.body;
+    const { course_id } = req.body;
     const userId = req.user.id;
     // validation 
     // valid courseID 
-    if(!course_id){
+    if (!course_id) {
         return res.json({
             success: false,
             message: "Please provide valid course ID"
@@ -21,24 +21,24 @@ exports.capturePayment = async (req, res) =>{
     }
     // valid courseDetail
     let course;
-    try{
+    try {
         course = await course.findById(course_id);
-        if(!course){
+        if (!course) {
             return res.json({
-                success : false,
+                success: false,
                 message: "Could not find the course"
             });
         }
         // user already pay for the same course 
         const uid = new mongoose.Types.ObjectId(userId);
-        if(course.studentsEnrolled.includes(uid)){
+        if (course.studentsEnrolled.includes(uid)) {
             return res.status(201).json({
                 success: false,
                 message: "Student is already enrolled"
             });
         }
-    } 
-    catch(error){
+    }
+    catch (error) {
         return res.status(500).json({
             success: false,
             message: error.message
@@ -53,13 +53,13 @@ exports.capturePayment = async (req, res) =>{
         amount: amount * 100,
         currency,
         receipt: Math.random(Date.now()).toString(),
-        notes:{
+        notes: {
             courseId: course_id,
             userId,
         }
     };
 
-    try{
+    try {
         // initiate the payment using razorpay 
         const paymentResponse = await instance.orders.create(options);
 
@@ -70,15 +70,15 @@ exports.capturePayment = async (req, res) =>{
             thumbnail: course.thumbnail,
             orderId: paymentResponse.id,
             currency: paymentResponse.currency,
-            amount: paymentResponse.amount, 
+            amount: paymentResponse.amount,
         });
 
     }
-    catch(error){
+    catch (error) {
         console.log(error);
         return res.status(500).json({
             success: false,
-            message:"Could not initiate order",
+            message: "Could not initiate order",
             error: error.message
         });
     }
@@ -95,24 +95,24 @@ exports.verifySignature = async (req, res) => {
     shasum.update(JSON.stringify(req.body));
     const digest = shasum.digest("hex");
 
-    if(signature === digest){
+    if (signature === digest) {
         console.log("Payment Authorised");
 
-        const {courseId, userId} = req.body.payload.payment.entity.notes;
-        
-        try{
+        const { courseId, userId } = req.body.payload.payment.entity.notes;
+
+        try {
 
             //fulfill the action 
 
 
             // find the course and enroll the student in it
             const enrolledCourse = await Course.findByIdAndUpdate(
-                {_id: courseId},
-                {$push: {studentEnrolled: userId}},
-                {new: true}
+                { _id: courseId },
+                { $push: { studentEnrolled: userId } },
+                { new: true }
             );
 
-            if(!enrolledCourse){
+            if (!enrolledCourse) {
                 return res.status(500).json({
                     success: false,
                     message: "Course not Found"
@@ -124,9 +124,9 @@ exports.verifySignature = async (req, res) => {
             // find the student and add the course to their list enrolled courses me 
 
             const enrolledStudent = await User.findByIdAndUpdate(
-                {_id:userId},
-                {$push: {courses:courseId}},
-                {new: true},
+                { _id: userId },
+                { $push: { courses: courseId } },
+                { new: true },
             );
 
             console.log(enrolledStudent);
@@ -144,19 +144,25 @@ exports.verifySignature = async (req, res) => {
                 success: true,
                 message: "Signature Verified and Course Added"
             })
-            
+
 
         }
-        catch(error){
-            
+        catch (error) {
+
             console.log(error);
             return res.status(500).json({
                 success: false,
                 error: error.message
             });
-            
+
 
         }
+    }
+    else {
+        return res.status(400).json({
+            success: false,
+            message:"Invalid Request"
+        });
     }
 
 }
