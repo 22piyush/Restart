@@ -46,17 +46,17 @@ exports.createRating = async (req, res) => {
         });
 
         // update course with rating / review
-        await Course.findByIdAndUpdate({_id:courseId},
+        await Course.findByIdAndUpdate({ _id: courseId },
             {
                 $push: {
                     retingAndReviews: ratingReview._id,
                 }
-            },{new: true});
+            }, { new: true });
 
         // return response 
         return res.status(200).json({
-            success:true,
-            message:"Rating and Review created Successfully",
+            success: true,
+            message: "Rating and Review created Successfully",
             ratingReview
         });
     }
@@ -71,26 +71,26 @@ exports.createRating = async (req, res) => {
 
 // getAverageRating
 exports.getAverageRating = async (req, res) => {
-    try{
+    try {
         // get course Id
         const courseId = req.body.courseId;
         // calculate avg rating 
         const result = await RatingAndReview.aggregate([
             {
-                $match:{
+                $match: {
                     course: new mongoose.Types.ObjectId(courseId),
                 },
             },
             {
-                $group:{
-                    _id:null,
+                $group: {
+                    _id: null,
                     averageRating: { $avg: "$rating" }
                 }
             }
         ]);
 
         //return rating 
-        if(result.length > 0){
+        if (result.length > 0) {
             return res.status(200).json({
                 success: true,
                 averageRating: result[0].averageRating,
@@ -101,10 +101,10 @@ exports.getAverageRating = async (req, res) => {
         return result.status(200).json({
             success: true,
             message: "Average rating is 0, no rating given till now",
-            averageRating:0
+            averageRating: 0
         });
     }
-    catch(error){
+    catch (error) {
         return res.status(500).json({
             success: false,
             message: error.message
@@ -115,20 +115,26 @@ exports.getAverageRating = async (req, res) => {
 
 // getAllRating 
 exports.getAllRating = async (req, res) => {
-    try{
+    try {
         const allReviews = await RatingAndReview.find({})
-        .sort({rating: 'desc'})
-        .populate({
-            path:"user",
-            select:"firstName lastName email image",
-        })
-        .populate({
-            path:"course",
-            select:"courseName"
-        })
-        .exec();
+            .sort({ rating: 'desc' })
+            .populate({
+                path: "user",
+                select: "firstName lastName email image",
+            })
+            .populate({
+                path: "course",
+                select: "courseName"
+            })
+            .exec();
+
+            return res.status(200).json({
+                success:true,
+                message:"All reviews fetched successfully",
+                data:allReviews,
+            });
     }
-    catch(error){
+    catch (error) {
         return res.status(500).json({
             success: false,
             message: error.message
