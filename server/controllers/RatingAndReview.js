@@ -100,7 +100,8 @@ exports.getAverageRating = async (req, res) => {
         // if no rating/review exist 
         return result.status(200).json({
             success: true,
-            message: "Average rating is 0, no rating given till now"
+            message: "Average rating is 0, no rating given till now",
+            averageRating:0
         });
     }
     catch(error){
