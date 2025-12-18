@@ -9,13 +9,14 @@ exports.createRating = async (req,res) => {
         // check if user enrolled or not
         // check if user already review the course 
         // create rating and review  
-        // update course 
+        // update course with rating / review
+        // return response 
     }
     catch(error){
         return res.status(500).json({
             success: false,
             message:error.message
-        })
+        });
     }
 }
 
