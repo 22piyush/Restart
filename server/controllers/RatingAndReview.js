@@ -66,8 +66,7 @@ exports.createRating = async (req, res) => {
             message: error.message
         });
     }
-}
-
+};
 
 // getAverageRating
 exports.getAverageRating = async (req, res) => {
@@ -110,8 +109,7 @@ exports.getAverageRating = async (req, res) => {
             message: error.message
         });
     }
-}
-
+};
 
 // getAllRating 
 exports.getAllRating = async (req, res) => {
@@ -140,4 +138,4 @@ exports.getAllRating = async (req, res) => {
             message: error.message
         });
     }
-}
+};
