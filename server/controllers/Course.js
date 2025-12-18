@@ -128,3 +128,23 @@ exports.showAllCourses = async (req, res) => {
     }
 }
 
+
+// getCourseDetails 
+exports.getCourseDetails = async (req, res) => {
+    try{
+        // get id 
+        const {courseId} = req.body;
+        // find course details 
+        const courseDetails = await Course.find(
+            {_id:courseId}
+        ).populate(
+            {
+                
+            }
+         )
+    }
+    catch(error){
+
+    }
+}
+
