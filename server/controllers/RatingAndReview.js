@@ -89,7 +89,19 @@ exports.getAverageRating = async (req, res) => {
             }
         ]);
 
-        //
+        //return rating 
+        if(result.length > 0){
+            return res.status(200).json({
+                success: true,
+                averageRating: result[0].averageRating,
+            });
+        }
+
+        // if no rating/review exist 
+        return result.status(200).json({
+            success: true,
+            message: "Average rating is 0, no rating given till now"
+        });
     }
     catch(error){
         return res.status(500).json({
