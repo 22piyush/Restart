@@ -82,7 +82,10 @@ exports.getAverageRating = async (req, res) => {
                 },
             },
             {
-                $group
+                $group:{
+                    _id:null,
+                    averageRating: { $avg: "$rating" }
+                }
             }
         ]);
 
