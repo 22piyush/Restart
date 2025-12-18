@@ -1,6 +1,7 @@
 const ratingAndreview = require("../models/RatingAndReview");
 const Course = require("../models/Course");
 const RatingAndReview = require("../models/RatingAndReview");
+const { default: mongoose } = require("mongoose");
 
 // createRating 
 exports.createRating = async (req, res) => {
@@ -69,7 +70,31 @@ exports.createRating = async (req, res) => {
 
 
 // getAverageRating
+exports.getAverageRating = async (req, res) => {
+    try{
+        // get course Id
+        const courseId = req.body.courseId;
+        // calculate avg rating 
+        const result = await RatingAndReview.aggregate([
+            {
+                $match:{
+                    course: new mongoose.Types.ObjectId(courseId),
+                },
+            },
+            {
+                $group
+            }
+        ]);
 
+        //
+    }
+    catch(error){
+        return res.status(500).json({
+            success: false,
+            message: error.message
+        });
+    }
+}
 
 
 // getAllRating 
