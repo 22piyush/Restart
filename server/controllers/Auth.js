@@ -1,7 +1,9 @@
+const bcrypt = require("bcryptjs");
 const User = require("../models/User");
 const OTP = require("../models/OTP");
+const JWT = require("jsonwebtoken");
 const otpGenerator = require("otp-generator");
-const bcrypt = require("bcryptjs");
+
 
 // send OTP
 exports.sendOTP = async (req, res) => {
@@ -191,7 +193,7 @@ exports.login = async (req, res) => {
                 accountType: user.accountType
             }
 
-            const token = jwt.sign(payload, process.env.JWT_SECRET, {
+            const token = JWT.sign(payload, process.env.JWT_SECRET, {
                 expiresIn: "2h",
             });
 
