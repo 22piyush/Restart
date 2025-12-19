@@ -1,5 +1,5 @@
 const Course = require("../models/Course");
-const Tag = require("../models/Tags");
+const Category = require("../models/Category");
 const User = require("../models/User");
 const { uploadImageToCloudinary } = require("../utils/imageUploader");
 
@@ -10,14 +10,14 @@ exports.createCourse = async (req, res) => {
     try {
 
         //fetch data 
-        const { courseName, courseDescription, whatYouWillLearn, price, tag } = req.body;
+        const { courseName, courseDescription, whatYouWillLearn, price, category } = req.body;
 
         // get thumbnail 
         const thumbnail = req.files.thumbnailImage;
 
 
         // validation 
-        if (!courseName || !courseDescription || !whatYouWillLearn || !price || !tag || !thumbnail) {
+        if (!courseName || !courseDescription || !whatYouWillLearn || !price || !category || !thumbnail) {
             return res.status(400).json({
                 success: false,
                 message: "All fields are requireds",
@@ -40,11 +40,11 @@ exports.createCourse = async (req, res) => {
         }
 
 
-        const tagDetails = await Tag.findById(tag);
-        if (!tagDetails) {
+        const categoryDetails = await Category.findById(category);
+        if (!categoryDetails) {
             return res.status(401).json({
                 success: false,
-                message: "Tag Details not found",
+                message: "Category Details not found",
             });
         }
 
@@ -58,7 +58,7 @@ exports.createCourse = async (req, res) => {
             instructor: instructorDetails._id,
             whatYouWillLearn: whatYouWillLearn,
             price,
-            tag: tagDetails._id,
+            category: categoryDetails._id,
             thumbnail: thumbnailImage.secure_url
         });
 
@@ -74,7 +74,7 @@ exports.createCourse = async (req, res) => {
         );
 
 
-        // update the TAG Schema :Homework
+        // update the Category Schema :Homework
         return res.status(200).json({
             success: true,
             message: "Course Created Successfully",
