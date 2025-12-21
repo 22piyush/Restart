@@ -9,12 +9,6 @@ app.use(cookieParser())
 
 // Home route
 app.get("/", (req, res) => {
-  res.set({
-    'Set-Cookie': [
-      'name-piyush;httpOnly',
-       'name-harshal;httpOnly',
-    ]
-  });
   res.send("Node.js backend running without database 🚀");
 });
 
