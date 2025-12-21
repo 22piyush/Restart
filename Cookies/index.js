@@ -1,0 +1,16 @@
+const express = require("express");
+const app = express();
+const PORT = 3000;
+
+// Middleware to read JSON
+app.use(express.json());
+
+// Home route
+app.get("/", (req, res) => {
+  res.send("Node.js backend running without database 🚀");
+});
+
+// Server start
+app.listen(PORT, () => {
+  console.log(`Server running on http://localhost:${PORT}`);
+});
