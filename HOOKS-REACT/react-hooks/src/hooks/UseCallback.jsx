@@ -4,12 +4,15 @@ function UseCallback() {
     
  const [count, setCount] = useState(0);
 
+ function handleClick() {
+    setCount(count + 1);
+ }
 
   return (
     <div>
         <div>Count : {count}</div>
         <div>
-            <button> Increment </button>
+            <button onClick={handleClick}> Increment </button>
         </div>
     </div>
   )
