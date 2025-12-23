@@ -2,26 +2,41 @@ import { useActionState } from "react";
 
 function App() {
 
-  const handleSubmit =(previousData, formData)=>{
-    let name = formData.get('name');
-    let password = formData.get('password');
+  const handleSubmit = async (previousData, formData) => {
+    const name = formData.get("name");
+    const password = formData.get("password");
 
-    console.log("Handle Submit called" , name , password);
-  }
-  const [data, action, pending] = useActionState(handleSubmit , undefined);
+    console.log("Handle Submit called", name, password);
+
+    // simulate API delay
+    await new Promise((res) => setTimeout(res, 2000));
+
+    return { name, password };
+  };
+
+  const [data, action, pending] = useActionState(handleSubmit, null);
 
   return (
     <>
-        <h1>Use Action State Hook</h1>
+      <h1>useActionState Hook</h1>
 
-        <form action={action}>
-            <input type="text" placeholder="Enter Name" name="name"/>
-            <br/><br/>
-             <input type="text" placeholder="Enter Password" name="password"/>
-            <br/><br/>
+      <form action={action}>
+        <input type="text" placeholder="Enter Name" name="name" />
+        <br /><br />
 
-            <button>Submit</button>
-        </form>
+        <input type="password" placeholder="Enter Password" name="password" />
+        <br /><br />
+
+        <button disabled={pending}>
+          {pending ? "Submitting..." : "Submit"}
+        </button>
+      </form>
+
+      {data && (
+        <p>
+          Submitted: {data.name}
+        </p>
+      )}
     </>
   );
 }
