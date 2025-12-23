@@ -10,6 +10,7 @@ function UseCallback() {
 
   return (
     <div>
+        <h1>Use Call Back</h1>
         <div>Count : {count}</div>
         <div>
             <button onClick={handleClick}> Increment </button>
