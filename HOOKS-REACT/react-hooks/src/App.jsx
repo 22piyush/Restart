@@ -27,7 +27,9 @@ function App() {
         <input type="password" placeholder="Enter Password" name="password" />
         <br /><br />
 
-        <button disabled={pending}>
+        <button disabled={pending}   style={{
+    cursor: pending ? "not-allowed" : "pointer"
+  }}>
           {pending ? "Submitting..." : "Submit"}
         </button>
       </form>
