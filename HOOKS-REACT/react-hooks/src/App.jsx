@@ -19,10 +19,9 @@ function App() {
           <h2>Fruit List</h2>
           <ul>
               {
-                fruit.map((fruit, index) => {
+                fruit.map((fruit, index) => (
                   <li>{index} - {fruit}</li>
-                })
-              }
+                ))}
           </ul>
      </div>
 
