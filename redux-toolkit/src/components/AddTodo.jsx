@@ -4,10 +4,11 @@ import { addTodo } from "../features/todo/todoSlice";
 
 function AddTodo() {
   const [text, setText] = useState("");
-
+  const dispatch = useDispatch;
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    dispatch(addTodo(text))
     if (text.trim() === "") return;
     setText("");
   };
