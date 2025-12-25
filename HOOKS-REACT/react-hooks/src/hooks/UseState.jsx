@@ -8,10 +8,18 @@ function UseState() {
         setCount(count + 1);
     }
 
+    const decrese = () => {
+        if(count == 0){
+            return
+        }
+        setCount(count - 1);
+    }
+
   return (
     <div>
         <h2>Count: {count}</h2>
         <button onClick={increase}>Increase</button>
+        <button onClick={decrese}>Decrese</button>
     </div>
   )
 }
