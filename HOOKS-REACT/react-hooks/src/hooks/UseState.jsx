@@ -2,15 +2,23 @@ import React, { useState } from 'react'
 
 function UseState() {
 
-    const [isVisible , setIsVisible] = useState(false);
+  const [student, setStudent] = useState({
+    name: "Piyush",
+    grade: "A",
+    city: "Delhi"
+  });
+
+  const changeCity = () => {
+    setStudent({...student, city: "Pune"})
+  }
 
   return (
     <div>
-        <button onClick={() => setIsVisible(!isVisible)}>
-            {isVisible ? "Hide" : "Show"} Text
-        </button>
+        <h2>Name: {student.name}</h2>
+        <p>Grade : {student.grade}</p>
+        <p>City: {student.city}</p>
 
-        {isVisible && <div>Hello Bro</div>}
+        <button onClick={changeCity}>Change City</button>
     </div>
   )
 }
