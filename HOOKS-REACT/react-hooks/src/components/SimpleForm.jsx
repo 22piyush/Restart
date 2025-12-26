@@ -13,7 +13,7 @@ function SimpleForm() {
 
     return (
         <div>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <h2>React Form Example</h2>
 
                 <label>Name: </label>
@@ -23,8 +23,7 @@ function SimpleForm() {
                 <input type='email' onChange={(e)=>setEmail(e.target.value)} value={email} />
 
                 <br/>
-                <button type="submit" onClick={handleSubmit}>Submit</button>
-
+                <button type="submit">Submit</button>
             </form>
         </div>
     )
