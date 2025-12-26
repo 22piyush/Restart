@@ -1,5 +1,6 @@
 import Countdown from "./components/Countdown";
 import FormHandling from "./components/FormHandling";
+import FormValidation from "./components/FormValidation";
 import Props from "./components/Props";
 import SimpleForm from "./components/SimpleForm";
 import UncontrolledCom from "./components/UncontrolledCom";
@@ -33,7 +34,9 @@ function App() {
      {/* <FormHandling/> */}
      {/* <SimpleForm/> */}
 
-     <UncontrolledCom/>
+     {/* <UncontrolledCom/> */}
+
+     <FormValidation/>
 
     </>
   );
