@@ -2,6 +2,7 @@ import Countdown from "./components/Countdown";
 import FormHandling from "./components/FormHandling";
 import Props from "./components/Props";
 import SimpleForm from "./components/SimpleForm";
+import UncontrolledCom from "./components/UncontrolledCom";
 import UseActionState from "./hooks/UseActionState";
 import UseCallback from "./hooks/UseCallback";
 import UseMemo from "./hooks/UseMemo";
@@ -30,7 +31,9 @@ function App() {
      {/* <UseState/> */}
 
      {/* <FormHandling/> */}
-     <SimpleForm/>
+     {/* <SimpleForm/> */}
+
+     <UncontrolledCom/>
 
     </>
   );
