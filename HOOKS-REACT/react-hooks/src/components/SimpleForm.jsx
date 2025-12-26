@@ -2,13 +2,25 @@ import React, { useState } from 'react'
 
 function SimpleForm() {
 
-    const [name, setName] = useState("");
-    const [email, setEmail] = useState("");
+    const [form ,  setForm] = useState(
+       {
+         name:"",
+         email:""
+       }
+    )
 
     const handleSubmit = (e) =>{
         e.preventDefault();
-        console.log("Name", name);
-        console.log("Email", email);
+        console.log("Name", form.name);
+        console.log("Email", form.email);
+    }
+
+    const handleChange = (e) => {
+        const {name , value} = e.target;
+        setForm((prev) => ({
+            ...prev,
+            [name] : value
+        }))
     }
 
     return (
@@ -17,10 +29,10 @@ function SimpleForm() {
                 <h2>React Form Example</h2>
 
                 <label>Name: </label>
-                <input type='text' onChange={(e)=>setName(e.target.value)} value={name} />
+                <input type='text' onChange={handleChange} name="name" value={form.name} />
 
                 <label>Email: </label>
-                <input type='email' onChange={(e)=>setEmail(e.target.value)} value={email} />
+                <input type='email' onChange={handleChange}  name="email" value={form.email} />
 
                 <br/>
                 <button type="submit">Submit</button>
