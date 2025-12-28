@@ -4,6 +4,7 @@ import cors from "express";
 import connectDB from "./config/db.js";
 import User from "./models/User.js";
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 
 dotenv.config();
 
@@ -13,20 +14,95 @@ app.use(cors());
 
 const PORT = process.env.PORT || 6000;
 
+
+const getKeeper = (req, res, next) => {
+    const { name, isSocietyMember } = req.body;
+    console.log(`Hello ${name}`);
+    console.log(req.body);
+    if (isSocietyMember) {
+        next();
+    } else {
+        return res.json({
+            message: "Access Denied"
+        })
+    }
+};
+
+const areYouDrunk = (req, res, next) => {
+    const { areYouDrunk } = req.body;
+
+    if (areYouDrunk) {
+        return res.json({
+            message: "Enter is not allowed for drunk individuals."
+        });
+    } else {
+        next();
+    }
+}
+
+const shamSundarSociety = (req, res) => {
+    return res.json({
+        message: "Thank you for visiting sham sundar society"
+    });
+}
+
+const gokuldhamSociety = (req, res) => {
+    console.log("Inside gokeldhamSociety controller");
+
+    res.json({
+        message: "Thank you for visiting Gokuldham Society"
+    });
+
+}
+
+const checkJWT = (req, res, next) => {
+    const {authorization} = req.headers;
+    const token = authorization && authorization.split(" ")[1];
+    console.log("Token", token);
+
+    try{
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        next();
+    }catch(error){
+        return res.json({
+            success: false,
+            message: "Invalid or missing token"
+        })
+    }
+}
+
+
+app.post("/sham-sundar-society", getKeeper, areYouDrunk, shamSundarSociety);
+
+app.post("/gokuldham-society", getKeeper, areYouDrunk, gokuldhamSociety);
+
+
+app.get("/api_v1", (req, res) => {
+    return res.json({
+        message: "API v1 is working"
+    })
+});
+
+app.get("/api_v2", (req, res) => {
+    return res.json({
+        message: "API v1 is working"
+    })
+});
+
 app.post("/signup", async (req, res) => {
     const { name, email, mobile, password } = req.body;
 
     const existingUserEmail = await User.findOne({ email });
     const existingUserMob = await User.findOne({ mobile });
 
-    if(existingUserEmail){
+    if (existingUserEmail) {
         return res.status(400).json({
             success: false,
             message: "User with this email already exists"
         });
     }
 
-    if(existingUserMob){
+    if (existingUserMob) {
         return res.status(400).json({
             success: false,
             message: "User with this mobile already exists"
@@ -45,7 +121,7 @@ app.post("/signup", async (req, res) => {
     });
 
 
-    if (!name?.trim() || !email?.trim() ||  !mobile?.trim() || !password?.trim()) {
+    if (!name?.trim() || !email?.trim() || !mobile?.trim() || !password?.trim()) {
         return res.status(400).json({
             success: false,
             message: "All fields are required",
@@ -134,14 +210,26 @@ app.post("/login", async (req, res) => {
 
     const isPasswordCorrect = bcrypt.compareSync(password, user.password);
     if (isPasswordCorrect) {
+
+        const jetToken = jwt.sign({
+            id: user._id,
+            email: user.email,
+        },
+            process.env.JWT_SECRET,
+            {
+                expiresIn: "1h",
+            }
+        );
+
         return res.status(200).json({
             success: true,
             message: "Login successful",
             data: {
                 email: user.email,
             },
+            jwtToken:jetToken
         });
-    }else{
+    } else {
         return res.status(401).json({
             success: false,
             message: "Invalid password",
