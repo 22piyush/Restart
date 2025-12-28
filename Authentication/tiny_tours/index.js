@@ -67,14 +67,14 @@ app.post("/signup", async (req, res) => {
 
     try {
         const savedUser = await newUser.save();
-        return res.json({
+        return res.status(200).json({
             success: true,
             data: savedUser,
             message: "User registered successfully"
         });
     }
     catch (error) {
-        return res.json({
+        return res.status(500).json({
             success: false,
             message: "User registration failed",
             error: error
@@ -87,7 +87,7 @@ app.post("/login", async (req, res) => {
     const { userName, password } = req.body;
 
     if (!userName || !password) {
-        return res.json({
+        return res.status(400).json({
             success: false,
             message: "All fields are required"
         });
@@ -116,7 +116,7 @@ app.post("/login", async (req, res) => {
             message: "Invalid password",
         });
     }
-    return res.json({
+    return res.status(200).json({
         success: true,
         message: "Login successful",
         data: {
