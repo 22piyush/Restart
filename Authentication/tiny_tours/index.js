@@ -31,7 +31,7 @@ app.post("/signup", async (req, res) => {
 
     // Regex patterns
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const mobileRegex = /^[6-9]\d{9}$/;
+    const mobileRegex = /^\d{10,}$/;
 
     // Name validation
     if (name.trim().length < 2) {
@@ -96,7 +96,7 @@ app.post("/login", async (req, res) => {
     let user;
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const mobileRegex = /^[6-9]\d{9}$/;
+    const mobileRegex = /^\d{10,}$/;
 
     if (emailRegex.test(userName)) {
         user = await User.findOne({ email: userName });
