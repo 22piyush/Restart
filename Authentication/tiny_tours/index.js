@@ -1,7 +1,8 @@
 import express from "express";
 import dotenv from "dotenv";
 import cors from "express";
-import connectDB from "./db.js";
+import connectDB from "./config/db.js";
+import User from "./models/User.js";
 
 dotenv.config();
 
@@ -11,8 +12,82 @@ app.use(cors());
 
 const PORT = process.env.PORT || 6000;
 
-app.get("/", (req, res) => {
-    res.send("Hello World");
+app.post("/signup", async (req, res) => {
+    const { name, email, mobile, password } = req.body;
+
+    const newUser = new User({
+        name,
+        email,
+        mobile,
+        password
+    });
+
+    if (!name || !email || !mobile || !password) {
+        return res.json({
+            success: false,
+            message: "All fields are required"
+        });
+    }
+
+    try {
+        const savedUser = await newUser.save();
+        return res.json({
+            success: true,
+            data: savedUser,
+            message: "User registered successfully"
+        });
+    }
+    catch (error) {
+        return res.json({
+            success: false,
+            message: "User registration failed",
+            error: error
+        });
+    }
+});
+
+app.post("/login", async (req, res) => {
+
+    const { userName, password } = req.body;
+
+    if (!userName || !password) {
+        return res.json({
+            success: false,
+            message: "All fields are required"
+        });
+    }
+
+    let user;
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const mobileRegex = /^[6-9]\d{9}$/;
+
+    if (emailRegex.test(userName)) {
+        user = await User.findOne({ email: userName });
+    } else if (mobileRegex.test(userName)) {
+        user = await User.findOne({ mobile: userName });
+    } else {
+        return res.status(400).json({
+            success: false,
+            message: "Enter valid email or mobile number",
+        });
+    }
+
+    
+    if (user.password !== password) {
+        return res.status(401).json({
+            success: false,
+            message: "Invalid password",
+        });
+    }
+    return res.json({
+        success: true,
+        message: "Login successful",
+        data: {
+            email: user.email,
+        },
+    });
+
 });
 
 app.listen(PORT, () => {
