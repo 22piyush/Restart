@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import cors from "express";
 import connectDB from "./config/db.js";
 import User from "./models/User.js";
+import bcrypt from "bcrypt";
 
 dotenv.config();
 
@@ -15,12 +16,34 @@ const PORT = process.env.PORT || 6000;
 app.post("/signup", async (req, res) => {
     const { name, email, mobile, password } = req.body;
 
+    const existingUserEmail = await User.findOne({ email });
+    const existingUserMob = await User.findOne({ mobile });
+
+    if(existingUserEmail){
+        return res.status(400).json({
+            success: false,
+            message: "User with this email already exists"
+        });
+    }
+
+    if(existingUserMob){
+        return res.status(400).json({
+            success: false,
+            message: "User with this mobile already exists"
+        });
+    }
+
+    // Generate Key 
+    const salt = bcrypt.genSaltSync(10);
+    const encryptedPassword = bcrypt.hashSync(password, salt);
+
     const newUser = new User({
         name,
         email,
         mobile,
-        password
+        password: encryptedPassword
     });
+
 
     if (!name?.trim() || !email?.trim() ||  !mobile?.trim() || !password?.trim()) {
         return res.status(400).json({
@@ -109,20 +132,22 @@ app.post("/login", async (req, res) => {
         });
     }
 
-
-    if (user.password !== password) {
+    const isPasswordCorrect = bcrypt.compareSync(password, user.password);
+    if (isPasswordCorrect) {
+        return res.status(200).json({
+            success: true,
+            message: "Login successful",
+            data: {
+                email: user.email,
+            },
+        });
+    }else{
         return res.status(401).json({
             success: false,
             message: "Invalid password",
         });
     }
-    return res.status(200).json({
-        success: true,
-        message: "Login successful",
-        data: {
-            email: user.email,
-        },
-    });
+
 
 });
 
