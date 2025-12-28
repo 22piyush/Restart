@@ -22,10 +22,46 @@ app.post("/signup", async (req, res) => {
         password
     });
 
-    if (!name || !email || !mobile || !password) {
-        return res.json({
+    if (!name?.trim() || !email?.trim() ||  !mobile?.trim() || !password?.trim()) {
+        return res.status(400).json({
             success: false,
-            message: "All fields are required"
+            message: "All fields are required",
+        });
+    }
+
+    // Regex patterns
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const mobileRegex = /^[6-9]\d{9}$/;
+
+    // Name validation
+    if (name.trim().length < 2) {
+        return res.status(400).json({
+            success: false,
+            message: "Name must be at least 2 characters",
+        });
+    }
+
+    // Email validation
+    if (!emailRegex.test(email)) {
+        return res.status(400).json({
+            success: false,
+            message: "Invalid email format",
+        });
+    }
+
+    // Mobile validation
+    if (!mobileRegex.test(mobile)) {
+        return res.status(400).json({
+            success: false,
+            message: "Invalid mobile number",
+        });
+    }
+
+    // Password validation
+    if (password.length < 6) {
+        return res.status(400).json({
+            success: false,
+            message: "Password must be at least 6 characters",
         });
     }
 
@@ -73,7 +109,7 @@ app.post("/login", async (req, res) => {
         });
     }
 
-    
+
     if (user.password !== password) {
         return res.status(401).json({
             success: false,
