@@ -1,7 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
-import BucketList from "./models/BucketList";
+import BucketList from "./models/BucketList.js";
 
 dotenv.config();
 
@@ -20,19 +20,26 @@ const connectDB = async () => {
         process.exit(1);
     }
 };
-
 connectDB();
 
 // Sample POST API
 app.post("/bucketlist", async(req, res) => {
 
-    const {name , description , priority} = req.body
+    const {name , description , priority, isCompleted} = req.body
 
     const newBucketList = new BucketList({
         name,
         description,
-        priority
+        priority,
+        isCompleted
     });
+
+    if(priority === undefined){
+        return res.json({
+            success:false,
+            message:"Priority reqyuired"
+       })
+    }
 
     const savedBucketList = await newBucketList.save();
 
@@ -43,6 +50,34 @@ app.post("/bucketlist", async(req, res) => {
     })
 
 });
+
+
+app.get("/get_bucket_list", async(req, res) => {
+
+    const bucketList  = await BucketList.find();
+
+    return res.json({
+        success:true,
+        data:bucketList,
+        message:"Data fetched successfully"
+    })
+
+});
+
+
+app.patch("/bucketlists/:id/complete", async (req,res) => {
+    const {id} = req.params;
+
+    await BucketList.updateOne({_id: id}, {$set: {isCompleted: true}});
+
+    const updatedBucketList = await BucketList.findOne({_id: id});
+
+    return res.json({
+        success:true,
+        message:"Bucket List item marked as completed",
+        data: updatedBucketList,
+    });
+})
 
 // Start server
 app.listen(PORT, () => {
