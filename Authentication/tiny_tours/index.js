@@ -56,20 +56,28 @@ const gokuldhamSociety = (req, res) => {
 }
 
 const checkJWT = (req, res, next) => {
-    const {authorization} = req.headers;
-    const token = authorization && authorization.split(" ")[1];
-    console.log("Token", token);
+    const authHeader = req.headers.authorization;
 
-    try{
-        const decoded = jwt.verify(token, process.env.JWT_SECRET);
-        next();
-    }catch(error){
-        return res.json({
+    if (!authHeader) {
+        return res.status(401).json({
             success: false,
-            message: "Invalid or missing token"
-        })
+            message: "Authorization header missing"
+        });
     }
-}
+
+    const token = authHeader.split(" ")[1];
+
+    try {
+        req.user = jwt.verify(token, process.env.JWT_SECRET);
+        next();
+    } catch {
+        return res.status(401).json({
+            success: false,
+            message: "Invalid token"
+        });
+    }
+};
+
 
 
 app.post("/sham-sundar-society", getKeeper, areYouDrunk, shamSundarSociety);
@@ -77,15 +85,15 @@ app.post("/sham-sundar-society", getKeeper, areYouDrunk, shamSundarSociety);
 app.post("/gokuldham-society", getKeeper, areYouDrunk, gokuldhamSociety);
 
 
-app.get("/api_v1", (req, res) => {
+app.get("/api_v1", checkJWT, (req, res) => {
     return res.json({
         message: "API v1 is working"
     })
 });
 
-app.get("/api_v2", (req, res) => {
+app.get("/api_v2", checkJWT, (req, res) => {
     return res.json({
-        message: "API v1 is working"
+        message: "API v2 is working"
     })
 });
 
