@@ -9,12 +9,16 @@ function Todo() {
         e.preventDefault();
 
         if(newTodo){
-            setNewTodo([...todos , {text: e.target.value , completed: false}]);
+            setTodos([...todos , {text: newTodo , completed: false}]);
             setNewTodo("");
         }
     }
 
     const handleDelete =(index) => {
+        
+        const newTodos = [...todos];
+        newTodos[index].completed = !newTodos[index].completed;
+        setTodos(newTodos);
         
     }
 
@@ -28,16 +32,15 @@ function Todo() {
             </form>
         </div>
         <div>
-            <ul>
-                {
-                    todos.map((todo, index) => {
-                        <li key={index}>
-                            <span>{todo.text}</span>
-                            <button onClick={()=>handleDelete(index)}>Delete</button>
-                        </li>
-                    })
-                }
-            </ul>
+            {
+                todos.map((todo, index) => (
+                    <div key={index}>
+                        <span style={{textDecoration : todo.completed ? 'line-through' : 'none'}}>{todo.text}</span>
+                        <button onClick={()=>handleDelete(index)}>{todo.completed ? "Reset" : 'Complete'}</button>
+                    </div>
+                ))
+
+            }
         </div>
     </div>
   )
