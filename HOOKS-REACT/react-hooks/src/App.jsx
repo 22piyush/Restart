@@ -7,6 +7,7 @@ import Todo from "./components/Todo";
 import UncontrolledCom from "./components/UncontrolledCom";
 import UseActionState from "./hooks/UseActionState";
 import UseCallback from "./hooks/UseCallback";
+import UseEffect from "./hooks/UseEffect";
 import UseMemo from "./hooks/UseMemo";
 import UseState from "./hooks/useState";
 
@@ -39,7 +40,9 @@ function App() {
 
      {/* <FormValidation/> */}
 
-     <Todo/>
+     {/* <Todo/> */}
+
+     <UseEffect/>
 
     </>
   );
