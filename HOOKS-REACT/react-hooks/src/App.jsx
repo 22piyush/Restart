@@ -3,6 +3,7 @@ import FormHandling from "./components/FormHandling";
 import FormValidation from "./components/FormValidation";
 import Props from "./components/Props";
 import SimpleForm from "./components/SimpleForm";
+import Todo from "./components/Todo";
 import UncontrolledCom from "./components/UncontrolledCom";
 import UseActionState from "./hooks/UseActionState";
 import UseCallback from "./hooks/UseCallback";
@@ -36,7 +37,9 @@ function App() {
 
      {/* <UncontrolledCom/> */}
 
-     <FormValidation/>
+     {/* <FormValidation/> */}
+
+     <Todo/>
 
     </>
   );
