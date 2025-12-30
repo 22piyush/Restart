@@ -38,13 +38,25 @@ function App() {
 
     return (
       <div>
-        <h2>User List</h2>
+        <div>
+          <h2>User List</h2>
 
-        {userData.map((item) => (
-          <div key={item.id}>
-            <Link to={`/user/${item.id}`}>{item.name}</Link>
-          </div>
-        ))}
+          {userData.map((item) => (
+            <div key={item.id}>
+              <Link to={`/user/${item.id}`}>{item.name}</Link>
+            </div>
+          ))}
+        </div>
+        <div>
+          <h2>User List with Name</h2>
+
+          {userData.map((item) => (
+            <div key={item.id}>
+              <Link to={`/user/${item.id}/${item.name}`}>{item.name}</Link>
+            </div>
+          ))}
+
+        </div>
       </div>
     );
   }
@@ -56,7 +68,7 @@ function App() {
         <nav>
           <Link to={"/"}>Home</Link> |<Link to={"in/user/about"}>About</Link> |
           <Link to={"/contact"}>Contact</Link> |
-          <Link to={"/products"}>Products</Link> |<Link to="/user">User</Link>
+          <Link to={"/products"}>Products</Link> |<Link to="/user">User</Link> |<Link to="/user/list">List</Link>
         </nav>
         <Outlet />
       </div>
@@ -113,8 +125,9 @@ function App() {
 
             {/* TASK :- DO WITH MULTIPLE IDS 
             "/category/:categoryId/p/:productId" */}
-            <Route path="/user" element={<User />} />
-            <Route path="/user/:id" element={<UserDetail />} />
+            {/* <Route path="/user" element={<User />} /> */}
+            <Route path="/user/list?" element={<User />} />
+            <Route path="/user/:id/:name?" element={<UserDetail />} />
           </Route>
 
           {/* Without Header with Content first selected  */}
