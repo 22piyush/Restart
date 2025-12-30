@@ -7,7 +7,7 @@ function Products() {
         
         <Outlet/>
         <nav>
-          <Link to={"form"}>Form</Link> |
+          <Link to={""}>Form</Link> |
           <Link to={"countdown"}>Countdown</Link> |
         </nav>
 

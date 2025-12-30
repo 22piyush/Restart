@@ -11,7 +11,7 @@ import UseEffect from "./hooks/UseEffect";
 import UseMemo from "./hooks/UseMemo";
 import UseState from "./hooks/useState";
 
-import { BrowserRouter, Routes, Route, Link , useParams } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link , useParams, Outlet } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
@@ -24,6 +24,20 @@ function App() {
     console.log(useParams());
     const { id } = useParams();
     return <h2>User Profile for ID: {id}</h2>
+  }
+
+  function Header(){
+    return <div>
+      <h1>React Router Example</h1>
+        <nav>
+          <Link to={"/"}>Home</Link> |
+          <Link to={"/about"}>About</Link> |
+          <Link to={"/contact"}>Contact</Link> |
+          <Link to={"/products"}>Products</Link> |
+          <Link to="/user/10">User</Link> 
+        </nav>
+        <Outlet/>
+    </div>
   }
 
   function NotFound(){
@@ -65,23 +79,17 @@ function App() {
 
       <BrowserRouter>
 
-        <h1>React Router Example</h1>
-        <nav>
-          <Link to={"/"}>Home</Link> |
-          <Link to={"/about"}>About</Link> |
-          <Link to={"/contact"}>Contact</Link> |
-          <Link to={"/products"}>Products</Link> |
-          <Link to="/user/10">User</Link> 
-        </nav>
-
         <Routes>
-          <Route path="/" element={<Home/>} />
-          <Route path="/about" element={<About/>} />
-          <Route path="/contact" element={<Contact/>} />
-          <Route path="/user/:id" element={<User/>} />
+
+          <Route element={<Header/>}>
+            <Route path="/" element={<Home/>} />
+            <Route path="/about" element={<About/>} />
+            <Route path="/contact" element={<Contact/>} />
+            <Route path="/user/:id" element={<User/>} />
+          </Route>
 
           <Route path="/products" element={<Products/>}> 
-            <Route path="form" element={<FormHandling/>} />
+            <Route index element={<FormHandling/>} />
             <Route path="countdown" element={<Countdown/>} />
           </Route>
 
