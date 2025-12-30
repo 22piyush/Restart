@@ -15,6 +15,7 @@ import { BrowserRouter, Routes, Route, Link , useParams } from "react-router-dom
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import Products from "./pages/Products";
 
 
 function App() {
@@ -69,6 +70,7 @@ function App() {
           <Link to={"/"}>Home</Link> |
           <Link to={"/about"}>About</Link> |
           <Link to={"/contact"}>Contact</Link> |
+          <Link to={"/products"}>Products</Link> |
           <Link to="/user/10">User</Link> 
         </nav>
 
@@ -77,6 +79,12 @@ function App() {
           <Route path="/about" element={<About/>} />
           <Route path="/contact" element={<Contact/>} />
           <Route path="/user/:id" element={<User/>} />
+
+          <Route path="/products" element={<Products/>}> 
+            <Route path="form" element={<FormHandling/>} />
+            <Route path="countdown" element={<Countdown/>} />
+          </Route>
+
           <Route path="*" element={<NotFound/>} />
         </Routes>
       </BrowserRouter>
