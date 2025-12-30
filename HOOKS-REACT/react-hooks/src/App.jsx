@@ -31,7 +31,7 @@ function App() {
       <h1>React Router Example</h1>
         <nav>
           <Link to={"/"}>Home</Link> |
-          <Link to={"/about"}>About</Link> |
+          <Link to={"in/user/about"}>About</Link> |
           <Link to={"/contact"}>Contact</Link> |
           <Link to={"/products"}>Products</Link> |
           <Link to="/user/10">User</Link> 
@@ -81,18 +81,28 @@ function App() {
 
         <Routes>
 
+          {/* Show Inside Header  */}
           <Route element={<Header/>}>
             <Route path="/" element={<Home/>} />
-            <Route path="/about" element={<About/>} />
+
+            {/* Prefix  */}
+            <Route path="in">
+              <Route path="/in/user">
+                <Route path="/in/user/about" element={<About/>} />
+              </Route>
+            </Route>
+
             <Route path="/contact" element={<Contact/>} />
             <Route path="/user/:id" element={<User/>} />
           </Route>
 
+          {/* Without Header with Content first selected  */}
           <Route path="/products" element={<Products/>}> 
             <Route index element={<FormHandling/>} />
             <Route path="countdown" element={<Countdown/>} />
           </Route>
-
+          
+          {/* 404 Page  */}
           <Route path="*" element={<NotFound/>} />
         </Routes>
       </BrowserRouter>
