@@ -110,6 +110,9 @@ function App() {
             </Route>
 
             <Route path="/contact" element={<Contact />} />
+
+            {/* TASK :- DO WITH MULTIPLE IDS 
+            "/category/:categoryId/p/:productId" */}
             <Route path="/user" element={<User />} />
             <Route path="/user/:id" element={<UserDetail />} />
           </Route>
