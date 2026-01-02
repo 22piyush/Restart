@@ -32,10 +32,15 @@ function App() {
                 <Route path='/user/list?' element={<User/>}/>
                 <Route path='/user/:id/:name?' element={<UserDetail/>} />
 
-
-                {/* 404 page  */}
-                <Route path='*' element={<h1>Page Not Found</h1>}/>
               </Route>
+
+              {/* Without Header with Content first selected  */}
+              
+
+              
+
+              {/* 404 page  */}
+              <Route path='*' element={<h1>Page Not Found</h1>}/>
             </Routes>
         </BrowserRouter>
     </div>

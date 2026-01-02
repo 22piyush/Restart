@@ -11,6 +11,7 @@ function Header() {
                <Link to={"/in/user/about"}>About</Link>
                <Link to={"/contact"}>Contact</Link>
                <Link to={"/user"}>User</Link>
+               <Link to={"/feature"}>feature</Link>
             </nav>
         </header>
         <main>
