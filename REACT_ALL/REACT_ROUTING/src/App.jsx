@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Form } from 'react-router-dom'
 import Header from './components/Header'
 import Home from "./pages/Home"
 import About from "./pages/About"
@@ -7,6 +7,8 @@ import Contact from './pages/Contact'
 import User from './pages/User'
 import UserDetail from './pages/UserDetail'
 import Feature from './pages/Feature'
+import Forms from './components/Form'
+import Countdown from './components/Countdown'
 
 function App() {
   return (
@@ -37,7 +39,8 @@ function App() {
 
               {/* Without Header with Content first selected  */}
               <Route path='/feature' element={<Feature/>}>
-                  
+                  <Route index element={<Forms/>}/>
+                  <Route path='countdown' element={<Countdown/>}/>
               </Route>
 
               
