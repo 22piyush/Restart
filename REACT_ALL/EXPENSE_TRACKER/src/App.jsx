@@ -1,27 +1,21 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
+import ExpenseForm from './components/ExpenseForm';
+import ExpenseList from './components/ExpenseList';
 
 function App() {
 
+    const [expense, setExpense] = useState([]);
 
     return (
         <>
             <div>
-                <h3>🫰 Expense Tracker</h3> 
+                <h2>🫰 Expense Tracker</h2> 
+                <ExpenseForm />  
                 <div>
-                    <form>
-                        <input type='text' placeholder='Expense Title' />
-                        <input type='text' placeholder='Amount' />
-                        <button type='submit'>Add Expense</button>
-                    </form>
-                   <div>
                     <h3>Total Expense: Rs {750.00}</h3>
-                    <div>
-                        <div><span>Internet Charges Rs. {500}</span></div>
-                        <div><span>Train Ticket Rs. {700}</span></div>
-                    </div>
-                   </div>
-                </div> 
+                    <ExpenseList />
+                </div>
             </div>   
         </>
     )
