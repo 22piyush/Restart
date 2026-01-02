@@ -6,6 +6,7 @@ import About from "./pages/About"
 import Contact from './pages/Contact'
 import User from './pages/User'
 import UserDetail from './pages/UserDetail'
+import Feature from './pages/Feature'
 
 function App() {
   return (
@@ -35,7 +36,9 @@ function App() {
               </Route>
 
               {/* Without Header with Content first selected  */}
-              
+              <Route path='/feature' element={<Feature/>}>
+                  
+              </Route>
 
               
 

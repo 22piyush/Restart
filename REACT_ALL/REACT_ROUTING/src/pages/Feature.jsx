@@ -1,8 +1,15 @@
 import React from 'react'
+import { Link, Outlet } from 'react-router-dom'
 
 function Feature() {
   return (
-    <div>Feature</div>
+    <div>
+        <Outlet/>
+        <nav>
+            <Link to={""}>Form</Link>
+            <Link to={"countdown"}>Countdown</Link>
+        </nav>
+    </div>
   )
 }
 
