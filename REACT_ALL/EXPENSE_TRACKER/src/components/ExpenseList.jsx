@@ -1,11 +1,15 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
 import ExpenseItem from './ExpenseItem';
 
-function ExpenseList() {
+function ExpenseList({expenses, ondelete}) {
+    if(expenses.length == 0){
+      return <p>No Expenses Found</p>
+    }
   return (
     <div>
-        <ExpenseItem />
+        {expenses.map((item) => (
+            <ExpenseItem key={item.id} item={item} ondelete={ondelete}/>
+        ))}
     </div>
   )
 }

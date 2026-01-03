@@ -1,11 +1,11 @@
 import React from 'react'
 
-function ExpenseItem() {
+function ExpenseItem({item, ondelete}) {
   return (
     <div>
-        <span> Internet Charges </span>
-        <span> 500 </span>
-        <span> ❌ </span>
+        <span>{item.title}</span>
+        <span>{item.amount}</span>
+        <button onClick={() => ondelete(item.id)}>❌</button>
     </div>
   )
 }

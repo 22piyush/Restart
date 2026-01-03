@@ -5,14 +5,21 @@ import ExpenseList from './components/ExpenseList';
 
 function App() {
 
-    const [expenses, setExpenses] = useState([]);
+    const [expenses, setExpenses] = useState(()=>{
+        const saved = localStorage.getItem("storage_expenses")
+        return saved ? JSON.parse(saved) : []
+    });
+
+    useEffect(()=>{
+        localStorage.setItem("storage_expenses", JSON.stringify(expenses))
+    },[expenses]);
 
     const addExpense = (expense) => {
         setExpenses((prev)=>[...prev, expense])
     }
 
     const deleteExpense = (id) => {
-        
+        setExpenses(prev => prev.filter(expense => expense.id !== id))
     }
 
 
