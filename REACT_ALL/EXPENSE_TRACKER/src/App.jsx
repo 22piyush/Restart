@@ -5,16 +5,25 @@ import ExpenseList from './components/ExpenseList';
 
 function App() {
 
-    const [expense, setExpense] = useState([]);
+    const [expenses, setExpenses] = useState([]);
+
+    const addExpense = (expense) => {
+        setExpenses((prev)=>[...prev, expense])
+    }
+
+    const deleteExpense = (id) => {
+        
+    }
+
 
     return (
         <>
             <div>
                 <h2>🫰 Expense Tracker</h2> 
-                <ExpenseForm />  
+                <ExpenseForm  onAddExpense={addExpense}/>  
                 <div>
                     <h3>Total Expense: Rs {750.00}</h3>
-                    <ExpenseList />
+                    <ExpenseList expenses={expenses} ondelete={deleteExpense}/>
                 </div>
             </div>   
         </>
