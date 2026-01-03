@@ -22,6 +22,8 @@ function App() {
         setExpenses(prev => prev.filter(expense => expense.id !== id))
     }
 
+    const totalExpenses = expenses.reduce((sum, item) => sum + item.amount , 0)
+
 
     return (
         <>
@@ -29,7 +31,7 @@ function App() {
                 <h2>🫰 Expense Tracker</h2> 
                 <ExpenseForm  onAddExpense={addExpense}/>  
                 <div>
-                    <h3>Total Expense: Rs {750.00}</h3>
+                    <h3>Total Expense: Rs {totalExpenses.toFixed(3)}</h3>
                     <ExpenseList expenses={expenses} ondelete={deleteExpense}/>
                 </div>
             </div>   
