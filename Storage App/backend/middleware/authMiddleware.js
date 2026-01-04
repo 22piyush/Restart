@@ -17,15 +17,12 @@ exports.checkAuth = async(req, res, next) => {
 
   if(oldSignature !== newSignature){
     res.clearCookie("token");
-    return res.status(401).json({ error: "Not logged in!" });
+    res.status(401).json({ error: "Not logged in!" });
   }else{
     const { id, expiry: expiryTimeInSeconds } = JSON.parse(jsonPayload);
   }
-  
-  const currentTimeInSeconds = Math.round(Date.now() / 1000);
 
-  console.log(new Date(currentTimeInSeconds * 1000).toString());
-  console.log(new Date(expiryTimeInSeconds * 1000).toString());
+  const currentTimeInSeconds = Math.round(Date.now() / 1000);
 
   if (currentTimeInSeconds > expiryTimeInSeconds) {
     res.clearCookie("token");
