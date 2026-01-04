@@ -5,7 +5,6 @@ const cookieParser = require("cookie-parser");
 const userRoutes = require("./routes/authRoutes")
 const cors = require("cors");
 
-
 dotenv.config();
 // DB connection
 connectDB();
@@ -15,9 +14,11 @@ const app = express();
 
 app.use(cors({ origin: "http://localhost:5173", credentials: true }));
 
+const mySecret = 'storage-app';
+
 // Middleware
 app.use(express.json());
-app.use(cookieParser());
+app.use(cookieParser(mySecret));
 
 app.use("/api", userRoutes);
 

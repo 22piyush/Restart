@@ -1,7 +1,6 @@
+const { signedCookie } = require("cookie-parser");
 const User = require("../modules/Users");
 const crypto = require("crypto");
-
-exports.mySecretKey = 'storage-app-123#$';
 
 exports.registerUser = async (req, res) => {
     try {
@@ -41,20 +40,12 @@ exports.loginUser = async (req, res) => {
             expiry: Math.round(Date.now() / 1000 + 10),
         });
 
-        const signature = crypto
-        .createHash('sha256')
-        .update(cookiePayload)
-        .update(this.mySecretKey)
-        .digest("base64url")
-
-        const signedCookiePayload = `${Buffer.from(cookiePayload).toString("base64url")}.${signature}`
-
         res.cookie(
             "uid",
-            signedCookiePayload,
-            // Buffer.from(JSON.stringify(cookiePayload)).toString("base64url"),
+            cookiePayload,
             {
                 httpOnly: true,
+                signed:true,
                 maxAge: 60 * 1000 // 60 seconds
             }
         );
