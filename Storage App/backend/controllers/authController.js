@@ -9,7 +9,7 @@ exports.registerUser = async (req, res) => {
         const hashedPassword = crypto
         .createHash('sha256')
         .update(password)
-        .digest("base64url")
+        .digest("hex")
 
         const userExists = await User.findOne({ $or: [{ email, mobile }] });
         if (userExists) {
@@ -39,6 +39,16 @@ exports.loginUser = async (req, res) => {
         });
 
         if (!user) return res.status(400).json({ message: "Username not found" });
+
+        const enteredPasswordHash = crypto
+        .createHash('sha256')
+        .update(password)
+        .digest("hex")
+
+        if(user.password !== enteredPasswordHash){
+            return res.status(400).json({ message: "Invalid Credientials" });
+        }
+
 
         const cookiePayload = JSON.stringify( {
             id: user._id.toString(),
