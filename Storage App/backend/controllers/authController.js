@@ -6,6 +6,11 @@ exports.registerUser = async (req, res) => {
     try {
         const { email, password, mobile, role } = req.body;
 
+        const hashedPassword = crypto
+        .createHash('sha256')
+        .update(password)
+        .digest("base64url")
+
         const userExists = await User.findOne({ $or: [{ email, mobile }] });
         if (userExists) {
             return res.status(400).json({ message: "User with this email or mobile already exists" });
@@ -13,12 +18,12 @@ exports.registerUser = async (req, res) => {
 
         const user = await User.create({
             email,
-            password,
+            password : hashedPassword,
             mobile,
             role
         });
 
-        res.status(201).json({ success: true, message: "User registered successfully" });
+        res.status(201).json({ success: true, message: "User registered successfully", data:user });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
