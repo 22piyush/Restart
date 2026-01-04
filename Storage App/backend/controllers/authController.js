@@ -6,10 +6,10 @@ exports.registerUser = async (req, res) => {
     try {
         const { email, password, mobile, role } = req.body;
 
-        const hashedPassword = crypto
-        .createHash('sha256')
-        .update(password)
-        .digest("hex")
+        const salt = crypto.randomBytes(16);
+        const hashedPassword = crypto.pbkdf2Sync(password, salt, 100000, 32, 'sha256');
+
+        
 
         const userExists = await User.findOne({ $or: [{ email, mobile }] });
         if (userExists) {
@@ -18,7 +18,7 @@ exports.registerUser = async (req, res) => {
 
         const user = await User.create({
             email,
-            password : hashedPassword,
+            password: `${salt.toString("base64url")}.${hashedPassword.toString("base64url")}`,
             mobile,
             role
         });
@@ -40,12 +40,10 @@ exports.loginUser = async (req, res) => {
 
         if (!user) return res.status(400).json({ message: "Username not found" });
 
-        const enteredPasswordHash = crypto
-        .createHash('sha256')
-        .update(password)
-        .digest("hex")
+        const [salt, savedHashedPassword] = user.password.split(".");
+        const enteredPasswordHash = crypto.pbkdf2Sync(password, salt, 100000, 32, 'sha256');
 
-        if(user.password !== enteredPasswordHash){
+        if(savedHashedPassword !== enteredPasswordHash){
             return res.status(400).json({ message: "Invalid Credientials" });
         }
 
