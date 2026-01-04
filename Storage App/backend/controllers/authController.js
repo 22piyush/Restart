@@ -1,4 +1,7 @@
 const User = require("../modules/Users");
+const crypto = require("crypto");
+
+exports.mySecretKey = 'storage-app-123#$';
 
 exports.registerUser = async (req, res) => {
     try {
@@ -33,17 +36,26 @@ exports.loginUser = async (req, res) => {
 
         if (!user) return res.status(400).json({ message: "Username not found" });
 
-        const cookiePayload = {
+        const cookiePayload = JSON.stringify( {
             id: user._id.toString(),
             expiry: Math.round(Date.now() / 1000 + 10),
-        };
+        });
+
+        const signature = crypto
+        .createHash('sha256')
+        .update(cookiePayload)
+        .update(this.mySecretKey)
+        .digest("base64url")
+
+        const signedCookiePayload = `${Buffer.from(cookiePayload).toString("base64url")}.${signature}`
 
         res.cookie(
             "uid",
-            Buffer.from(JSON.stringify(cookiePayload)).toString("base64url"),
+            signedCookiePayload,
+            // Buffer.from(JSON.stringify(cookiePayload)).toString("base64url"),
             {
                 httpOnly: true,
-                maxAge: 1 * 60 * 1000 // 1 minute
+                maxAge: 60 * 1000 // 60 seconds
             }
         );
 
