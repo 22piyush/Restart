@@ -2,6 +2,10 @@ import React from "react";
 import { useLocation, Link, useNavigate  } from "react-router-dom";
 
 function MovieDetail() {
+
+    // useParams → when you want to get something from the URL (like id) and then fetch data from an API or backend.
+    // useLocation → when you already have the data (passed via state) and don’t need to fetch it again.
+
   const { state } = useLocation();
   const movie = state?.movie;
   const navigate = useNavigate();

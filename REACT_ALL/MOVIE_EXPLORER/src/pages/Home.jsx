@@ -7,7 +7,7 @@ function Home() {
   const [search, setSearch] = useState("");
 
   const fetchMovies = async () => {
-    const res = await fetch();
+    const res = await fetch("ADD HERE REQUEST MOVIE URL");
     const data = await res.json();
 
     setMovies(data.data || []);
