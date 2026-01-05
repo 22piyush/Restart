@@ -2,60 +2,82 @@ import React, { useEffect, useState } from "react";
 import MovieList from "../components/MovieList";
 
 function Home() {
-  const [movies, setMovie] = useState([]);
+  const [movies, setMovies] = useState([]);
+  const [allMovies, setAllMovies] = useState([]); // store original data
   const [search, setSearch] = useState("");
 
   const fetchMovies = async () => {
-    try {
-      const res = await fetch("https://jsonfakery.com/movies/paginated");
-      const data = await res.json();
-      setMovie(data.data || []);
-    } catch (err) {
-      console.error(err);
-    }
+    const res = await fetch();
+    const data = await res.json();
+
+    setMovies(data.data || []);
+    setAllMovies(data.data || []);
   };
 
   useEffect(() => {
     fetchMovies();
   }, []);
 
+  // 🔍 SEARCH HANDLER
+  const handleSearch = (e) => {
+    e.preventDefault();
+
+    if (!search.trim()) {
+      setMovies(allMovies);
+      return;
+    }
+
+    const filteredMovies = allMovies.filter((movie) =>
+      movie.original_title
+        .toLowerCase()
+        .includes(search.toLowerCase())
+    );
+
+    setMovies(filteredMovies);
+  };
+
   return (
-    <div style={{ padding: "30px",marginTop:'60px'}}>
+    <div style={{ padding: "30px",marginTop:'60px' }}>
       {/* Search */}
-      <div style={{ display: "flex", justifyContent: "center", marginBottom: "30px" }}>
-        <form style={{ display: "flex", gap: "10px" }}>
-          <input
-            type="text"
-            placeholder="Enter Movie Name"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            style={{
-              padding: "10px",
-              width: "250px",
-              border: "1px solid #ccc",
-              borderRadius: "4px",
-            }}
-          />
+      <form
+        onSubmit={handleSearch}
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          gap: "10px",
+          marginBottom: "30px",
+        }}
+      >
+        <input
+          type="text"
+          placeholder="Enter Movie Name"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          style={{
+            padding: "10px",
+            width: "250px",
+            border: "1px solid #ccc",
+            borderRadius: "4px",
+          }}
+        />
 
-          <button
-            type="submit"
-            style={{
-              padding: "10px 20px",
-              backgroundColor: "#2f2f2f",
-              color: "white",
-              border: "none",
-              borderRadius: "4px",
-            }}
-          >
-            Search
-          </button>
-        </form>
-      </div>
+        <button
+          type="submit"
+          style={{
+            padding: "10px 20px",
+            backgroundColor: "#2f2f2f",
+            color: "white",
+            border: "none",
+            borderRadius: "4px",
+            cursor: "pointer",
+          }}
+        >
+          Search
+        </button>
+      </form>
 
-      {/* Movies */}
-      <div style={{ backgroundColor: "#e0f7fa", padding: "20px", }}>
-        <MovieList movies={movies} />
-      </div>
+      {/* Movie List */}
+      <MovieList movies={movies} />
     </div>
   );
 }

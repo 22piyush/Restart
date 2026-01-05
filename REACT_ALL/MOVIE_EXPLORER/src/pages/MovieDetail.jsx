@@ -1,9 +1,11 @@
 import React from "react";
-import { useLocation, Link } from "react-router-dom";
+import { useLocation, Link, useNavigate  } from "react-router-dom";
 
 function MovieDetail() {
   const { state } = useLocation();
   const movie = state?.movie;
+  const navigate = useNavigate();
+
 
   if (!movie) {
     return <h2 style={{ padding: "30px" }}>Movie not found</h2>;
@@ -24,16 +26,17 @@ function MovieDetail() {
       {/* Content */}
       <div style={{ padding: "30px" }}>
         {/* Back Button */}
-        <Link
-          to="/"
+        <p
+           onClick={() => navigate("/")}
           style={{
             textDecoration: "none",
             color: "#2f2f2f",
             fontWeight: "500",
+            cursor:'pointer'
           }}
         >
           ← Back to Movies
-        </Link>
+        </p>
 
         {/* Movie Main Info */}
         <div
