@@ -2,9 +2,13 @@ import React, { useState } from 'react';
 import Header from './components/Header';
 import Product from './components/Product';
 import Cart from './components/Cart';
+import { useDispatch } from 'react-redux';
 
 function App() {
   const [cartCount, setCartCount] = useState(0);
+
+  const dispatch = useDispatch();
+
 
   const products = [
     { id: 1, name: 'Product 1', price: 100 },
