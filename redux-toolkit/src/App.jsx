@@ -33,7 +33,7 @@ function App() {
             key={product.id}
             name={product.name}
             price={product.price}
-            addToCart={addToCart}
+            addToCart={dispatch(addToCart)}
           />
         ))}
       </div>
