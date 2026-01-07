@@ -12,7 +12,7 @@ const AuthProvider = ({ children }) => {
     const logout =()=> setIsLoggedIn(false);
 
     return (
-        <AuthContext.Provider value={isLoggedIn, login, logout}>
+        <AuthContext.Provider value={{isLoggedIn, login, logout}}>
             { children }
         </AuthContext.Provider>
     )

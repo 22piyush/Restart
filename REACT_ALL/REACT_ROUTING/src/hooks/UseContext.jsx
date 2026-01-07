@@ -1,22 +1,40 @@
 import React, { useState } from 'react'
-import ThemeContext from '../context_example/ThemeContext';
-import Toolbar from '../context_example/Toolbar';
+// import ThemeContext from '../context_example/ThemeContext';
+// import Toolbar from '../context_example/Toolbar';
+
+
+import Navbar from '../context_example/Auth_Example/Navbar'
+import { AuthProvider } from '../context_example/Auth_Example/AuthContext'
 
 function UseContext() {
 
-    const [theme, setTheme] = useState("light");
-
-    return (
-        <>
-            <ThemeContext.Provider value={{theme, setTheme}}>
-                <Toolbar/>
-            </ThemeContext.Provider>
-        </>
-    )
+  return (
+    <div>
+        <AuthProvider>
+            <Navbar/>
+        </AuthProvider>
+    </div>
+  )
 }
 
+export default UseContext
 
-export default UseContext;
+
+// function UseContext() {
+
+//     const [theme, setTheme] = useState("light");
+
+//     return (
+//         <>
+//             <ThemeContext.Provider value={{theme, setTheme}}>
+//                 <Toolbar/>
+//             </ThemeContext.Provider>
+//         </>
+//     )
+// }
+
+
+// export default UseContext;
 
 
 
