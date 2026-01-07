@@ -5,7 +5,10 @@ const UserContext = createContext();
 
 function UseContext() {
 
- const user = "Piyush Aglawe"
+ const user = {
+    name:"Piyush",
+    role:"Admin"
+ }
 
   return (
     <>
@@ -18,7 +21,7 @@ function UseContext() {
 
 function Parent() {
     const user = useContext(UserContext);
-    return (<div><Child/> <h3>Name is {user}</h3></div>)
+    return (<div> <h3>Name is {user.name}</h3> <Child/></div>)
 }
 
 function Child (){
@@ -27,7 +30,7 @@ function Child (){
 
 function GrandChild(){
     const user = useContext(UserContext);
-    return <h3>Name is {user}</h3>
+    return <h3>Name is {user.role}</h3>
 }
 
 export default UseContext
