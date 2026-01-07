@@ -10,6 +10,7 @@ function Header() {
                <Link to={"/"}>Home</Link>
                <Link to={"/in/user/about"}>About</Link>
                <Link to={"/contact"}>Contact</Link>
+               <Link to={"/context"}>Use Context Hook</Link>
                <Link to={"/user"}>User</Link>
                <Link to={"/feature"}>feature</Link>
             </nav>

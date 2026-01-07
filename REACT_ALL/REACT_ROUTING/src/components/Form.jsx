@@ -6,9 +6,13 @@ function Form() {
 
   const [formData, setFormData] = useState({name:"", email:""});
 
+  const hookEvent = useEffectEvent(()=>{
+    console.log(formData);
+  })
+
   useEffect(() => {
     const interval = setInterval(() => {
-       console.log(formData);
+      hookEvent()
         
     },3000)
 

@@ -4,10 +4,10 @@ function Home() {
 
   const [count , setCount] = useState(0);
 
-   const onTick = useEffectEvent(() => {
-        console.log("COUNT ", count);
-        setCount(c=>c+1);
-    })
+  const onTick = useEffectEvent(() => {
+    console.log("COUNT ", count);
+    setCount(c=>c+1);
+  })
 
   useEffect(()=>{
     console.log("Mount");

@@ -9,46 +9,47 @@ import UserDetail from './pages/UserDetail'
 import Feature from './pages/Feature'
 import Forms from './components/Form'
 import Countdown from './components/Countdown'
+import UseContext from './hooks/UseContext'
 
 function App() {
   return (
     <div>
-        <BrowserRouter>
-            <Routes>
-              {/* Show Inside Header  */}
-              <Route path='/' element={<Header/>}>
-                  
-                {/* Main Page added  */}
-                <Route path="/" element={<Home/>}/>
-
-                {/* Prefix */}
-                <Route path="in">
-                  <Route path="/in/user">
-                    <Route path='/in/user/about' element={<About/>}/>
-                  </Route>
-                </Route>
-
-                <Route path='/contact' element={<Contact/>}/>
-
-                {/* TASK:- DO WITH MULTIPLE IDS Ex.
-                "/category/:categoryId/p/:productId" */}
-                <Route path='/user/list?' element={<User/>}/>
-                <Route path='/user/:id/:name?' element={<UserDetail/>} />
-
-              </Route>
-
-              {/* Without Header with Content first selected  */}
-              <Route path='/feature' element={<Feature/>}>
-                  <Route index element={<Forms/>}/>
-                  <Route path='countdown' element={<Countdown/>}/>
-              </Route>
-
+      <BrowserRouter>
+        <Routes>
+          {/* Show Inside Header  */}
+          <Route path='/' element={<Header/>}>
               
+            {/* Main Page added  */}
+            <Route path="/" element={<Home/>}/>
 
-              {/* 404 page  */}
-              <Route path='*' element={<h1>Page Not Found</h1>}/>
-            </Routes>
-        </BrowserRouter>
+            {/* Prefix */}
+            <Route path="in">
+              <Route path="/in/user">
+                <Route path='/in/user/about' element={<About/>}/>
+              </Route>
+            </Route>
+
+            <Route path='/contact' element={<Contact/>}/>
+
+            <Route path='/context' element={<UseContext/>}/>
+
+            {/* TASK:- DO WITH MULTIPLE IDS Ex.
+            "/category/:categoryId/p/:productId" */}
+            <Route path='/user/list?' element={<User/>}/>
+            <Route path='/user/:id/:name?' element={<UserDetail/>} />
+
+          </Route>
+
+          {/* Without Header with Content first selected  */}
+          <Route path='/feature' element={<Feature/>}>
+              <Route index element={<Forms/>}/>
+              <Route path='countdown' element={<Countdown/>}/>
+          </Route>
+
+          {/* 404 page  */}
+          <Route path='*' element={<h1>Page Not Found</h1>}/>
+        </Routes>
+      </BrowserRouter>
     </div>
   )
 }
