@@ -29,7 +29,7 @@ function App() {
         <Navbar/>
         <Routes>
             <Route path="/" element={<Home/>}/>
-            <Route path="/" element={<CartPage/>}/>
+            <Route path="/cart" element={<CartPage/>}/>
         </Routes>
       <Home />
     </BrowserRouter>
