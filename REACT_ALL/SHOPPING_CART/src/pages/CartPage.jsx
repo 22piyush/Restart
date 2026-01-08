@@ -1,45 +1,75 @@
 import React from "react";
+import { useCart } from "../context/CartContext";
 
 function CartPage() {
+  const { cart, removeCart, updateQty, totalQty } = useCart();
+
   return (
     <div className="container mt-5">
       <h4 className="mb-3">Cart Items</h4>
 
-      <table className="table table-bordered text-center">
-        <thead className="table-dark">
-          <tr>
-            <th>#</th>
-            <th>Item Name</th>
-            <th>Price (₹)</th>
-          </tr>
-        </thead>
+      <div
+        className="table-responsive"
+        style={{ height: "500px", overflowY: "auto" }}
+      >
+        <table className="table table-bordered text-center mb-0">
+          <thead className="table-dark sticky-top">
+            <tr>
+              <th>#</th>
+              <th>Item Name</th>
+              <th>Qty</th>
+              <th>Total</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
 
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>Laptop</td>
-            <td>50000</td>
-          </tr>
+          <tbody>
+            {cart.length === 0 ? (
+              <tr>
+                <td colSpan="5">
+                  <div
+                    className="d-flex justify-content-center align-items-center"
+                    style={{ height: "300px" }}
+                  >
+                    <strong>No items added</strong>
+                  </div>
+                </td>
+              </tr>
+            ) : (
+              cart.map((item, index) => (
+                <tr key={item.id}>
+                  <td>{index + 1}</td>
+                  <td>{item.name}</td>
 
-          <tr>
-            <td>2</td>
-            <td>Mobile</td>
-            <td>20000</td>
-          </tr>
+                  <td style={{ width: "100px" }}>
+                    <input
+                      type="number"
+                      min="1"
+                      className="form-control text-center"
+                      value={item.qty}
+                      onChange={(e) =>
+                        updateQty(item.id, Number(e.target.value))
+                      }
+                    />
+                  </td>
 
-          <tr>
-            <td>3</td>
-            <td>Tablet</td>
-            <td>30000</td>
-          </tr>
+                  <td>₹ {item.price * item.qty}</td>
 
-          <tr>
-            <td>4</td>
-            <td>Computer</td>
-            <td>60000</td>
-          </tr>
-        </tbody>
-      </table>
+                  <td>
+                    <button
+                      className="btn btn-danger btn-sm"
+                      onClick={() => removeCart(item.id)}
+                    >
+                      Remove
+                    </button>
+                  </td>
+                </tr>
+              ))
+            )}
+          </tbody>
+        </table>
+      </div>
+      <div className="d-flex justify-content-end"><strong>$ {totalQty}</strong></div>
     </div>
   );
 }
