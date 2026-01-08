@@ -20,12 +20,12 @@ export const CartProvider = ({children}) =>{
     }
 
     return(
-        <CartContext.Provider value={{cart, setCart}}>
+        <CartContext.Provider value={{cart, setCart, addToCart}}>
             {children}
         </CartContext.Provider>
     )
 
 }
 
-
-const useCart = () => useContext(CartContext);
+// Custom Hook 
+export const useCart = () => useContext(CartContext);
