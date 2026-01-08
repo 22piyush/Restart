@@ -1,42 +1,47 @@
 import React from "react";
+import ProductCart from "./ProductCart";
 
 const Products = [
   {
     id: 1,
     name: "Laptop",
-    price: 50000
+    price: 50000,
   },
   {
     id: 2,
     name: "Mobile",
-    price: 20000
+    price: 20000,
   },
   {
     id: 3,
     name: "Tablet",
-    price: 30000
+    price: 30000,
   },
   {
     id: 4,
     name: "Computer",
-    price: 60000
-  }
+    price: 60000,
+  },
+  {
+    id: 5,
+    name: "Keyboard",
+    price: 2000,
+  },
+  {
+    id: 6,
+    name: "Mouse",
+    price: 1000,
+  },
 ];
-
-
 
 function ProductList() {
   return (
     <div className="row">
-      <div className="col-md-3">
-        <div className="card text-center">
-          <div className="card-body">
-            <h5 className="card-title">Laptop</h5>
-            <p className="card-text">₹50,000</p>
-            <button className="btn btn-primary">Add to Cart</button>
-          </div>
+      {Products.map((item) => (
+        <div className="col-md-3 mb-4" key={item.id}>
+            <ProductCart products={item}/>
         </div>
-      </div>
+      ))}
     </div>
   );
 }

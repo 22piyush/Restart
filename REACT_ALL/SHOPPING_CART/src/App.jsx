@@ -8,9 +8,9 @@ function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container">
-        <Link to={"/"} className="navbar-brand">
+        <div className="navbar-brand">
           MyStore
-        </Link>
+        </div>
 
         <div className="ms-auto d-flex align-items-center gap-4">
           <Link to={"/"} className="nav-link text-white" >
@@ -31,7 +31,6 @@ function App() {
             <Route path="/" element={<Home/>}/>
             <Route path="/cart" element={<CartPage/>}/>
         </Routes>
-      <Home />
     </BrowserRouter>
   );
 }

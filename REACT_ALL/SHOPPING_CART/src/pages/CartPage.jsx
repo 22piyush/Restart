@@ -1,38 +1,45 @@
 import React from "react";
 
-function CartPage({cart}) {
-
+function CartPage() {
   return (
-    <div>
-      <div className="container mt-5">
-        <h4 className="mb-3">Cart Items</h4>
+    <div className="container mt-5">
+      <h4 className="mb-3">Cart Items</h4>
 
-        <table className="table table-bordered text-center">
-          <thead className="table-dark">
-            <tr>
-              <th>#</th>
-              <th>Item Name</th>
-              <th>Price (₹)</th>
-            </tr>
-          </thead>
+      <table className="table table-bordered text-center">
+        <thead className="table-dark">
+          <tr>
+            <th>#</th>
+            <th>Item Name</th>
+            <th>Price (₹)</th>
+          </tr>
+        </thead>
 
-          <tbody>
-            {cart.length === 0 ? (
-              <tr>
-                <td colSpan="3">No items added</td>
-              </tr>
-            ) : (
-              cart.map((item, index) => (
-                <tr key={index}>
-                  <td>{index + 1}</td>
-                  <td>{item.name}</td>
-                  <td>{item.price}</td>
-                </tr>
-              ))
-            )}
-          </tbody>
-        </table>
-      </div>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Laptop</td>
+            <td>50000</td>
+          </tr>
+
+          <tr>
+            <td>2</td>
+            <td>Mobile</td>
+            <td>20000</td>
+          </tr>
+
+          <tr>
+            <td>3</td>
+            <td>Tablet</td>
+            <td>30000</td>
+          </tr>
+
+          <tr>
+            <td>4</td>
+            <td>Computer</td>
+            <td>60000</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   );
 }
