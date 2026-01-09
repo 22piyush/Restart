@@ -25,6 +25,8 @@ function WithoutUseMemo() {
         <button onClick={() => setCount(count + 1)}>Increase Count</button>
         <input type='text' value={text} 
             onChange={(e)=> setText(e.target.value)} />
+
+            <p>Count: {count}</p>
     </div>
   )
 }
