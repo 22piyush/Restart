@@ -10,6 +10,8 @@ import Feature from './pages/Feature'
 import Forms from './components/Form'
 import Countdown from './components/Countdown'
 import UseContext from './hooks/UseContext'
+import USeRef from './hooks/USeRef'
+import Hooks from './hooks/Hooks'
 
 function App() {
   return (
@@ -31,7 +33,12 @@ function App() {
 
             <Route path='/contact' element={<Contact/>}/>
 
+            {/* Context Hook Example Here*/}
             <Route path='/context' element={<UseContext/>}/>
+
+
+            <Route path='/hooks' element={<Hooks/>}/>
+
 
             {/* TASK:- DO WITH MULTIPLE IDS Ex.
             "/category/:categoryId/p/:productId" */}
