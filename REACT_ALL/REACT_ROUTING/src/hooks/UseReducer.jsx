@@ -69,7 +69,7 @@ function Form(){
 
     return(
         <form>
-            <input type='text' name="username" placeholder="User Name" 
+            <input type='text' name="userName" placeholder="User Name" 
             value={formData.userName} onChange={handleChange}/>
             <input type='email' name="email" placeholder="Email"
              value={formData.email} onChange={handleChange}/>
