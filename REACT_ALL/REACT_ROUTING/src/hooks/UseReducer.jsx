@@ -46,6 +46,39 @@ function Counter(){
 }
 
 
+function Form(){
+
+    const [formData, dispatch] = useReducer(reducer, {
+        userName: "",
+        email: ""
+    });
+
+    function handleChange(e){
+        dispatch({
+            name: e.target.name,
+            value: e.target.value
+        });
+    }
+
+    function reducer(state, action){
+        return {
+            ...state, 
+            [action.name]:[action.value]
+        }
+    }
+
+    return(
+        <form>
+            <input type='text' name="username" placeholder="User Name" 
+            value={formData.userName} onChange={handleChange}/>
+            <input type='email' name="email" placeholder="Email"
+             value={formData.email} onChange={handleChange}/>
+
+            <p>{formData.userName} - {formData.email}</p>
+        </form>
+    )
+}
+
 
 function UseReducer() {
     const [checked, toggle] = useReducer((checked) => !checked, false);
@@ -56,6 +89,7 @@ function UseReducer() {
              {checked ? "checked" : "Not Checked"}
 
             <Counter/>
+            <Form/>
         </div>
     )
 }
