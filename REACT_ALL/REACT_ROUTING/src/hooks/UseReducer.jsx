@@ -1,4 +1,4 @@
-import React, { act, useReducer, useState } from 'react'
+import React, { useReducer, useState } from 'react'
 
 
 // function Test(){
