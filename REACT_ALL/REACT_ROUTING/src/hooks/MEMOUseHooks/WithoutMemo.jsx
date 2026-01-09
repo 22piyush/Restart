@@ -9,7 +9,7 @@ function WithoutMemo() {
         console.log("Running..............");
         
         let total = 0;
-        for(let i=0; i<10000000; i++){
+        for(let i=0; i<1000000000; i++){
             total = total + i;
         }
 
@@ -25,7 +25,7 @@ function WithoutMemo() {
 
         <input type="text" value={text} onChange={(e) => setText(e.target.value)}/>
 
-        
+        <p>Count: {count}</p>
     </div>
   )
 }
