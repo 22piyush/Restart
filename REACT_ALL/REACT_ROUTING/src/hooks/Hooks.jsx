@@ -1,11 +1,11 @@
 import React from 'react'
 import USeRef from './USeRef'
 import UseReducer from './UseReducer'
-import UseMemo from './USEMEMO/UseMemo'
+import UseMemoHook from './MEMOUseHooks/UseMemoHook'
 
 function Hooks() {
   return (
-    <div><UseMemo/></div>
+    <div><UseMemoHook/></div>
   )
 }
 
