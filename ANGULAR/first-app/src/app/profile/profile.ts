@@ -1,4 +1,4 @@
-import { Component, computed, effect, signal } from '@angular/core';
+import { Component, computed, effect, Signal, signal, WritableSignal } from '@angular/core';
 
 @Component({
   selector: 'app-profile',
@@ -8,11 +8,19 @@ import { Component, computed, effect, signal } from '@angular/core';
 })
 export class Profile {
 
-  height = signal(100);
-  width = signal(20);
-  area = computed(() => this.height() * this.width());
+  data: WritableSignal<string | number | boolean> = signal<string | number | boolean>(10);
+  speed:Signal<number> = computed<number>(()=> 90)
+  users:WritableSignal<string[]> = signal(['anil', 'sidhu', 'peter'])
 
-  handleHeight(){
-    this.height.set(this.height() + 10);
+  handleData(){
+
+    if(this.users().includes('bruce')){
+      alert("Already Exist")
+    }else{
+      this.users.update((item) => [...item, 'bruce']);
+    }  
+
+    console.log(this.users());
+    
   }
 }
