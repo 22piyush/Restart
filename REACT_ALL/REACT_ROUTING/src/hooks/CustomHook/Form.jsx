@@ -12,6 +12,7 @@ function Form() {
     }
 
     const onsubmit =(values) => {
+        console.log(values);
         
     }
 
