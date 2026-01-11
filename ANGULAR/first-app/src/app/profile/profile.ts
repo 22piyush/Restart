@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, computed, effect, signal } from '@angular/core';
 
 @Component({
   selector: 'app-profile',
@@ -8,6 +8,11 @@ import { Component } from '@angular/core';
 })
 export class Profile {
 
-  
+  height = signal(100);
+  width = signal(20);
+  area = computed(() => this.height() * this.width());
 
+  handleHeight(){
+    this.height.set(this.height() + 10);
+  }
 }
