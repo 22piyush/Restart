@@ -1,15 +1,11 @@
-const { signedCookie } = require("cookie-parser");
 const User = require("../modules/Users");
-const crypto = require("crypto");
+const bcrypt = require("bcrypt")
 
 exports.registerUser = async (req, res) => {
     try {
         const { email, password, mobile, role } = req.body;
 
-        const salt = crypto.randomBytes(16);
-        const hashedPassword = crypto.pbkdf2Sync(password, salt, 100000, 32, 'sha256');
-
-        
+        const hashedPassword = await bcrypt.hash(password, 12)
 
         const userExists = await User.findOne({ $or: [{ email, mobile }] });
         if (userExists) {
@@ -18,7 +14,7 @@ exports.registerUser = async (req, res) => {
 
         const user = await User.create({
             email,
-            password: `${salt.toString("base64url")}.${hashedPassword.toString("base64url")}`,
+            password: hashedPassword,
             mobile,
             role
         });
@@ -40,10 +36,9 @@ exports.loginUser = async (req, res) => {
 
         if (!user) return res.status(400).json({ message: "Username not found" });
 
-        const [salt, savedHashedPassword] = user.password.split(".");
-        const enteredPasswordHash = crypto.pbkdf2Sync(password, salt, 100000, 32, 'sha256');
+        const isPasswordValid = await bcrypt.compare(password, user.password)
 
-        if(savedHashedPassword !== enteredPasswordHash){
+        if(!isPasswordValid){
             return res.status(400).json({ message: "Invalid Credientials" });
         }
 
