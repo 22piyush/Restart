@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-function WithData({WrappedComponent, url}) {
+function WithData(WrappedComponent, url) {
   return function EnhancedComponent(){
     const [data, setData] = useState([]);
 
