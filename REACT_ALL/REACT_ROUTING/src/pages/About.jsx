@@ -1,8 +1,11 @@
 import React from 'react'
+import Higher from '../components/Higher Order Comp/Higher'
 
 function About() {
   return (
-    <div>About</div>
+    <div>About    <Higher/></div>
+
+
   )
 }
 
