@@ -25,8 +25,8 @@ function QuestionCard() {
       </div>
 
       {/* Footer */}
-      <div className="d-flex justify-content-between align-items-center mt-4">
-        <button className="btn btn-outline-secondary">Previous</button>
+      <div className="d-flex justify-content-end align-items-center mt-4">
+        {/* <button className="btn btn-outline-secondary">Previous</button> */}
 
         <button className="btn btn-primary">Next Question →</button>
       </div>

@@ -12,6 +12,22 @@ function Quiz() {
   const {index, questions} = state;
   const navigate = useNavigate();
 
+  if(!questions || questions.length === 0){
+    return <h2 className="text-center mt-5">Loading Questions</h2>
+  }
+  
+  if(index >= questions.length){
+    dispatch({type:"FINISH"})
+    navigate("/result")
+    return null;
+  }
+
+
+  const current = questions[index];
+
+
+
+
   return (
     <div className="container mt-5">
       <div className="row justify-content-center">
@@ -24,12 +40,16 @@ function Quiz() {
             <Timer />
 
             {/* Progress Bar */}
-            <ProgressBar/>
+            <ProgressBar current={index} total={questions.length}/>
 
             <hr />
 
             {/* Question */}
-            <QuestionCard/>
+            <QuestionCard 
+              questions={current.questions}
+              options={current.options}
+              onSelect={handleSelect}
+            />
 
           </div>
 
