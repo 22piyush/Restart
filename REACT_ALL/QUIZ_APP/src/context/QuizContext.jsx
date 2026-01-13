@@ -18,7 +18,12 @@ function quizReducer(state, action){
                 ...state,
                 username: action.payload
             }
-        
+        case "ANSWER":
+            return{
+                ...state,
+                score: action.payload ? state.score + 1 : state.score,
+                index: state.index + 1
+            }
         default: 
             return state;
     }
