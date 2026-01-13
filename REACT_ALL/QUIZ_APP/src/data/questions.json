@@ -1,0 +1,112 @@
+[
+  {
+    "id": 1,
+    "question": "React is mainly used for ?",
+    "options": [
+      "Styling",
+      "Mobile App",
+      "Building UI",
+      "None"
+    ],
+    "answer": "Building UI"
+  },
+  {
+    "id": 2,
+    "question": "Who developed React?",
+    "options": [
+      "Google",
+      "Facebook",
+      "Microsoft",
+      "Twitter"
+    ],
+    "answer": "Facebook"
+  },
+  {
+    "id": 3,
+    "question": "What is JSX?",
+    "options": [
+      "Java Syntax Extension",
+      "JavaScript XML",
+      "JSON XML",
+      "JavaScript Extra"
+    ],
+    "answer": "JavaScript XML"
+  },
+  {
+    "id": 4,
+    "question": "Which hook is used for state management in functional components?",
+    "options": [
+      "useEffect",
+      "useContext",
+      "useState",
+      "useReducer"
+    ],
+    "answer": "useState"
+  },
+  {
+    "id": 5,
+    "question": "Which hook is used to perform side effects in React?",
+    "options": [
+      "useState",
+      "useEffect",
+      "useMemo",
+      "useRef"
+    ],
+    "answer": "useEffect"
+  },
+  {
+    "id": 6,
+    "question": "What is the default file extension for React components?",
+    "options": [
+      ".js",
+      ".jsx",
+      ".react",
+      ".html"
+    ],
+    "answer": ".jsx"
+  },
+  {
+    "id": 7,
+    "question": "Which method is used to pass data from parent to child component?",
+    "options": [
+      "state",
+      "props",
+      "context",
+      "hooks"
+    ],
+    "answer": "props"
+  },
+  {
+    "id": 8,
+    "question": "What is Virtual DOM?",
+    "options": [
+      "A copy of real DOM",
+      "Direct DOM manipulation",
+      "Browser DOM",
+      "None of these"
+    ],
+    "answer": "A copy of real DOM"
+  },
+  {
+    "id": 9,
+    "question": "Which command is used to create a React app?",
+    "options": [
+      "npm create-react-app",
+      "npx create-react-app",
+      "npm react-new",
+      "npx react-start"
+    ],
+    "answer": "npx create-react-app"
+  },
+  {
+    "id": 10,
+    "question": "React follows which architecture?",
+    "options": [
+      "MVC",
+      "MVVM",
+      "Component-Based",
+      "Monolithic"
+    ],
+    "answer": "Component-Based"
+  }
+]
