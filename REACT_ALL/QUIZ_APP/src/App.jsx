@@ -1,7 +1,6 @@
 import React from "react";
 import Home from "./pages/Home";
 import Quiz from "./pages/Quiz";
-import Result from "./pages/Result";
 import LeaderBoard from "./pages/LeaderBoard";
 import { Suspense, lazy } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";

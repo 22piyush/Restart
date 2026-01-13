@@ -1,6 +1,16 @@
 import React from "react";
+import { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Home() {
+
+  const [name, setName] = useState("");
+
+  const startQuiz = () => {
+    if(!name.trim()) return alert("Please enter your name.");
+    
+  }
+
   return (
     <div className="container mt-5">
       <div className="row justify-content-center">
@@ -28,10 +38,11 @@ function Home() {
               type="text"
               className="form-control form-control-lg mb-3"
               placeholder="Enter your name"
+              onChange={(e) => setName(e.target.value)}
             />
 
             {/* Button */}
-            <button className="btn btn-primary btn-lg w-100">
+            <button className="btn btn-primary btn-lg w-100" onClick={startQuiz}>
               Start Quiz
             </button>
 
