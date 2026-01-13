@@ -1,14 +1,18 @@
 import React from "react";
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { QuizContext } from "../context/QuizContext";
 
 function Home() {
 
   const [name, setName] = useState("");
+  const {dispatch } = useContext(QuizContext);
+  const navigate = useNavigate();
 
   const startQuiz = () => {
     if(!name.trim()) return alert("Please enter your name.");
-    
+      dispatch({type: "SET_NAME", payload: name});
+      navigate("/quiz");
   }
 
   return (
