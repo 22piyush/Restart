@@ -24,6 +24,16 @@ function quizReducer(state, action){
                 score: action.payload ? state.score + 1 : state.score,
                 index: state.index + 1
             }
+        case "FINISH":
+            return{
+                ...state,
+                completed: true
+            }  
+        case "RESET":
+            return{
+                ...initialState,
+                questions: state.questions
+            }    
         default: 
             return state;
     }
