@@ -56,6 +56,7 @@ function Result() {
             <div className="d-flex gap-3">
               <Link to={"/"}><button
                 className="btn btn-outline-secondary w-100"
+                onClick={() => dispatch({type: "RESET"})}
               >
                 ⬅ Back to Home
               </button></Link>
