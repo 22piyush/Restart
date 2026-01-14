@@ -1,27 +1,19 @@
 import React from "react";
 
-function QuestionCard() {
+function QuestionCard({question, options, onSelect}) {
   return (
     <div>
-      <h4 className="mb-4">React is mainly used for ?</h4>
+      <h4 className="mb-4">{question}</h4>
 
       {/* Options */}
       <div className="list-group">
-        <button className="list-group-item list-group-item-action mb-2">
-          A. Styling
-        </button>
 
-        <button className="list-group-item list-group-item-action mb-2">
-          B. Mobile App
-        </button>
+        {options.map((opt, i) => (
+          <button className="list-group-item list-group-item-action mb-2" key={i}
+            onClick={() => onSelect(opt)}>
+          </button>
+        ))}
 
-        <button className="list-group-item list-group-item-action mb-2">
-          C. Building UI
-        </button>
-
-        <button className="list-group-item list-group-item-action">
-          D. None
-        </button>
       </div>
 
       {/* Footer */}

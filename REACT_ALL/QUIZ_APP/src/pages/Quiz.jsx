@@ -26,7 +26,10 @@ function Quiz() {
   const current = questions[index];
 
 
+  const handleSelect = (option) => {
+    dispatch({type:"ANSWER", payload: option === current.answer});
 
+  }
 
   return (
     <div className="container mt-5">
@@ -46,7 +49,7 @@ function Quiz() {
 
             {/* Question */}
             <QuestionCard 
-              questions={current.questions}
+              question={current.questions}
               options={current.options}
               onSelect={handleSelect}
             />
