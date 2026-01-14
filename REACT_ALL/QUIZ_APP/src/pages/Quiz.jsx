@@ -2,7 +2,7 @@ import React from "react";
 import Timer from "../components/Timer";
 import ProgressBar from "../components/ProgressBar";
 import QuestionCard from "../components/QuestionCard";
-import { useState, useContext } from "react";
+import {useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { QuizContext } from "../context/QuizContext";
 
@@ -40,7 +40,7 @@ function Quiz() {
           <div className="card shadow-lg border-0 p-4">
 
             {/* Header */}
-            <Timer />
+            <Timer time={time}/>
 
             {/* Progress Bar */}
             <ProgressBar current={index} total={questions.length}/>
