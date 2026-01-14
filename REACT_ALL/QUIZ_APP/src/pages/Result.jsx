@@ -1,10 +1,26 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { QuizContext } from "../context/QuizContext";
 
 function Result() {
 
   const {state, dispatch} = useContext(QuizContext);
+
+  useEffect(() => {
+    const entry = {
+      name: state.username,
+      score: state.score,
+      percentage: Math.round((state.score / state.questions.length) * 100),
+      date: Date.now().toLocaleString()
+    }
+
+    const stored = JSON.parse(localStorage.getItem("leaderboard")) || [];
+    const updated = [...stored, entry];
+
+    updated.sort((a, b) => b.score - a.score);
+
+    localStorage.setItem("leaderboard", JSON.stringify(updated));
+  }, [])
 
 
   return (
