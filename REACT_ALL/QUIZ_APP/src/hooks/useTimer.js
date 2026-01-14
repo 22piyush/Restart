@@ -14,4 +14,4 @@ function useTimer({seconds}) {
   return { time }
 }
 
-export default useTimer
+export default useTimer;
