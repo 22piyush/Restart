@@ -1,16 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Timer from "../components/Timer";
 import ProgressBar from "../components/ProgressBar";
 import QuestionCard from "../components/QuestionCard";
 import {useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { QuizContext } from "../context/QuizContext";
+import useTimer from "../hooks/useTimer";
 
 function Quiz() {
 
   const {state, dispatch} = useContext(QuizContext);
   const {index, questions} = state;
   const navigate = useNavigate();
+  const {time, reset} = useTimer(15);
+
+  useEffect(() => {
+    if(time == 0){
+      dispatch({type:"ANSWER", payload: false})
+      reset()
+    }
+  }, [time])
 
   if(!questions || questions.length === 0){
     return <h2 className="text-center mt-5">Loading Questions</h2>
@@ -28,7 +37,7 @@ function Quiz() {
 
   const handleSelect = (option) => {
     dispatch({type:"ANSWER", payload: option === current.answer});
-
+    reset();
   }
 
   return (
@@ -40,7 +49,7 @@ function Quiz() {
           <div className="card shadow-lg border-0 p-4">
 
             {/* Header */}
-            <Timer time={time}/>
+            <Timer time={time} current={index} total={questions.length} />
 
             {/* Progress Bar */}
             <ProgressBar current={index} total={questions.length}/>
@@ -49,7 +58,7 @@ function Quiz() {
 
             {/* Question */}
             <QuestionCard 
-              question={current.questions}
+              question={current.question}
               options={current.options}
               onSelect={handleSelect}
             />

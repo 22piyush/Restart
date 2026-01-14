@@ -1,16 +1,11 @@
-import React from "react";
+import { useContext } from "react";
+import { Link } from "react-router-dom";
+import { QuizContext } from "../context/QuizContext";
 
 function Result() {
 
-  const handleBackHome = () => {
-    alert("Go back to Home"); 
-    // later: navigate("/")
-  };
+  const {state, dispatch} = useContext(QuizContext);
 
-  const handleRetry = () => {
-    alert("Retry Quiz");
-    // later: navigate("/quiz")
-  };
 
   return (
     <div className="container mt-5">
@@ -32,30 +27,30 @@ function Result() {
             {/* Heading */}
             <h2 className="fw-bold mb-2">Quiz Completed!</h2>
             <p className="text-muted mb-4">
-              Great job! Here’s how you performed 👇
+              Great job! {state.username}
             </p>
 
             {/* Score Section */}
             <div className="bg-light rounded p-3 mb-4">
               <h4 className="mb-1">Your Score</h4>
-              <h1 className="fw-bold text-primary">7 / 10</h1>
+              <h1 className="fw-bold text-primary">{state.score} / {state.questions.length}</h1>
             </div>
 
             {/* Buttons */}
             <div className="d-flex gap-3">
-              <button
+              <Link to={"/"}><button
                 className="btn btn-outline-secondary w-100"
-                onClick={handleBackHome}
               >
                 ⬅ Back to Home
-              </button>
+              </button></Link>
 
-              <button
-                className="btn btn-primary w-100"
-                onClick={handleRetry}
-              >
-                🔄 Retry Quiz
-              </button>
+             <Link to={"/leaderboard"}>
+                <button
+                  className="btn btn-primary w-100"
+                >
+                  🔄 View Leaderboard
+                </button>
+             </Link>
             </div>
 
           </div>
