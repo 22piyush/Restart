@@ -4,6 +4,7 @@ import { useState } from "react"
 // import PortalTest from "./PortalTest"
 import Model from "./Model";
 import UserProfile from "./Error Boundries/UserProfile";
+import ErrorBoundry from "./Error Boundries/ErrorBoundry";
 
 function App() {
 
@@ -33,8 +34,15 @@ function App() {
 
       <div style={{marginTop:"50px"}}>
         {/* Error Boundries  */}
-        <UserProfile userData={userData}/> 
-        <UserProfile userData={userData1}/> 
+
+        <ErrorBoundry>
+          <UserProfile userData={userData}/> 
+        </ErrorBoundry>
+
+        <ErrorBoundry fallback={<p>Error in user Profile</p>}>
+          <UserProfile userData={userData1}/> 
+        </ErrorBoundry>
+
       </div>
   
     </div>
