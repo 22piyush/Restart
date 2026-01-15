@@ -4,8 +4,8 @@ function Model({ isOpen, onClose, children }) {
   if (!isOpen) return null;
 
   return createPortal(
-    <div style={styles.overlay}>
-      <div style={styles.modal}>
+    <div style={styles.overlay} onClick={onClose}>
+      <div style={styles.modal} onClick={(e) => e.stopPropagation()}>
         {children}
 
         <button style={styles.btn} onClick={onClose}>Close</button>
