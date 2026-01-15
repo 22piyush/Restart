@@ -14,4 +14,4 @@ function UserProfile({userData}) {
   )
 }
 
-export default UserProfile
+export default UserProfile;
