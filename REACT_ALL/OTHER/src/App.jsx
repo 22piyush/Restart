@@ -35,13 +35,13 @@ function App() {
       <div style={{marginTop:"50px"}}>
         {/* Error Boundries  */}
 
-        <ErrorBoundry>
+        {/* <ErrorBoundry> */}
           <UserProfile userData={userData}/> 
-        </ErrorBoundry>
+        {/* </ErrorBoundry> */}
 
-        <ErrorBoundry fallback={<p>Error in user Profile</p>}>
+        {/* <ErrorBoundry fallback={<p>Error in user Profile</p>}> */}
           <UserProfile userData={userData1}/> 
-        </ErrorBoundry>
+        {/* </ErrorBoundry> */}
 
       </div>
   
