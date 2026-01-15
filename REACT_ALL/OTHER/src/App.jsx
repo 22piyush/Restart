@@ -14,8 +14,11 @@ function App() {
       age: 25
     }
 
+    const userData1 = null;
+
   return (
     <div>
+      <div>
         <h1>App Component</h1>
         {/* { createPortal( <h1>Portal</h1>, document.body ) } */}
         {/* <PortalTest/> */}
@@ -26,11 +29,14 @@ function App() {
             <h2>Hello from Modal</h2>
             <p>This is a simple modal without context.</p>
         </Model>
+      </div>
 
-
-
+      <div style={{marginTop:"50px"}}>
         {/* Error Boundries  */}
         <UserProfile userData={userData}/> 
+        <UserProfile userData={userData1}/> 
+      </div>
+  
     </div>
   )
 }
