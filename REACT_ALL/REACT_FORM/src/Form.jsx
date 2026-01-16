@@ -32,6 +32,11 @@ function Form() {
                     pattern: {
                         value : /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
                         message: "Invalid email address"
+                    },
+                    validate: (value) => {
+                        return(
+                            value !== "admin@example.com" || "Enter a different email address"
+                        )
                     }
                 })}/>
                 {errors.email?.message && <p  className='error'>{ errors.email?.message }</p>}
