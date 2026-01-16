@@ -89,6 +89,16 @@ function Form() {
                { errors.age?.message && <p  className='error'>{ errors.age?.message }</p>}
                 <br/><br/>
 
+
+                <label htmlFor="country">Country</label> <br/>
+                <select id="country">
+                    <option value="">Select Country</option>
+                    <option value="india">India</option>
+                    <option value="Russia">Russia</option>
+                    <option value="Italy">Italy</option>
+                </select>
+
+
                 <button type='submit'>Submit</button>
             </form>
 
