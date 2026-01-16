@@ -22,17 +22,19 @@ body {
   gap: 0.4rem;
   padding: 4rem;
   border: 2px solid white;
+
+  justify-items: center;
 }
 
 .item {
   background-color: rgb(94, 94, 194);
   border: 1px solid rgb(220, 214, 214);
   color: white;
-/* 
+
   height: 100px;
-  width: 100px; */
+  width: 100px;
 
   /* justify-self: stretch; */
   /* align-self: center; */
-  place-self: stretch;
+  /* place-self: stretch; */
 }
