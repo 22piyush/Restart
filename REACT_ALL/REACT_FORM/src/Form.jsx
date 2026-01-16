@@ -8,9 +8,26 @@ function Form() {
         defaultValues:{
             name:"Piyush",
             email:"",
-            age:""
+            age:"",
+            social : {
+                facebook:"",
+                twitter:""
+            }
         }
     });
+
+    // Hanlde data with Request
+    // const { register, handleSubmit, control, formState } = useForm({
+    //     defaultValues: async () => {
+    //         const response = await fetch("URL");
+    //         const data = await response.json();
+    //         return {
+    //             name: data.name,
+    //             email: data.email,
+    //             age: 18
+    //         }
+    //     }
+    // });
     const { errors } = formState;
     
     console.log(useForm());
