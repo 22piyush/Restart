@@ -33,10 +33,17 @@ function Form() {
                         value : /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
                         message: "Invalid email address"
                     },
-                    validate: (value) => {
-                        return(
-                            value !== "admin@example.com" || "Enter a different email address"
-                        )
+                    validate:{
+                        notAdminEmail: (value) => {
+                            return(
+                                value !== "admin@example.com" || "Enter a different email address"
+                            )
+                        },
+                        notBlacklistedEmail: (value) => {
+                            return (
+                                !value.endsWith("@blacklisted.com") || "This domain is not allowed"
+                            )
+                        }
                     }
                 })}/>
                 {errors.email?.message && <p  className='error'>{ errors.email?.message }</p>}
