@@ -4,7 +4,13 @@ import { DevTool } from "@hookform/devtools";
 
 function Form() {
 
-    const { register, handleSubmit, control, formState } = useForm();
+    const { register, handleSubmit, control, formState } = useForm({
+        defaultValues:{
+            name:"Piyush",
+            email:"",
+            age:""
+        }
+    });
     const { errors } = formState;
     
     console.log(useForm());
