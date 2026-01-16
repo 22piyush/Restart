@@ -91,13 +91,20 @@ function Form() {
 
 
                 <label htmlFor="country">Country</label> <br/>
-                <select id="country">
+                <select id="country" {...register("country")}>
                     <option value="">Select Country</option>
                     <option value="india">India</option>
                     <option value="Russia">Russia</option>
                     <option value="Italy">Italy</option>
                 </select>
+                <br/><br/>
 
+
+                <label htmlFor="gender">Gender</label> <br/>
+                <label htmlFor="gender">
+                    <input type="radio" value="male" {...register("gender", { valueAsDate: true })}/>
+                </label>
+                <br/><br/>
 
                 <button type='submit'>Submit</button>
             </form>
