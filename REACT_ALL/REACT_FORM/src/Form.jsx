@@ -4,7 +4,8 @@ import { DevTool } from "@hookform/devtools";
 
 function Form() {
 
-    const { register, handleSubmit, control } = useForm();
+    const { register, handleSubmit, control, formState } = useForm();
+    const { errors } = formState;
     
     console.log(useForm());
     
@@ -22,9 +23,10 @@ function Form() {
                     required: "Name is required",
 
                 })}/>
+                {errors.name?.message && <p className='error'>{ errors.name?.message }</p>}
                 <br/><br/>
                 <label htmlFor="">Email</label><br/>
-                <input type="email" id="email" 
+                <input type="text" id="email" 
                 {...register("email", {
                     required: "Email is required",
                     pattern: {
@@ -32,12 +34,23 @@ function Form() {
                         message: "Invalid email address"
                     }
                 })}/>
+                {errors.email?.message && <p  className='error'>{ errors.email?.message }</p>}
                 <br/><br/>
                 <label htmlFor="">Age</label><br/>
-                <input type="text" id="age" 
+                <input type="number" id="age" 
                 {...register("age", {
-                    required: "Age is required"
+                    valueAsNumber:true,
+                    required: "Age is required",
+                    min:{
+                        value: 18,
+                        message: "Age must be at least 18"
+                    },
+                    max:{
+                        value: 25,
+                        message: "Age must be at least 25"
+                    }
                 })}/>
+               { errors.age?.message && <p  className='error'>{ errors.age?.message }</p>}
                 <br/><br/>
 
                 <button type='submit'>Submit</button>
