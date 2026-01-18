@@ -19,7 +19,7 @@ function App() {
 
       <input type="number" value={number} onChange={(e) => {setNumber(e.target.value)}}/>
 
-       <button onClick={()=>{ dispatch(incrementByAmount(10)) }}>Increment by 10</button>
+       <button onClick={()=>{ dispatch(incrementByAmount(Number(number))) }}>Increment by {number}</button>
     </div>
   )
 }
