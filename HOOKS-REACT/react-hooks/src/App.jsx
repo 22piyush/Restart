@@ -1,8 +1,11 @@
 import React from 'react'
+import UserContextProvider from './context/UserContextProvider'
 
 function App() {
   return (
-    <div>App</div>
+    <UserContextProvider>
+      
+    </UserContextProvider>
   )
 }
 
