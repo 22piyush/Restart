@@ -9,12 +9,6 @@ import { Profile } from './profile/profile';
   styleUrl: './app.css'
 })
 export class App {
-  title = 'first-app';
-  count = 0;
-  counter(type:string){
 
-    type == 'minus' ? this.count > 0 && this.count-- : this.count++;
-    
-  }
   
 }

@@ -4,23 +4,16 @@ import { Component, computed, effect, Signal, signal, WritableSignal } from '@an
   selector: 'app-profile',
   imports: [],
   templateUrl: './profile.html',
-  styleUrl: './profile.css',
 })
 export class Profile {
 
-  data: WritableSignal<string | number | boolean> = signal<string | number | boolean>(10);
-  speed:Signal<number> = computed<number>(()=> 90)
-  users:WritableSignal<string[]> = signal(['anil', 'sidhu', 'peter'])
+  text: WritableSignal<string> = signal<string>('piyush');
 
-  handleData(){
 
-    if(this.users().includes('bruce')){
-      alert("Already Exist")
-    }else{
-      this.users.update((item) => [...item, 'bruce']);
-    }  
-
-    console.log(this.users());
-    
+  resetValue(){
+     this.text.set("Hrshal")
+  }
+  setValue(val:string){
+      this.text.set(val)
   }
 }

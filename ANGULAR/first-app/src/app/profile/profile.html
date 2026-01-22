@@ -1,5 +1,5 @@
-<p>profile works!</p>
-
-
-
-<button (click)="handleData()">Data</button>
+<div>
+    <h1>{{text()}}</h1>
+    <input type="text" [value]="text()" (input)="setValue($event.target.value)">
+    <button (click)="resetValue()">Reset Value</button>
+</div>

@@ -1,10 +1,10 @@
 import React from 'react'
-import { useForm } from 'react-hook-form';
+import { useForm, Watch } from 'react-hook-form';
 import { DevTool } from "@hookform/devtools";
 
 function Form() {
 
-    const { register, handleSubmit, control, formState } = useForm({
+    const { register, handleSubmit, control, formState, watch } = useForm({
         defaultValues:{
             name:"Piyush",
             email:"",
@@ -37,9 +37,13 @@ function Form() {
         console.log(data);
     }
 
+
+    const watchName = watch(["name", "email"]);
+
   return (
     <div style={{marginTop:"100px"}}>
         <div>
+            <h1>{watchName}</h1>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <label htmlFor="">Name</label><br/>
                 <input type="text" id="name" 
@@ -100,10 +104,31 @@ function Form() {
                 <br/><br/>
 
 
-                <label htmlFor="gender">Gender</label> <br/>
-                <label htmlFor="gender">
-                    <input type="radio" value="male" {...register("gender", { valueAsDate: true })}/>
+                <label>Gender</label>
+                <br />
+
+                <label htmlFor="male">
+                <input
+                    type="radio"
+                    id="male"
+                    value="male"
+                    {...register("gender", { required: true })}
+                />
+                Male
                 </label>
+
+                <br />
+
+                <label htmlFor="female">
+                <input
+                    type="radio"
+                    id="female"
+                    value="female"
+                    {...register("gender", { required: true })}
+                />
+                Female
+                </label>
+
                 <br/><br/>
 
                 <button type='submit'>Submit</button>
