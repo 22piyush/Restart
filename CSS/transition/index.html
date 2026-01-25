@@ -6,20 +6,43 @@
     <title>Transition</title>
     <style>
         #box{
-            width: 150px;
-            height: 150px;
-            background: pink;
-
-            transition: all 2s linear 1s;
-        }
-        #box:active{
-            width: 300px;
             height: 300px;
-            background: orange;
+            width: 300px;
+            border: 1px solid black;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin: -150px;
+            perspective: 500px;
+        }
+        .content{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+        }
+        .front,
+        .back{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            background-color: #ffffff;
+            color: tomato;
+            font-size: 60px;
+            text-align: center;
+            line-height: 300px;
+            backface-visibility: hidden;
+        }
+        .back{
+            background-color: tomato;
+            color: #ffffff;
+            transform: rotateY(180deg);
         }
     </style>
 </head>
 <body>
-    <div id="box"></div>
+    <div id="box">
+        <div class="content">Front</div>
+        <div class="back">Back</div>
+    </div>
 </body>
 </html>
