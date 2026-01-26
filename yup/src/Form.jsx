@@ -32,6 +32,13 @@ function Form() {
         />
         <p>{errors.password?.message}</p>
 
+         <input
+          type="password"
+          {...register("confirmPassword")}
+          placeholder="confirmPassword"
+        />
+        <p>{errors.confirmPassword?.message}</p>
+
         <button type="submit">Register</button>
       </form>
     </div>
