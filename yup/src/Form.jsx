@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import { yupReSolver } from '@hookform/resolver/yup'
+import { registerSchema } from "./schema";
 
 function Form() {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useState();
+  } = useState({
+    resolver: yupReSolver(registerSchema)
+  });
 
   const onSubmit = (data) => {
     console.log(data);
