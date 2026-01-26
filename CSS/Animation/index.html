@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .card {
+            margin: -150px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            height: 300px;
+            width: 300px;
+            background-color: white;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            text-align: center;
+            user-select: none;
+
+/* 
+            animation-name: sample;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+            animation-direction: alternate-reverse; */
+
+            animation: sample 2s infinite alternate-reverse;
+            animation-delay: 2s;
+        }
+
+        @keyframes sample {
+            0%{border-radius: 0%;}
+            100%{border-radius: 50%; background-color: tomato; color: white;}
+        }
+    </style>
+</head>
+
+<body style="margin: 0; padding: 0; height: 100%; width: 100%; box-sizing: border-box;">
+    <div class="card">Piyush</div>
+</body>
+
+</html>
