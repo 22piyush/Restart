@@ -11,7 +11,12 @@
     margin: auto;
 
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 200px 200px 200px;
+    gap: 20px;
+
+    
+
+    border: 3px solid blue;
 }
 
 .items{
