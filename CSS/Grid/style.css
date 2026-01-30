@@ -6,30 +6,42 @@
     list-style: none;
     text-decoration: none;
 }
+body{
+    height: 100vh;
+    width: 100vw;
+}
 .container{
-    max-width: 1320px;
     margin: auto;
     display: grid;
-
     grid-template-columns: 200px 1fr;
+    grid-template-areas: "header header" "sidebar content" "footer footer";
 }
 
 .header{
     background-color: green;
     padding: 10px;
+    height: 60px;
+
+    grid-area: header;
 }
 
 .sidebar{
+    grid-area: sidebar;
     background-color: blue;
     padding: 10px;
+    height: calc(100vh - 120px);
 }
 
 .content{
+    grid-area: content;
     background-color: yellow;
     padding: 10px;
+    height: calc(100vh - 120px);
 }
 
 .footer{
+    grid-area: footer;
     background-color: red;
     padding: 10px;
+    height: 60px;
 }
