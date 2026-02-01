@@ -29,19 +29,23 @@ body{
     grid-area: sidebar;
     background-color: blue;
     padding: 10px;
-    height: calc(100vh - 120px);
 }
 
 .content{
     grid-area: content;
     background-color: yellow;
     padding: 10px;
-    height: calc(100vh - 120px);
 }
 
 .footer{
     grid-area: footer;
     background-color: red;
     padding: 10px;
-    height: 60px;
+}
+
+@media (max-width:575px){
+    .container{
+         grid-template-columns:1fr;
+         grid-template-areas: "header" "sidebar" "content" "footer";
+    }
 }
