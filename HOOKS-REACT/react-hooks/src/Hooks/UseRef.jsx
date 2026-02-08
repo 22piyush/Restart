@@ -1,8 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 
 function UseRef() {
-  
-    const renderCountRef = useRef(0);
+  const renderCountRef = useRef(0);
   // State can Persist the value.
 
   const [randomNumber, setRandomNumber] = useState(0);
@@ -14,7 +13,10 @@ function UseRef() {
 
   useEffect(() => {
     console.log("Re Render Triggred");
-    renderCountRef.current += 1 ;
+    renderCountRef.current += 1;
+    setTimeout(() => {
+      console.log("Tineout");
+    }, 1000);
   });
 
   return (
