@@ -1,8 +1,9 @@
 import React from 'react'
+import UseRef from './Hooks/UseRef'
 
 function App() {
   return (
-    <div>App</div>
+    <div><UseRef/></div>
   )
 }
 
