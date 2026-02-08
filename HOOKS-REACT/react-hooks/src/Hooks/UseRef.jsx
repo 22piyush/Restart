@@ -3,11 +3,17 @@ import React, { useRef } from "react";
 function UseRef() {
   const inputRef = useRef();
 
-  const handleFocus = () => {};
+  const handleFocus = () => {
+
+    console.log(inputRef);
+    inputRef.current.focus()
+    
+
+  };
 
   return (
     <div>
-      <input type="text" />
+      <input ref={inputRef} type="text" />
       <button onClick={handleFocus}>Focus</button>
     </div>
   );
