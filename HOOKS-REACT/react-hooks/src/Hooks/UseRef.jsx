@@ -4,28 +4,21 @@ function UseRef() {
   const [count, setCount] = useState(0);
   // State can Persist the value.
 
-  const countRef = useRef(0);
+  const [randomNumber, setRandomNumber] = useState(0);
 
-  let counter = 0;
-
-  const handleIncrement = () => {
-    setCount(count + 1);
-
-    countRef.current += 1;
-    console.log(countRef.current, "REF");
-
-    counter += 1;
-    console.log(counter, "Counter");
+  const generateRandomNumber = () => {
+    const no = Math.random();
+    setRandomNumber(no);
   };
 
   useEffect(() => {
-    console.log("re Render hua hai");
+    console.log("Re Render Triggred");
   });
 
   return (
     <div>
-      <h1>{count}</h1>
-      <button onClick={handleIncrement}>Increment</button>
+      <h1>{randomNumber}</h1>
+      <button onClick={generateRandomNumber}>Generate</button>
     </div>
   );
 }
