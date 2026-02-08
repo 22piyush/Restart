@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 
 function UseRef() {
-  const [count, setCount] = useState(0); 
+  const [count, setCount] = useState(0);
   // State can Persist the value.
 
   const countRef = useRef(0);
