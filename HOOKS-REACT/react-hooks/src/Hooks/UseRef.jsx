@@ -3,8 +3,13 @@ import React, { useEffect, useRef, useState } from "react";
 function UseRef() {
   const [count, setCount] = useState(0);
 
+  const countRef = useRef(0);
+
   const handleIncrement = () => {
-    setCount(count + 1);
+    // setCount(count + 1);
+
+    countRef.current += 1;
+    console.log(countRef.current);
   };
 
   useEffect(() => {
