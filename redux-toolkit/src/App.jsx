@@ -1,16 +1,9 @@
 import React from 'react'
-import { fetchPhotos, fetchVideos } from './api/mediaApi';
-import SearchBar from './components/SearchBar';
 
 function App() {
-
-
-
   return (
-    <div className="h-screen w-full bg-gray-500 text-white">
-        <SearchBar/>
-    </div>
+    <div>App</div>
   )
 }
 
-export default App;
+export default App
