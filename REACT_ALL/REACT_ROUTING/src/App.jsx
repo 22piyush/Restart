@@ -1,63 +1,13 @@
-import React, { lazy, Suspense } from "react";
-import { BrowserRouter, Routes, Route, Form } from "react-router-dom";
-import Header from "./components/Header";
-// import Home from "./pages/Home";
-// import About from "./pages/About";
-import Contact from "./pages/Contact";
-import User from "./pages/User";
-import UserDetail from "./pages/UserDetail";
-import Feature from "./pages/Feature";
-import Forms from "./components/Form";
-import Countdown from "./components/Countdown";
-import UseContext from "./hooks/UseContext";
-import USeRef from "./hooks/USeRef";
-import Hooks from "./hooks/Hooks";
-
-const Home = lazy(()=> import('./pages/Home'))
-const About = lazy(()=> import("./pages/About"))
+import React from "react";
+import Navbar from "./components/Navbar";
+import { BrowserRouter } from "react-router-dom";
 
 function App() {
   return (
     <div>
-      <BrowserRouter>
-        <Suspense fallback={<p>Loading Post....</p>}>
-          <Routes>
-            {/* Show Inside Header  */}
-            <Route path="/" element={<Header />}>
-              {/* Main Page added  */}
-              <Route path="/" element={<Home />} />
 
-              {/* Prefix */}
-              <Route path="in">
-                <Route path="/in/user">
-                  <Route path="/in/user/about" element={<About />} />
-                </Route>
-              </Route>
+        <Navbar />
 
-              <Route path="/contact" element={<Contact />} />
-
-              {/* Context Hook Example Here*/}
-              <Route path="/context" element={<UseContext />} />
-
-              <Route path="/hooks" element={<Hooks />} />
-
-              {/* TASK:- DO WITH MULTIPLE IDS Ex.
-            "/category/:categoryId/p/:productId" */}
-              <Route path="/user/list?" element={<User />} />
-              <Route path="/user/:id/:name?" element={<UserDetail />} />
-            </Route>
-
-            {/* Without Header with Content first selected  */}
-            <Route path="/feature" element={<Feature />}>
-              <Route index element={<Forms />} />
-              <Route path="countdown" element={<Countdown />} />
-            </Route>
-
-            {/* 404 page  */}
-            <Route path="*" element={<h1>Page Not Found</h1>} />
-          </Routes>
-        </Suspense>
-      </BrowserRouter>
     </div>
   );
 }
