@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useContext } from "react";
+import { MyContext } from "../Hooks/MyContext";
 
 function B() {
-  return (
-    <div>B</div>
-  )
+
+  const data = useContext(MyContext);
+
+  return <div>B - {data}</div>;
 }
 
-export default B
+export default B;

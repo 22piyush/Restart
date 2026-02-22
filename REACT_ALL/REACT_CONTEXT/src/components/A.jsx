@@ -5,7 +5,6 @@ import D from "./D";
 function A() {
   return (
     <div>
-      A
       <C />
       <D />
     </div>
