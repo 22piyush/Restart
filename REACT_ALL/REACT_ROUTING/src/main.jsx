@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import Products from "./components/Products.jsx";
 import Home from "./components/Home.jsx";
+import ProductInfo from "./components/ProductInfo.jsx";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
         path: "/products",
         element: <Products />,
       },
+      {
+        path: "/products/:id",
+        element: <ProductInfo />,
+      },
     ],
   },
 ]);
@@ -29,6 +34,5 @@ const router = createBrowserRouter([
 createRoot(document.getElementById("root")).render(
   <>
     <RouterProvider router={router} />
-    <App />
   </>,
 );
