@@ -1,9 +1,14 @@
 import { create } from "zustand";
 
 
-const useMyStore = create(() => ({
+const useMyStore = create((set) => ({
     count: 1,
-    name: "MKL"
+    name: "MKL",
+    increment: ()=>{
+        set({
+            count: 2,
+        })
+    }
 }));
 
 
