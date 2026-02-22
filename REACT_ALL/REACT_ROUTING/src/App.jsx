@@ -7,6 +7,10 @@ import Contact from "./pages/Contact";
 import DetailContact from "./pages/DetailContact";
 
 function App() {
+
+  console.log("App Run");
+  
+
   return (
     <div>
 

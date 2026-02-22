@@ -6,7 +6,7 @@ function DetailContact() {
   const params = useParams();
   console.log(params);
 
-  return <div>DetailContact</div>;
+  return <div>DetailContac : {params.id}</div>;
 }
 
 export default DetailContact;
