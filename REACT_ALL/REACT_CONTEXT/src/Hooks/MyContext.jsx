@@ -1,4 +1,4 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext, useState } from "react";
 
 const MyContext = createContext();
 
@@ -7,8 +7,21 @@ const useMyContext = () => {
 };
 
 const MyContextProvider = ({children}) => {
+
+
+
+    const [count, setCount] = useState(0);
+
+    const value = {
+        count,
+        setCount
+    }
+
+
+
+
   return (
-    <MyContext.Provider value={"Piyush"}>
+    <MyContext.Provider value={value}>
       {children}
     </MyContext.Provider>
   );
