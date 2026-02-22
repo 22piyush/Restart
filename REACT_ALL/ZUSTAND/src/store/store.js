@@ -1,8 +1,7 @@
 import { create } from "zustand";
 
 
-create(()=>{
-    return {
-        
-    }
-})
+const useMyStore =  create(() => ({
+    count: 1,
+    name: "MKL"
+}));
