@@ -6,4 +6,12 @@ const useMyContext = () => {
   return useContext(MyContext);
 };
 
-export { MyContext, useMyContext };
+const MyContextProvider = ({children}) => {
+  return (
+    <MyContext.Provider value={"Piyush"}>
+      {children}
+    </MyContext.Provider>
+  );
+};
+
+export { MyContextProvider, useMyContext };
