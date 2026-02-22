@@ -3,7 +3,7 @@ import { createContext, useContext } from "react";
 const MyContext = createContext();
 
 const useMyContext = () => {
-  useContext(MyContext);
+  return useContext(MyContext);
 };
 
-export { MyContext };
+export { MyContext, useMyContext };

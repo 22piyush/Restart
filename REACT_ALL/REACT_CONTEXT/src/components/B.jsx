@@ -1,9 +1,8 @@
 import React, { useContext } from "react";
-import { MyContext } from "../Hooks/MyContext";
+import { useMyContext } from "../Hooks/MyContext";
 
 function B() {
-
-  const data = useContext(MyContext);
+  const data = useMyContext();
 
   return <div>B - {data}</div>;
 }
