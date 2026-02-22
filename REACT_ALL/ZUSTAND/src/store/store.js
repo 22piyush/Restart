@@ -4,11 +4,10 @@ import { create } from "zustand";
 const useMyStore = create((set) => ({
     count: 1,
     name: "MKL",
-    increment: ()=>{
-        set({
-            count: 2,
-        })
-    }
+    increment: () =>
+        set((state) => ({
+            count: state.count + 1
+        })),
 }));
 
 

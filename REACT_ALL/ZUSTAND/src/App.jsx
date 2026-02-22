@@ -5,16 +5,11 @@ function App() {
   const store = useMyStore();
 
   const handleClick = () => {
-    
     store.increment();
-    
   };
 
   return (
-    <div>
-      App - {store.count}
-      <button onClick={handleClick}>Add</button>
-    </div>
+    <div> App - {store.count}   <button onClick={handleClick}> Add</button></div>
   );
 }
 
