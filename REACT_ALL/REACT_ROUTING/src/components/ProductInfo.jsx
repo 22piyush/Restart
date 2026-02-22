@@ -1,14 +1,24 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import axios from "axios";
 
 function ProductInfo() {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
 
   useEffect(() => {
-    fetch(`https://fakestoreapi.com/products/${id}`)
-      .then((res) => res.json())
-      .then((data) => setProduct(data));
+    const getProduct = async () => {
+      try {
+        const response = await axios.get(
+          `https://fakestoreapi.com/products/${id}`,
+        );
+        setProduct(response.data);
+      } catch (error) {
+        console.error("Error fetching product:", error);
+      }
+    };
+
+    getProduct();
   }, [id]);
 
   if (!product) {
@@ -38,9 +48,7 @@ function ProductInfo() {
         <h2>{product.title}</h2>
         <p style={{ color: "gray" }}>{product.category}</p>
         <p style={{ marginTop: "15px" }}>{product.description}</p>
-        <h3 style={{ color: "green", marginTop: "20px" }}>
-          ₹ {product.price}
-        </h3>
+        <h3 style={{ color: "green", marginTop: "20px" }}>₹ {product.price}</h3>
 
         <button
           style={{
