@@ -1,8 +1,13 @@
 import React from 'react'
+import A from './components/A'
+import B from './components/B'
 
 function App() {
   return (
-    <div>App</div>
+    <div>
+      <A/>
+      <B/>
+    </div>
   )
 }
 
