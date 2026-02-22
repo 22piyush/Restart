@@ -1,9 +1,10 @@
-import React from 'react'
+import React from "react";
+import useMyStore from "./store/store";
 
 function App() {
-  return (
-    <div>App</div>
-  )
+  const store = useMyStore();
+
+  return <div>App - {store.count}</div>;
 }
 
-export default App
+export default App;

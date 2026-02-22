@@ -1,7 +1,10 @@
 import { create } from "zustand";
 
 
-const useMyStore =  create(() => ({
+const useMyStore = create(() => ({
     count: 1,
     name: "MKL"
 }));
+
+
+export default useMyStore;
