@@ -12,7 +12,7 @@ function compose(...fns) {
     return function () {
 
         fns.reduceRight((acc, currFn) => {
-            currFn(10);
+            currFn(acc);
         });
     }
 
@@ -20,5 +20,5 @@ function compose(...fns) {
 }
 
 
-compose(subtract10, multiply5, add2)
+compose(subtract10, multiply5, add2)(5)
 
