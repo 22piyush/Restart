@@ -9,6 +9,10 @@ let subtract10 = num => num - 10;
 
 function compose(...fns) {
 
+    return function(val){
+
+    }
+
     fns.reduceRight((acc, currFn) => {
         currFn(10);
     });
@@ -16,4 +20,4 @@ function compose(...fns) {
 }
 
 
-compose(subtract10, multiply5, add2)
+let result = compose(subtract10, multiply5, add2)
