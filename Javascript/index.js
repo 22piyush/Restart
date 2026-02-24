@@ -11,9 +11,9 @@ function compose(...fns) {
 
     return function () {
 
-        fns.reduceRight((acc, currFn) => {
+        return fns.reduceRight((acc, currFn) => {
             currFn(acc);
-        });
+        }, val);
     }
 
 
