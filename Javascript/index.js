@@ -3,10 +3,13 @@ let multiply5 = num => num * 5;
 let subtract10 = num => num - 10;
 
 
+// Compose -> right to left
+// Pipe -> left to right 
+
 
 function compose(...fns) {
 
-    console.log(fns);
+    fns.reduceRight
     
 
 }
