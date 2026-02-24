@@ -6,6 +6,7 @@ let subtract10 = num => num - 10;
 
 function compose(...fns) {
 
+    console.log(fns);
     
 
 }
