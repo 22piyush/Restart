@@ -9,8 +9,9 @@ let subtract10 = num => num - 10;
 
 function compose(...fns) {
 
-    fns.reduceRight
-    
+    fns.reduceRight((acc, currFn) => {
+        currFn(10);
+    });
 
 }
 
