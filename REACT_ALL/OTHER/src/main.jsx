@@ -1,11 +1,4 @@
-import { createRoot } from 'react-dom/client'
-import App from './App.jsx'
-import ErrorBoundary from './Error Boundries/ErrorBoundry.jsx'
+import { createRoot } from "react-dom/client";
+import App from "./App.jsx";
 
-createRoot(document.getElementById('root')).render( 
-
-<ErrorBoundary>
-    <App /> 
-</ErrorBoundary>
-
-)
+createRoot(document.getElementById("root")).render(<App />);
