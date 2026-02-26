@@ -4,6 +4,9 @@ class Student {
         this.name = name;
         this.age = age;
         this.passion = passion;
+
+        console.log("Constructor function called");
+        
     }
 
 }
