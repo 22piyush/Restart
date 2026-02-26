@@ -6,7 +6,8 @@ class Student{
 
 
 let s1 = new Student();
-console.log(s1);
+let s2 = new Student();
+console.log(s1 , s2);
 
 
 
