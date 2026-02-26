@@ -1,13 +1,17 @@
-class Student{
-    name = 'Piyush';
-    age = "23";
-    passion = "Coding";
+class Student {
+
+    constructor(name, age, passion){
+        this.name = name;
+        this.age = age;
+        this.passion = passion;
+    }
+
 }
 
 
-let s1 = new Student();
+let s1 = new Student("Piyush Bhau", 23, "Code");
 let s2 = new Student();
-console.log(s1 , s2);
+console.log(s1, s2);
 
 
 
