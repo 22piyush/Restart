@@ -8,6 +8,9 @@ class Student {
         console.log("Constructor function called");
         
     }
+    introduceMyself(){
+        console.log(this.age, );
+    }
 
 }
 
