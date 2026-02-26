@@ -9,7 +9,7 @@ class Student {
         
     }
     introduceMyself(){
-        console.log(this.age, );
+        console.log(this.age, "efef" );
     }
 
 }
@@ -18,6 +18,7 @@ class Student {
 let s1 = new Student("Piyush Bhau", 23, "Code");
 let s2 = new Student();
 console.log(s1, s2);
+s1.introduceMyself()
 
 
 
