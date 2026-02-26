@@ -1,6 +1,13 @@
 class Student{
-    name = 'Piyush'
+    name = 'Piyush';
+    age = "23";
+    passion = "Coding";
 }
+
+
+let s1 = new Student();
+console.log(s1);
+
 
 
 
