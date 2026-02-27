@@ -16,3 +16,7 @@ class car {
 
 let bmw = new car("BMW", "Red", "12");
 let Buggati = new car("Buggati", "Gray", "14");
+
+console.log(bmw, Buggati);
+
+bmw.start()
