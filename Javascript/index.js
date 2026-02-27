@@ -5,7 +5,14 @@ class car {
         this.milege = milege;
     }
 
-    start(){
+    start() {
+        console.log(this.name);
+    }
+    stop() {
         console.log(this.name);
     }
 }
+
+
+let bmw = new car("BMW", "Red", "12");
+let Buggati = new car("Buggati", "Gray", "14");
