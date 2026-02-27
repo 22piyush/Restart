@@ -19,4 +19,4 @@ let Buggati = new car("Buggati", "Gray", "14");
 
 console.log(bmw, Buggati);
 
-bmw.start()
+bmw.start();
