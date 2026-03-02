@@ -1,1 +1,0 @@
-const import { store } from './store/index';
