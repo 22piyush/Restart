@@ -1,3 +1,6 @@
+function order(size:"small"|"Large"|number){
+    console.log(size);
+    
+}
 
-let x:never 
-
+console.log(order(3));
