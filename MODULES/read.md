@@ -3,5 +3,5 @@
 # They help you split your code into smaller, manageable parts, making it easier to maintain, reuse, and avoid name collision.
 
 # Spread operator expands/unpacks values.
-
+# DIFF
 # Rest operator collects/packs values.
