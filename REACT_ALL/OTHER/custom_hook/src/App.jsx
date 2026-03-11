@@ -9,6 +9,7 @@ function App() {
       <h1>{count}</h1>
       <button onClick={increment}>Add</button>
       <button onClick={decrement}>Remove</button>
+      <button>Set Value</button>
     </div>
   );
 }
