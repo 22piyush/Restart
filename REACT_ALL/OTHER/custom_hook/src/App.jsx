@@ -2,8 +2,8 @@ import React from "react";
 import { useCounter } from "./customHook/useCounter";
 
 function App() {
-  const { count, increment, decrement, setByValue } = useCounter(0);
-
+  const { count, increment, decrement} = useCounter(0);
+  
   return (
     <div>
       <h1>{count}</h1>
