@@ -8,4 +8,11 @@ export const useCounter = () => {
         setCount(count + 1);
     }
 
+    const decrement = () => {
+        setCount(count + 1);
+    }
+
+    const setByValue = (val) => {
+        setCount(val);
+    }
 }
