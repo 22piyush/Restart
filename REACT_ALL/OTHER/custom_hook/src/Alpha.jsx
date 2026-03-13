@@ -9,7 +9,7 @@ function Alpha({ data }) {
 }
 
 const EnhanceAlpha = memo(Alpha, (prevProp, nextProp ) => {
-    return prevProp.data === nextProp.data
+    return true
 });
 
 export default EnhanceAlpha;
