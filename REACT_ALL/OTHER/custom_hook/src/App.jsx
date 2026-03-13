@@ -7,7 +7,7 @@ function App() {
     
   return (
     <div>
-        <Alpha/>
+        <Alpha data={count}/>
         <button onClick={()=>setCount(count + 1)}>Click:{count}</button>
     </div>
   )

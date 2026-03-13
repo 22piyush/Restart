@@ -1,13 +1,15 @@
 import React, { memo, useEffect } from "react";
 
-function Alpha({ count }) {
+function Alpha({ data }) {
   useEffect(() => {
     console.log("rendering......");
   });
 
-  return <div>Alpha <h1>{count}</h1></div>;
+  return <div>Alpha <h1>{data}</h1></div>;
 }
 
-const EnhanceAlpha = memo(Alpha);
+const EnhanceAlpha = memo(Alpha, (prevProp, nextProp ) => {
+    return prevProp.data === nextProp.data
+});
 
 export default EnhanceAlpha;
