@@ -1,8 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
+import Alpha from './Alpha'
 
 function App() {
+
+    const [count , setCount] = useState(0)
+    
   return (
-    <div>App</div>
+    <div>
+        <Alpha count={count}/>
+        <button onClick={()=>setCount(count + 1)}>Click</button>
+    </div>
   )
 }
 
