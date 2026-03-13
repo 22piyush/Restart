@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { memo, useEffect } from "react";
 
 function Alpha({ count }) {
   useEffect(() => {
@@ -8,4 +8,6 @@ function Alpha({ count }) {
   return <div>Alpha <h1>{count}</h1></div>;
 }
 
-export default Alpha;
+const EnhanceAlpha = memo(Alpha);
+
+export default EnhanceAlpha;
