@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
+import Count from './Count'
 
 function App() {
 
   return (
     <div>
+      <Count/>
     </div>
   )
 }
