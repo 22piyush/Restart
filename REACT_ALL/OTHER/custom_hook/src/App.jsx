@@ -11,7 +11,7 @@ function App() {
   return (
     <div>
 
-      <VT list={arr}/>
+      <VT list={arr} height={300} itemHeight={30}/>
       
     </div>
   )
