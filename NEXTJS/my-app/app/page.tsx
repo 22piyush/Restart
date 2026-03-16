@@ -1,16 +1,9 @@
-import { log } from 'console'
-import Link from 'next/link'
 import React from 'react'
 
-async function Page() {
-  
+function page() {
   return (
-    <div>Page Content
-
-      <Link href="/about">About</Link>
-
-    </div>
+    <div>page</div>
   )
 }
 
-export default Page
+export default page
