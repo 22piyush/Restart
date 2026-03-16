@@ -1,13 +1,9 @@
-import { ReactNode } from "react"
+import React from 'react'
 
-export default function RootLayout({
-  children,
-}: {
-  children: ReactNode
-}) {
+function layout() {
   return (
-    <html lang="en">
-      <body>{children}</body>
-    </html>
+    <div>layout</div>
   )
 }
+
+export default layout
