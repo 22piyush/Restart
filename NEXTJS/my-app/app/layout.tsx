@@ -1,3 +1,7 @@
+export const metadata = {
+  title:"Next JS"
+}
+
 type Props = {
   children: React.ReactNode;
 };
