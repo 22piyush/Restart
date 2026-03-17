@@ -1,23 +1,15 @@
-import Link from 'next/link'
-import React from 'react'
+import Link from "next/link";
 
-function page() {
+export default function Page() {
   return (
     <div>
       <div>Welcome to Home Page</div>
+
       <div>
-        <p>
-          <Link href="/about">About</Link>
-        </p>
-        <p>
-          <Link href="/services">Services</Link>
-        </p>
-        <p>
-          <Link href="/blogs">Blogs</Link>
-        </p>
+        <p><Link href="/about">About</Link></p>
+        <p><Link href="/services">Services</Link></p>
+        <p><Link href="/blogs">Blogs</Link></p>
       </div>
     </div>
-  )
+  );
 }
-
-export default page
