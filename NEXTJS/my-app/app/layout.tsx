@@ -1,9 +1,13 @@
-import React from 'react'
+type Props = {
+  children: React.ReactNode;
+};
 
-function layout() {
+export default function Layout({ children }: Props) {
   return (
-    <div>layout</div>
-  )
+    <html lang="en">
+      <body>
+        {children}
+      </body>
+    </html>
+  );
 }
-
-export default layout
