@@ -1,10 +1,5 @@
-c=10
-print(id(c))
-
-c=True
-
-print(id(c))
-print(type(c))
+print(5,6,7, end=" --> ") 
+print("Hello")
 
 
 
