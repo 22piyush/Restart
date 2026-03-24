@@ -1,7 +1,10 @@
 c=10
-print(c)
+print(id(c))
 
+c=True
 
+print(id(c))
+print(type(c))
 
 
 
