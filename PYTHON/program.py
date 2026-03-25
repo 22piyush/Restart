@@ -1,5 +1,9 @@
-print(5,6,7, end=" --> ") 
-print("Hello")
+
+x = "10"
+y = x
+x="4"
+print(x)
+print(y)
 
 
 
