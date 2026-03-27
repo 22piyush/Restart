@@ -1,6 +1,8 @@
 
 
 
+square_val = []
+
 
 
 
