@@ -1,3 +1,7 @@
+chai = "Lemon, Ginger, Masala, Mint"
+
+print(chai.split(", "))
+
 
 
 
