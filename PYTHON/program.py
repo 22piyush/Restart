@@ -1,3 +1,8 @@
-chai_types = {"Masala": "Spicy", "Ginger":"Zesty", "Green":"Mild"}
 
-print(chai_types["Masala"])
+
+tea_types = ("Black", "Green", "Oolong")
+print(tea_types)
+
+
+
+tea_types[-1]
