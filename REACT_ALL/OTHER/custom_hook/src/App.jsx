@@ -1,20 +1,28 @@
-import React, { useState } from 'react'
-import VT from './VT';
-
+import React, { Children, useCallback, useState } from "react";
+import Chikd from "./Chikd";
 
 function App() {
+  const [count, setCount] = useState(0);
 
-  const arr = Array.from({length:800}, (_,index)=> index + 1);
-  console.log(arr);
+  const[data, setData] = useState({
+    nbame:'BNahgau'
+  })
+
+
+  const handleClick = useCallback(() => {
+    console.log("mail click hua hun", count);
+  }, [data]);
+
+  console.log("Parent rendred");
   
 
   return (
     <div>
+      <button onClick={() => setCount(count + 1)}>Click Here</button>
 
-      <VT list={arr} height={300} itemHeight={30}/>
-      
+      <Chikd handleClick={handleClick} />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
