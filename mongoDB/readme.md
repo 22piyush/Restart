@@ -71,6 +71,14 @@ client.close() -->
 
 
 
+CRUD
+Query operators
+Schema design
+Indexing
+Aggregation
+Relationships
+Pagination
+
 
 
 
