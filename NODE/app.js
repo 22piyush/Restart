@@ -8,6 +8,8 @@
 // cjs imports are not hoisted
 // top level await is not allowed
 // only one value exported in cjs
+// import file or directory using __filename and __dirname
+// Strict mode not enable by default
 
 
 // ES6 Modules 
@@ -20,3 +22,5 @@
 // mjs import are hoisted
 // top level await is allowed
 // export multiple values in mjs
+// import file or directory using import.meta
+// string mode is enable by default
