@@ -1,5 +1,13 @@
-for (let i = 0; i < 10000000000000; i++) {
-    console.log(
-    "AAAAAAAAAAAA"
-    );
+function sum(...nums) {
+    return nums.reduce((curr, acc) => curr + acc);
 }
+
+
+// function poduct(...nums) {
+//     return nums.reduce((curr, acc) => curr + acc);
+// }
+
+
+module.exports = [
+    sum, poduct
+]
