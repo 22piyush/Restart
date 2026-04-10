@@ -1,18 +1,9 @@
-import { readFile } from 'node:fs/promises'
 
-const fileContent = await readFile('./file-1.txt', 'utf-8')
+import { rename } from 'node:fs/promises'
 
-const data = {}
 
-for (let word of fileContent.split(" ")) {
-     
-    if(word in data){
-        data[word] += 1
-    }else{
-        data[word] = 1
-    }
-}
+await rename('nodejs.png', "backend.png");
 
-console.log(data);
+console.log("Renamed");
 
 
