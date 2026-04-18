@@ -1,3 +1,6 @@
 
 import EventEmitter from "events";
-console.log(EventEmitter);
+
+const emitter = new EventEmitter();
+console.log(emitter);
+
