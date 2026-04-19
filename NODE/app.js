@@ -1,15 +1,4 @@
-
-import EventEmitter from "events";
-
-const emitter = new EventEmitter();
+import fs from "fs/promises";
 
 
-emitter.on('abc', () => {
-    console.log("abc event fired 1");
-});
-
-emitter.on('x', () => {
-    console.log("abc event fired 2");
-});
-
-emitter.emit("abc")
+cponst readStream = fs.createReadStream
