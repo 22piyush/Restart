@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import { useState, useCallback } from "react";
 
 const Child = ({ handleClick }) => {
   console.log("Child re-rendered");
