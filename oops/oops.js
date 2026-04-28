@@ -1,15 +1,14 @@
-
-
-function createUser(firstName, lastName, age) {
-    const user = {
-        firstName: firstName,
-        lastName: lastName,
-        age: age
+function createUser(name, age) {
+  return {
+    name: name,
+    age: age,
+    greet() {
+      console.log(`Hello, my name is ${this.name}`);
     }
-
-    return user;
-
+  };
 }
 
+const user1 = createUser("Piyush", 22);
+const user2 = createUser("Rahul", 25);
 
-
+user1.greet(); 
