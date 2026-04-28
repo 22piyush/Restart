@@ -1,10 +1,14 @@
-const user = {
-    firstName: "Piyush",
-    lastName: "Aglawe",
-    age: "23",
-    getAgeYear: function () {
-        return new Date.getAgeYear() - user.age
+
+
+function createUser(firstName, lastName, age) {
+    const user = {
+        firstName: firstName,
+        lastName: lastName,
+        age: age
     }
+
+    return user;
+
 }
 
 
