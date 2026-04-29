@@ -4,6 +4,7 @@ function getAgeYear() {
 }
 
 
+
 function createUser(name, age) {
   const user = {
     name,
