@@ -1,11 +1,11 @@
 
 
 class CreateUser {
-
+#age
     constructor(a, b, c) {
         this.firstName = a
         this.lastName = b
-        this.age = c
+        this.#age = c
     }
 
     getBirthYear() {
