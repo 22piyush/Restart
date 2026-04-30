@@ -3,7 +3,9 @@
 class CreateUser {
 
     constructor(a, b, c) {
-        console.log(a, b, 23);
+        this.firstName = a
+        this.lastName = b
+        this.age = c
     }
 
     getBirthYear() {
