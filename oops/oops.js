@@ -1,10 +1,5 @@
 
 
-function createUser(firstName, lastName, age){
-    this.firstName = firstName
-    this.lastName = lastName
-    this.age = age
+class CreateUser{
+    
 }
-
-const user1 = new createUser("Piyush", "Aglawe", 23);
-console.log(user1);
