@@ -14,10 +14,9 @@ const obj = {
         }, 4000);
 
         const sayHi = () => {
-            console.log(this, "1111");
+            console.log(this);
         };
         sayHi()
     }
 }
-
 obj.f1();
