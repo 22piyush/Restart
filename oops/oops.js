@@ -26,9 +26,6 @@
 // const user1 = new CreateUser("Piyush", "Aglawe", 23)
 
 
-
-
-
 const user = {
     firstName: 'Anurag',
     lastName: "Singh"
