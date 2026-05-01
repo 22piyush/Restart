@@ -1,33 +1,23 @@
 
 
-// class CreateUser {
-//     constructor(a, b, c) {
-//         this.firstName = a
-//         this.lastName = b
-//         this.age = c
-//     }
+const obj = {
+    a: 10,
+    f1: function () {
+        console.log(this.a);
+        setTimeout(function () {
+            console.log(this);
 
-//     static hi = "Hello"
+        }, 2000)
 
-//     static {
-//         var a = 20
+        setTimeout(() => {
+            console.log(this);
+        }, 4000);
 
-//     }
-
-//     getBirthYear() {
-//         return new Date().getFullYear() - this.age;
-//     }
-//     getFullYear() {
-//         return this.firstName + ' ' + this.lastName
-//     }
-
-// }
-
-// const user1 = new CreateUser("Piyush", "Aglawe", 23)
-
-
-const user = {
-    firstName: 'Anurag',
-    lastName: "Singh"
+        const sayHi = () => {
+            console.log(this, "1111");
+        };
+        sayHi()
+    }
 }
 
+obj.f1();
