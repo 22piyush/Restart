@@ -13,3 +13,5 @@ while (i < arr.length) {
 }
 
 console.log(arr);
+
+// Move Negative Left & Positive Right side 
