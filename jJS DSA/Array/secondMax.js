@@ -7,7 +7,7 @@ for (let i = 2; i < arr.length; i++) {
     if (arr[i] > max) {
         secondMax = max
         max = arr[i];
-    } else if (arr[i] > secondMax && max != arr[i]) {
+    } else if (arr[i] > secondMax && max != arr[i]) {  // const arr = [10, 20, 69, 69, 50];
         secondMax = arr[i]
     }
 }
