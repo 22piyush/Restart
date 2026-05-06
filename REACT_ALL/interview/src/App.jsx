@@ -3,6 +3,7 @@ import React from "react";
 // HOC 
 import withCardLook from "./HOC/withCardLook";
 import Alpha from "./HOC/Alpha";
+import Beta from "./HOC/Beta";
 
 // import Practice from "./useCustom/Practice";
 // import Api from "./useCustom/Api";
@@ -12,12 +13,14 @@ import Alpha from "./HOC/Alpha";
 
 // HOC
 const WithCardLookComponent = withCardLook(Alpha);
+const WithCardLookComponentBeta = withCardLook(Beta);
 
 function App() {
   return (
     <div>
       {/* HOC  */}
       <WithCardLookComponent />
+      <WithCardLookComponentBeta />
     </div>
   );
 }

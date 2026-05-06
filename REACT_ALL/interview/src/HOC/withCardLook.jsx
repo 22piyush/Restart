@@ -8,7 +8,6 @@ function withCardLook(WrappedComponent) {
         <div style={{ background: "gray" }}>
           <WrappedComponent />
         </div>
-        ;
       </>
     );
   };
