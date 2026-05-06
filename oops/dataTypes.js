@@ -1,2 +1,4 @@
 
-
+const user = {
+    firstName: 'piyush'
+}
