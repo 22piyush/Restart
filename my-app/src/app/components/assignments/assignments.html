@@ -1,0 +1,114 @@
+<div class="p-5">
+    <div class="border px-5 py-4">
+        <p>1. Have a paragraph and a toggle button; on clicking the button, control the visibility (Show / Hide) of the
+            paragraph.</p>
+
+        <div [hidden]="showText">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Omnis corporis excepturi quam! At, beatae
+            blanditiis.
+            Eos, architecto! Placeat, expedita optio!
+        </div>
+        <div class="d-flex justify-content-end">
+            <button class="text-white rounded border border-white px-4 py-1 bg-primary mt-3 "
+                (click)="toggleText()">{{showText ? 'Show' : 'Hide'}}</button>
+        </div>
+    </div>
+
+    <div class="border px-5 py-4 mt-4">
+        <p>2. Create a dropdown with state names; when the user changes the dropdown value, print the selected value in
+            a div.</p>
+
+        <div>
+            <select style="width: 150px;" class="p-1 rounded border" [(ngModel)]="dropdownValue">
+
+                <option value="">Select Language</option>
+                <option value="Angular">Angular</option>
+                <option value="React">React</option>
+                <option value="Vue.js">Vue.js</option>
+            </select>
+        </div>
+        <div class="d-flex justify-content-end">
+            <h4>{{dropdownValue}}</h4>
+        </div>
+    </div>
+
+    <div class="border px-5 py-4 mt-4">
+        <p>3. create a input box, toggle the type of that input box to (text/password)
+            paragraph.</p>
+
+        <div>
+            <input [type]="showPassword ? 'password' : 'text'" />
+        </div>
+        <div class="d-flex justify-content-end">
+            <button class="text-white rounded border border-white px-4 py-1 bg-primary mt-3 "
+                (click)="togglePassword()">{{showPassword ? 'Show' : 'Hide'}}</button>
+        </div>
+    </div>
+
+    <div class="border px-5 py-4 mt-4">
+        <p>4. Create a counter example with three controls: Increment, Decrement, and Reset.</p>
+
+        <div class="text-center my-4">
+            <h1>{{counterText}}</h1>
+        </div>
+        <div class="d-flex justify-content-end gap-3">
+            <button class="text-white rounded border border-white px-4 py-1 bg-primary mt-3 "
+                (click)="counter('add')">Increment</button>
+
+            <button class="text-white rounded border border-white px-4 py-1 bg-primary mt-3 "
+                (click)="counter('remove')">Decrement</button>
+
+            <button class="text-white rounded border border-white px-4 py-1 bg-primary mt-3 "
+                (click)="counter('reset')">Reset</button>
+        </div>
+    </div>
+
+    <div class="border px-5 py-4 mt-4">
+        <p>5. Create an inputBox to enter temperature in celcius, convert temperature from Celsius to Fahrenheit.
+            formula: f = (C × (9/5)) + 32</p>
+
+        <div>
+            <input type="number" [(ngModel)]="tempValue" />
+            <h4 class="mt-2">{{fahValue}}</h4>
+        </div>
+        <div class="d-flex justify-content-end">
+            <button class="text-white rounded border border-white px-4 py-1 bg-primary mt-3 "
+                (click)="calculateTemp()">Calculate</button>
+        </div>
+    </div>
+
+    <div class="border px-5 py-4 mt-4">
+        <p>9. Create a button that increases font size and another button that decreases font size for a paragraph.</p>
+
+        <div class="text-center my-4">
+            <p [style.fontSize.px]="fontSize">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet, illum!</p>
+        </div>
+        <div class="d-flex justify-content-end gap-3">
+            <button class="text-white rounded border border-white px-4 py-1 bg-primary mt-3 "
+                (click)="textIncrese('add')">Increment</button>
+
+            <button class="text-white rounded border border-white px-4 py-1 bg-primary mt-3 "
+                (click)="textIncrese('remove')">Decrement</button>
+        </div>
+    </div>
+
+    <div class="border px-5 py-4 mt-4">
+        <p>10. Create a dropdown with colors and change the background color of a div based on selection.</p>
+
+        <div>
+            <select style="width: 150px;" class="p-1 rounded border" [(ngModel)]="selectedColor">
+
+                <option value="">Select Color</option>
+                <option value="red">Red</option>
+                <option value="green">Green</option>
+                <option value="blue">Blue</option>
+                <option value="violet">Violet</option>
+            </select>
+        </div>
+        <div [style.backgroundColor]="selectedColor" class="d-flex justify-content-end mt-5 rounded"
+            style="height: 150px; width: 200px; margin: 0 auto;">
+
+        </div>
+    </div>
+
+</div>
