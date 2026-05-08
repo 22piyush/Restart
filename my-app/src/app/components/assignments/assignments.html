@@ -77,6 +77,48 @@
         </div>
     </div>
 
+
+    <div class="border px-5 py-4 mt-4">
+        <p>7. Create a textarea with maxLength = 100; as the user keeps typing, count and display how many words and how
+            many characters are typed and also display remaining characters.</p>
+
+        <div>
+            <textarea [(ngModel)]="countText" maxlength="100" rows="3" cols="50" placeholder="Write here..."></textarea>
+        </div>
+        <div class="d-flex justify-content-end align-items-center gap-4">
+
+            <h4>Word - {{countWord}}</h4>
+            <h4>characters - {{countCharacter}}</h4>
+            <button class="text-white rounded border border-white px-4 py-1 bg-primary mt-3 "
+                (click)="countTextArea()">Count</button>
+        </div>
+    </div>
+
+
+    <div class="border px-5 py-4 mt-4">
+        <p>8. Create two input boxes and a dropdown (+ , - , * , /) and perform arithmetic operations based on the
+            selected operator.</p>
+
+        <div>
+            <input class="me-3" type="number" [(ngModel)]="firstValue" />
+            <input class="me-3" type="number" [(ngModel)]="secondValue" />
+            <select style="width: 150px;" class="p-1 rounded border" [(ngModel)]="operatorValue">
+                <option value="">Select Operator</option>
+                <option value="*">*</option>
+                <option value="+">+</option>
+                <option value="-">-</option>
+                <option value="/">/</option>
+            </select>
+
+            <h4 class="mt-2">{{calculatedValue}}</h4>
+        </div>
+        <div class="d-flex justify-content-end">
+            <button class="text-white rounded border border-white px-4 py-1 bg-primary mt-3 "
+                (click)="calculation()">Calculate</button>
+        </div>
+    </div>
+
+
     <div class="border px-5 py-4 mt-4">
         <p>9. Create a button that increases font size and another button that decreases font size for a paragraph.</p>
 
