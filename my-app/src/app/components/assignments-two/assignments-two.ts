@@ -17,13 +17,20 @@ export class AssignmentsTwo {
 	  { id: 4, title: 'Attend team meeting', completed: true },
 	  { id: 5, title: 'Update documentation', completed: false },
 	];
-  pendingTask:any = [];
-  completeTask:any = [];
+  pendingTask = new Set<any>();
+  completeTask = new Set<any>();
 
 
   getTask(item:any){
-    console.log(item);
-    
+    if (item.completed) {
+      this.completeTask.add(item);
+    } else {
+      this.pendingTask.add(item);
+    }
+
+
+  console.log(this.completeTask);
+  console.log(this.pendingTask);
   }
 
 }
