@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-assignments-two',
-  imports: [],
+  imports: [CommonModule, FormsModule],
   templateUrl: './assignments-two.html',
   styleUrl: './assignments-two.css',
 })
@@ -19,6 +21,9 @@ export class AssignmentsTwo {
   completeTask:any = [];
 
 
-  
+  getTask(item:any){
+    console.log(item);
+    
+  }
 
 }

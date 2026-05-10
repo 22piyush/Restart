@@ -1,5 +1,5 @@
 <div class="container my-5">
-    <div class="border overflow-auto" style="height: 300px;"> 
+    <div class="border overflow-auto" style="height: 300px;">
         <table class="table">
             <thead>
                 <tr>
@@ -9,23 +9,12 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>John</td>
-                    <td>Doe</td>
-                    <td>@social</td>
+                <tr *ngFor="let item of task; let i = index">
+                    <th scope="row">{{ i + 1 }}</th>
+                    <td>{{ item.title }}</td>
+                    <td>
+                        <input type="checkbox" (change)="getTask(item)" [(ngModel)]="item.completed">
+                    </td>
                 </tr>
             </tbody>
         </table>
