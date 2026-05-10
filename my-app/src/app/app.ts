@@ -1,12 +1,10 @@
 import { Component, signal } from '@angular/core';
-import { Navbar } from "./components/navbar/navbar";
-import { Footer } from "./components/footer/footer";
-import { Body } from "./components/body/body";
 import { Assignments } from './components/assignments/assignments';
+import { AssignmentsTwo } from './components/assignments-two/assignments-two';
 
 @Component({
   selector: 'app-root',
-  imports: [Navbar, Footer, Body, Assignments ],
+  imports: [AssignmentsTwo, Assignments ],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
