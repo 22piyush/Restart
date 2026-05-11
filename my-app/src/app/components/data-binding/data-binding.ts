@@ -6,4 +6,8 @@ import { Component } from '@angular/core';
   templateUrl: './data-binding.html',
   styleUrl: './data-binding.css',
 })
-export class DataBinding {}
+export class DataBinding {
+
+  courseName:string = "Angular"
+
+}
