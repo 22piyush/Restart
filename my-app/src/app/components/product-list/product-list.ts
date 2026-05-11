@@ -7,10 +7,11 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { FormsModule } from '@angular/forms';
 import Swal from 'sweetalert2';
 import Snackbar from 'awesome-snackbar';
+import { InputColorDirective } from '../../directives/input-color';
 
 @Component({
   selector: 'app-product-list',
-  imports: [FontAwesomeModule, NgxPaginationModule, FormsModule],
+  imports: [FontAwesomeModule, NgxPaginationModule, FormsModule,InputColorDirective],
   templateUrl: './product-list.html',
   styleUrl: './product-list.css',
 })
