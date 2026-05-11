@@ -1,0 +1,58 @@
+<div style="position: relative; height: 100vh;">
+    <h3 class="text-center mb-5">Employee Management</h3>
+    <div class="container">
+        <div class="border rounded-lg">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Sr.No</th>
+                        <th scope="col">Emp name</th>
+                        <th scope="col">User name</th>
+                        <th scope="col">Email address</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let data of empArr;">
+                        <th scope="row">{{data.id}}</th>
+                        <td>{{data.name}}</td>
+                        <td>{{data.username}}</td>
+                        <td>{{data.email}}</td>
+                        <td>
+                            <div class="d-flex gap-3" style="cursor: pointer;">
+                                <fa-icon [icon]="viewIcon"></fa-icon>
+                                <fa-icon [icon]="editIcon"></fa-icon>
+                                <fa-icon [icon]="deleteIcon" (click)="filterEmployee(data)"></fa-icon>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <!-- Center Card -->
+    <div *ngif="showModel" style="
+    position: absolute;
+    top: 40%;
+    left: 40%;
+    background: #fff;
+    padding: 20px;
+    width: 350px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    text-align: center;">
+        <h5 class="mb-3 text-center">
+            Are you sure you want to delete employee?
+        </h5>
+        <div class="d-flex justify-content-center gap-3">
+            <button class="btn btn-danger btn-sm" (click)="openDeleteBox(data)">
+                Yes, Delete
+            </button>
+            <button class="btn btn-secondary btn-sm" (click)="openDeleteBox(data)">
+                Cancel
+            </button>
+        </div>
+    </div>
+</div>
