@@ -1,13 +1,24 @@
 <h3 class="text-center my-3">Product List</h3>
 
+
+<button class="btn btn-primary" (click)="openSwwetAlert()">Open Sweet alert</button>
+<button class="btn btn-primary" (click)="openSnackbar()">Open Snackbar</button>
+
 <div class="container">
+
+    <div class="row mb-4">
+        <div class="col-md-6 mx-auto">
+            <input type="text" class="form-control" placeholder="Search Product" [(ngModel)]="searchText">
+        </div>
+    </div>
+
     <div class="row">
 
-        @for(product of productArr; track product.id){
+        @for(product of filteredProductsList() | paginate: { itemsPerPage: 4, currentPage: page } ; track product.id){
 
         <div class="col-md-4 mb-4">
 
-            <div class="card shadow h-100">
+            <div class="card h-100">
 
                 <img [src]="product.image" class="card-img-top p-3" alt="product image"
                     style="height: 250px; object-fit: contain;">
@@ -27,11 +38,11 @@
                     </p>
 
                     <h4 class="mt-auto text-success">
-                        $ {{ product.price }}
+                        <fa-icon [icon]="faIndianRupeeSign"></fa-icon> {{ product.price }}
                     </h4>
 
                     <p class="mb-0">
-                        ⭐ {{ product.rating.rate }}
+                        <fa-icon [icon]="faStar"></fa-icon> {{ product.rating.rate }}
                         ({{ product.rating.count }} reviews)
                     </p>
 
@@ -43,5 +54,10 @@
 
         }
 
+    </div>
+
+
+    <div class="row">
+        <pagination-controls (pageChange)="page = $event"></pagination-controls>
     </div>
 </div>
