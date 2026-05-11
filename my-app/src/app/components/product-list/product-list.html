@@ -1,1 +1,47 @@
-<p>product-list works!</p>
+<h3 class="text-center my-3">Product List</h3>
+
+<div class="container">
+    <div class="row">
+
+        @for(product of productArr; track product.id){
+
+        <div class="col-md-4 mb-4">
+
+            <div class="card shadow h-100">
+
+                <img [src]="product.image" class="card-img-top p-3" alt="product image"
+                    style="height: 250px; object-fit: contain;">
+
+                <div class="card-body d-flex flex-column">
+
+                    <h5 class="card-title">
+                        {{ product.title }}
+                    </h5>
+
+                    <p class="card-text text-muted">
+                        {{ product.category }}
+                    </p>
+
+                    <p class="card-text">
+                        {{ product.description }}
+                    </p>
+
+                    <h4 class="mt-auto text-success">
+                        $ {{ product.price }}
+                    </h4>
+
+                    <p class="mb-0">
+                        ⭐ {{ product.rating.rate }}
+                        ({{ product.rating.count }} reviews)
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        }
+
+    </div>
+</div>
