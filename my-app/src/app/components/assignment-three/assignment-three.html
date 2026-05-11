@@ -1,6 +1,11 @@
 <div style="position: relative; height: 100vh;">
     <h3 class="text-center mb-5">Employee Management</h3>
     <div class="container">
+        <div class="d-flex justify-content-end mb-4">
+            <button class="btn btn-primary btn-sm" (click)="showEmpModel = true">
+                + Add Employee
+            </button>
+        </div>
         <div class="border rounded-lg">
             <table class="table">
                 <thead>
@@ -20,9 +25,9 @@
                         <td>{{data.email}}</td>
                         <td>
                             <div class="d-flex gap-3" style="cursor: pointer;">
-                                <fa-icon [icon]="viewIcon"></fa-icon>
+                                <fa-icon [icon]="viewIcon" (click)="openEmpBox(data, 'view')"></fa-icon>
                                 <fa-icon [icon]="editIcon"></fa-icon>
-                                <fa-icon [icon]="deleteIcon" (click)="filterEmployee(data)"></fa-icon>
+                                <fa-icon [icon]="deleteIcon" (click)="openEmpBox(data, 'delete')"></fa-icon>
                             </div>
                         </td>
                     </tr>
@@ -33,7 +38,7 @@
 
 
     <!-- Center Card -->
-    <div *ngif="showModel" style="
+    <div *ngIf="showModel" style="
     position: absolute;
     top: 40%;
     left: 40%;
@@ -47,12 +52,98 @@
             Are you sure you want to delete employee?
         </h5>
         <div class="d-flex justify-content-center gap-3">
-            <button class="btn btn-danger btn-sm" (click)="openDeleteBox(data)">
+
+            <button class="btn btn-danger btn-sm" (click)="confirmDelete()">
                 Yes, Delete
             </button>
-            <button class="btn btn-secondary btn-sm" (click)="openDeleteBox(data)">
+
+            <button class="btn btn-secondary btn-sm" (click)="cancelDelete()">
                 Cancel
             </button>
+
+        </div>
+    </div>
+
+    <div *ngIf="showViewModel" style="
+    position: absolute;
+    top: 40%;
+    left: 40%;
+    background: #fff;
+    padding: 20px;
+    width: 350px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    text-align: center;">
+        <h5 class="mb-3 text-center">
+            Employee Details
+        </h5>
+        <div>
+            <p>Employee Name - <b>{{selectedEmployee.name}}</b></p>
+            <p>Employee Username - <b>{{selectedEmployee.username}}</b></p>
+            <p>Employee Email - <b>{{selectedEmployee.email}}</b></p>
+        </div>
+        <div class="d-flex justify-content-center gap-3">
+            <button class="btn btn-secondary btn-sm" (click)="cancelDelete()">
+                Cancel
+            </button>
+        </div>
+    </div>
+
+    <div *ngIf="showEmpModel" style="
+    position: absolute;
+    top: 20%;
+    left: 40%;
+    background: #fff;
+    padding: 20px;
+    width: 350px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    text-align: center;">
+        <div class="container mt-4">
+
+            <div class="card p-4 shadow-sm">
+
+                <h4 class="text-center mb-3">Add Employee</h4>
+
+                <form>
+
+                    <!-- Name -->
+                    <div class="mb-3">
+                        <label class="form-label">Name</label>
+                        <input type="text" class="form-control" [(ngModel)]="employee.name" name="name"
+                            placeholder="Enter name">
+                    </div>
+
+                    <!-- Username -->
+                    <div class="mb-3">
+                        <label class="form-label">Username</label>
+                        <input type="text" class="form-control" [(ngModel)]="employee.username" name="username"
+                            placeholder="Enter username">
+                    </div>
+
+                    <!-- Email -->
+                    <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-control" [(ngModel)]="employee.email" name="email"
+                            placeholder="Enter email">
+                    </div>
+
+
+                    <div class="d-flex justify-content-center gap-3">
+
+                        <!-- Button -->
+                        <button type="submit" class="btn btn-primary w-100" (click)="addEmployee()">
+                            Add Employee
+                        </button>
+                        <button class="btn btn-secondary btn-sm" (click)="showEmpModel = false">
+                            Cancel
+                        </button>
+
+                    </div>
+                </form>
+
+            </div>
+
         </div>
     </div>
 </div>
