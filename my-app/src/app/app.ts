@@ -2,10 +2,11 @@ import { Component, signal } from '@angular/core';
 import { Assignments } from './components/assignments/assignments';
 import { AssignmentsTwo } from './components/assignments-two/assignments-two';
 import { UserList } from './components/user-list/user-list';
+import { ProductList } from './components/product-list/product-list';
 
 @Component({
   selector: 'app-root',
-  imports: [AssignmentsTwo, Assignments , UserList],
+  imports: [AssignmentsTwo, Assignments , UserList, ProductList],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
