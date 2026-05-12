@@ -12,12 +12,10 @@ import { RemainingPipe } from '../../custom_pipes/remaining-pipe';
 export class PipesDemo {
 
   userName:string = 'saCHIN TenDulkar'
-
   slary:number = 1200
-
   dataObj = new Date();
-
   cars = ['Tata', 'Honda', 'Maruti' , 'Toyota']
+
 
   msg:string  = "Hello Angular"
 

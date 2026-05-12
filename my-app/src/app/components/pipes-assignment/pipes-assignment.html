@@ -1,0 +1,68 @@
+<div class="w-100 d-flex flex-column gap-5">
+    <div>
+        <h4>Odinal Pipes</h4>
+        <input type="number" [(ngModel)]="num">
+        <div>input: {{num}}</div>
+        <div>output: {{num | odinal}}</div>
+    </div>
+
+    <div>
+        <h4>Credit Card</h4>
+        <input type="text" [(ngModel)]="creditCard">
+        <div>input: {{creditCard}}</div>
+        <div>output: {{creditCard | creditcard}}</div>
+    </div>
+
+
+    <div>
+        <h4>Age</h4>
+        <input type="date" [(ngModel)]="age">
+        <div>input: {{age}}</div>
+        <div>output: {{age | age}}</div>
+    </div>
+
+    <div>
+        <h4>Salutation</h4>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Gender</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @for(emp of employees; track emp){
+                <tr>
+                    <td>{{ emp.name | salutation:emp.gender }}</td>
+                    <td>{{ emp.gender }}</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+
+    <div class="mb-5">
+        <h4>Search Employee</h4>
+
+        <input type="text" class="my-3" placeholder="Search Employee" [(ngModel)]="searchEmp">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Gender</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @for(emp of employees | search:searchEmp; track $index){
+                <tr>
+                    <td>{{ emp.name | salutation:emp.gender }}</td>
+                    <td>{{ emp.gender }}</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

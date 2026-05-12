@@ -1,3 +1,21 @@
+
+<h1>-------------Custom Pipe------------</h1>
+
+
+<textarea [(ngModel)]="msg" maxlength="100"></textarea>
+<div>Message: {{msg}}</div>
+<div>Message: {{msg | remaining}}</div>
+
+
+<h1>-------------Custom Pipe End------------</h1>
+
+
+
+
+
+
+
+
 <h3>{{userName | lowercase}}</h3>
 <h3>{{userName | uppercase}}</h3>
 <h3>{{userName | titlecase}}</h3>
@@ -52,9 +70,5 @@
 <div>{{ 'today' | date | uppercase }}</div>
 
 
-<h1>Custom Pipe</h1>
-<textarea [(ngModel)]="msg"></textarea>
-<div>Message: {{msg}}</div>
-<div>Message: {{msg | remaining}}</div>
 
 
