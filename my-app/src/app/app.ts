@@ -6,17 +6,23 @@ import { ProductList } from './components/product-list/product-list';
 import { DataBinding } from './components/data-binding/data-binding';
 import { AssignmentThree } from './components/assignment-three/assignment-three';
 import { PipesDemo } from './components/pipes-demo/pipes-demo';
+import { DirectivesDemo } from './components/directives-demo/directives-demo';
 
 @Component({
   selector: 'app-root',
-  imports: [PipesDemo ,AssignmentThree, AssignmentsTwo, Assignments , UserList, ProductList, DataBinding],
+  imports: [
+    DirectivesDemo,
+    PipesDemo,
+    AssignmentThree,
+    AssignmentsTwo,
+    Assignments,
+    UserList,
+    ProductList,
+    DataBinding,
+  ],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrl: './app.css',
 })
 export class App {
   protected readonly title = signal('my-app');
 }
-
-
-
-
