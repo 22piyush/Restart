@@ -10,4 +10,6 @@ import { Component } from '@angular/core';
 export class PipesDemo {
 
   userName:string = 'saCHIN TenDulkar'
+
+  slary:number = 1200
 }
