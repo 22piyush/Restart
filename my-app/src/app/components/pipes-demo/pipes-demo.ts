@@ -12,4 +12,6 @@ export class PipesDemo {
   userName:string = 'saCHIN TenDulkar'
 
   slary:number = 1200
+
+  dataObj = new Date();
 }
