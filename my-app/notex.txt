@@ -1,3 +1,17 @@
+Angular Course Content
+======================
+-Angular Installation
+-Angular CLI
+-Component
+-Databinding (interpolation, property, event,2-way)
+-Template Reference Variable
+-View Encapsulation (Emulated, shadowDOM, none)
+-Inbuilt Directives (@if, @else, @for)
+-Custom Directives (Renderer , @HostBinding, @HostListener)
+-Pipes (uppercase, date, number, json)
+-Custom Pipes
+
+
 Angular installation
 ====================
 1. download Nodejs and install 
@@ -865,3 +879,231 @@ Custom Directive Assignment
 ============================
 1. create a custom directive (zoomout) which scales the element by 150%.
    ng g d custom-directives/zoomout
+
+
+
+	
+Angular Pipes
+=============
+-Angular Pipes transform the data in templates without changing the original value.
+-Pipes are used in template file, pipes take input data and return a transformed value.
+-Transform strings, currency amounts, dates  etc.
+-Pipes are part of CommonModule
+Note : To Use pipes, CommonModule needs to be imported
+
+
+ ex: {{ 5000 | currency }}    output: $5,000.00
+            (OR)
+<div [innerHTML]='name | lowercase'></div>
+
+
+-Angular provides built-in pipes,The following are commonly used built-in pipes for data formatting.
+1.lowercase
+2.uppercase
+3.titlecase
+4.currency
+5.date
+6.number / decimal
+7.percent	
+8.json  
+9.keyvalue - Iterate Object
+10.slice
+11.async(Observable)
+
+
+curreny
+-------                  
+  <div>{{ salary }}</div>
+  <div>{{ salary | currency }}</div>
+  <div>{{ salary | currency : 'USD' }}</div>
+  <div>{{ salary | currency : 'INR' }}</div>
+  <div>{{ salary | currency : '&euro;' }}</div>
+  <div>{{ salary | currency : '&yen;' }}</div>
+  <div>{{ salary | currency : 'USD' : 'code' }}</div>
+  <div>{{ salary | currency : 'USD' : 'symbol' }}</div>
+    <!-- input | pipeName : argument1 : argument2 -->
+  
+  
+  
+Date
+-----
+  <h5>Date pipe:</h5>
+  <div>{{ dateObj | date }}</div>
+  <div>{{ dateObj | date :'short'}}</div> <!-- Short Date + Short Time -->
+  <div>{{ dateObj | date :'medium'}}</div> <!-- medium Date + medium Time -->
+  <div>{{ dateObj | date :'long'}}</div> <!-- long Date + long Time -->
+  <div>{{ dateObj | date :'full'}}</div> <!-- full Date + full Time -->
+  ==================
+  <div>{{ dateObj | date : 'shortDate' }}</div>
+  <div>{{ dateObj | date : 'mediumDate' }}</div>
+  <div>{{ dateObj | date : 'longDate' }}</div>
+  <div>{{ dateObj | date : 'fullDate' }}</div>
+  =================
+  <div>{{ dateObj | date : 'shortTime' }}</div>
+  <div>{{ dateObj | date : 'mediumTime' }}</div>
+  <div>{{ dateObj | date : 'longTime' }}</div>
+  <div>{{ dateObj | date : 'fullTime' }}</div>
+  ==============
+  <div>{{ dateObj | date : 'dd-MMM-yyyy' }}</div>
+  <div>{{ dateObj | date : 'hh:mm:ss a' }}</div>
+  <div>{{ dateObj | date: "fullTime":"UTC" }}</div>
+  <div>{{ dateObj | date: "fullTime":"IST" }}</div>
+  <div>{{ dateObj | date: "EEEE" }}</div>  <!-- Weekday-->
+
+Note: 
+hh   12-hour clock   AM/PM (yes)
+HH   24-hour clock   AM/PM (No) 
+<div>{{ dateObj | date : 'HH:mm a' }}</div> (incorrect)
+<div>{{ dateObj | date : 'hh:mm a' }}</div> (correct)
+
+
+
+
+
+decimal/number
+-------------
+<div> {{100000000 | number}} </div>
+<div>{{ 12.111222333 | number: "3.2-5" }}</div>
+<div>{{ 12.1 | number: "3.2-5" }}</div>
+<div>{{0.5 | number:'3.2-5'}}</div>
+
+Use format '3.2-5' : 
+minIntegerDigits = 3 
+minFractionDigits = 2 
+maxFractionDigits = 5 
+
+
+
+Percent Pipe
+-------------
+<div>{{ 2.5 | percent}}</div>
+<div>{{ 2.5 | percent:'2.2-5'}}</div>
+<div> {{0.024 | percent}}</div>
+
+
+
+
+keyvalue
+--------
+keepOriginalOrder = ()=>0; // this function disables sorting of keys
+sortByKeyAsc = (a:any,b:any)=>a.key.localeCompare(b.key);
+sortByValueAsc = (a:any,b:any)=>a.value - b.value;
+
+@for(entry of user | keyvalue : keepOriginalOrder;track $index){
+   <h5>{{entry.key}}---{{entry.value}}</h5>
+}
+
+
+slice pipe
+-----------
+-slice pipe can be used with array and string
+<div>{{cars | slice : 2 : 4}}</div>
+<div>{{'Angular is a Framework' | slice : 0 : 7}}</div>
+<div>{{'Angular is a Framework' | slice : 0 : -4}}</div>
+
+
+
+Pipe Chaining
+=============
+-Applying multiple pipes sequentially, where output of one pipe becomes input of the next pipe
+
+<div>{{ price | number : '1.2-2' | currency }}</div>
+<div>{{ name | titlecase | slice : 0 : 10 }}</div>
+<div>{{ today | date | uppercase }}</div>
+<div>{{ user$ | async | json}}</div>
+
+
+
+Custom Pipe
+===========
+-Custom Pipe allows to create our own data transformation logic and use it directly in angular template.
+
+1. ng generate pipe remaining
+2. every angular pipe implements PipeTransform Interface
+  class RemainingPipe implements PipeTransform {
+  }
+3. override transform()
+   transform(input: any, maxLength = 100) {
+       return maxLength - input.length;
+   }
+   
+
+Assignment
+==========
+1. Create a custom pipe(ordinal) which takes a number as input and returns in ordinal format
+   input : 21,22,23,24  
+   output : 21st, 22nd , 23rd, 24th
+2. create a custom pipe(creditcard) which takes a creditcard as input and returns masked creditcard
+   input :  1111222233334444  
+   output : 1111-2222-3333-4444 
+3. create a custom pipe called 'age' which takes a date as input and returns the age in years.
+   input : 04-06-2020
+   output : 5 years old
+4. declare an array of employee objects. display them in a table.
+   create a custom pipe 'Salutation' that will add 'mr. / miss.' before the employee name.
+5. declare an array of employee objects. display them in a table. 
+   add a search-box above the table. create a custom-pipe to filter/search employees data.
+
+   
+   
+Pure & Impure Pipe
+------------------
+-By Default every custom pipe we create is pure pipe.
+-Pure Pipes execute only when input variable changes, better Performance
+-ImPure Pipes execute on every change detection, Performance Expensive
+-to make a pipe impure
+  @Pipe({
+		name : 'account',
+		pure : false
+	})
+
+Need Of Impure Pipe:
+-------------------
+-Pure pipes don't run when : Data Changes without reference change (push data in an array, change object prop)
+-in such cases , angular cannot detect changes, Pure Pipe will not re-run , UI doesn't get updated	
+-Impure pipe solves this problem by running that pipe on every change detection
+
+
+
+	
+Use pipes in component file
+---------------------------
+1. import pipe class to the component	
+   import { UpperCasePipe } from '@angular/common'  
+2. register that pipe service in component
+    providers: [UpperCasePipe]	
+3. inject that service to the component
+   constructor(private upperCasePipeObj: UpperCasePipe)  
+4. use the pipe using transform()
+   this.b = this.upperCasePipeObj.transform(this.a);
+	
+
+Use custom pipes in component file
+----------------------------------
+1. import pipe class to the component	
+   import { RemainingPipe } from 'src/app/custom-pipes/remaining.pipe';  
+2. create an instance of that pipe and call transform() with that instance
+   const pipeObj = new RemainingPipe();
+   const remainingChar = pipeObj.transform('hello', 100);
+   console.log(remainingChar);
+
+	
+
+
+Component Communication
+=======================
+-Angular Components need to communicate(share data/logic) with each other.
+
+Parent -> Child       	inputs:[] & Property Binding
+Child  -> Parent        outputs:[] & Event Binding
+Sibling -> Sibling      Through the Parent
+Unrelated Components    Service , rxjs 
+Large Apps              NgRx (State management Library)
+
+
+inputs:['title']
+set title(){
+	// setter for title input variable
+	// this function gets invoked when a new value is assigned to 'title'
+}
+  

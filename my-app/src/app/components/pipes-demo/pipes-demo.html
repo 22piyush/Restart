@@ -16,30 +16,45 @@
 <h3>{{slary | currency : 'USD' : 'symbol'}}</h3>
 
 
+<h4>{{dataObj | date}}</h4>
+<h4>{{dataObj | date : 'short'}}</h4>
+<h4>{{dataObj | date : 'medium'}}</h4>
+<h4>{{dataObj | date : 'long'}}</h4>
+<h4>{{dataObj | date : 'full'}}</h4>
+
+<h4>{{dataObj | date : 'shortDate'}}</h4>
+<h4>{{dataObj | date : 'mediumDate'}}</h4>
+<h4>{{dataObj | date : 'longDate'}}</h4>
+<h4>{{dataObj | date : 'fullDate'}}</h4>
+
+<h4>{{dataObj | date : 'shortTime'}}</h4>
+<h4>{{dataObj | date : 'mediumTime'}}</h4>
+<h4>{{dataObj | date : 'longTime'}}</h4>
+<h4>{{dataObj | date : 'fullTime'}}</h4>
+
+<h4>{{dataObj | date : 'dd-MM-yyyy'}}</h4>
+<h4>{{dataObj | date : 'hh:mm:ss a'}}</h4>
+<h4>{{dataObj | date : 'fullTime':"UTC"}}</h4>
+<h4>{{dataObj | date : 'fullTime':"IST"}}</h4>
+<h4>{{dataObj | date : "EEEE"}}</h4>
+
+
+
+<h4>Number Pipes</h4>
+<h4>{{10000000000000000 | number}}</h4>
+<h4>{{12.111222333 | number:"3.2-5"}}</h4>
+<h4>{{12.1 | number:"3.2-5"}}</h4>
+<h4>{{0.5 | percent}}</h4>
+
+
+<div>{{ 'price' | number : '1.2-2' | currency }}</div>
+<div>{{ 'name' | titlecase | slice : 0 : 10 }}</div>
+<div>{{ 'today' | date | uppercase }}</div>
+
+
+<h1>Custom Pipe</h1>
+<textarea [(ngModel)]="msg"></textarea>
 
 
 
 
-<h1>{{dataObj | date}}</h1>
-<h1>{{dataObj | date : 'short'}}</h1>
-<h1>{{dataObj | date : 'medium'}}</h1>
-<h1>{{dataObj | date : 'long'}}</h1>
-<h1>{{dataObj | date : 'full'}}</h1>
-
-
-<h1>{{dataObj | date : 'shortDate'}}</h1>
-<h1>{{dataObj | date : 'mediumDate'}}</h1>
-<h1>{{dataObj | date : 'longDate'}}</h1>
-<h1>{{dataObj | date : 'fullDate'}}</h1>
-
-<h1>{{dataObj | date : 'shortTime'}}</h1>
-<h1>{{dataObj | date : 'mediumTime'}}</h1>
-<h1>{{dataObj | date : 'longTime'}}</h1>
-<h1>{{dataObj | date : 'fullTime'}}</h1>
-
-
-<h1>{{dataObj | date : 'dd-MM-yyyy'}}</h1>
-<h1>{{dataObj | date : 'hh:mm:ss a'}}</h1>
-<h1>{{dataObj | date : 'fullTime':"UTC"}}</h1>
-<h1>{{dataObj | date : 'fullTime':"IST"}}</h1>
-<h1>{{dataObj | date : "EEEE"}}</h1>
