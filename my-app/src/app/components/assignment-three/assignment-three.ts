@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import * as empData from './user_data.json';
-import { CommonModule } from '@angular/common';
+
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faTrash, faPenToSquare, faEye } from '@fortawesome/free-solid-svg-icons';
 import Snackbar from 'awesome-snackbar';
@@ -8,7 +8,7 @@ import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-assignment-three',
-  imports: [CommonModule, FontAwesomeModule, FormsModule],
+  imports: [FontAwesomeModule, FormsModule],
   templateUrl: './assignment-three.html',
   styleUrl: './assignment-three.css',
 })
