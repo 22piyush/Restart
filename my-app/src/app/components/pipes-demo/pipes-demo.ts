@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { RemainingPipe } from '../../custom_pipes/remaining-pipe';
 
 @Component({
   selector: 'app-pipes-demo',
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RemainingPipe],
   templateUrl: './pipes-demo.html',
   styleUrl: './pipes-demo.css',
 })

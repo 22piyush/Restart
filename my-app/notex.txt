@@ -1088,22 +1088,3 @@ Use custom pipes in component file
    console.log(remainingChar);
 
 	
-
-
-Component Communication
-=======================
--Angular Components need to communicate(share data/logic) with each other.
-
-Parent -> Child       	inputs:[] & Property Binding
-Child  -> Parent        outputs:[] & Event Binding
-Sibling -> Sibling      Through the Parent
-Unrelated Components    Service , rxjs 
-Large Apps              NgRx (State management Library)
-
-
-inputs:['title']
-set title(){
-	// setter for title input variable
-	// this function gets invoked when a new value is assigned to 'title'
-}
-  
