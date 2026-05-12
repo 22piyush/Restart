@@ -1,0 +1,867 @@
+Angular installation
+====================
+1. download Nodejs and install 
+   https://nodejs.org/en/download/
+   Need Nodejs to build, develop, test and manage the packages in angular application
+   nodejs helps for tooling , not the execution environment for angular
+
+2. check nodejs is installed	 
+   node -v (in command prompt)
+
+3. check if NPM is installed (NPM-Node Package Manager)
+   npm -v 
+
+4. install angular CLI (Command Line Interface)
+   npm install -g @angular/cli
+		OR
+   npm install -g @angular/cli@latest
+		OR
+   npm install -g @angular/cli@19
+Note: for MAC if the above command doesn't work plz add sudo (sudo npm install -g @angular/cli)
+
+5. check if angular CLI  is installed??
+   ng v  
+   npx ng v
+   ng help
+
+6. create a new angular project (go to the folder where project needs to be created)
+   ng new project1 (project1 - name of the project, can be any other valid name)
+   npx ng new project1 --defaults
+   
+   you will be prompted for few things, just press 'ENTER'
+   1. CSS/SCSS/LESS - select css
+
+7. Run the project / Start the project
+   in command prompt go to the project directory (ex: c:/users/sanjay/angular/project1)
+   Run the Below command 
+   ng serve   		(step-8 is required)
+	  (OR)
+   ng serve --open 
+	  (OR)
+   ng s -o  (step-8 is not required)
+-ng serve command launches the server, watches your files, and rebuilds the app as you make changes to those files.
+   
+8. open your browser and open the below URL   
+    http://localhost:4200
+  
+
+-To Run the project in other port              
+	ng serve --port 5000 --open
+
+
+ng new angular-wheather-app --standalone --style=css --routing=false --skip-tests --defaults
+			(OR)
+npx @angular/cli new angular-wheather-app --standalone --style=css --routing=false --skip-tests
+
+
+
+
+vscode extensions
+=================
+1. ESLint
+2. prettier EsLint
+3. code spell checker
+4. gitlens
+5. vscode-icons
+6. thunderclient
+
+
+Browser Extensions
+===================
+1. Json Viewer
+2. Mobile Simulator
+3. Angular DevTools
+4. Redux DevTools
+
+
+
+
+Angular
+=======
+-Angular is a framework for building single-page client applications using HTML and TypeScript.
+-A framework is a set of helper functions,tools and rules that help us to build our application.
+-Angular is a collection of well-integrated libraries that cover a wide variety of features including routing,forms management, client-server communication, and more
+-Angular is a suite of developer tools to help us develop, build, test, and update our code. (Angular CLI)
+
+
+SPA (Single Page Application)
+===
+-Loads a single HTML page initially, Dynamically updates content without refreshing the entire page.
+	Initial Load: Browser downloads one HTML, CSS, and JavaScript bundle.
+	Navigation: Instead of asking the server for a new page, JavaScript changes the view in the browser.
+	Data Fetching: Content is fetched asynchronously (AJAX/fetch/axios) from APIs.
+Advantages : Faster navigation, Better user experience
+Disadvantages : SEO challenges , Large initial load
+
+
+
+
+	Framework										Library
+=========================================================================
+-group of libraries to make our work easier		-performs specific  operations
+-provides ready to use tools,standards			-provides reusable functions for our code
+ templates for fast application development
+-Collection of libraries & APIs					-collection of helper functions,objects
+-cann't be easily replaceable 					-can be easily replaceable 
+-angular,vue									-jQuery,lodash,momentjs,ReactJs,chart.js
+-Hospital with full of doctors					-A doctor specialized in 1 thing		
+
+
+
+		React						Angular
+===========================================================
+1. Library-2013					 1. Framework-2009
+2. Light-weight					 2. Heavy
+3. JSX + Javascript				 3. HTML + Typescript
+4. Uni-Directional				 4. two-way
+5. Virtual DOM					 5. Regular DOM
+6. Axios 				 		 6. HttpClientModule 
+7. No 		 					 7. Dependency Injection
+8. No							 8. Form Validation
+9. extra libraries needed		 9. No additional libraries
+10. UI heavy					 10. Functionality heavy
+
+
+
+
+Bootstrapping angular Application
+=================================
+-Bootstrapping is a technique of initializing/loading our Angular application.
+
+1. index.html --> <app-root></app-root> (Root Component)
+2. main.ts   --> bootstrapApplication(AppComponent, appConfig)
+3. app.config.ts --> Application Level Configurations (Route , HttpClient)
+4. app.component.ts-->app.component.html-->app.component.css
+
+steps to bootstrap the application:
+1. Load index.html
+2. Load Angular, Other Libraries, and Application Code
+3. Execute main.ts File
+4. Load Application-Level Component
+5. Process Template
+
+
+
+
+Modules
+=======
+-Module in Angular refers to a place where we can group the components, directives, pipes, and services, which are related to the application.
+-Modules are used in Angular to put logical boundaries in your application. instead of coding everything into one application, we can instead build everything into separate modules to separate the functionality of your application.
+-In case we are developing a website, the header, footer, left, center and the right section become part of a module.
+-Every application should have at least one Angular module, the root/app module, which must be present for bootstrapping the application on launch.
+
+
+important properties of module are:
+----------------------------------
+-declarations: The set of components, directives, and pipes that belong to this module
+-exports: set of components, directives, and pipes declared in this NgModule that should be visible and usable in the component templates of other NgModules.
+-imports: Other modules whose exported classes are needed by component templates declared in this NgModule.
+-providers: The set of injectable objects that are available in the injector of this module.
+-bootstrap: The main application view, called the root component, which hosts all other app views. Only the root NgModule should set the bootstrap property.
+-entryComponents: set of components to compile when this NgModule is defined, so that they can be dynamically loaded into the view
+-schemas: Elements and properties that are neither Angular components nor directives must be declared in a schema
+-id: A name or path that uniquely identifies this NgModule in getModuleFactory
+-jit: When present, this module is ignored by the AOT compiler
+
+
+
+Component
+=========
+-Components are building blocks of angular applications. Each component controls a part of the user interface.
+-An Angular app contains a tree of Angular components.
+-Each component defines a class that contains application data and logic, and is associated with an HTML template that defines a view to be displayed.
+-@Component() decorator identifies the class immediately below it as a component, and provides the template and related component-specific metadata.
+
+https://angular.dev/api/core/Component
+
+@Component configuration options:
+--------------------------------
+selector:      Ex: 'app-header'
+template:      `<div>This is header Component</div>`
+templateUrl:   './header.component.html'
+style:  	   ['.class1{color:red}']
+styleUrl:     ['./header.component.css']
+encapsulation: ViewEncapsulation.ShadowDom
+providers:     [Services]
+changeDetection:ChangeDetectionStrategy.OnPush
+viewProviders: []
+animations:  []
+interpolation: []
+entryComponents: []
+preserveWhitespaces?: boolean
+standalone?: boolean
+imports:[]
+schemas?:[]
+
+
+
+Decorators
+==========
+@NgModule  - Decorator that marks a class as an NgModule
+@Component - Decorator marks a class as an Angular component
+@Directive - Decorator marks a class as an Angular Directive
+@Injectable - Decorator marks a class as an Angular Service
+@Pipe - Decorator marks a class as an Angular Pipe
+@Input - collect data from parent component
+@Output  - Child component emits event to parent component
+@HostBinding - Binds value to the host element  (custom directive)
+@HostListener - listens event from the host element (custom directive)
+@ViewChild - 
+@ViewChildren - 
+@ContentChild - 
+@ContentChildren - 
+
+
+
+
+Angular CLI
+===========
+-Angular CLI is a command-line interface tool used to initialize, develop, scaffold, and maintain Angular applications directly from a command shell
+
+ng g c demo --dry-run --flat --skip-tests --inline-template --inline-style
+
+g: Generate
+c: Component
+--flat : No Sub folder for the component(header/footer)
+--skip-tests : No test specification file
+--inline-template : No Linked Template
+--inline-style : No external CSS file
+--dry-run : Will display the update without execution
+
+
+scaffold	usage
+---------   --------
+project     ng new <ProjectName>
+Component	ng generate component my-new-component / ng g c my-new-component
+Directive	ng g directive my-new-directive
+Pipe	    ng g pipe my-new-pipe
+Service	    ng g service my-new-service
+Class	    ng g class my-new-class
+Guard	    ng g guard my-new-guard
+Interface	ng g interface my-new-interface
+Enum	    ng g enum my-new-enum
+interceptor ng g interceptor my-interceptor
+Resolver    ng g resolver my-resolver
+Module	    ng g module my-new-module
+
+https://angular.dev/cli/generate
+
+
+
+Angular Project - Folder Structure
+==================================
+.editorconfig	: Configuration for code editors. See EditorConfig.
+.gitignore		: Specifies intentionally untracked files that Git should ignore.
+README.md		: Introductory documentation for the application.
+angular.json	: CLI configuration defaults for all projects in the workspace, including configuration options for build, serve, and test tools that the CLI uses, such as TSLint, Karma, and Protractor. For details, see Angular Workspace Configuration.
+package.json	: Configures npm package dependencies that are available to all projects in the workspace. See npm documentation for the specific format and contents of this file.
+package-lock.json : 	Provides version information for all packages installed into node_modules by the npm client. See npm documentation for details. If you use the yarn client, this file will be yarn.lock instead.
+src/			:  Source files for the root-level application project.
+node_modules/	: Provides npm packages to the entire workspace. Workspace-wide node_modules dependencies are visible to all projects.
+tsconfig.json	: The base TypeScript configuration for projects in the workspace. All other configuration files inherit from this base file. For more information, see the Configuration inheritance with extends section of the TypeScript documentation.
+
+
+
+
+How to Use Bootstrap in Angular 
+===============================
+-Bootstrap can be used in Angular either by using:
+	1. CDN   2. installing 
+
+1. CDN : Paste the below 2 libraries in index.html
+-------------------------------------------------
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" />
+
+2. installing 
+---------------
+1. npm install  bootstrap
+2. add the below line in 'styles.css'
+	@import 'bootstrap/dist/css/bootstrap.css'
+3. add "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js" in 'angular.json'     
+      projects->architect->build->scripts array
+
+
+
+How to Display Images from local folder
+=======================================
+1. place the images inside 'public' folder
+2. use it in HTML file
+   <img src='sachin.jpg' />
+
+
+
+Databinding
+===========
+-Synchronization of data between Component(TS) and view(HTML).
+-Allows to bind component's properties/data to the view.
+-when component's properties/data change, the view is automatically updated.
+
+1.  interpolation  	 {{ }} (1-way)   (component-->view)
+2.  property Binding  [ ]  (1-way)   (component-->view)
+	bind-property (bind-innerHTML / bind-src)
+3.  Event Binding     ( )  (1-way)   (view-->component)
+	(click)   /  on-click
+4.  2-way Binding  [(ngModel)] (2-way) (component<-->view)
+    bindon-ngModel
+    Note:For 2-way bindning "FormsModule" should be imported
+	
+InterPolation: to bind text-content/expressions to an element, converts the bound value to a string.
+Property: assigns the bound value to a DOM property, preserves the type of the bound value.
+2-way : When user updates the view, component's data is also updated, and vice versa.
+
+
+2-way Binding:
+	1. import FormsModule 
+		a. import { FormsModule } from '@angular/forms'
+		b. imports: [ FormsModule]
+	2. in view file use [(ngModel)]='variable'
+		<input type="text" [(ngModel)]='x'>
+		
+<input type="text" on-keyup="userIdChanged()"	[(ngModel)]="userId" />
+			(OR)
+<input [(ngModel)]="userId" (ngModelChange)="onUserIdChange($event)" />
+onUserIdChange(userId: number): void {
+    console.log('Value Changed');
+}
+
+
+
+
+Attribute Binding
+================= 
+-Attribute Binding is needed while working with HTML attributes that do not have corresponding DOM properties, such as colspan, aria-* , data-* attributes
+
+-attributes are defined by HTML and properties are defined by the DOM.
+-The attributes main role is to initializes the DOM properties. once the DOM initialization complete, the attributes job is done.
+-Property values can change, whereas the attribute values don't change.
+-Property Reflects real-time state changes, whereas Attribute Doesn't change dynamically after creation.
+
+var value1 = document.getElementById('inputBox1').getAttribute('value');
+var value2 = document.getElementById('inputBox1').value;
+console.log(value1, value2); // type something in the box & run these again
+ 
+ <button [attr.aria-label]="ariaLabel">Click me</button>
+ there is no equivalent DOM property for aria-label
+
+
+ <table [width]='myWidth' [attr.height]='myHeight'></table>
+ <tr><td [attr.colspan]="1 + 1">One-Two</td></tr>   Correct
+ <tr><td [colSpan]="1 + 1">One-Two</td></tr>   Correct
+ <tr><td [colspan]="1 + 1">One-Two</td></tr>   Wrong
+ 
+Note: 'colspan' is attribute whereAs 'colSpan' is property. 
+      'maxlength' is attribute whereAs 'maxLength' is property
+	  
+
+Common Attributes that require attr. binding
+=============================================
+-There is no matching DOM property :  aria-label , aria-hidden , aria-expanded
+-Attribute and property names are different : colspan , maxlength 
+
+
+
+Variables in templates
+======================
+-Angular has two types of variable declarations in templates: 
+	1. local template variables 
+	2. template reference variables.
+	
+Local template variables with @let
+==================================
+@let syntax allows to define a local variable and re-use it across a template.
+@let cannot be reassigned after declaration
+Angular automatically keeps the variable's value up-to-date with the given expression
+@let declarations cannot be accessed by parent views or siblings
+
+@let name = user.name;
+@let greeting = 'Hello, ' + name;
+@let data = data$ | async;
+@let pi = 3.1459;
+@let coordinates = {x: 50, y: 100};
+
+
+
+
+Template Reference variables
+============================
+-allows to reference DOM elements present in the template
+-access and manipulate DOM elements, child components, or directives
+-access in the template without directly accessing them in the TypeScript code.
+-They are only accessible within the same template.
+-In the template, we use the hash symbol, # or 'ref' to declare a template variable.
+ <input #phone placeholder="phone number" />
+				OR
+ <input ref-phone placeholder="phone number" />			
+
+
+
+
+Assignments: 
+1. Have a paragraph and a toggle button; on clicking the button, control the visibility (Show / Hide) of the paragraph.
+2. Create a dropdown with state names; when the user changes the dropdown value, print the selected value in a div.
+3. create a input box, toggle the type of that input box to (text/password)
+4. Create a counter example with three controls: Increment, Decrement, and Reset.
+5. Create an inputBox to enter temperature in celcius, convert temperature from Celsius to Fahrenheit. 
+	formula:  f = (C × (9/5)) + 32
+6. greeting based on time (good mornig, good afternoon, good evening)
+7. Create a textarea with maxLength = 100; as the user keeps typing, count and display how many words and how many characters are typed and  also display remaining characters.
+8. Create two input boxes and a dropdown (+ , - , * , /) and perform arithmetic operations based on the selected operator.
+9. Create a button that increases font size and another button that decreases font size for a paragraph.
+10. Create a dropdown with colors and change the background color of a div based on selection.
+
+	
+	
+	
+CSS
+****
+1. inline 		(style attribute)
+2. internal		(style element/tag)
+3. styles[] in component
+   styles: ['h1 { color:red; }']
+4. styleUrl / styleUrls in component
+5. styles.css global
+
+Note:- the styles written in component's css file applies only to one component. 
+      They are not inherited by any components nested within the template nor by any content projected into the component
+
+
+
+View Encapsulation
+******************
+-View encapsulation allows to control how styles are applied to components. 
+-Prevents styles from one component affecting other components.
+
+Angular provides below encapsulation strategies:
+1. Emulated (default) - styles from main HTML(index.html/styles.css) propagates to the component. 
+					Styles defined in component are scoped to that component only.
+
+2. None - styles from the component propagate back to the main HTML and therefore are visible to all components on the page. 
+applicable to any HTML element of the application
+ 
+3. shadowDOM - Use shadowDOM for style encapsulation (only component css will be applied)
+			   1. CSS won't come from main HTML to Component.
+			   2. css will be provided from parent to child component.
+			   
+4. ExperimentalIsolatedShadowDom : fully isolated Shadow DOM behavior, for Building Web Components, micro frontEnd 
+
+ex:- encapsulation: ViewEncapsulation.Emulated(default) 
+	 encapsulation: ViewEncapsulation.None
+	 encapsulation: ViewEncapsulation.ShadowDom
+	 encapsulation: ViewEncapsulation.ExperimentalIsolatedShadowDom
+	 
+Emulated: Global CSS--->parent Component (yes)
+		  Global CSS-->child component (yes)
+		  Parent(Emulated) --> child(Emulated) (No)
+		   
+None: Global CSS<--->parent Component(None)<-->child component
+
+ShadowDom: Global CSS--->parent Component(shadowDOM) (No)
+		   Global CSS-->child component (No)
+		   Parent (shadowDOM) --> child(Emulated) (Yes)		   
+		   Parent (shadowDOM) --> child(ShadowDom) (No)
+		   
+ExperimentalIsolatedShadowDom: Global CSS--->parent Component(shadowDOM) (No)
+		   Global CSS-->child component (No)
+		   Parent (shadowDOM) --> child(Emulated) (Yes)		   
+		   Parent (shadowDOM) --> child(ShadowDom) (No)		  
+	 
+
+
+
+
+Directives
+**********
+-Directives Enhance the power of HTML elements.
+-Extend the functionality of HTML Elements / Add Additional behaviour.
+-Before Angular 17  (*ngIf , *ngSwitchCase, *ngFor)
+-After angular-17  (@if , @else , @switch , @case , @default , @for, @empty , @let)
+
+1. Structural Directives : 
+   Directive which changes the layout/structure of the DOM.
+	
+2. Attribute Directives : ([ngStyle],[ngClass])
+   Directive which changes behaviour/appearance of the DOM element.
+	
+
+Note : Compononent can also be considered as directive, because it powers up the html by creating Custom Element, but the directives cannot be considered as component because it does not have a View (template and templateUrl cannot be used in directives)
+
+
+
+@if(!flag){
+	<h1>truuuuuuuuuuuuu</h1>
+}@else{
+	<h1>Falseeeeeeeeeeeeeeeeeeeee</h1>
+}
+
+
+@if() vs hidden
+===============
+-when @if() condition is false, the element will neither be displayed on the page/screen nor it will be there in the DOM.
+-when [hidden] condition is true, the element will not be displayed on the page/screen(display:none) but it will be there in the DOM.
+
+
+
+Switch Case
+===========
+@switch (n) {
+    @case (1) { <h1>Monday</h1> }
+    @case (2) { <h1>Tuesday</h1> }
+    @case (3) { <h1>Wednesday</h1> }
+    @case (4) { <h1>Thursday</h1> }
+    @case (5) { <h1>Friday</h1> }
+    @case (6) { <h1>Saturday</h1> }
+    @case (7) { <h1>Sunday</h1> }
+    @default { <h1>Not a Valid number</h1> }
+}
+
+
+
+@for()
+======
+1. for with array , @for with @empty
+	@for(car of cars;track $index){
+	  <h4>{{car}}----{{$index}}</h4>
+	} @empty {
+	  Empty list of cars
+	}
+2. @for() with String
+   @for(char of str;track $index){
+		<div>{{char}}</div>
+   }
+ 
+3. @for with Iterable objects (Map)
+   @for (entry of myMap; track $index){
+       <div>{{entry[0]}} === {{entry[1]}}</div>
+	}
+
+Local variables inside For Loop:
+-Before Angular 17 (index,first,last,even,odd)
+-After Angular 17 ($index,$first,$last,$even,$odd,$count)
+
+
+ngFor trackBy
+-------------
+-trackBy is required. It is used to optimize performance by preventing unnecessary change detection runs when the data changes.
+
+-ngFor by default tracks list items using object identity. This means that if you build a list of new objects from scratch with the exact same values as the previous list and pass this newly built list to ngFor, Angular will not be able to tell that a given list item is already present or not.
+
+-NgFor needs to uniquely identify items in the iterable to correctly perform DOM updates when items in the iterable are reordered, new items are added, or existing items are removed.
+-In all of these scenarios it is usually desirable to only update the DOM elements associated with the items affected by the change
+
+
+
+
+Migrate/convert from old syntax to new syntax
+=============================================
+ng generate @angular/core:control-flow
+
+
+
+ngStyle
+=======
+-ngStyle is used to apply some style conditionally.
+
+<p [style.color]="num % 2 == 0 ? 'blue' : 'red'"> Add a style </p>
+<p [style.fontSize.px]='num % 2 == 0 ? 24 : 36'> Add style with unit </p>
+<p [style.background-color]=" num % 2 == 0?'green':'blue' "> Add style conditionally </p>
+<p [ngStyle]="num % 2 == 0 ? myStyle1 : myStyle2"> NgStyle for multiple values </p>
+<p [ngStyle]="myFunction()"> NgStyle for multiple values </p>
+myStyle1 = { "color": "green", "backgroundColor": "red", "border": "3px dotted yellow" }
+
+
+ngClass
+=======
+-ngClass is used to apply css classes conditionally/dynamically
+
+-Add/Remove Single Class : 
+	<div [ngClass]="{'active': isActive}">
+	<div [class.active]="isActive">
+-Multiple Conditional Classes : 
+	<div [ngClass]="{'active': isActive, 'disabled': isDisabled}">
+-Array of Classes: 
+	<div [ngClass]="['class1', 'class2', isActive ? 'active' : 'inactive']">
+-Combining Object and Array : 
+	<div [ngClass]="['common-class-1','common-class-2', { 'active': isActive, 'disabled': isDisabled }]">
+
+<p [class.myClass]='flag'> Add a class to an element </p>
+<p [ngClass]="myClasses"> Add Multiple classes to an element </p>
+<p [ngClass]="myFunction()"> Add Multiple classes to an element </p>
+<button class="btn" [ngClass]="flag ? 'btn-success' : 'btn-danger'">
+	Class Binding example
+</button>
+
+
+<span [ngClass]="{'pending':status=='pending','approved':status=='approved','rejected':status=='rejected'}">{{status}}</span>
+.pending{color: orange;}
+.approved{color: green;}
+.rejected{color: red;}
+
+
+
+
+Directive Assignment:
+====================
+1. Create an array of task objects, and display them using @for
+   Every Element Should have a checkbox, When a checkbox is clicked, toggle completion status(true/false)
+   for completed tasks show them as striked-out
+   add a dropdown with 3 values 'All','Completed','Pending' , based on the value selected, show the tasks
+   display how many are completed, ex: 2 out of 5 tasks are completed 
+
+	tasks = [
+	  { id: 1, title: 'Complete Angular assignment', completed: false },
+	  { id: 2, title: 'Review pull requests', completed: true },
+	  { id: 3, title: 'Prepare project report', completed: false },
+	  { id: 4, title: 'Attend team meeting', completed: true },
+	  { id: 5, title: 'Update documentation', completed: false },
+	];
+ 
+2. Create an array of products (https://fakestoreapi.com/products)
+	Display the products in card format
+	Show a dropdown for categories.
+	When a category is selected, filter products.
+	Use @empty when no products match. 
+	
+3. Maintain a cart array
+	Use @for to display all cart items.
+	Show each item with quantity controls (+ and  buttons)
+	Calculate and display the total price
+	cartItems = [
+	  { id: 1, name: 'Wireless Headphones', price: 2499, qty: 1},
+	  { id: 2, name: 'Smart Watch', price: 4999, qty: 2 },
+	  { id: 3, name: 'Bluetooth Speaker', price: 1999, qty: 1 },
+	  { id: 4, name: 'Power Bank', price: 1299, qty: 3 }
+	];
+
+
+4. Display Array of employees in a table
+   a. Display Salary in green  if salary > 50000, else Display Salary in red, using [ngStyle]
+   b. Apply a CSS class "inactive" to employees whose status is "Inactive" using [ngClass]
+   c. Add bold font and blue color only for employees whose role is "Manager" using [ngClass]
+   d. Apply a different row background color based on employee role:
+		Manager = lightyellow , Developer = lightblue , Tester = lightpink
+   e. Show salary in a badge style with dynamic color
+      Green if salary > 70,000 , Orange if between 40,00070,000, Red if < 40,000
+	  
+	 employees = [
+        { id: 1, name: 'Amit Sharma', role: 'Manager', salary: 85000, status: 'Active', gender: 'male' },
+        { id: 2, name: 'Priya Verma', role: 'Developer', salary: 65000, status: 'Active', gender: 'female' },
+        { id: 3, name: 'Rahul Mehta', role: 'Tester', salary: 38000, status: 'Inactive', gender: 'male' },
+        { id: 4, name: 'Sneha Iyer', role: 'Developer', salary: 42000, status: 'Inactive', gender: 'female' },
+        { id: 5, name: 'Karan Singh', role: 'Manager', salary: 52000, status: 'Active', gender: 'male' },
+        { id: 6, name: 'Neha Gupta', role: 'Tester', salary: 72000, status: 'Active', gender: 'female' }
+     ];
+
+
+
+
+ng-template , ng-container
+==========================
+-<ng-template> directive represents an Angular template.
+-content of this <ng-template> will contain part of a template, that can be composed together with other templates in order to form the final component template. 
+-Angular is already using <ng-template> under the hood in many of the structural directives that we use all the time: ngIf, ngFor and ngSwitch
+
+-Its a logical container that does not render any extra DOM element.
+-Angular <ng-container> is a grouping element that doesn't interfere with styles or layout because Angular doesn't put it in the DOM.
+-if we need a helper element for nested structural directives.<ng-container> can be used instead of creating an un-nscessary element(<div>).
+
+<tr *ngFor="let emp of employees" *ngIf="emp.status === 'Active'">
+only 1 structural directive is allowed per element
+
+<ng-container *ngFor="let emp of employees">
+  <tr *ngIf="emp.status === 'Active'">
+    <td>{{ emp.name }}</td>
+  </tr>
+</ng-container>
+
+
+
+
+ng-content/ Content projection
+==============================
+-Content Projection Allows a component to receive and display content from its parent component using <ng-content>
+-Create configurable components. 
+-Component with Dynamic Content.
+-way to pass HTML (content) from a parent component into a child components template.
+-content projection is achieved using <ng-content></ng-content> inside components template.
+https://www.freecodecamp.org/news/everything-you-need-to-know-about-ng-template-ng-content-ng-container-and-ngtemplateoutlet-4b7b51223691/
+
+
+child
+======
+<ng-content></ng-content>
+<ng-content select="#div1"></ng-content>
+<ng-content select=".div2"></ng-content>
+<ng-content select="span"></ng-content>
+<ng-content select="[modal-title]"></ng-content>
+
+parent
+======
+<h1 id="div1">Registration Form</h1>
+<h1 class="div2">Registration Form</h1>
+<span>This is Modal Title From Parent<span>
+<h2 modal-title>This is Modal Title From Parent</h2>
+
+
+
+Read data from a JSON file 
+==========================
+1. create a JSON file (users.json)
+   Paste the content from https://jsonplaceholder.typicode.com/users
+   
+2. in tsconfig.json add the below option  under 'compilerOptions'
+    "resolveJsonModule": true,
+	
+3. import the data & use in component file (users.component.ts)
+   import * as data from './user-data.json';
+   
+   userArr = (data as any).default; // inside class
+   
+4. use 'myProducts' in HTML file
+   @for (user of userArr; track $index) {
+      <div class="col-sm-3">user</div>
+    }
+   
+   
+   
+Read Data from a typescript file (https://fakestoreapi.com/products)
+================================= 
+1. create a typeascript file and export the data (employees.ts/products.ts)
+   export default [ {}, {}, {} ]
+   
+2. import the data & use in component file (products.component.ts)
+   import productData from './products_data';  
+   productsArr = productData;  // inside the class
+   
+3. use 'myProducts' in HTML file
+   @for(product of productsArr;track product.id){
+	<div></div>
+   }
+   
+   
+
+
+How to use font-awesome (https://fontawesome.com/v4/icons/)
+=======================
+1. ng add @fortawesome/angular-fontawesome 
+			(OR)
+   npm i @fortawesome/angular-fontawesome @fortawesome/free-solid-svg-icons
+   npm i @fortawesome/angular-fontawesome @fortawesome/free-regular-svg-icons
+   npm i @fortawesome/angular-fontawesome @fortawesome/fontawesome-svg-core 
+ 
+   
+2. import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+   import { faStar } from '@fortawesome/free-solid-svg-icons';  
+   import { faStar } from '@fortawesome/free-regular-svg-icons';
+
+   imports: [FontAwesomeModule]
+   
+   
+3. <fa-icon [icon]="faStar"></fa-icon>
+
+
+
+ngxPagination
+=============
+1. install ngxpagination module
+   npm install ngx-pagination 
+
+2. add ngxpaginationModule to our component
+   import {NgxPaginationModule} from 'ngx-pagination';
+   imports: [ NgxPaginationModule,CommonModule]
+   
+3. use the below code in html
+	 @for(user of users | paginate: { itemsPerPage: 4, currentPage: p};track $index){
+	 }
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
+
+
+Assignment:
+-Read data from a static array and display list of products in cards
+  https://fakestoreapi.com/products
+-use font-awesome to display any icons (star icon for rating)
+-implement pagination
+-implement search functionality (Search By Title)
+-implement sort functionality (Price Asc, Price desc)
+-Show a dropdown for categories, When a category is selected, filter products.
+
+
+
+How to use SweetAlert (https://sweetalert2.github.io/)
+=====================	
+1. npm i sweetalert2	
+2. import sweet-Alert in our component
+   import Swal from 'sweetalert2';	
+3. on button click call a function, function should have the below code	
+   Swal.fire('Good job!', 'You clicked the button!', 'success');
+			(OR)
+   Swal.fire({title: "The Internet?",text: "That thing is still around?",icon: "question",timer:5000,draggable: true});
+
+
+
+How to use snackbar	
+===================
+1. npm i awesome-snackbar
+2. import Snackbar from 'awesome-snackbar';
+3. on button click call a function, function should have the below code	
+	new Snackbar('Helloooo, Good Morning',
+      { position: 'top-center', theme: 'light', timeout: 5000, actionText: 'X' }
+    );
+
+https://snackbar.awesome-components.com/
+https://www.npmjs.com/package/ngx-toastr
+
+
+
+Assignment
+=========
+1. create 1 EmployeeCRUD component
+2. display list of employees in a table(data comes from an array)
+3. every row should have 'delete' button to delete Employee (ask user confirmation) 
+4. every row should have 'view' button , view the details of selected employee in a modal (bootstrap Modal)
+5. add a new employee to the table (insert a new record to the array)
+   use SnackBar to display message ('Employee Added Successfully' - message should be maintained in a constant file)
+6. use font-awesome to display any icons ( delete, edit, view )
+
+
+
+Custom Directives
+=================
+-Custom directives are Created/used to attach custom behavior to elements in the DOM.
+-Usecases: 
+	auto-focus input
+	change style on hover
+	restrict input characters
+	show tooltip
+	disable right click
+	disable copy/paste
+
+
+Component vs Directive
+----------------------
+-Components are used for re-usable UI , Directives are used to add re-usable behavior to an existing DOM element
+-Component has View/Template  where as Directives won't have View/Template.
+
+
+
+@HostBinding  -  Bind a property on the host element.
+@HostListener  - Listen events from the host element.
+ElementRef - Gives direct access to DOM element
+Renderer2 - Renderer2 is angular's safe abstraction for DOM manipulation
+
+
+@HostBinding vs ElementRef
+--------------------------
+ElementRef : Gives direct access to DOM element
+			 Usecases : Focus, scroll, attach events
+			 this.ele.nativeElement.focus()
+HostBinding : Binds directive state to host element
+              Toggle CSS classes, styles, attributes
+			  @HostBinding('class.active') isActive = true;
+
+
+Custom Directive Assignment
+============================
+1. create a custom directive (zoomout) which scales the element by 150%.
+   ng g d custom-directives/zoomout
