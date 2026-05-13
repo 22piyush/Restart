@@ -7,12 +7,10 @@ import { PipesDemo } from './components/pipes-demo/pipes-demo';
 import { DirectivesDemo } from './components/directives-demo/directives-demo';
 import { PipesAssignment } from './components/pipes-assignment/pipes-assignment';
 import { ParentDemo } from './components/parent-demo/parent-demo';
-import { CustomDirective } from './components/custom-directive/custom-directive';
 
 @Component({
   selector: 'app-root',
   imports: [
-    CustomDirective,
     ParentDemo,
     PipesAssignment,
     DirectivesDemo,

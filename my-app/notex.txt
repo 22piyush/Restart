@@ -10,7 +10,7 @@ Angular Course Content
 -Custom Directives (Renderer , @HostBinding, @HostListener)
 -Pipes (uppercase, date, number, json)
 -Custom Pipes
-
+-Component Communication  (inputs:[], outputs:[]) (props)
 
 Angular installation
 ====================
