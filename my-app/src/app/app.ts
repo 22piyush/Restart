@@ -8,10 +8,12 @@ import { AssignmentThree } from './components/assignment-three/assignment-three'
 import { PipesDemo } from './components/pipes-demo/pipes-demo';
 import { DirectivesDemo } from './components/directives-demo/directives-demo';
 import { PipesAssignment } from './components/pipes-assignment/pipes-assignment';
+import { ParentDemo } from './components/parent-demo/parent-demo';
 
 @Component({
   selector: 'app-root',
   imports: [
+    ParentDemo,
     PipesAssignment,
     DirectivesDemo,
     PipesDemo,
