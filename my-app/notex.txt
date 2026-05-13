@@ -1087,4 +1087,51 @@ Use custom pipes in component file
    const remainingChar = pipeObj.transform('hello', 100);
    console.log(remainingChar);
 
+
+Component Communication
+=======================
+-Angular Components need to communicate(share data/logic) with each other.
+
+Parent -> Child       	inputs:[] & Property Binding
+Child  -> Parent        outputs:[] & Event Binding
+Sibling -> Sibling      Through the Parent
+Unrelated Components    Service , rxjs 
+Large Apps              NgRx (State management Library)
+
+
+inputs:['title']
+set title(){
+	// setter for title input variable
+	// this function gets invoked when a new value is assigned to 'title'
+}
+  
+  
+  
+Child to parent
+===============
+1. create an EventEmitter Object and emit that event with the data in child component
+   import { Component, EventEmitter, OnInit } from '@angular/core';
+   myEvent = new EventEmitter();
+   sendDataToParent() {
+    this.myEvent.emit(this.product);
+   }
+2. add that event information in outputs:[] of child component
+   outputs:['myEvent']
+3. add event listener in parent's HTML & TS
+   <app-child2 (myEvent)="getDataFromChild($event)"></app-child2>
+   getDataFromChild(data:any){
+      this.product = data;
+   }
+
+
+
+Assignment
+==========
+-Create a component(EmployeeCRUD), which holds array of employees.
+-Create 2 Child Components(EmployeeTable , EmployeeAdd)
+-Pass data from EmployeeCRUD to EmployeeTable, EmployeeTable should display the data in table
+-add delete button against every employee(row) to perform delete operation
+-EmployeeAdd component should have form to add a new Employee to the employee list
+-all the logic/functions should be present in Parent Component(EmployeeCRUD)
+
 	
