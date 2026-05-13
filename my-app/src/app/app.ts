@@ -2,17 +2,17 @@ import { Component, signal } from '@angular/core';
 import { Assignments } from './components/assignments/assignments';
 import { AssignmentsTwo } from './components/assignments-two/assignments-two';
 import { UserList } from './components/user-list/user-list';
-import { ProductList } from './components/product-list/product-list';
-import { DataBinding } from './components/data-binding/data-binding';
 import { AssignmentThree } from './components/assignment-three/assignment-three';
 import { PipesDemo } from './components/pipes-demo/pipes-demo';
 import { DirectivesDemo } from './components/directives-demo/directives-demo';
 import { PipesAssignment } from './components/pipes-assignment/pipes-assignment';
 import { ParentDemo } from './components/parent-demo/parent-demo';
+import { CustomDirective } from './components/custom-directive/custom-directive';
 
 @Component({
   selector: 'app-root',
   imports: [
+    CustomDirective,
     ParentDemo,
     PipesAssignment,
     DirectivesDemo,
@@ -21,8 +21,6 @@ import { ParentDemo } from './components/parent-demo/parent-demo';
     AssignmentsTwo,
     Assignments,
     UserList,
-    ProductList,
-    DataBinding,
   ],
   templateUrl: './app.html',
   styleUrl: './app.css',

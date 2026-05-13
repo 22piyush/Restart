@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ProductList } from './product-list';
+import { CustomDirective } from './custom-directive';
 
-describe('ProductList', () => {
-  let component: ProductList;
-  let fixture: ComponentFixture<ProductList>;
+describe('CustomDirective', () => {
+  let component: CustomDirective;
+  let fixture: ComponentFixture<CustomDirective>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ProductList],
+      imports: [CustomDirective],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(ProductList);
+    fixture = TestBed.createComponent(CustomDirective);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });
