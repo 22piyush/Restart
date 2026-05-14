@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { CategoryItem } from '../category-item/category-item';
 
 @Component({
   selector: 'app-category',
-  imports: [],
+  imports: [CategoryItem],
   templateUrl: './category.html',
   styleUrl: './category.css',
 })

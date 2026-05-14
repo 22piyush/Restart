@@ -1,1 +1,10 @@
-<p>category  works!</p>
+<div class="container">
+  <div class="row">
+    @for(categoryObj of allCategories; track $index){
+      <app-category-item
+        class="col"
+        [categoryObj]="categoryObj">
+      </app-category-item>
+    }
+  </div>
+</div>

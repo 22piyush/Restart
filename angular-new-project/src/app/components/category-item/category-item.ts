@@ -5,5 +5,8 @@ import { Component } from '@angular/core';
   imports: [],
   templateUrl: './category-item.html',
   styleUrl: './category-item.css',
+  inputs: ['categoryObj'],
 })
-export class CategoryItem {}
+export class CategoryItem {
+  categoryObj: any;
+}
