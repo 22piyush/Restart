@@ -1,0 +1,10 @@
+<app-employee-add
+(addEmp)="addEmployee($event)">
+</app-employee-add>
+
+<hr>
+
+<app-employee-table
+[employees]="employees"
+(deleteEmp)="deleteEmployee($event)">
+</app-employee-table>
