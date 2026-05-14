@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-category-item',
@@ -10,7 +10,7 @@ import { Component } from '@angular/core';
 export class CategoryItem {
   categoryObj: any;
 
-  constructor() {
+  constructor(private ele : ElementRef) {
     console.log('child Constructor');
   }
 
