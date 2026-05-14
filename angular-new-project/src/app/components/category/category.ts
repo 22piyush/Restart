@@ -1,12 +1,15 @@
 import { Component } from '@angular/core';
 import { CategoryItem } from '../category-item/category-item';
 
+
 @Component({
   selector: 'app-category',
   imports: [CategoryItem],
   templateUrl: './category.html',
   styleUrl: './category.css',
 })
+
+
 export class Category {
   allCategories = [
     {

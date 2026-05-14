@@ -7,6 +7,7 @@ import { Component, ElementRef } from '@angular/core';
   styleUrl: './category-item.css',
   inputs: ['categoryObj'],
 })
+
 export class CategoryItem {
   categoryObj: any;
 
