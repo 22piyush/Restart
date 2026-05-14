@@ -46,4 +46,40 @@ export class Category {
       img_url: 'https://rukminim2.flixcart.com/fk-p-flap/72/72/image/05d708653beff580.png?q=100',
     },
   ];
+
+  constructor() {
+    console.log('Parent Constructor');
+  }
+
+  ngOnChanges() {
+    console.log('Parent ngOnChanges');
+  }
+
+  ngOnInit() {
+    console.log('Parent ngOnInit');
+  }
+
+  ngDoCheck() {
+    console.log('Parent ngDoCheck');
+  }
+
+  ngAfterContentInit() {
+    console.log('Parent ngAfterContentInit');
+  }
+
+  ngAfterContentChecked() {
+    console.log('parent ngAfterContentChecked');
+  }
+
+  ngAfterViewInit() {
+    console.log('parent ngAfterViewInit');
+  }
+
+  ngAfterViewChecked() {
+    console.log('parent ngAfterViewInit');
+  }
+
+  ngOnDestroy() {
+    console.log('parent ngOnDestroy');
+  }
 }
