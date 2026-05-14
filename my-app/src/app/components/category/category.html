@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="row">
+
+        @for(item of categoryArr; track $index){
+
+        <div class="col-md-2 mb-3">
+
+            <app-category-item [category]="item"></app-category-item>
+
+        </div>
+
+        }
+
+    </div>
+</div>

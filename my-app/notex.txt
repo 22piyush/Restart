@@ -11,6 +11,8 @@ Angular Course Content
 -Pipes (uppercase, date, number, json)
 -Custom Pipes
 -Component Communication  (inputs:[], outputs:[]) (props)
+-LifeCycle Methods / Hooks
+
 
 Angular installation
 ====================
