@@ -20,7 +20,7 @@ export class EmployeeCrud {
     {
       id:2,
       firstName:'Rahul',
-      lastName:'Sharma',
+      lastName:'Patil',
       email:'rahul@gmail.com'
     }
   ];

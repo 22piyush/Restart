@@ -1,10 +1,7 @@
-<app-employee-add
-(addEmp)="addEmployee($event)">
-</app-employee-add>
-
-<hr>
-
-<app-employee-table
-[employees]="employees"
-(deleteEmp)="deleteEmployee($event)">
-</app-employee-table>
+<div class="p-5">
+    <h3 class="text-center mb-3">Employee Management</h3>
+    <app-employee-add (addEmp)="addEmployee($event)"></app-employee-add>
+    <hr>
+    <app-employee-table [employees]="employees" (deleteEmp)="deleteEmployee($event)">
+    </app-employee-table>
+</div>
