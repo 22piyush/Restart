@@ -17,4 +17,13 @@ export class DataBinding {
 
   num1 = 1
   num2 = 2
+
+
+  toggle = false;
+
+
+  dataBinding(){
+    this.toggle = !this.toggle;
+  }
+
 }
