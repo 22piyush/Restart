@@ -9,10 +9,12 @@ import { ParentDemo } from '../../components/parent-demo/parent-demo';
 import { Parent } from '../../components/parent/parent';
 import { EmployeeCrud } from '../../components/employee-crud/employee-crud';
 import { Services } from '../../components/services/services';
+import { HttpDemo1 } from '../../components/http-demo1/http-demo1';
 
 @Component({
   selector: 'app-body',
   imports: [
+    HttpDemo1,
     Parent,
     ParentDemo,
     DataBinding,

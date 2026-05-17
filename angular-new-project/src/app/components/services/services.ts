@@ -1,30 +1,55 @@
 import { Component, inject } from '@angular/core';
-import { MathService } from '../../services/math-service';
-import { ObjectUtilService } from '../../services/object-util-service';
+import { EmployeeService } from '../../services/employee-service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-services',
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './services.html',
-  styleUrl: './services.css',
 })
 export class Services {
+  employeeService = inject(EmployeeService);
 
-  mathService = inject(MathService); // another type
-  utilService = inject(ObjectUtilService)
+  allEmployees = [
+    {
+      name: 'Piyush',
+      gender: 'male',
+      dept: 'IT',
+      email: 'piyush@gmail.com',
+    },
+    {
+      name: 'Harshal',
+      gender: 'male',
+      dept: 'IT',
+      email: 'harshal@gmail.com',
+    },
+    {
+      name: 'Diksha',
+      gender: 'female',
+      dept: 'HR',
+      email: 'diksha@gmail.com',
+    },
+  ];
 
-  constructor(private MathService: MathService) {//DI
-    
-  }
+  employees: any[] = [];
+
+  selectEmp: string = 'all';
 
   ngOnInit() {
-    console.log(`Sum is - ${this.mathService.sum([10, 20, 30, 40, 50])}`);
-    console.log(`Average is - ${this.MathService.average([10, 20, 30, 40, 50])}`);
-    console.log(`Index Of Max is - ${this.MathService.indexOfMax([10, 20, 30, 40, 50])}`);
-  
+    this.employees = this.allEmployees;
+  }
 
-    console.log(this.utilService);
-    
+  filterEmployees() {
+    if (this.selectEmp == 'all') {
+      this.employees = this.employeeService.getAllEmployees(this.allEmployees);
+    }
 
+    if (this.selectEmp == 'male') {
+      this.employees = this.employeeService.getMaleEmployees(this.allEmployees);
+    }
+
+    if (this.selectEmp == 'female') {
+      this.employees = this.employeeService.getFemaleEmployees(this.allEmployees);
+    }
   }
 }
