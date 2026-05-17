@@ -7,6 +7,7 @@ import { PipesDemo } from '../../components/pipes-demo/pipes-demo';
 import { PureImpurePipes } from '../../components/pure-impure-pipes/pure-impure-pipes';
 import { ParentDemo } from '../../components/parent-demo/parent-demo';
 import { Parent } from '../../components/parent/parent';
+import { EmployeeCrud } from '../../components/employee-crud/employee-crud';
 
 @Component({
   selector: 'app-body',
@@ -18,6 +19,7 @@ import { Parent } from '../../components/parent/parent';
     CustomDirective,
     PipesDemo,
     PureImpurePipes,
+    EmployeeCrud
   ],
   templateUrl: './body.html',
   styleUrl: './body.css',

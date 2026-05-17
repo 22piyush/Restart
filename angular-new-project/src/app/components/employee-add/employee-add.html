@@ -1,37 +1,7 @@
-<form>
 
-  <div class="mb-3">
-    <label>First Name</label>
+    <form>
+        <input type="text"  name="name" [(ngModel)]="name">
+        <input type="text"  name="department" [(ngModel)]="department">
 
-    <input
-    type="text"
-    class="form-control"
-    [(ngModel)]="employee.firstName"
-    name="firstName">
-  </div>
-
-  <div class="mb-3">
-    <label>Last Name</label>
-
-    <input
-    type="text"
-    class="form-control"
-    [(ngModel)]="employee.lastName"
-    name="lastName">
-  </div>
-
-  <div class="mb-3">
-    <label>Email</label>
-
-    <input
-    type="email"
-    class="form-control"
-    [(ngModel)]="employee.email"
-    name="email">
-  </div>
-
-  <button (click)="addEmployee()" class="btn btn-primary">
-    Add Employee
-  </button>
-
-</form>
+        <button (click)="addEmployee()">Add Employee</button>
+    </form>

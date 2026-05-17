@@ -1,7 +1,33 @@
 <div class="p-5">
-    <h3 class="text-center mb-3">Employee Management</h3>
-    <app-employee-add (addEmp)="addEmployee($event)"></app-employee-add>
-    <hr>
-    <app-employee-table [employees]="employees" (deleteEmp)="deleteEmployee($event)">
-    </app-employee-table>
+
+    <app-employee-add (addEmp)="employeeAdd($event)"></app-employee-add>
+
+    <table>
+
+        <tr>
+            <th>Name</th>
+            <th>Department</th>
+            <th>Actions</th>
+        </tr>
+
+        <tbody>
+
+            @for(emp of employees; track $index){
+
+            <tr>
+                <td>{{emp.name}}</td>
+                <td>{{emp.department}}</td>
+                <td>
+                    <div>
+                        <button (click)="deleteEmp(emp)">Delete</button>
+                    </div>
+                </td>
+            </tr>
+
+            }
+
+        </tbody>
+
+    </table>
+
 </div>

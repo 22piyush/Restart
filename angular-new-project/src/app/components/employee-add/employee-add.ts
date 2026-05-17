@@ -6,18 +6,19 @@ import { FormsModule } from '@angular/forms';
   imports: [FormsModule],
   templateUrl: './employee-add.html',
   styleUrl: './employee-add.css',
-  outputs: ['addEmp'],
+  inputs: ['employees'],
 })
 export class EmployeeAdd {
-  addEmp = new EventEmitter<number>();
+  name = '';
+  department = '';
+  employees: any;
 
-  employee: any = {
-    firstName: '',
-    lastName: '',
-    email: '',
-  };
+  @Output() addEmp = new EventEmitter();
 
   addEmployee() {
-    this.addEmp.emit(this.employee);
+    this.addEmp.emit({
+      name: this.name,
+      department: this.department,
+    });
   }
 }

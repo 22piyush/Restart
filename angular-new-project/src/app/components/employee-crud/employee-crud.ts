@@ -1,41 +1,25 @@
 import { Component } from '@angular/core';
-import { EmployeeTable } from '../employee-table/employee-table';
 import { EmployeeAdd } from '../employee-add/employee-add';
 
 @Component({
   selector: 'app-employee-crud',
-  imports: [EmployeeTable, EmployeeAdd],
+  imports: [EmployeeAdd],
   templateUrl: './employee-crud.html',
   styleUrl: './employee-crud.css',
 })
 export class EmployeeCrud {
-
-  employees:any = [
+  employees = [
     {
-      id:1,
-      firstName:'Piyush',
-      lastName:'Aglawe',
-      email:'piyush@gmail.com'
+      name: 'piyush',
+      department: 'IT',
     },
-    {
-      id:2,
-      firstName:'Rahul',
-      lastName:'Patil',
-      email:'rahul@gmail.com'
-    }
   ];
 
-  addEmployee(emp:any){
-    this.employees.push({
-      id:this.employees.length + 1,
-      ...emp
-    });
+  employeeAdd(emp: any) {
+    this.employees.push(emp);
   }
 
-  deleteEmployee(id:number){
-    this.employees = this.employees.filter(
-      (emp:any)=> emp.id !== id
-    );
+  deleteEmp(emp: any) {
+     this.employees = this.employees.filter(item => item.name !== emp.name);
   }
-
 }
