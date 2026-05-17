@@ -1,14 +1,26 @@
 <h1 class="text-center mt-5">Parent Component</h1>
 
-<h4 class="text-center mt-5">My Own data - {{a}}</h4>
+<div>
+   <h4 class="text-center mt-5">My Own data - {{a}}</h4>
+   <input type="number" [(ngModel)]="a" name="a">
+</div>
 <h4 class="text-center mt-5">My child2 b data - {{child2.b}}</h4>
 <h4 class="text-center mt-5">My child2 c data - {{c_parent}}</h4>
 
+@for(item of numArr; track $index){
+
+<h2>{{item}}</h2>
+
+}
+
+ <input type="number" #newNum>
+ <button (click)="numArr.push(+newNum.value)">Add</button>
+
 <div class="d-flex p-5">
-    <div class="w-50 border rounded-lg p-4">
-       <app-child1 [a]="a" [b]="child2.b"></app-child1>
-    </div>
-    <div class="w-50 border rounded-lg p-4">
-       <app-child2 #child2 (sendValue)="receiveDataFromChild2($event)"></app-child2>
-    </div>
+   <div class="w-50 border rounded-lg p-4">
+      <app-child1 [a]="a" [b]="child2.b" [numArr]="numArr"></app-child1>
+   </div>
+   <div class="w-50 border rounded-lg p-4">
+      <app-child2 #child2 (sendValue)="receiveDataFromChild2($event)"></app-child2>
+   </div>
 </div>
