@@ -6,10 +6,19 @@ import { CustomDirective } from '../../components/custom-directive/custom-direct
 import { PipesDemo } from '../../components/pipes-demo/pipes-demo';
 import { PureImpurePipes } from '../../components/pure-impure-pipes/pure-impure-pipes';
 import { ParentDemo } from '../../components/parent-demo/parent-demo';
+import { Parent } from '../../components/parent/parent';
 
 @Component({
   selector: 'app-body',
-  imports: [ParentDemo ,DataBinding, Directives, CustomDirective, PipesDemo, PureImpurePipes],
+  imports: [
+    Parent,
+    ParentDemo,
+    DataBinding,
+    Directives,
+    CustomDirective,
+    PipesDemo,
+    PureImpurePipes,
+  ],
   templateUrl: './body.html',
   styleUrl: './body.css',
 })

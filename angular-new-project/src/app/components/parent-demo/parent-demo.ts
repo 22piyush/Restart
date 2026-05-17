@@ -14,5 +14,6 @@ export class ParentDemo {
     c_parent:any;
     receiveDataFromChild2(c_child2:any){
       this.c_parent = c_child2;
+      
     }
 }

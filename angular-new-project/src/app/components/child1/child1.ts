@@ -5,5 +5,9 @@ import { Component } from '@angular/core';
   imports: [],
   templateUrl: './child1.html',
   styleUrl: './child1.css',
+  inputs:['a' , 'b']
 })
-export class Child1 {}
+export class Child1 {
+  a:any;
+  b:any;
+}
