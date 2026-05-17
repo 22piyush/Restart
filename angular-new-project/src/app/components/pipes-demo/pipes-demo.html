@@ -14,4 +14,17 @@
     <div>{{date | date : 'mediumTime'}}</div>
     <div>{{date | date : 'longTime'}}</div>
     <div>{{date | date : 'fullTime'}}</div>
+
+    <div>{{date | date : 'dd-mm-yyyy'}}</div>
+
+
+    <div>{{2.5 | percent}}</div>
+
+
+
+
+
+    <textarea [(ngModel)]="message" maxlength="100"></textarea>
+    <div>{{message}}</div>
+    <div>{{message | remaining}}</div>
 </div>
