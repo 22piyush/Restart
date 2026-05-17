@@ -13,7 +13,7 @@ export class Parent {
   a = 100;
   c_parent: any;
 
-  numArr:any = [10,20,30,40];
+  numArr: any = [10, 20, 30, 40];
 
   courseName: string;
 
@@ -21,7 +21,8 @@ export class Parent {
     this.c_parent = c_child2;
   }
 
-  constructor(private ele : ElementRef) { // Di
+  constructor(private ele: ElementRef) {
+    // Di
     console.log('Parent constructor');
     this.courseName = 'Angular';
   }
@@ -34,19 +35,19 @@ export class Parent {
   ngDoCheck() {
     console.log('Parent ngDoCheck');
   }
-  // ngAfterContentInit() {
-  //   console.log('Parent ngAfterContentInit');
-  // }
-  // ngAfterContentChecked() {
-  //   console.log('Parent ngAfterContentChecked');
-  // }
-  // ngAfterViewInit() {
-  //   console.log('Parent ngAfterViewInit');
-  // }
-  // ngAfterViewChecked() {
-  //   console.log('Parent ngAfterViewChecked');
-  // }
-  // ngOnDestroy() {
-  //   console.log('Parent ngOnDestory');
-  // }
+  ngAfterContentInit() {
+    console.log('Parent ngAfterContentInit');
+  }
+  ngAfterContentChecked() {
+    console.log('Parent ngAfterContentChecked');
+  }
+  ngAfterViewInit() {
+    console.log('Parent ngAfterViewInit');
+  }
+  ngAfterViewChecked() {
+    console.log('Parent ngAfterViewChecked');
+  }
+  ngOnDestroy() {
+    console.log('Parent ngOnDestory');
+  }
 }

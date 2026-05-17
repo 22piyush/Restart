@@ -4,6 +4,7 @@ import {
   Component,
   ElementRef,
   SimpleChange,
+  ViewChild,
 } from '@angular/core';
 
 @Component({
@@ -18,6 +19,8 @@ export class Child1 {
   a: any;
   b: any;
   numArr: any;
+
+  @ViewChild('myBox1') myBox1: any;
 
   constructor(
     private ele: ElementRef,
@@ -35,19 +38,21 @@ export class Child1 {
     console.log('Child ngDoCheck');
     this.dtcdr.markForCheck();
   }
-  // ngAfterContentInit() {
-  //   console.log('Child ngAfterContentInit');
-  // }
-  // ngAfterContentChecked() {
-  //   console.log('Child ngAfterContentChecked');
-  // }
-  // ngAfterViewInit() {
-  //   console.log('Child ngAfterViewInit');
-  // }
-  // ngAfterViewChecked() {
-  //   console.log('Child ngAfterViewChecked');
-  // }
-  // ngOnDestroy() {
-  //   console.log('Child ngOnDestory');
-  // }
+  ngAfterContentInit() {
+    console.log('Child ngAfterContentInit');
+  }
+  ngAfterContentChecked() {
+    console.log('Child ngAfterContentChecked');
+  }
+  ngAfterViewInit() {
+    console.log('Child ngAfterViewInit');
+    console.log(this.myBox1);
+    this.myBox1.nativeElement.focus();
+  }
+  ngAfterViewChecked() {
+    console.log('Child ngAfterViewChecked');
+  }
+  ngOnDestroy() {
+    console.log('Child ngOnDestory');
+  }
 }
