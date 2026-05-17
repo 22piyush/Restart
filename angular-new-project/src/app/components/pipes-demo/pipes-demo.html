@@ -8,22 +8,15 @@
     <h3>{{salary | currency}}</h3>
     <h3>{{salary | currency : 'INR'}}</h3> -->
     <h3>{{salary | currency : 'USD' : 'symbol'}}</h3>
-
-
     <div>{{date | date : 'shortTime'}}</div>
     <div>{{date | date : 'mediumTime'}}</div>
     <div>{{date | date : 'longTime'}}</div>
     <div>{{date | date : 'fullTime'}}</div>
-
     <div>{{date | date : 'dd-mm-yyyy'}}</div>
-
-
     <div>{{2.5 | percent}}</div>
 
 
-
-
-
+    <!-- Custom Pipes  -->
     <textarea [(ngModel)]="message" maxlength="100"></textarea>
     <div>{{message}}</div>
     <div>{{message | remaining}}</div>
