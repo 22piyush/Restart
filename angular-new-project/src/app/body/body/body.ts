@@ -5,10 +5,11 @@ import { UserList } from '../../components/user-list/user-list';
 import { CustomDirective } from '../../components/custom-directive/custom-directive';
 import { PipesDemo } from '../../components/pipes-demo/pipes-demo';
 import { PureImpurePipes } from '../../components/pure-impure-pipes/pure-impure-pipes';
+import { ParentDemo } from '../../components/parent-demo/parent-demo';
 
 @Component({
   selector: 'app-body',
-  imports: [DataBinding, Directives, CustomDirective, PipesDemo, PureImpurePipes],
+  imports: [ParentDemo ,DataBinding, Directives, CustomDirective, PipesDemo, PureImpurePipes],
   templateUrl: './body.html',
   styleUrl: './body.css',
 })

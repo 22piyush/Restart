@@ -1,1 +1,9 @@
-<p>pure-impure-pipes  works!</p>
+<p>pure-impure-pipes works!</p>
+@for(item of numArr | mySort; track $index){
+
+
+<b>{{item}} &nbsp;</b>
+}
+
+<input type="number" [(ngModel)]="numVal"/>
+<button (click)="numArr.push(+numVal)">Push</button>
