@@ -10,10 +10,12 @@ import { Parent } from '../../components/parent/parent';
 import { EmployeeCrud } from '../../components/employee-crud/employee-crud';
 import { Services } from '../../components/services/services';
 import { HttpDemo1 } from '../../components/http-demo1/http-demo1';
+import { EmployeeCrudHttp } from '../../components/employee-crud-http/employee-crud-http';
 
 @Component({
   selector: 'app-body',
   imports: [
+    EmployeeCrudHttp,
     HttpDemo1,
     Parent,
     ParentDemo,
