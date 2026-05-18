@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class EmployeeServiceHttp {
   HttpClient = inject(HttpClient);
-  api_url = 'http://localhost:3000/';
+  api_url = 'http://localhost:3000/employees';
 
   getAllEmployees() {
     return this.HttpClient.get(this.api_url);
@@ -21,7 +21,7 @@ export class EmployeeServiceHttp {
   }
 
   updateEmployeesByID(id: any, empData: any) {
-    return this.HttpClient.put(`${this.api_url}/${id}`, empData);
+    return this.HttpClient.patch(`${this.api_url}/${id}`, empData);
   }
 
   deleteEmployee(id: any) {

@@ -1,3 +1,84 @@
+<h3 class="text-center">Employee Crud</h3>
+
+<button (click)="fetchEmployees()">Fetch Employees</button>
+
+<div class="d-flex gap-5 align-items-start">
+
+    <!-- Employee Table -->
+    <table class="table table-bordered table-striped w-75">
+
+        <thead class="table-dark">
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Gender</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @for(emp of employees$ | async; track $index){
+
+            <tr>
+                <td>{{emp.firstName}}</td>
+                <td>{{emp.lastName}}</td>
+                <td>{{emp.email}}</td>
+                <td>{{emp.gender}}</td>
+
+                <td>
+                    <button (click)="deleteEmp(emp.id)" class="btn btn-danger btn-sm">
+                        Delete
+                    </button>
+                </td>
+            </tr>
+
+            }
+        </tbody>
+
+    </table>
+
+    <!-- Add Employee Form -->
+    <div class="card shadow p-4 w-50">
+        <h4 class="mb-4 text-center">Add Employee</h4>
+
+        <form>
 
 
+            <div class="mb-3">
+                <label class="form-label">First Name</label>
+                <input #firstName type="text" class="form-control" placeholder="Enter first name">
+            </div>
 
+            <div class="mb-3">
+                <label class="form-label">Last Name</label>
+                <input #lastName type="text" class="form-control" placeholder="Enter last name">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input #email type="email" class="form-control" placeholder="Enter email">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Gender</label>
+
+                <select #gender class="form-select">
+                    <option selected disabled>Select Gender</option>
+                    <option>Male</option>
+                    <option>Female</option>
+                </select>
+            </div>
+
+
+            <button (click)="addEmp(firstName.value,lastName.value,email.value,gender.value)"
+                class="btn btn-primary w-100">
+
+                Add Employee
+
+            </button>
+
+        </form>
+    </div>
+
+</div>
