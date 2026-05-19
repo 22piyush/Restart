@@ -11,10 +11,12 @@ import { EmployeeCrud } from '../../components/employee-crud/employee-crud';
 import { Services } from '../../components/services/services';
 import { HttpDemo1 } from '../../components/http-demo1/http-demo1';
 import { EmployeeCrudHttp } from '../../components/employee-crud-http/employee-crud-http';
+import { CommentList } from '../../components/comment-list/comment-list';
 
 @Component({
   selector: 'app-body',
   imports: [
+    CommentList,
     EmployeeCrudHttp,
     HttpDemo1,
     Parent,
