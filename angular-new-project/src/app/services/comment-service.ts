@@ -9,7 +9,6 @@ import { Comment } from '../models/comment';
 export class CommentService {
 
   http = inject(HttpClient);
-
   comment_api = 'https://jsonplaceholder.typicode.com/comments';
 
   getAllComments(): Observable<Comment[]> {

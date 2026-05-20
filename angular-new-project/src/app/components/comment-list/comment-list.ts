@@ -11,12 +11,10 @@ import { Comment } from '../../models/comment';
   styleUrl: './comment-list.css',
 })
 export class CommentList {
-
   commentService = inject(CommentService);
   comments$: Observable<Comment[]> | undefined;
 
   ngOnInit() {
     this.comments$ = this.commentService.getAllComments();
   }
-
 }

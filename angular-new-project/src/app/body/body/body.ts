@@ -12,6 +12,7 @@ import { Services } from '../../components/services/services';
 import { HttpDemo1 } from '../../components/http-demo1/http-demo1';
 import { EmployeeCrudHttp } from '../../components/employee-crud-http/employee-crud-http';
 import { CommentList } from '../../components/comment-list/comment-list';
+import { Observable } from '../../components/observable/observable';
 
 @Component({
   selector: 'app-body',
@@ -27,7 +28,8 @@ import { CommentList } from '../../components/comment-list/comment-list';
     PipesDemo,
     PureImpurePipes,
     EmployeeCrud,
-    Services
+    Services,
+    Observable
   ],
   templateUrl: './body.html',
   styleUrl: './body.css',

@@ -13,5 +13,4 @@ export class Employee {
     return this.firstName + ' ' + this.lastName;
   }
 
-
 }

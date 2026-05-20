@@ -6,7 +6,6 @@
 
     <!-- Employee Table -->
     <table class="table table-bordered table-striped w-75">
-
         <thead class="table-dark">
             <tr>
                 <th>First Name</th>
@@ -16,27 +15,22 @@
                 <th>Action</th>
             </tr>
         </thead>
-
         <tbody>
             @for(emp of employees$ | async; track $index){
-
-            <tr>
-                <td>{{emp.firstName}}</td>
-                <td>{{emp.lastName}}</td>
-                <td>{{emp.fullName()}}</td>
-                <td>{{emp.email}}</td>
-                <td>{{emp.gender}}</td>
-
-                <td>
-                    <button (click)="deleteEmp(emp.id)" class="btn btn-danger btn-sm">
-                        Delete
-                    </button>
-                </td>
-            </tr>
-
+                <tr>
+                    <td>{{emp.firstName}}</td>
+                    <td>{{emp.lastName}}</td>
+                    <td>{{emp.fullName()}}</td>
+                    <td>{{emp.email}}</td>
+                    <td>{{emp.gender}}</td>
+                    <td>
+                        <button (click)="deleteEmp(emp.id)" class="btn btn-danger btn-sm">
+                            Delete
+                        </button>
+                    </td>
+                </tr>
             }
         </tbody>
-
     </table>
 
     <!-- Add Employee Form -->
@@ -44,8 +38,6 @@
         <h4 class="mb-4 text-center">Add Employee</h4>
 
         <form>
-
-
             <div class="mb-3">
                 <label class="form-label">First Name</label>
                 <input #firstName type="text" class="form-control" placeholder="Enter first name">
@@ -78,7 +70,6 @@
                 Add Employee
 
             </button>
-
         </form>
     </div>
 
