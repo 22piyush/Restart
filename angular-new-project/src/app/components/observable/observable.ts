@@ -10,30 +10,14 @@ import { HttpClient } from '@angular/common/http';
   styleUrl: './observable.css',
 })
 export class Observable {
+  ngOnInit() {
+    this.merge_demo();
+  }
 
-                                                                
+  merge_demo(){
+    // console.log("hello");
+    
+  }
+
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -12,5 +12,4 @@ export class Employee {
   fullName() {
     return this.firstName + ' ' + this.lastName;
   }
-
 }
