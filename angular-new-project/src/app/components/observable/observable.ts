@@ -32,6 +32,9 @@ export class Observable {
   first_5 = this.num$.pipe(take(5));
 
 
+  num_square = this.num$.pipe(map((val)=>val * val));
+
+
   interval_demo() {
     this.num$.subscribe((val) => console.log(val));
   }
