@@ -14,6 +14,7 @@ import { EmployeeCrudHttp } from '../../components/employee-crud-http/employee-c
 import { CommentList } from '../../components/comment-list/comment-list';
 import { Observable } from '../../components/observable/observable';
 import { ObservableDemo2 } from '../../components/observable-demo2/observable-demo2';
+import { ObservableDemo3 } from '../../components/observable-demo3/observable-demo3';
 
 @Component({
   selector: 'app-body',
@@ -31,7 +32,8 @@ import { ObservableDemo2 } from '../../components/observable-demo2/observable-de
     EmployeeCrud,
     Services,
     Observable,
-    ObservableDemo2
+    ObservableDemo2,
+    ObservableDemo3
   ],
   templateUrl: './body.html',
   styleUrl: './body.css',
