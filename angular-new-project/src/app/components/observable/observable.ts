@@ -27,6 +27,7 @@ export class Observable {
   }
 
   num$ = interval(1000);
+  even_num$ = this.num$.pipe(filter((val) => val % 2 == 0));
   interval_demo() {
     this.num$.subscribe((val) => console.log(val));
   }
