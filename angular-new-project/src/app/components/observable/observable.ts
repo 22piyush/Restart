@@ -16,12 +16,11 @@ export class Observable {
 
   from_demo() {
     let cars = ['Tata', 'Honda', 'Maruti', 'Toyota'];
-
     let cars_observable = from(cars); // Convert array to observable
 
     cars_observable.subscribe({
-      next: (val) => console.log(val , "11111111111"),
-      error: (error) => console.log(error , "222222222222"),
+      next: (val) => console.log(val, '11111111111'),
+      error: (error) => console.log(error, '222222222222'),
       complete: () => console.log('Last Value'),
     });
   }
