@@ -12,6 +12,7 @@ import { HttpClient } from '@angular/common/http';
 export class Observable {
   ngOnInit() {
     this.from_demo();
+    this.interval_demo();
   }
 
   from_demo() {
@@ -23,5 +24,10 @@ export class Observable {
       error: (error) => console.log(error, '222222222222'),
       complete: () => console.log('Last Value'),
     });
+  }
+
+  num$ = interval(1000);
+  interval_demo() {
+    this.num$.subscribe((val) => console.log(val));
   }
 }
