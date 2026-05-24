@@ -46,5 +46,9 @@ export class Observable {
     let api_1 = this.httpClient.get('https://jsonplaceholder.typicode.com/users');
     let api_2 = this.httpClient.get('https://jsonplaceholder.typicode.com/posts');
     let api_3 = this.httpClient.get('https://jsonplaceholder.typicode.com/comments');
+
+    forkJoin([api_1, api_2, api_3]).subscribe((res) => {
+      console.log(res);
+    });
   }
 }
