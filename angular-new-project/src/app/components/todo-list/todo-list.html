@@ -1,6 +1,9 @@
 <p>todo-list works!</p>
 <ul>
     @for(todo of todoArr$ | async; track $index){
-        <li>{{todo.value}}</li>
+    <li>
+        {{todo.value}}
+        <button class="btn btn-danger" (click)="deleteTodo(todo.id)">Delete</button>
+    </li>
     }
 </ul>

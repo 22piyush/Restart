@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { TodoService } from '../../services/todo-service';
 
 @Component({
   selector: 'app-todo-add',
@@ -6,4 +7,10 @@ import { Component } from '@angular/core';
   templateUrl: './todo-add.html',
   styleUrl: './todo-add.css',
 })
-export class TodoAdd {}
+export class TodoAdd {
+  TodoService = inject(TodoService);
+
+  addTodo(todoText: string) {
+    this.TodoService.addNewTodo({ value: todoText });
+  }
+}

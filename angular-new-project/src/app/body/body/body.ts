@@ -19,6 +19,7 @@ import { SubjectDemo1 } from '../../components/subject-demo1/subject-demo1';
 import { TodoList } from '../../components/todo-list/todo-list';
 import { TodoAdd } from '../../components/todo-add/todo-add';
 import { TodoCrud } from '../../components/todo-crud/todo-crud';
+import { HttpDemo2 } from '../../components/http-demo2/http-demo2';
 
 @Component({
   selector: 'app-body',
@@ -39,9 +40,10 @@ import { TodoCrud } from '../../components/todo-crud/todo-crud';
     // ObservableDemo2,
     // ObservableDemo3,
     // SubjectDemo1,
-    TodoList,
-    TodoAdd,
-    TodoCrud
+    // TodoList,
+    // TodoAdd,
+    // TodoCrud,
+    HttpDemo2
   ],
   templateUrl: './body.html',
   styleUrl: './body.css',

@@ -9,10 +9,10 @@ import { CommonModule } from '@angular/common';
   styleUrl: './todo-list.css',
 })
 export class TodoList {
-
   TodoService = inject(TodoService);
   todoArr$ = this.TodoService.todoObs;
 
-
-
+  deleteTodo(todoId: any) {
+    this.TodoService.deleteToDo(todoId);
+  }
 }
