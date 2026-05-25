@@ -16,26 +16,32 @@ import { Observable } from '../../components/observable/observable';
 import { ObservableDemo2 } from '../../components/observable-demo2/observable-demo2';
 import { ObservableDemo3 } from '../../components/observable-demo3/observable-demo3';
 import { SubjectDemo1 } from '../../components/subject-demo1/subject-demo1';
+import { TodoList } from '../../components/todo-list/todo-list';
+import { TodoAdd } from '../../components/todo-add/todo-add';
+import { TodoCrud } from '../../components/todo-crud/todo-crud';
 
 @Component({
   selector: 'app-body',
   imports: [
-    CommentList,
-    EmployeeCrudHttp,
-    HttpDemo1,
-    Parent,
-    ParentDemo,
-    DataBinding,
-    Directives,
-    CustomDirective,
-    PipesDemo,
-    PureImpurePipes,
-    EmployeeCrud,
-    Services,
-    Observable,
-    ObservableDemo2,
-    ObservableDemo3,
-    SubjectDemo1
+    // CommentList,
+    // EmployeeCrudHttp,
+    // HttpDemo1,
+    // Parent,
+    // ParentDemo,
+    // DataBinding,
+    // Directives,
+    // CustomDirective,
+    // PipesDemo,
+    // PureImpurePipes,
+    // EmployeeCrud,
+    // Services,
+    // Observable,
+    // ObservableDemo2,
+    // ObservableDemo3,
+    // SubjectDemo1,
+    TodoList,
+    TodoAdd,
+    TodoCrud
   ],
   templateUrl: './body.html',
   styleUrl: './body.css',

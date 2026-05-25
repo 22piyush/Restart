@@ -8,6 +8,7 @@ import { Subject } from 'rxjs';
   styleUrl: './subject-demo1.css',
 })
 export class SubjectDemo1 {
+
   ngOnInit() {
     this.subject_demo();
   }
@@ -23,4 +24,5 @@ export class SubjectDemo1 {
 
     mySubject.next('plan-C');
   }
+  
 }
