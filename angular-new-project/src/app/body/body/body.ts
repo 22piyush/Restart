@@ -15,6 +15,7 @@ import { CommentList } from '../../components/comment-list/comment-list';
 import { Observable } from '../../components/observable/observable';
 import { ObservableDemo2 } from '../../components/observable-demo2/observable-demo2';
 import { ObservableDemo3 } from '../../components/observable-demo3/observable-demo3';
+import { SubjectDemo1 } from '../../components/subject-demo1/subject-demo1';
 
 @Component({
   selector: 'app-body',
@@ -33,7 +34,8 @@ import { ObservableDemo3 } from '../../components/observable-demo3/observable-de
     Services,
     Observable,
     ObservableDemo2,
-    ObservableDemo3
+    ObservableDemo3,
+    SubjectDemo1
   ],
   templateUrl: './body.html',
   styleUrl: './body.css',
