@@ -14,6 +14,7 @@ const initialTodos = [
 @Injectable({
   providedIn: 'root',
 })
+
 export class TodoService {
   private todoSubject = new BehaviorSubject<Todo[]>(initialTodos);
   readonly todoObs = this.todoSubject.asObservable();
@@ -24,5 +25,15 @@ export class TodoService {
     item.id = this.nextId++;
     this.todoArr.push(item);
     this.todoSubject.next([...this.todoArr]);
+  }
+
+  deleteToDo(id: number) {
+    this.todoArr.forEach((todo, ind) => {
+      if (todo.id === id) {
+        this.todoArr.splice(ind, 1);
+      }
+
+      this.todoSubject.next([...this.todoArr]);
+    });
   }
 }
