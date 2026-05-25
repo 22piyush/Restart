@@ -1,1 +1,6 @@
 <p>todo-list works!</p>
+<ul>
+    @for(todo of todoArr$ | async; track $index){
+        <li>{{todo.value}}</li>
+    }
+</ul>

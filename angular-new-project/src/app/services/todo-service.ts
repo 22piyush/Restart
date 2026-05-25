@@ -16,8 +16,10 @@ const initialTodos = [
 })
 
 export class TodoService {
+
   private todoSubject = new BehaviorSubject<Todo[]>(initialTodos);
   readonly todoObs = this.todoSubject.asObservable();
+
   private todoArr: Todo[] = this.todoSubject.value;
   private nextId = 3;
 
@@ -36,4 +38,5 @@ export class TodoService {
       this.todoSubject.next([...this.todoArr]);
     });
   }
+  
 }
