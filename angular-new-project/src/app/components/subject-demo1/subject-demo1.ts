@@ -13,7 +13,6 @@ export class SubjectDemo1 {
   }
 
   subject_demo() {
-    
     let mySubject = new Subject();
 
     mySubject.next('plan-A');
@@ -23,6 +22,5 @@ export class SubjectDemo1 {
     mySubject.subscribe((val) => console.log('Subscribe-2', val));
 
     mySubject.next('plan-C');
-
   }
 }
