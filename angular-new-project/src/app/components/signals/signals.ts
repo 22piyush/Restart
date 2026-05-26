@@ -13,13 +13,21 @@ export class Signals {
   userData: WritableSignal<any> = signal({});
 
   userDetailsEffect = effect(() => {
-    const id = this.userId();
-    this.fetchUserDetails(id);
+    const userId = this.userId();
+    this.fetchUserDetails(userId);
   });
 
   fetchUserDetails(id: number) {
     this.HttpClient.get(`https://jsonplaceholder.typicode.com/users/${id}`).subscribe((res) => {
       this.userData.set(res);
     });
+  }
+
+  increment() {
+    this.userId.update((val) => val + 1);
+  }
+
+  deleteEffect() {
+    this.userDetailsEffect.destroy();
   }
 }
