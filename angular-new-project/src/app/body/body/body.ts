@@ -20,6 +20,7 @@ import { TodoList } from '../../components/todo-list/todo-list';
 import { TodoAdd } from '../../components/todo-add/todo-add';
 import { TodoCrud } from '../../components/todo-crud/todo-crud';
 import { HttpDemo2 } from '../../components/http-demo2/http-demo2';
+import { Signals } from '../../components/signals/signals';
 
 @Component({
   selector: 'app-body',
@@ -43,7 +44,8 @@ import { HttpDemo2 } from '../../components/http-demo2/http-demo2';
     // TodoList,
     // TodoAdd,
     // TodoCrud,
-    HttpDemo2
+    // HttpDemo2,
+    Signals
   ],
   templateUrl: './body.html',
   styleUrl: './body.css',
