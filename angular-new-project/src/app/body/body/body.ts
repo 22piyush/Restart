@@ -21,6 +21,7 @@ import { TodoAdd } from '../../components/todo-add/todo-add';
 import { TodoCrud } from '../../components/todo-crud/todo-crud';
 import { HttpDemo2 } from '../../components/http-demo2/http-demo2';
 import { Signals } from '../../components/signals/signals';
+import { Forms } from '../../components/forms/forms';
 
 @Component({
   selector: 'app-body',
@@ -45,7 +46,8 @@ import { Signals } from '../../components/signals/signals';
     // TodoAdd,
     // TodoCrud,
     // HttpDemo2,
-    Signals
+    // Signals,
+    Forms
   ],
   templateUrl: './body.html',
   styleUrl: './body.css',
