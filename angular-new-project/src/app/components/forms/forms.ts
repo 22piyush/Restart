@@ -10,4 +10,14 @@ import { FormsModule } from '@angular/forms';
 export class Forms {
   name = '';
   age = null;
+
+  userObj = {
+    name: '',
+    email: '',
+    city: '',
+  };
+
+  onSubmit() {
+    console.log(this.userObj);
+  }
 }

@@ -10,6 +10,65 @@
 
 
 
+<div class="container mt-4">
+
+    <div class="card p-4 shadow">
+
+        <h3 class="mb-3">Template Driven Form</h3>
+
+        <form #myForm="ngForm" (ngSubmit)="onSubmit()">
+
+            <!-- Name -->
+            <div class="mb-3">
+                <label>Name</label>
+
+                <input type="text" class="form-control" name="name" [(ngModel)]="userObj.name" required #name="ngModel">
+
+                @if(name.invalid && name.touched){
+                <small class="text-danger">
+                    Name is required
+                </small>
+                }
+            </div>
+
+            <!-- Email -->
+            <div class="mb-3">
+                <label>Email</label>
+
+                <input type="email" class="form-control" name="email" [(ngModel)]="userObj.email" required email
+                    #email="ngModel">
+
+                @if(email.invalid && email.touched){
+                <small class="text-danger">
+                    Valid email required
+                </small>
+                }
+            </div>
+
+            <!-- City -->
+            <div class="mb-3">
+                <label>City</label>
+
+                <select class="form-select" name="city" [(ngModel)]="userObj.city" required>
+                    <option value="">Select City</option>
+                    <option>Nagpur</option>
+                    <option>Pune</option>
+                    <option>Mumbai</option>
+                </select>
+            </div>
+
+            <button class="btn btn-primary" [disabled]="myForm.invalid">
+                Submit
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+
 <style>
     input.ng-invalid {
         border: 5px solid red;
