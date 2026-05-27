@@ -12,7 +12,7 @@ export class Forms {
   age = null;
 
   userObj = {
-    name: '',
+    name: 'ddvd',
     email: '',
     city: '',
   };

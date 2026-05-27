@@ -1,0 +1,55 @@
+<h3 class="text-center">Model Driven / Reactive Form</h3>
+
+<div class="col-sm-4 offset-4 border border-3 rounded-3 p-3">
+    <form [formGroup]="registerForm">
+
+        <p>
+            First Name:
+            <input formControlName="firstName" type="text">
+
+            @if(registerForm.get('firstName')?.touched &&
+            registerForm.get('firstName')?.errors?.['required']){
+
+            <span class="text-danger">
+                First Name is required
+            </span>
+
+            }
+        </p>
+
+        <p>
+            Last Name:
+            <input formControlName="lastName" type="text" class="form-control">
+        </p>
+
+        <p>
+            Email:
+            <input formControlName="email" type="text" class="form-control">
+        </p>
+
+        <!-- Address Form Group -->
+        <div formGroupName="address">
+
+            <p>
+                City:
+                <input formControlName="city" type="text" class="form-control">
+            </p>
+
+            <p>
+                State:
+                <input formControlName="state" type="text" class="form-control">
+            </p>
+
+            <p>
+                Pincode:
+                <input formControlName="pincode" type="text" class="form-control">
+            </p>
+
+        </div>
+
+        <button class="btn btn-primary" type="submit">
+            Submit
+        </button>
+
+    </form>
+</div>
