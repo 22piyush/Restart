@@ -23,6 +23,7 @@ import { HttpDemo2 } from '../../components/http-demo2/http-demo2';
 import { Signals } from '../../components/signals/signals';
 import { Forms } from '../../components/forms/forms';
 import { ModelFormDemo1 } from '../../components/model-form-demo1/model-form-demo1';
+import { SignalFormDemo } from '../../components/signal-form-demo/signal-form-demo';
 
 @Component({
   selector: 'app-body',
@@ -49,7 +50,8 @@ import { ModelFormDemo1 } from '../../components/model-form-demo1/model-form-dem
     // HttpDemo2,
     // Signals,
     // Forms,
-    ModelFormDemo1
+    // ModelFormDemo1,
+    SignalFormDemo
   ],
   templateUrl: './body.html',
   styleUrl: './body.css',
