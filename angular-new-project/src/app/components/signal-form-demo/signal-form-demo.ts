@@ -11,5 +11,5 @@ export class SignalFormDemo {
   loginModel = signal({ email: '', password: '' });
   loginForm = form(this.loginModel);
 
-
+  
 }
