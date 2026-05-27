@@ -1,1 +1,14 @@
-<p>signal-form-demo  works!</p>
+<p>signal-form-demo works!</p>
+
+
+<div>
+    <form>
+        <input type="email" [formField]="loginForm.email">
+        <input type="password" [formField]="loginForm.password">
+
+        <input type="reset" value="reset">
+        <input type="submit" value="submit">
+    </form>
+
+    <div>Email : {{loginForm.email().value()}}</div>
+</div>
