@@ -24,6 +24,7 @@ import { Signals } from '../../components/signals/signals';
 import { Forms } from '../../components/forms/forms';
 import { ModelFormDemo1 } from '../../components/model-form-demo1/model-form-demo1';
 import { SignalFormDemo } from '../../components/signal-form-demo/signal-form-demo';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-body',
@@ -51,7 +52,8 @@ import { SignalFormDemo } from '../../components/signal-form-demo/signal-form-de
     // Signals,
     // Forms,
     // ModelFormDemo1,
-    SignalFormDemo
+    // SignalFormDemo
+    RouterOutlet
   ],
   templateUrl: './body.html',
   styleUrl: './body.css',
