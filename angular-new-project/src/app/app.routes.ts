@@ -5,6 +5,8 @@ import { About } from './components/about/about';
 import { Contact } from './components/contact/contact';
 import { Notfound } from './components/notfound/notfound';
 import { ProductDetails } from './components/product-details/product-details';
+import { Child1 } from './components/child1/child1';
+import { Child2 } from './components/child2/child2';
 
 export const routes: Routes = [
   {
@@ -16,6 +18,17 @@ export const routes: Routes = [
   {
     path: 'home',
     component: Home,
+    children: [
+      {
+        path: 'child1',
+        component: Child1,
+      },
+
+      {
+        path: 'child2',
+        component: Child2,
+      },
+    ],
   },
 
   {
