@@ -40,9 +40,7 @@ import { Navbar } from '../../components/navbar/navbar';
     // CustomDirective,
     // PipesDemo,
     // PureImpurePipes,
-    // EmployeeCrud,
-    // Services,
-    // Observable,
+    
     // ObservableDemo2,
     // ObservableDemo3,
     // SubjectDemo1,
