@@ -26,6 +26,7 @@ import { ModelFormDemo1 } from '../../components/model-form-demo1/model-form-dem
 import { SignalFormDemo } from '../../components/signal-form-demo/signal-form-demo';
 import { RouterOutlet } from '@angular/router';
 import { Navbar } from '../../components/navbar/navbar';
+import { AngularMaterial } from '../../components/angular-material/angular-material';
 
 @Component({
   selector: 'app-body',
@@ -53,7 +54,8 @@ import { Navbar } from '../../components/navbar/navbar';
     // ModelFormDemo1,
     // SignalFormDemo
     RouterOutlet,
-    Navbar
+    Navbar,
+    AngularMaterial
   ],
   templateUrl: './body.html',
   styleUrl: './body.css',
