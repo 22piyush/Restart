@@ -20,4 +20,8 @@ describe('App', () => {
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('h1')?.textContent).toContain('Hello, angular-new-project');
   });
+
+  it('Should verify add function', () => {
+    expect(component.add(10, 20)).toBe(30);
+  });
 });
