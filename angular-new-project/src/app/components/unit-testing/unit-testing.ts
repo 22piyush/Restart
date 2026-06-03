@@ -6,4 +6,8 @@ import { Component } from '@angular/core';
   templateUrl: './unit-testing.html',
   styleUrl: './unit-testing.css',
 })
-export class UnitTesting {}
+export class UnitTesting {
+  add(a: number, b: number) {
+    return a + b;
+  }
+}
