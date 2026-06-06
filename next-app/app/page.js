@@ -5,6 +5,9 @@ export default function Home() {
     <>WelCome  <br></br>
 
 
+      <Link href="/services">Services</Link>
+
+      <Link href="/components/about">About</Link>
 
     </>
   );
