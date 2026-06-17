@@ -1,0 +1,21 @@
+
+
+<h3>
+    Lets learn Data binding 
+</h3>
+
+
+<input [(ngModel)]="courseName"/>
+<input [(ngModel)]="courseFee"/>
+<h3>{{+courseName  + +courseFee}}</h3>
+
+
+<input type="text" [maxLength]="max_length">
+<input type="text" [attr.maxlength]="max_length">
+
+
+
+<div>
+    <button [disabled]="flag">Click Me</button>
+    <button (click)="toggleFlag()">Click</button>
+</div>

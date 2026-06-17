@@ -1,0 +1,313 @@
+Angular
+=======
+-Angular is a framework for building single-page client applications using HTML and TypeScript.
+-A framework is a set of helper functions,tools and rules that help us to build our application.
+-Angular is a collection of well-integrated libraries that cover a wide variety of features including routing,forms management, client-server communication, and more
+-Angular is a suite of developer tools to help us develop, build, test, and update our code. (Angular CLI)
+
+
+SPA (Single Page Application)
+===
+-Loads a single HTML page initially, Dynamically updates content without refreshing the entire page.
+	Initial Load: Browser downloads one HTML, CSS, and JavaScript bundle.
+	Navigation: Instead of asking the server for a new page, JavaScript changes the view in the browser.
+	Data Fetching: Content is fetched asynchronously (AJAX/fetch/axios) from APIs.
+Advantages : Faster navigation, Better user experience
+Disadvantages : SEO challenges , Large initial load
+
+
+
+
+	Framework										Library
+=========================================================================
+-group of libraries to make our work easier		-performs specific  operations
+-provides ready to use tools,standards			-provides reusable functions for our code
+ templates for fast application development
+-Collection of libraries & APIs					-collection of helper functions,objects
+-cann't be easily replaceable 					-can be easily replaceable 
+-angular,vue									-jQuery,lodash,momentjs,ReactJs,chart.js
+-Hospital with full of doctors					-A doctor specialized in 1 thing		
+
+
+
+		React						Angular
+===========================================================
+1. Library-2013					 1. Framework-2009
+2. Light-weight					 2. Heavy
+3. JSX + Javascript				 3. HTML + Typescript
+4. Uni-Directional				 4. two-way
+5. Virtual DOM					 5. Regular DOM
+6. Axios 				 		 6. HttpClientModule 
+7. No 		 					 7. Dependency Injection
+8. No							 8. Form Validation
+9. extra libraries needed		 9. No additional libraries
+10. UI heavy					 10. Functionality heavy
+
+
+
+
+Bootstrapping angular Application
+=================================
+-Bootstrapping is a technique of initializing/loading our Angular application.
+
+1. index.html --> <app-root></app-root> (Root Component)
+2. main.ts   --> bootstrapApplication(AppComponent, appConfig)
+3. app.config.ts --> Application Level Configurations (Route , HttpClient)
+4. app.component.ts-->app.component.html-->app.component.css
+
+steps to bootstrap the application:
+1. Load index.html
+2. Load Angular, Other Libraries, and Application Code
+3. Execute main.ts File
+4. Load Application-Level Component
+5. Process Template
+
+
+
+
+Modules
+=======
+-Module in Angular refers to a place where we can group the components, directives, pipes, and services, which are related to the application.
+-Modules are used in Angular to put logical boundaries in your application. instead of coding everything into one application, we can instead build everything into separate modules to separate the functionality of your application.
+-In case we are developing a website, the header, footer, left, center and the right section become part of a module.
+-Every application should have at least one Angular module, the root/app module, which must be present for bootstrapping the application on launch.
+
+
+important properties of module are:
+----------------------------------
+-declarations: The set of components, directives, and pipes that belong to this module
+-exports: set of components, directives, and pipes declared in this NgModule that should be visible and usable in the component templates of other NgModules.
+-imports: Other modules whose exported classes are needed by component templates declared in this NgModule.
+-providers: The set of injectable objects that are available in the injector of this module.
+-bootstrap: The main application view, called the root component, which hosts all other app views. Only the root NgModule should set the bootstrap property.
+-entryComponents: set of components to compile when this NgModule is defined, so that they can be dynamically loaded into the view
+-schemas: Elements and properties that are neither Angular components nor directives must be declared in a schema
+-id: A name or path that uniquely identifies this NgModule in getModuleFactory
+-jit: When present, this module is ignored by the AOT compiler
+
+
+
+Component
+=========
+-Components are building blocks of angular applications. Each component controls a part of the user interface.
+-An Angular app contains a tree of Angular components.
+-Each component defines a class that contains application data and logic, and is associated with an HTML template that defines a view to be displayed.
+-@Component() decorator identifies the class immediately below it as a component, and provides the template and related component-specific metadata.
+
+https://angular.dev/api/core/Component
+
+@Component configuration options:
+--------------------------------
+selector:      Ex: 'app-header'
+template:      `<div>This is header Component</div>`
+templateUrl:   './header.component.html'
+style:  	   ['.class1{color:red}']
+styleUrl:     ['./header.component.css']
+encapsulation: ViewEncapsulation.ShadowDom
+providers:     [Services]
+changeDetection:ChangeDetectionStrategy.OnPush
+viewProviders: []
+animations:  []
+interpolation: []
+entryComponents: []
+preserveWhitespaces?: boolean
+standalone?: boolean
+imports:[]
+schemas?:[]
+
+
+
+Decorators
+==========
+@NgModule  - Decorator that marks a class as an NgModule
+@Component - Decorator marks a class as an Angular component
+@Directive - Decorator marks a class as an Angular Directive
+@Injectable - Decorator marks a class as an Angular Service
+@Pipe - Decorator marks a class as an Angular Pipe
+@Input - collect data from parent component
+@Output  - Child component emits event to parent component
+@HostBinding - Binds value to the host element  (custom directive)
+@HostListener - listens event from the host element (custom directive)
+@ViewChild - 
+@ViewChildren - 
+@ContentChild - 
+@ContentChildren - 
+
+
+
+
+Angular CLI
+===========
+-Angular CLI is a command-line interface tool used to initialize, develop, scaffold, and maintain Angular applications directly from a command shell
+
+ng g c demo --dry-run --flat --skip-tests --inline-template --inline-style
+
+g: Generate
+c: Component
+--flat : No Sub folder for the component(header/footer)
+--skip-tests : No test specification file
+--inline-template : No Linked Template
+--inline-style : No external CSS file
+--dry-run : Will display the update without execution
+
+
+scaffold	usage
+---------   --------
+project     ng new <ProjectName>
+Component	ng generate component my-new-component / ng g c my-new-component
+Directive	ng g directive my-new-directive
+Pipe	    ng g pipe my-new-pipe
+Service	    ng g service my-new-service
+Class	    ng g class my-new-class
+Guard	    ng g guard my-new-guard
+Interface	ng g interface my-new-interface
+Enum	    ng g enum my-new-enum
+interceptor ng g interceptor my-interceptor
+Resolver    ng g resolver my-resolver
+Module	    ng g module my-new-module
+
+https://angular.dev/cli/generate
+
+
+
+Angular Project - Folder Structure
+==================================
+.editorconfig	: Configuration for code editors. See EditorConfig.
+.gitignore		: Specifies intentionally untracked files that Git should ignore.
+README.md		: Introductory documentation for the application.
+angular.json	: CLI configuration defaults for all projects in the workspace, including configuration options for build, serve, and test tools that the CLI uses, such as TSLint, Karma, and Protractor. For details, see Angular Workspace Configuration.
+package.json	: Configures npm package dependencies that are available to all projects in the workspace. See npm documentation for the specific format and contents of this file.
+package-lock.json : 	Provides version information for all packages installed into node_modules by the npm client. See npm documentation for details. If you use the yarn client, this file will be yarn.lock instead.
+src/			:  Source files for the root-level application project.
+node_modules/	: Provides npm packages to the entire workspace. Workspace-wide node_modules dependencies are visible to all projects.
+tsconfig.json	: The base TypeScript configuration for projects in the workspace. All other configuration files inherit from this base file. For more information, see the Configuration inheritance with extends section of the TypeScript documentation.
+
+
+
+How to Display Images from local folder
+=======================================
+1. place the images inside 'public' folder
+2. use it in HTML file
+   <img src='sachin.jpg' />
+
+
+
+Databinding
+===========
+-Synchronization of data between Component(TS) and view(HTML).
+-Allows to bind component's properties/data to the view.
+-when component's properties/data change, the view is automatically updated.
+
+1.  interpolation  	 {{ }} (1-way)   (component-->view)
+2.  property Binding  [ ]  (1-way)   (component-->view)
+	bind-property (bind-innerHTML / bind-src)
+3.  Event Binding     ( )  (1-way)   (view-->component)
+	(click)   /  on-click
+4.  2-way Binding  [(ngModel)] (2-way) (component<-->view)
+    bindon-ngModel
+    Note:For 2-way bindning "FormsModule" should be imported
+	
+InterPolation: to bind text-content/expressions to an element, converts the bound value to a string.
+Property: assigns the bound value to a DOM property, preserves the type of the bound value.
+2-way : When user updates the view, component's data is also updated, and vice versa.
+
+
+2-way Binding:
+	1. import FormsModule 
+		a. import { FormsModule } from '@angular/forms'
+		b. imports: [ FormsModule]
+	2. in view file use [(ngModel)]='variable'
+		<input type="text" [(ngModel)]='x'>
+		
+<input type="text" on-keyup="userIdChanged()"	[(ngModel)]="userId" />
+			(OR)
+<input [(ngModel)]="userId" (ngModelChange)="onUserIdChange($event)" />
+onUserIdChange(userId: number): void {
+    console.log('Value Changed');
+}
+
+
+
+
+Attribute Binding
+================= 
+-Attribute Binding is needed while working with HTML attributes that do not have corresponding DOM properties, such as colspan, aria-* , data-* attributes
+
+-attributes are defined by HTML and properties are defined by the DOM.
+-The attributes main role is to initializes the DOM properties. once the DOM initialization complete, the attributes job is done.
+-Property values can change, whereas the attribute values don't change.
+-Property Reflects real-time state changes, whereas Attribute Doesn't change dynamically after creation.
+
+var value1 = document.getElementById('inputBox1').getAttribute('value');
+var value2 = document.getElementById('inputBox1').value;
+console.log(value1, value2); // type something in the box & run these again
+ 
+ <button [attr.aria-label]="ariaLabel">Click me</button>
+ there is no equivalent DOM property for aria-label
+
+
+ <table [width]='myWidth' [attr.height]='myHeight'></table>
+ <tr><td [attr.colspan]="1 + 1">One-Two</td></tr>   Correct
+ <tr><td [colSpan]="1 + 1">One-Two</td></tr>   Correct
+ <tr><td [colspan]="1 + 1">One-Two</td></tr>   Wrong
+ 
+Note: 'colspan' is attribute whereAs 'colSpan' is property. 
+      'maxlength' is attribute whereAs 'maxLength' is property
+	  
+
+Common Attributes that require attr. binding
+=============================================
+-There is no matching DOM property :  aria-label , aria-hidden , aria-expanded
+-Attribute and property names are different : colspan , rowspan, maxlength 
+
+
+
+Variables in templates
+======================
+-Angular has two types of variable declarations in templates: 
+	1. local template variables 
+	2. template reference variables.
+	
+Local template variables with @let
+==================================
+@let syntax allows to define a local variable and re-use it across a template.
+@let cannot be reassigned after declaration
+Angular automatically keeps the variable's value up-to-date with the given expression
+@let declarations cannot be accessed by parent views or siblings
+
+@let name = user.name;
+@let greeting = 'Hello, ' + name;
+@let data = data$ | async;
+@let pi = 3.1459;
+@let coordinates = {x: 50, y: 100};
+
+
+
+
+Template Reference variables
+============================
+-allows to reference DOM elements present in the template
+-access and manipulate DOM elements, child components, or directives
+-access in the template without directly accessing them in the TypeScript code.
+-They are only accessible within the same template.
+-In the template, we use the hash symbol, # or 'ref' to declare a template variable.
+ <input #phone placeholder="phone number" />
+				OR
+ <input ref-phone placeholder="phone number" />			
+
+
+
+
+Assignments: 
+1. Have a paragraph and a toggle button; on clicking the button, control the visibility (Show / Hide) of the paragraph.
+2. Create a dropdown with state names; when the user changes the dropdown value, print the selected value in a div.
+3. create a input box, toggle the type of that input box to (text/password)
+4. Create a counter example with three controls: Increment, Decrement, and Reset.
+5. Create an inputBox to enter temperature in celcius, convert temperature from Celsius to Fahrenheit. 
+	formula:  f = (C × (9/5)) + 32
+6. greeting based on time (good mornig, good afternoon, good evening)
+7. Create a textarea with maxLength = 100; as the user keeps typing, count and display how many words and how many characters are typed and  also display remaining characters.
+8. Create two input boxes and a dropdown (+ , - , * , /) and perform arithmetic operations based on the selected operator.
+9. Create a button that increases font size and another button that decreases font size for a paragraph.
+10. Create a dropdown with colors and change the background color of a div based on selection.
+
