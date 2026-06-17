@@ -1,28 +1,34 @@
 <div>
-    <h3 class="text-center">Lets Learn Directives</h3>
+  <h3 class="text-center">Lets Learn Directives</h3>
 
-    <div class="border border-3 rounded-3 mt-2 p-5 mt-5">
-        <input type="number" [(ngModel)]="num">
-        <div *ngIf="num % 2 == 0">{{num}} is Even</div>
-        <div *ngIf="num % 2 !== 0">{{num}} is Odd</div>
-    </div>
+  <div class="border border-3 rounded-3 mt-2 p-5 mt-5">
+    <input type="number" [(ngModel)]="num" />
+    @if (num % 2 == 0) {
+      <div>{{ num }} is Even</div>
+    }
+    @if (num % 2 !== 0) {
+      <div>{{ num }} is Odd</div>
+    }
+  </div>
 
-    <div class="border border-3 rounded-3 mt-2 p-5 mt-5">
-        <input type="number" [(ngModel)]="num">
-        @if(num%2 == 0){
-        <div>{{num}} is Even</div>
-        }@else{
-        <div>{{num}} is Odd</div>
-        }
-    </div>
+  <div class="border border-3 rounded-3 mt-2 p-5 mt-5">
+    <input type="number" [(ngModel)]="num" />
+    @if (num % 2 == 0) {
+      <div>{{ num }} is Even</div>
+    } @else {
+      <div>{{ num }} is Odd</div>
+    }
+  </div>
 
-    <div class="border border-3 rounded-3 mt-2 p-3">
-        <div>Course List: </div>
+  <div class="border border-3 rounded-3 mt-2 p-3">
+    <div>Course List:</div>
 
-        <select>
-            @for(item of courseArr; track $index){
-                <option>{{item}}</option>
-            }
-        </select>
-    </div>
+    <select>
+      @for (item of courseArr; track $index) {
+        <option>{{ item }}</option>
+      } @empty {
+        No Course to display
+      }
+    </select>
+  </div>
 </div>
