@@ -10,4 +10,5 @@ import { FormsModule } from '@angular/forms';
 })
 export class DirectivesDemo {
   num: number = 2;
+  courseArr = ['Angular', 'React', 'Web Development', 'Java', 'Python'];
 }

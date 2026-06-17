@@ -10,9 +10,19 @@
     <div class="border border-3 rounded-3 mt-2 p-5 mt-5">
         <input type="number" [(ngModel)]="num">
         @if(num%2 == 0){
-            <div>{{num}} is Even</div>
+        <div>{{num}} is Even</div>
         }@else{
-            <div>{{num}} is Odd</div>
+        <div>{{num}} is Odd</div>
         }
+    </div>
+
+    <div class="border border-3 rounded-3 mt-2 p-3">
+        <div>Course List: </div>
+
+        <ul>
+            @for(item of courseArr; track $index){
+                <li>{{item}}</li>
+            }
+        </ul>
     </div>
 </div>
