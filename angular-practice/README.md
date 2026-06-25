@@ -3,4 +3,4 @@
 17 ---->  Bootsrap Component & Explain Folder Structure
 18 ---->  Data Binding
 19 ----> Directives
-20 ----> Read data from JSON & TS file.
+20 ----> Read data from JSON & TS file./ Use Font Awesome./ Pagination
