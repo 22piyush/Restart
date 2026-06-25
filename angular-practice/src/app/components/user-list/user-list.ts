@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import * as data from './user_data.json';
+import employee from './employee';
 
 @Component({
   selector: 'app-user-list',
@@ -9,5 +10,6 @@ import * as data from './user_data.json';
 })
 export class UserList {
   userArr = (data as any).default;
-  
+
+  empArr = employee;
 }
