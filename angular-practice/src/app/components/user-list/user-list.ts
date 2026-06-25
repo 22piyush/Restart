@@ -9,5 +9,5 @@ import * as data from './user_data.json';
 })
 export class UserList {
   userArr = (data as any).default;
-
+  
 }
