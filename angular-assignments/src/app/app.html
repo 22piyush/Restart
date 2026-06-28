@@ -22,3 +22,32 @@
 <button (click)="count = count + 1">InC</button>
 <button (click)="count = count - 1">DecC</button>
 <button (click)="count = count = 0">Reset</button>
+
+
+<h2>Task List</h2>
+
+<select [(ngModel)]="filter">
+    <option value="All">All</option>
+    <option value="Completed">Completed</option>
+    <option value="Pending">Pending</option>
+</select>
+
+<br><br>
+
+@for(task of filteredTasks; track task.id){
+
+<div>
+    <input type="checkbox" [(ngModel)]="task.completed" />
+
+    <span [style.text-decoration]="task.completed ? 'line-through' : 'none'">
+        {{ task.title }}
+    </span>
+</div>
+
+}
+
+<br>
+
+<h3>
+    {{ completedCount }} out of {{ tasks.length }} tasks are completed
+</h3>
