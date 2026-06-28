@@ -1,1 +1,24 @@
-<app-body></app-body>
+<p *ngIf="showPara">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptas et at obcaecati voluptate iste
+    iure, itaque ipsam. Maiores, porro sapiente!</p>
+
+<button (click)="showPara = !showPara">Show</button>
+
+
+<select [(ngModel)]="state">
+    <option value="">Select State</option>
+    <option value="MH">MH</option>
+    <option value="KAR">KAR</option>
+    <option value="MAL">MAL</option>
+</select>
+
+<div>{{state}}</div>
+
+
+<input [type]="showPara ? 'text' : 'password'">
+<button (click)="showPara = !showPara">{{!showPara ? 'Text' : 'Password'}}</button>
+
+
+<div>{{count}}</div>
+<button (click)="count = count + 1">InC</button>
+<button (click)="count = count - 1">DecC</button>
+<button (click)="count = count = 0">Reset</button>
