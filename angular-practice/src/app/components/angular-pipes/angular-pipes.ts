@@ -9,4 +9,6 @@ import { Component } from '@angular/core';
 })
 export class AngularPipes {
   userName = "piyush22"
+
+  salary = 5000
 }
