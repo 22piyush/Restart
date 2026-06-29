@@ -1,0 +1,610 @@
+
+
+1. Explain Angular Change Detection.
+------------------------------------
+-Change Detection is the mechanism Angular uses to synchronize the component data with the DOM.
+-Angular traditionally relies on Zone.js to detect asynchronous operations such as API calls, timers, promises, and user events. Whenever an async operation completes, Angular runs change detection and updates the UI.
+
+There are two strategies:
+1. Default
+   -Checks the entire component tree.
+   -less efficient.
+2. OnPush
+   -Checks component only when:
+     -Input reference changes
+     -Event occurs inside component
+     -Observable emits a value
+     -Signal updates
+For enterprise applications, OnPush is prefered because it significantly reduces unnecessary rendering and improves performance.
+
+
+
+
+
+3. Explain OnPush Change Detection Strategy.
+
+-OnPush tells Angular to skip checking a component unless specific triggers occur.
+Benefits:
+-Faster rendering
+-Reduced CPU usage
+-Better scalability
+
+OnPush for:
+-Dashboard screens
+-Data tables
+-Enterprise applications
+-Large component trees
+
+One common mistake is mutating objects instead of creating new references.
+
+Bad:
+user.name  'John';
+
+Good:
+user  {...user, name:'John'};
+
+
+
+4. Constructor vs ngOnInit
+--------------------------
+
+
+
+Constructor:
+-JavaScript feature
+-Used for Dependency Injection
+-Executes before Angular initialization
+
+ngOnInit:
+-Angular lifecycle hook
+-Executes after component initialization
+-Used for API calls and business logic
+
+As a best practice, I use constructor only for dependency injection and ngOnInit for initialization logic.
+
+
+
+5. Which Lifecycle Hooks do you commonly use and why?
+-----------------------------------------------------
+
+
+
+ngOnInit
+-API calls
+-Initialization
+
+ngOnChanges
+-Detect input changes
+
+ngAfterViewInit
+-Access ViewChild
+-Initialize third-party libraries
+
+ngOnDestroy
+-Cleanup subscriptions
+-Cleanup timers
+
+These are the hooks most commonly used in enterprise applications.
+
+
+
+6. Explain Angular Dependency Injection.
+----------------------------------------
+
+
+
+Dependency Injection is a design pattern where Angular creates and provides dependencies automatically.
+
+Benefits:
+-Loose coupling
+-Better testing
+-Better maintainability
+-Reusability
+
+Angular's Injector is responsible for creating and managing service instances.
+
+
+
+7. What are Hierarchical Injectors?
+-----------------------------------
+
+
+
+Angular supports multiple injector levels.
+
+Levels:
+
+1. Root Injector
+2. Module Injector
+3. Component Injector
+
+If a service is provided at component level, each component gets its own instance.
+
+If provided in root, a singleton instance is shared across the application.
+
+This is important when designing large applications because incorrect provider placement can create unexpected service instances.
+
+
+
+8. How do components communicate in Angular?
+--------------------------------------------
+
+
+
+Parent ? Child
+-Input()
+
+Child ? Parent
+-Output()
+
+Unrelated Components
+-Shared Service
+-BehaviorSubject
+-Signals
+-NgRx Store
+
+For enterprise applications, I avoid excessive Input/Output chaining and prefer centralized state management.
+
+
+
+9. Observable vs Promise
+------------------------
+
+
+
+Observable:
+-Multiple values
+-Lazy execution
+-Cancelable
+-Rich RxJS operators
+
+Promise:
+-Single value
+-Executes immediately
+-Not cancelable
+
+Angular heavily relies on Observables because applications continuously receive data streams from APIs, events, and websockets.
+
+
+
+10. Explain switchMap, mergeMap, concatMap and exhaustMap.
+---------------------------------------------------------
+
+
+
+switchMap
+-Cancels previous request
+-Best for Search APIs
+
+mergeMap
+-Executes all requests simultaneously
+
+concatMap
+-Executes requests sequentially
+
+exhaustMap
+-Ignores new requests until current request completes
+
+Real-world examples:
+
+Search Auto Complete
+? switchMap
+
+Bulk API Processing
+? mergeMap
+
+Sequential File Upload
+? concatMap
+
+Prevent Login Double Click
+? exhaustMap
+
+
+
+11. Subject vs BehaviorSubject vs ReplaySubject
+------------------------------------------------
+
+
+
+Subject
+-No initial value
+-Subscribers get future values only
+
+BehaviorSubject
+-Requires initial value
+-Stores latest value
+
+ReplaySubject
+-Stores multiple previous values
+
+Use Cases:
+
+Subject
+-Event broadcasting
+
+BehaviorSubject
+-Authentication State
+-User Information
+
+ReplaySubject
+-Notifications
+-Chat Messages
+
+
+
+12. How do you prevent Memory Leaks in Angular?
+-----------------------------------------------
+
+
+
+Common Causes:
+-Unsubscribed Observables
+-Timers
+-Event listeners
+
+Solutions:
+-Async Pipe
+-takeUntil()
+-DestroyRef
+-ngOnDestroy()
+
+Memory leak prevention is one of the most important responsibilities in enterprise Angular applications.
+
+
+
+13. Signals vs Observables
+--------------------------
+
+
+
+Signals:
+-Angular Native
+-Synchronous
+-Fine-grained updates
+-Simpler API
+
+Observables:
+-RxJS based
+-Asynchronous streams
+-Rich operators
+
+My approach:
+
+Signals
+? Component State
+
+Observables
+? API Calls
+? WebSockets
+? Event Streams
+
+
+
+14. What are Computed Signals and Effects?
+------------------------------------------
+
+
+
+Computed Signals:
+-Derived values
+-Automatically recalculated
+
+Effects:
+-Execute side effects whenever signal values change
+
+Use Cases:
+
+Computed:
+-Total Price
+-Filtered Lists
+
+Effects:
+-API calls
+-Logging
+-Analytics
+
+They help build highly reactive applications with minimal code.
+
+
+
+15. Reactive Forms vs Template Driven Forms
+-------------------------------------------
+
+
+
+Template Forms:
+-Simple forms
+-Less scalable
+
+Reactive Forms:
+-Model-driven
+-Better testing
+-Better validation
+-Dynamic forms support
+
+For enterprise applications, I always prefer Reactive Forms.
+
+
+
+16. How do you implement complex form validation?
+-------------------------------------------------
+
+
+
+Approaches:
+
+1. Built-in Validators
+2. Custom Validators
+3. Async Validators
+
+Examples:
+
+Built-in:
+-Required
+-Pattern
+-MinLength
+
+Custom:
+-Password Match
+
+Async:
+-Username Availability Check
+
+I generally keep validation logic separate for maintainability and testing.
+
+
+
+17. Explain Angular Routing and Route Guards.
+---------------------------------------------
+
+
+
+Routing enables navigation without page refresh.
+
+Common Guards:
+
+CanActivate
+-Authentication
+
+CanDeactivate
+-Unsaved changes
+
+CanActivateChild
+-Child routes
+
+CanMatch / CanLoad
+-Restrict module loading
+
+Guards improve both security and user experience.
+
+
+
+18. Explain Lazy Loading.
+-------------------------
+
+
+
+Lazy Loading loads modules only when required.
+
+Benefits:
+-Faster startup
+-Smaller bundle size
+-Better performance
+
+Common Modules:
+-Admin
+-Reports
+-Analytics
+
+In enterprise applications, feature modules should generally be lazy loaded.
+
+
+
+19. What are HTTP Interceptors?
+-------------------------------
+
+
+
+Interceptors intercept requests and responses globally.
+
+Use Cases:
+
+-JWT Authentication
+-Logging
+-Error Handling
+-Request Transformation
+-Response Transformation
+
+Benefits:
+-Centralized implementation
+-Cleaner code
+-Better maintainability
+
+
+
+20. How do you handle global API errors?
+----------------------------------------
+
+
+
+I typically implement:
+
+1. HTTP Interceptor
+2. Global Error Handler
+3. Logging Framework
+
+Expected Handling:
+
+401
+? Redirect Login
+
+403
+? Unauthorized Message
+
+500
+? Generic Error Screen
+
+This provides a consistent user experience across the application.
+
+
+
+21. When would you use NgRx?
+----------------------------
+
+
+
+I use NgRx when:
+
+-Multiple modules share state
+-Complex workflows exist
+-Large development teams
+-State predictability is required
+
+NgRx Components:
+
+-Store
+-Actions
+-Reducers
+-Effects
+-Selectors
+
+For smaller applications, Signals or BehaviorSubjects are often sufficient.
+
+
+
+22. Signals vs NgRx
+-------------------
+
+
+
+Signals:
+-Lightweight
+-Less boilerplate
+-Easier learning curve
+
+NgRx:
+-Predictable state
+-Time-travel debugging
+-Better for complex applications
+
+My rule:
+
+Simple State
+? Signals
+
+Enterprise Shared State
+? NgRx
+
+
+
+23. How would you optimize Angular application performance?
+-----------------------------------------------------------
+
+
+
+Techniques:
+
+-OnPush Change Detection
+-Signals
+-Lazy Loading
+-TrackBy
+-Virtual Scrolling
+-Code Splitting
+-Tree Shaking
+-Bundle Optimization
+-Caching
+
+Performance optimization should be considered from the design phase rather than after issues occur.
+
+
+
+24. Scenario: A page displays 100,000 records. How would you optimize it?
+--------------------------------------------------------------------------
+
+
+
+I would never render 100,000 records directly.
+
+Approach:
+
+1. Server-side Pagination
+2. Virtual Scrolling
+3. Lazy Loading
+4. TrackBy
+5. OnPush
+6. Search and Filtering on Backend
+
+The objective is to reduce DOM size and rendering cost.
+
+
+
+25. Scenario: How would you design a large enterprise Angular application?
+---------------------------------------------------------------------------
+
+
+
+Architecture:
+
+Core Module
+-Services
+-Guards
+-Interceptors
+
+Shared Module
+-Reusable Components
+-Pipes
+-Directives
+
+Feature Modules
+-User Module
+-Product Module
+-Order Module
+
+State Management
+-Signals or NgRx
+
+Performance
+-OnPush
+-Lazy Loading
+
+Security
+-JWT
+-Route Guards
+-Interceptors
+
+Testing
+-Unit Testing
+-Integration Testing
+
+CI/CD
+-Automated Build Pipeline
+
+My focus is always on scalability, maintainability, performance, security, and developer productivity.
+
+
+
+BONUS QUESTION
+
+26. Scenario: Application becomes slow after several hours of usage. How would you investigate?
+------------------------------------------------------------------------------------------------
+
+
+
+Investigation Steps:
+
+1. Check Memory Usage
+2. Check Detached DOM Nodes
+3. Check Active Subscriptions
+4. Analyze Network Calls
+5. Review Change Detection Cycles
+6. Profile Using Chrome DevTools
+
+Common Root Causes:
+
+-Memory Leaks
+-Unsubscribed Observables
+-Excessive Change Detection
+-Large DOM Trees
+-Repeated API Calls
+
+I typically start with Chrome Performance and Memory profiling to identify bottlenecks before implementing fixes.

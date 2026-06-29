@@ -15,7 +15,17 @@
 
 
 
-<div>
+<div class="mb-5">
     <button [disabled]="flag">Click Me</button>
     <button (click)="toggleFlag()">Click</button>
 </div>
+
+
+
+
+--------------------------------------------------------- Data Binding Practice ---------------------------------------------
+
+<div>{{company.toUpperCase()}}</div>
+<div>{{age}}</div>
+<progress [value]="progress" max="100"></progress>
+

@@ -10,9 +10,12 @@ import { FormsModule } from '@angular/forms';
 export class DataBinding {
   courseName: number = 10;
   courseFee: number = 110;
-
-
   flag: boolean = true;
+
+  company:string = "Google";
+  age:number = 24;
+
+  progress=60;
 
   toggleFlag() {
     this.flag = !this.flag;
