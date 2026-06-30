@@ -4,7 +4,7 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'mySort',
 })
 export class MySortPipe implements PipeTransform {
-  transform(arr: number[]): unknown {
-    return arr.sort((a, b) => a - b);
+  transform(arr: number[]): number[] {
+    return [...arr].sort((a, b) => a - b);
   }
 }

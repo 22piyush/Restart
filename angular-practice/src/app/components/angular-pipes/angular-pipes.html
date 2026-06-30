@@ -6,6 +6,15 @@
 
 
 
-@for(ele of numArr | mySort ; track $index){
-    <b>{{ele}} &nbsp;</b>
+@for (ele of (numArr | mySort); track $index) {
+<b>{{ ele }} &nbsp;</b>
+
 }
+
+
+<input type="number" #newNum>
+
+<button
+  (click)="newNum.value && numArr.push(+newNum.value); newNum.value = ''">
+  Add
+</button>
