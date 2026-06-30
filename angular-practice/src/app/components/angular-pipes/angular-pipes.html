@@ -3,3 +3,9 @@
     <textarea [(ngModel)]="msg" maxlength="100"></textarea>
     <div>Message: {{msg | remaining}}</div>
 </div>
+
+
+
+@for(ele of numArr | mySort ; track $index){
+    <b>{{ele}} &nbsp;</b>
+}
