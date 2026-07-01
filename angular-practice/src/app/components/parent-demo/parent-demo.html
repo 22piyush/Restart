@@ -1,13 +1,18 @@
 <div class="container text-center p-2 border border-2">
     <div class="row">
         This is Parent Component
+
+        <div>My Own Data - {{a}}</div>
+
+
+        <div>My Child2 data - {{child2.b}}</div>
     </div>
     <div class="row">
         <div class="com-sm-6">
-            <app-child1-demo></app-child1-demo>
+            <app-child1-demo [a]="a" [b]="child2.b"></app-child1-demo>
         </div>
         <div class="com-sm-6">
-            <app-child2-demo></app-child2-demo>
+            <app-child2-demo #child2></app-child2-demo>
         </div>
     </div>
 </div>

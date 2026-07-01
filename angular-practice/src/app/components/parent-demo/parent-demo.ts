@@ -8,4 +8,7 @@ import { Child2Demo } from '../child2-demo/child2-demo';
   templateUrl: './parent-demo.html',
   styleUrl: './parent-demo.css',
 })
-export class ParentDemo {}
+export class ParentDemo {
+  a = 100;
+  
+}
