@@ -6,13 +6,15 @@
 
 
         <div>My Child2 data - {{child2.b}}</div>
+
+        {{c_parent}}
     </div>
     <div class="row">
         <div class="com-sm-6">
             <app-child1-demo [a]="a" [b]="child2.b"></app-child1-demo>
         </div>
         <div class="com-sm-6">
-            <app-child2-demo #child2></app-child2-demo>
+            <app-child2-demo #child2 (eventToEmitCValue)="receiveDataFromChild2($event)"></app-child2-demo>
         </div>
     </div>
 </div>
