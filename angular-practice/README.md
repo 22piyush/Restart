@@ -8,3 +8,4 @@
 
 22 ----> Angular Pipes / Custom Pipes
 23 ----> Pure / Impure Pipes // Component Communication
+24 ----> Component Communication // Life Cycle Angular

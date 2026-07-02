@@ -1,13 +1,15 @@
 import { Component } from '@angular/core';
+import { CategoriesItem } from '../categories-item/categories-item';
 
 @Component({
   selector: 'app-categories',
-  imports: [],
+  standalone:true,
+  imports: [CategoriesItem],
   templateUrl: './categories.html',
   styleUrl: './categories.css',
 })
 export class Categories {
-  categories = [
+  allCategories = [
     {
       id: 1,
       name: 'Electronics',
