@@ -1,53 +1,48 @@
-<p *ngIf="showPara">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptas et at obcaecati voluptate iste
-    iure, itaque ipsam. Maiores, porro sapiente!</p>
-
-<button (click)="showPara = !showPara">Show</button>
 
 
-<select [(ngModel)]="state">
-    <option value="">Select State</option>
-    <option value="MH">MH</option>
-    <option value="KAR">KAR</option>
-    <option value="MAL">MAL</option>
-</select>
+<div style="padding: 50px;">
+    <div>{{title | titlecase }}</div>
 
-<div>{{state}}</div>
+    <div>{{salary | currency : 'INR' : 'code'}}</div>
 
-
-<input [type]="showPara ? 'text' : 'password'">
-<button (click)="showPara = !showPara">{{!showPara ? 'Text' : 'Password'}}</button>
-
-
-<div>{{count}}</div>
-<button (click)="count = count + 1">InC</button>
-<button (click)="count = count - 1">DecC</button>
-<button (click)="count = count = 0">Reset</button>
-
-
-<h2>Task List</h2>
-
-<select [(ngModel)]="filter">
-    <option value="All">All</option>
-    <option value="Completed">Completed</option>
-    <option value="Pending">Pending</option>
-</select>
-
-<br><br>
-
-@for(task of filteredTasks; track task.id){
-
-<div>
-    <input type="checkbox" [(ngModel)]="task.completed" />
-
-    <span [style.text-decoration]="task.completed ? 'line-through' : 'none'">
-        {{ task.title }}
-    </span>
+      <h5>Date pipe:</h5>
+  <div>{{ dateObj | date }}</div>
+  <div>{{ dateObj | date :'short'}}</div> <!-- Short Date + Short Time -->
+  <div>{{ dateObj | date :'medium'}}</div> <!-- medium Date + medium Time -->
+  <div>{{ dateObj | date :'long'}}</div> <!-- long Date + long Time -->
+  <div>{{ dateObj | date :'full'}}</div> <!-- full Date + full Time -->
+  ==================
+  <div>{{ dateObj | date : 'shortDate' }}</div>
+  <div>{{ dateObj | date : 'mediumDate' }}</div>
+  <div>{{ dateObj | date : 'longDate' }}</div>
+  <div>{{ dateObj | date : 'fullDate' }}</div>
+  =================
+  <div>{{ dateObj | date : 'shortTime' }}</div>
+  <div>{{ dateObj | date : 'mediumTime' }}</div>
+  <div>{{ dateObj | date : 'longTime' }}</div>
+  <div>{{ dateObj | date : 'fullTime' }}</div>
+  ==============
+  <div>{{ dateObj | date : 'dd-MMM-yyyy' }}</div>
+  <div>{{ dateObj | date : 'hh:mm:ss a' }}</div>
+  <div>{{ dateObj | date: "fullTime":"UTC" }}</div>
+  <div>{{ dateObj | date: "fullTime":"IST" }}</div>
+  <div>{{ dateObj | date: "EEEE" }}</div>
 </div>
 
-}
 
-<br>
 
-<h3>
-    {{ completedCount }} out of {{ tasks.length }} tasks are completed
-</h3>
+decimal/number
+-------------
+<div> {{100000000 | number}} </div>
+<div>{{ 12.111222333 | number: "3.2-5" }}</div>
+<div>{{ 12.1 | number: "3.2-5" }}</div>
+<div>{{0.5 | number:'3.2-5'}}</div>
+
+
+
+Percent Pipe
+-------------
+<div>{{ 2.5 | percent}}</div>
+<div>{{ 2.5 | percent:'2.2-5'}}</div>
+<div>{{ 0.024 | percent}}</div>
+<div>{{ 0.026 | percent}}</div>
