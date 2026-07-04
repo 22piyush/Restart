@@ -1,3 +1,7 @@
 <div style="padding: 40px;">
-   
+
+    <app-employee-add (addEmp)="addEmployee($event)">
+    </app-employee-add>
+
+    <app-employee-table [employees]="employees" (delete)="deleteEmployee($event)"></app-employee-table>
 </div>
