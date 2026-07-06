@@ -12,9 +12,9 @@ export class LifeCycle {
   name = 12;
   numArr = [10, 20, 30, 40];
 
-  constructor(private cdr: ChangeDetectorRef) {
-    console.log('Parent constructor');
-  }
+  // constructor(private cdr: ChangeDetectorRef) {
+  //   console.log('Parent constructor');
+  // }
   // ngOnChanges() {
   //   console.log('Parent ngOnChanges');
   // }
@@ -23,20 +23,19 @@ export class LifeCycle {
   // }
   ngDoCheck() {
     console.log('Parent ngDoCheck');
-    this.cdr.markForCheck();
   }
-  // ngAfterContentInit() {
-  //   console.log('Parent ngAfterContentInit');
-  // }
-  // ngAfterContentChecked() {
-  //   console.log('Parent ngAfterContentChecked');
-  // }
-  // ngAfterViewInit() {
-  //   console.log('Parent ngAfterViewInit');
-  // }
-  // ngAfterViewChecked() {
-  //   console.log('Parent ngAfterViewChecked');
-  // }
+  ngAfterContentInit() {
+    console.log('Parent ngAfterContentInit');
+  }
+  ngAfterContentChecked() {
+    console.log('Parent ngAfterContentChecked');
+  }
+  ngAfterViewInit() {
+    console.log('Parent ngAfterViewInit');
+  }
+  ngAfterViewChecked() {
+    console.log('Parent ngAfterViewChecked');
+  }
   // ngOnDestroy() {
   //   console.log('Parent ngOnDestory');
   // }

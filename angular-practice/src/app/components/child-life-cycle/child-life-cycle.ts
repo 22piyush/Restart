@@ -5,6 +5,7 @@ import {
   ElementRef,
   SimpleChange,
   SimpleChanges,
+  ViewChild,
 } from '@angular/core';
 
 @Component({
@@ -14,15 +15,17 @@ import {
   templateUrl: './child-life-cycle.html',
   styleUrl: './child-life-cycle.css',
   inputs: ['name', 'numArr'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  // changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChildLifeCycle {
+  @ViewChild('myBox1') myBox1: any;
+
   name: any;
   numArr: any;
 
-  constructor(private cdr: ChangeDetectorRef) {
-    console.log('child constructor');
-  }
+  // constructor(private cdr: ChangeDetectorRef) {
+  //   console.log('child constructor');
+  // }
   // ngOnChanges(myChanges: SimpleChanges) {
   //   console.log('child ngOnChanges');
   //   console.log(myChanges);
@@ -32,20 +35,21 @@ export class ChildLifeCycle {
   // }
   ngDoCheck() {
     console.log('child ngDoCheck');
-    this.cdr.markForCheck();
   }
-  // ngAfterContentInit() {
-  //   console.log('child ngAfterContentInit');
-  // }
-  // ngAfterContentChecked() {
-  //   console.log('child ngAfterContentChecked');
-  // }
-  // ngAfterViewInit() {
-  //   console.log('child ngAfterViewInit');
-  // }
-  // ngAfterViewChecked() {
-  //   console.log('child ngAfterViewChecked');
-  // }
+  ngAfterContentInit() {
+    console.log('child ngAfterContentInit');
+  }
+  ngAfterContentChecked() {
+    console.log('child ngAfterContentChecked');
+  }
+  ngAfterViewInit() {
+    console.log('child ngAfterViewInit');
+    this.myBox1.nativeElement.focus();
+    this.myBox1.nativeElement.style.backgroundCokor = 'lightgreen';
+  }
+  ngAfterViewChecked() {
+    console.log('child ngAfterViewChecked');
+  }
   // ngOnDestroy() {
   //   console.log('child ngOnDestory');
   // }
