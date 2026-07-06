@@ -19,9 +19,9 @@ export class ChildLifeCycle {
   //   console.log('child ngOnChanges');
   //   console.log(myChanges);
   // }
-  ngOnInit() {
-    console.log('child ngOnInit');
-  }
+  // ngOnInit() {
+  //   console.log('child ngOnInit');
+  // }
   // ngDoCheck() {
   //   console.log('child ngDoCheck');
   // }
