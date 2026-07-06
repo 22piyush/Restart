@@ -14,9 +14,9 @@ export class LifeCycle {
   // constructor() {
   //   console.log('Parent constructor');
   // }
-  ngOnChanges() {
-    console.log('Parent ngOnChanges');
-  }
+  // ngOnChanges() {
+  //   console.log('Parent ngOnChanges');
+  // }
   ngOnInit() {
     console.log('Parent ngOnInit');
   }

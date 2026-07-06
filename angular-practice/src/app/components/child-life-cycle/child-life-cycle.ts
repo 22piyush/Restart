@@ -1,4 +1,4 @@
-import { Component, ElementRef } from '@angular/core';
+import { Component, ElementRef, SimpleChange, SimpleChanges } from '@angular/core';
 
 @Component({
   standalone: true,
@@ -15,9 +15,10 @@ export class ChildLifeCycle {
   //   console.log('child constructor');
   //   this.courseName = 'Angular';
   // }
-  ngOnChanges() {
-    console.log('child ngOnChanges');
-  }
+  // ngOnChanges(myChanges: SimpleChanges) {
+  //   console.log('child ngOnChanges');
+  //   console.log(myChanges);
+  // }
   ngOnInit() {
     console.log('child ngOnInit');
   }
