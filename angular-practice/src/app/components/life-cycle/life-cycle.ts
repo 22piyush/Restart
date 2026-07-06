@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { ChildLifeCycle } from '../child-life-cycle/child-life-cycle';
 
 @Component({
   selector: 'app-life-cycle',
-  imports: [],
+  imports: [ChildLifeCycle],
   templateUrl: './life-cycle.html',
   styleUrl: './life-cycle.css',
 })
