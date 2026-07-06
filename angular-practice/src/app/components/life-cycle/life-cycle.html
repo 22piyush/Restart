@@ -1,2 +1,5 @@
-<p>life-cycle  works!</p>
-<app-child-life-cycle></app-child-life-cycle>
+<p>life-cycle works!</p>
+
+<button (click)="name = name + 1">Button</button>
+
+<app-child-life-cycle [name]="name"></app-child-life-cycle>
