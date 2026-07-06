@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { ChildLifeCycle } from '../child-life-cycle/child-life-cycle';
 
 @Component({
@@ -10,19 +10,21 @@ import { ChildLifeCycle } from '../child-life-cycle/child-life-cycle';
 })
 export class LifeCycle {
   name = 12;
+  numArr = [10, 20, 30, 40];
 
-  // constructor() {
-  //   console.log('Parent constructor');
-  // }
+  constructor(private cdr: ChangeDetectorRef) {
+    console.log('Parent constructor');
+  }
   // ngOnChanges() {
   //   console.log('Parent ngOnChanges');
   // }
   // ngOnInit() {
   //   console.log('Parent ngOnInit');
   // }
-  // ngDoCheck() {
-  //   console.log('Parent ngDoCheck');
-  // }
+  ngDoCheck() {
+    console.log('Parent ngDoCheck');
+    this.cdr.markForCheck();
+  }
   // ngAfterContentInit() {
   //   console.log('Parent ngAfterContentInit');
   // }

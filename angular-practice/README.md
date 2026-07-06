@@ -9,5 +9,6 @@
 
 22 ----> Angular Pipes / Custom Pipes
 23 ----> Pure / Impure Pipes // Component Communication
-24 ----> Component Communication // Life Cycle Angular
+
+24 ----> Component Communication // 30 min -- >Life Cycle Angular
 25 ----> Life Cycle Angular

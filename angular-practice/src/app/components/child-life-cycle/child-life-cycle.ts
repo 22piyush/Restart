@@ -1,4 +1,11 @@
-import { Component, ElementRef, SimpleChange, SimpleChanges } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  SimpleChange,
+  SimpleChanges,
+} from '@angular/core';
 
 @Component({
   standalone: true,
@@ -6,15 +13,16 @@ import { Component, ElementRef, SimpleChange, SimpleChanges } from '@angular/cor
   imports: [],
   templateUrl: './child-life-cycle.html',
   styleUrl: './child-life-cycle.css',
-  inputs: ['name'],
+  inputs: ['name', 'numArr'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChildLifeCycle {
   name: any;
+  numArr: any;
 
-  // constructor() {
-  //   console.log('child constructor');
-  //   this.courseName = 'Angular';
-  // }
+  constructor(private cdr: ChangeDetectorRef) {
+    console.log('child constructor');
+  }
   // ngOnChanges(myChanges: SimpleChanges) {
   //   console.log('child ngOnChanges');
   //   console.log(myChanges);
@@ -22,9 +30,10 @@ export class ChildLifeCycle {
   // ngOnInit() {
   //   console.log('child ngOnInit');
   // }
-  // ngDoCheck() {
-  //   console.log('child ngDoCheck');
-  // }
+  ngDoCheck() {
+    console.log('child ngDoCheck');
+    this.cdr.markForCheck();
+  }
   // ngAfterContentInit() {
   //   console.log('child ngAfterContentInit');
   // }

@@ -2,4 +2,12 @@
 
 <button (click)="name = name + 1">Button</button>
 
-<app-child-life-cycle [name]="name"></app-child-life-cycle>
+@for(item of numArr; track $index){
+<b>{{item}} &nbsp;</b>
+}
+
+<input type="number" #newNum>
+<button (click)="numArr.push(+newNum.value)">Add Arr</button>
+
+
+<app-child-life-cycle [name]="name" [numArr]="numArr"></app-child-life-cycle>
