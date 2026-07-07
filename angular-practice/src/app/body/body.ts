@@ -7,10 +7,11 @@ import { AngularPipes } from '../components/angular-pipes/angular-pipes';
 import { Categories } from '../components/categories/categories';
 import { LifeCycle } from '../components/life-cycle/life-cycle';
 import { ServiceDemo } from '../components/service-demo/service-demo';
+import { HttpDemo1 } from '../components/http-demo1/http-demo1';
 
 @Component({
   selector: 'app-body',
-  imports: [DataBinding, DirectivesDemo, UserList, CustomDirectives, AngularPipes, Categories, LifeCycle, ServiceDemo],
+  imports: [DataBinding, DirectivesDemo, UserList, CustomDirectives, AngularPipes, Categories, LifeCycle, ServiceDemo, HttpDemo1],
   templateUrl: './body.html',
   styleUrl: './body.css',
 })
