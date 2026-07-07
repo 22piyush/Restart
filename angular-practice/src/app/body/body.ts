@@ -6,10 +6,11 @@ import { CustomDirectives } from '../components/custom-directives/custom-directi
 import { AngularPipes } from '../components/angular-pipes/angular-pipes';
 import { Categories } from '../components/categories/categories';
 import { LifeCycle } from '../components/life-cycle/life-cycle';
+import { ServiceDemo } from '../components/service-demo/service-demo';
 
 @Component({
   selector: 'app-body',
-  imports: [DataBinding, DirectivesDemo, UserList, CustomDirectives, AngularPipes, Categories, LifeCycle],
+  imports: [DataBinding, DirectivesDemo, UserList, CustomDirectives, AngularPipes, Categories, LifeCycle, ServiceDemo],
   templateUrl: './body.html',
   styleUrl: './body.css',
 })
