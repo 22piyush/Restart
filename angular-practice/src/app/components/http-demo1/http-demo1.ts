@@ -7,5 +7,13 @@ import { Component } from '@angular/core';
   styleUrl: './http-demo1.css',
 })
 export class HttpDemo1 {
-  
+  user_api = 'https://dummyjson.com/users';
+
+  ngOnInit() {
+    this.fetchData();
+  }
+
+  fetchData() {
+    
+  }
 }
