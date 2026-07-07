@@ -9,15 +9,13 @@ import { ObjectUtilService } from '../../services/object-util-service';
   styleUrl: './service-demo.css',
 })
 export class ServiceDemo {
-
   // Both Are use to achieve DI
-  // mathService = inject(MathService);
+  mathService = inject(MathService);
   // objectService = inject(ObjectUtilService);
   // constructor(
   //   private mathService: MathService ,
   //   private objectService:ObjectUtilService
   // ) {}
-  
 
   ngOnInit() {
     this.mathServiceFunc();
