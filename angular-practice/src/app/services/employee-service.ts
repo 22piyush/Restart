@@ -1,20 +1,20 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { retry } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class EmployeeService {
-  constructor(private httpClient: HttpClient) {}
 
   api_url = 'https://fakestoreapi.com/products/';
+
+  constructor(private httpClient: HttpClient) {}
 
   getAllEmployees() {
     return this.httpClient.get(this.api_url);
   }
 
-  getEmployeeById(id: any) {
+  getEmployeeById(id: number) {
     return this.httpClient.get(`${this.api_url}${id}`);
   }
 
@@ -22,11 +22,11 @@ export class EmployeeService {
     return this.httpClient.post(this.api_url, empData);
   }
 
-  updateEmployee(id: any, empData: any) {
+  updateEmployee(id: number, empData: any) {
     return this.httpClient.patch(`${this.api_url}${id}`, empData);
   }
 
-  deleteEmployee(id: any) {
+  deleteEmployee(id: number) {
     return this.httpClient.delete(`${this.api_url}${id}`);
   }
 }

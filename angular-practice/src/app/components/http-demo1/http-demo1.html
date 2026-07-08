@@ -1,1 +1,87 @@
-<p>http-demo1   works!</p>
+<div class="container mt-4">
+
+    <h2 class="text-center mb-4">Employee CRUD</h2>
+
+    <div class="card p-3 mb-4">
+
+        <div class="mb-3">
+            <label>Name</label>
+            <input
+                type="text"
+                class="form-control"
+                [(ngModel)]="employee.title">
+        </div>
+
+        <div class="mb-3">
+            <label>Salary</label>
+            <input
+                type="number"
+                class="form-control"
+                [(ngModel)]="employee.price">
+        </div>
+
+        <div class="mb-3">
+            <label>Department</label>
+            <input
+                type="text"
+                class="form-control"
+                [(ngModel)]="employee.category">
+        </div>
+
+        <button
+            class="btn btn-primary"
+            (click)="saveEmployee()">
+
+            {{ isEdit ? 'Update Employee' : 'Add Employee' }}
+
+        </button>
+
+    </div>
+
+    <table class="table table-bordered table-striped">
+
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Salary</th>
+                <th>Department</th>
+                <th width="180">Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <tr *ngFor="let emp of employees">
+
+                <td>{{emp.id}}</td>
+
+                <td>{{emp.title}}</td>
+
+                <td>{{emp.price}}</td>
+
+                <td>{{emp.category}}</td>
+
+                <td>
+
+                    <button
+                        class="btn btn-warning btn-sm me-2"
+                        (click)="editEmployee(emp)">
+                        Edit
+                    </button>
+
+                    <button
+                        class="btn btn-danger btn-sm"
+                        (click)="deleteEmployee(emp.id)">
+                        Delete
+                    </button>
+
+                </td>
+
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</div>
