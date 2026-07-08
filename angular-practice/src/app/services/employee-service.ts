@@ -25,4 +25,8 @@ export class EmployeeService {
   updateEmployee(id: any, empData: any) {
     return this.httpClient.patch(`${this.api_url}${id}`, empData);
   }
+
+  deleteEmployee(id: any) {
+    return this.httpClient.delete(`${this.api_url}${id}`);
+  }
 }
