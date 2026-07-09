@@ -12,4 +12,4 @@
 24 ===> Component Communication // 30 min --> Life Cycle Angular
 25 ===> 30 min -->  Life Cycle Angular // 41 --> Change Detection Strategy
 26 ===> Services // Commucation with backend services using HTTP
-27 ===> 
+27 ===> HttpClient Module CRUD Operations.
