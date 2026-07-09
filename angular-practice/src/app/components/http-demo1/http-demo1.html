@@ -2,6 +2,45 @@
 
     <h2 class="text-center mb-4">Employee CRUD</h2>
 
+    <form #f="ngForm" (ngSubmit)="saveEmployee()">
+
+        <div class="row mb-3">
+
+            <div class="col-md-3">
+                <input type="text" class="form-control" placeholder="Title" [(ngModel)]="employee.title" name="title"
+                    required>
+            </div>
+
+            <div class="col-md-3">
+                <input type="number" class="form-control" placeholder="Price" [(ngModel)]="employee.price" name="price"
+                    required>
+            </div>
+
+            <div class="col-md-3">
+                <input type="text" class="form-control" placeholder="Category" [(ngModel)]="employee.category"
+                    name="category" required>
+            </div>
+
+            <div class="col-md-3">
+
+                <button class="btn btn-success me-2" type="submit">
+
+                    {{ isEdit ? 'Update' : 'Add' }}
+
+                </button>
+
+                <button type="button" class="btn btn-secondary" (click)="resetForm()">
+
+                    Cancel
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </form>
+
     <table class="table table-bordered table-striped">
 
         <thead class="table-dark">
@@ -16,31 +55,22 @@
 
         <tbody>
 
-            @for(emp of employees$ | async ; track $index){
-            <tr>
-
-                <td>{{emp.id}}</td>
-
-                <td>{{emp.title}}</td>
-
-                <td>{{emp.price}}</td>
-
-                <td>{{emp.category}}</td>
+            <tr *ngFor="let emp of (employees$ | async)">
+                <td>{{ emp.id }}</td>
+                <td>{{ emp.title }}</td>
+                <td>{{ emp.price }}</td>
+                <td>{{ emp.category }}</td>
 
                 <td>
-
-                    <button class="btn btn-warning btn-sm me-2">
+                    <button class="btn btn-warning btn-sm me-2" (click)="editEmployee(emp)">
                         Edit
                     </button>
 
-                    <button class="btn btn-danger btn-sm">
+                    <button class="btn btn-danger btn-sm" (click)="deleteEmployee(emp.id)">
                         Delete
                     </button>
-
                 </td>
-
             </tr>
-            }
 
         </tbody>
 

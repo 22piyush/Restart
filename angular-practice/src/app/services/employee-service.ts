@@ -1,32 +1,46 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+
+export interface Product {
+  id: number;
+  title: string;
+  price: number;
+  category: string;
+  description?: string;
+  image?: string;
+}
 
 @Injectable({
   providedIn: 'root',
 })
 export class EmployeeService {
-
-  api_url = 'https://fakestoreapi.com/products/';
+  private api_url = 'https://fakestoreapi.com/products/';
 
   constructor(private httpClient: HttpClient) {}
 
-  getAllEmployees() {
-    return this.httpClient.get(this.api_url);
+  // GET All
+  getAllEmployees(): Observable<Product[]> {
+    return this.httpClient.get<Product[]>(this.api_url);
   }
 
-  getEmployeeById(id: number) {
-    return this.httpClient.get(`${this.api_url}${id}`);
+  // GET By Id
+  getEmployeeById(id: number): Observable<Product> {
+    return this.httpClient.get<Product>(`${this.api_url}${id}`);
   }
 
-  addEmployee(empData: any) {
-    return this.httpClient.post(this.api_url, empData);
+  // POST
+  addEmployee(empData: Product): Observable<Product> {
+    return this.httpClient.post<Product>(this.api_url, empData);
   }
 
-  updateEmployee(id: number, empData: any) {
-    return this.httpClient.patch(`${this.api_url}${id}`, empData);
+  // PUT
+  updateEmployee(id: number, empData: Product): Observable<Product> {
+    return this.httpClient.put<Product>(`${this.api_url}${id}`, empData);
   }
 
-  deleteEmployee(id: number) {
-    return this.httpClient.delete(`${this.api_url}${id}`);
+  // DELETE
+  deleteEmployee(id: number): Observable<Product> {
+    return this.httpClient.delete<Product>(`${this.api_url}${id}`);
   }
 }
