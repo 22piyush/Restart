@@ -1,9 +1,21 @@
 import { Component } from '@angular/core';
+import { CommentService } from '../../services/comment-service';
+import { Observable } from 'rxjs';
+import { CommonModule } from '@angular/common';
+import { Comment } from '../../models/comment';
 
 @Component({
   selector: 'app-comment-list',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './comment-list.html',
   styleUrl: './comment-list.css',
 })
-export class CommentList {}
+export class CommentList {
+  constructor(private commentService: CommentService) {}
+
+  comments$: Observable<Comment[]> | undefined;
+
+  ngOnInit() {
+    this.comments$ = this.commentService.getAllComments();
+  }
+}
