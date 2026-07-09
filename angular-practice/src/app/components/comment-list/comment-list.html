@@ -1,7 +1,7 @@
 <h3 class="text-center">Comment List</h3>
 
 
-<table class="table table-bordered table-striped">
+<!-- <table class="table table-bordered table-striped">
     <tbody>
         @for(comment of comments$ | async; track $index){
         <tr>
@@ -13,4 +13,53 @@
         </tr>
         }
     </tbody>
-</table>
+</table> -->
+
+
+<div class="container mt-4">
+
+    <div class="row">
+
+        @for (comment of (comments$ | async); track comment.id) {
+
+            <div class="col-md-6 col-lg-4 mb-4">
+
+                <div class="card h-100 shadow-sm">
+
+                    <div class="card-body">
+
+                        <h5 class="card-title">
+                            {{ comment.user.fullName }}
+                        </h5>
+
+                        <h6 class="card-subtitle mb-2 text-muted">
+                            @{{ comment.user.username }}
+                        </h6>
+
+                        <p class="card-text">
+                            {{ comment.body }}
+                        </p>
+
+                    </div>
+
+                    <div class="card-footer d-flex justify-content-between">
+
+                        <span class="badge bg-primary">
+                            Post ID: {{ comment.postId }}
+                        </span>
+
+                        <span class="badge bg-success">
+                            👍 {{ comment.likes }} Likes
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        }
+
+    </div>
+
+</div>

@@ -13,7 +13,7 @@ import { Comment } from '../../models/comment';
 export class CommentList {
   constructor(private commentService: CommentService) {}
 
-  comments$: Observable<Comment[]> | undefined;
+  comments$!: Observable<Comment[]>;
 
   ngOnInit() {
     this.comments$ = this.commentService.getAllComments();
