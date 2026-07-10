@@ -9,10 +9,12 @@ import { LifeCycle } from '../components/life-cycle/life-cycle';
 import { ServiceDemo } from '../components/service-demo/service-demo';
 import { HttpDemo1 } from '../components/http-demo1/http-demo1';
 import { CommentList } from '../components/comment-list/comment-list';
+import { ObservableDemo1 } from '../components/observable-demo1/observable-demo1';
 
 @Component({
   selector: 'app-body',
   imports: [
+    ObservableDemo1,
     DataBinding,
     DirectivesDemo,
     UserList,
