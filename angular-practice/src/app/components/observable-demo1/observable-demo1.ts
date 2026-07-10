@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { from, interval } from 'rxjs';
+import { filter, from, interval } from 'rxjs';
 
 @Component({
   selector: 'app-observable-demo1',
@@ -11,7 +11,7 @@ import { from, interval } from 'rxjs';
 export class ObservableDemo1 {
   ngOnInit() {
     this.from_demo();
-    this.interval_demo()
+    this.interval_demo();
   }
 
   from_demo() {
@@ -25,6 +25,7 @@ export class ObservableDemo1 {
   }
 
   num$ = interval(1000);
+  even_num$ = this.num$.pipe(filter((val) => val % 2 == 0));
   interval_demo() {
     this.num$.subscribe({
       next: (val) => console.log(val),
