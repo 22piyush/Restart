@@ -14,7 +14,7 @@
 26 ===> Services // Commucation with backend services using HTTP
 27 ===> HttpClient Module CRUD Operations.
 28 ===> Models ,  Interface / Class Models // Interceptors
-29/30 ===> 
+29/30 ===> Observable
 
 
 
