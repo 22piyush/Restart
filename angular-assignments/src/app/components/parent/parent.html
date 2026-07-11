@@ -1,3 +1,11 @@
 <h3>Parent Component</h3>
 
-<app-child [userName]="name" [userAge]="age"></app-child>
+<button (click)="callChild()">
+    Call Child Function
+</button>
+
+
+<app-child (messageEvent)="receiveMessage($event)" [userName]="name" [students]="students" [userAge]="age" [emp]="employee"></app-child>
+<!-- Child  -->
+
+<p>{{message.id}}</p>

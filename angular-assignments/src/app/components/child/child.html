@@ -2,3 +2,16 @@
 
 <h6>{{userName}}</h6>
 <h6>{{userAge}}</h6>
+
+<p>{{emp.id}}</p>
+<p>{{emp.name}}</p>
+<p>{{emp.salary}}</p>
+
+@for(student of students; track $index){
+<p>{{student}}</p>
+}
+
+
+<button (click)="sendMessage()">
+    Send
+</button>
