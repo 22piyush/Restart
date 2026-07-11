@@ -10,9 +10,8 @@ import { HttpClient } from '@angular/common/http';
   styleUrl: './observable-demo1.css',
 })
 export class ObservableDemo1 {
+  http = inject(HttpClient);
 
-  httpClient = inject(HttpClient);
-  
   ngOnInit() {
     this.from_demo();
     this.interval_demo();
@@ -38,14 +37,13 @@ export class ObservableDemo1 {
     });
   }
 
+  fork_join_demo() {
+    const api1 = this.http.get('https://dummyjson.com/products');
+    const api2 = this.http.get('https://dummyjson.com/carts');
+    const api3 = this.http.get('https://dummyjson.com/users');
 
-  fork_join_demo(){
-    let api1 = "https://dummyjson.com/products"
-    let api2 = "https://dummyjson.com/carts"
-    let api3 = "https://dummyjson.com/users"
-
-    forkJoin([api1,api2,api3]).subscribe(resArr => {
-      
-    })
+    forkJoin([api1, api2, api3]).subscribe((responseArr) => {
+      console.log(responseArr);
+    });
   }
 }
