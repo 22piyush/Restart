@@ -1,9 +1,14 @@
 import { Component } from '@angular/core';
+import { Child } from '../child/child';
 
 @Component({
+  standalone: true,
   selector: 'app-parent',
-  imports: [],
+  imports: [Child],
   templateUrl: './parent.html',
   styleUrl: './parent.css',
 })
-export class Parent {}
+export class Parent {
+  name = 'Piyush';
+  age = 21;
+}
