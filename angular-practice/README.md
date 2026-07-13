@@ -14,7 +14,7 @@
 26 ===> Services // Commucation with backend services using HTTP
 27 ===> HttpClient Module CRUD Operations.
 28 ===> Models ,  Interface / Class Models // Interceptors
-29/30 ===> Observable & Methods of Observable
+29/30 ===> Observable & rxJS Operators
 
-
+31 ===>  rxJS Operators
 
