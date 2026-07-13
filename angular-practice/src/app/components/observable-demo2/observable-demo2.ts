@@ -60,4 +60,8 @@ export class ObservableDemo2 {
         },
       });
   }
+
+  searchData(){
+    
+  }
 }
