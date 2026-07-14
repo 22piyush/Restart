@@ -11,10 +11,12 @@ import { HttpDemo1 } from '../components/http-demo1/http-demo1';
 import { CommentList } from '../components/comment-list/comment-list';
 import { ObservableDemo1 } from '../components/observable-demo1/observable-demo1';
 import { ObservableDemo2 } from '../components/observable-demo2/observable-demo2';
+import { SubjectDemo } from '../components/subject-demo/subject-demo';
 
 @Component({
   selector: 'app-body',
   imports: [
+    SubjectDemo,
     ObservableDemo2,
     ObservableDemo1,
     DataBinding,
