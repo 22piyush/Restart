@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { AsyncSubject, BehaviorSubject, ReplaySubject, Subject } from 'rxjs';
+import { AsyncScheduler } from 'rxjs/internal/scheduler/AsyncScheduler';
 
 @Component({
   selector: 'app-subject-demo',
@@ -8,10 +9,12 @@ import { BehaviorSubject, Subject } from 'rxjs';
   styleUrl: './subject-demo.css',
 })
 export class SubjectDemo {
-
   ngOnInit() {
-    this.subject_demo();
-    this.behaviourSubject_demo();
+    // this.subject_demo();
+    // this.behaviourSubject_demo();
+    // this.replaySubjectDemo();
+
+    this.asyncSubject_demo();
   }
 
   subject_demo() {
@@ -31,5 +34,22 @@ export class SubjectDemo {
     mySubject.subscribe((val) => console.log('Subscriber-2', val));
     mySubject.next('Plan-C');
   }
-  
+
+  replaySubjectDemo() {
+    let mySubject = new ReplaySubject();
+    mySubject.next('Plan-A');
+    mySubject.subscribe((val) => console.log('Subscriber-1', val));
+    mySubject.next('Plan-B');
+    mySubject.subscribe((val) => console.log('Subscriber-2', val));
+    mySubject.next('Plan-C');
+  }
+
+  asyncSubject_demo() {
+    let mySubject = new AsyncSubject();
+    mySubject.next('Plan-A');
+    mySubject.subscribe((val) => console.log('Subscriber-1', val));
+    mySubject.next('Plan-B');
+    mySubject.subscribe((val) => console.log('Subscriber-2', val));
+    mySubject.next('Plan-C');
+  }
 }
