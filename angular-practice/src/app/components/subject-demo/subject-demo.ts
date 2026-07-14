@@ -45,11 +45,19 @@ export class SubjectDemo {
   }
 
   asyncSubject_demo() {
+
     let mySubject = new AsyncSubject();
     mySubject.next('Plan-A');
     mySubject.subscribe((val) => console.log('Subscriber-1', val));
     mySubject.next('Plan-B');
     mySubject.subscribe((val) => console.log('Subscriber-2', val));
     mySubject.next('Plan-C');
+    mySubject.complete();
+
   }
+
+
+  
+
+
 }

@@ -12,10 +12,14 @@ import { CommentList } from '../components/comment-list/comment-list';
 import { ObservableDemo1 } from '../components/observable-demo1/observable-demo1';
 import { ObservableDemo2 } from '../components/observable-demo2/observable-demo2';
 import { SubjectDemo } from '../components/subject-demo/subject-demo';
+import { TodoAdd } from '../components/todo-add/todo-add';
+import { TodoList } from '../components/todo-list/todo-list';
 
 @Component({
   selector: 'app-body',
   imports: [
+    TodoAdd,
+    TodoList,
     SubjectDemo,
     ObservableDemo2,
     ObservableDemo1,
