@@ -15,10 +15,12 @@ import { SubjectDemo } from '../components/subject-demo/subject-demo';
 import { TodoAdd } from '../components/todo-add/todo-add';
 import { TodoList } from '../components/todo-list/todo-list';
 import { Signals } from '../components/signals/signals';
+import { FormDemo1 } from '../components/form-demo1/form-demo1';
 
 @Component({
   selector: 'app-body',
   imports: [
+    FormDemo1,
     Signals,
     TodoAdd,
     TodoList,
