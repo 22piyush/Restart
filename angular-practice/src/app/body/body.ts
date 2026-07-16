@@ -16,10 +16,12 @@ import { TodoAdd } from '../components/todo-add/todo-add';
 import { TodoList } from '../components/todo-list/todo-list';
 import { Signals } from '../components/signals/signals';
 import { FormDemo1 } from '../components/form-demo1/form-demo1';
+import { TemplateDrivenForm } from '../components/template-driven-form/template-driven-form';
 
 @Component({
   selector: 'app-body',
   imports: [
+    TemplateDrivenForm,
     FormDemo1,
     Signals,
     TodoAdd,
