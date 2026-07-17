@@ -15,7 +15,7 @@ export class Signals {
 
   userDetailsEffect = effect(() => {
     const userId = this.userId();
-    this.fetchUserDetails(userId);
+    // this.fetchUserDetails(userId);
   });
 
   fetchUserDetails() {

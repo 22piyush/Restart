@@ -1,7 +1,10 @@
 <form [formGroup]="registerForm">
 
-    <p>FirstName : <input type="text" formControlName="firstName"></p>
+  <p>
+    First Name:
+    <input type="text" formControlName="firstName">
+  </p>
 
-    <pre>{{ registerForm.value | json }}</pre>
+  <pre>{{ registerForm.value | json }}</pre>
 
 </form>
