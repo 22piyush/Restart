@@ -3,6 +3,7 @@ import { RoutingHome } from './components/routing-home/routing-home';
 import { RoutingAbout } from './components/routing-about/routing-about';
 import { RoutingCareers } from './components/routing-careers/routing-careers';
 import { RoutingContact } from './components/routing-contact/routing-contact';
+import { RoutingNotFound } from './components/routing-not-found/routing-not-found';
 
 export const routes: Routes = [
   {
@@ -25,5 +26,9 @@ export const routes: Routes = [
     path: '',
     redirectTo: 'home',
     pathMatch: 'full',
+  },
+  {
+    path: '**',
+    component: RoutingNotFound,
   },
 ];
