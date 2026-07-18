@@ -20,3 +20,5 @@
 35 ===> Template Driven form 
 
 36 ===> Routing 
+37 ===> Routing Query Param
+
