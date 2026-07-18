@@ -21,8 +21,9 @@ export const routes: Routes = [
     path: 'contact',
     component: RoutingContact,
   },
-//   {
-//     path: 'contact',
-//     component: RoutingContact,
-//   },
+  {
+    path: '',
+    redirectTo: 'home',
+    pathMatch: 'full',
+  },
 ];
