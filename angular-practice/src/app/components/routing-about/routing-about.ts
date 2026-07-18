@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-routing-about',
@@ -6,4 +7,10 @@ import { Component } from '@angular/core';
   templateUrl: './routing-about.html',
   styleUrl: './routing-about.css',
 })
-export class RoutingAbout {}
+export class RoutingAbout {
+  constructor(private router: Router) {}
+
+  Home() {
+    this.router.navigateByUrl('/home')
+  }
+}
