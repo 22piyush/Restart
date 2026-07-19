@@ -15,10 +15,15 @@
 28 ===> Models ,  Interface / Class Models // Interceptors
 29/30 ===> Observable & rxJS Operators
 31 ===>  rxJS Operators
+
 32 ===> Subject // Signals
 34 ===> Signal Effects //  Template Driven form 
 35 ===> Template Driven form 
 
 36 ===> Routing // Path Param
 37 ===> Routing Query Param
-38 ===> Lazy Loading // 
+38 ===> Lazy Loading // @defer // build project // deploy project
+
+
+
+
