@@ -19,6 +19,6 @@
 34 ===> Signal Effects //  Template Driven form 
 35 ===> Template Driven form 
 
-36 ===> Routing 
+36 ===> Routing // Path Param
 37 ===> Routing Query Param
-
+38 ===> 
