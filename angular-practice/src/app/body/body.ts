@@ -20,11 +20,12 @@ import { TemplateDrivenForm } from '../components/template-driven-form/template-
 import { RouterOutlet } from '@angular/router';
 import { Navbar } from '../components/navbar/navbar';
 import { MaterialDemo } from '../components/material-demo/material-demo';
+import { AngularMaterial } from '../components/angular-material/angular-material';
 
 @Component({
   selector: 'app-body',
   imports: [
-    MaterialDemo,
+    AngularMaterial,
     RouterOutlet,
     Navbar,
     TemplateDrivenForm,
