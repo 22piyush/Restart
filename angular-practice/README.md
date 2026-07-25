@@ -26,6 +26,9 @@
 
 39 ===> Angular Material
 40 ===> Angular Unit Testing
-41 ===> 
-
+41 ===> Unit Testing // NGRX ==> 50:00
+42 ===> NGRX
+43 ===> CRUD using NGRX
+44 ===> Project
+45 ===> 
 46 ===> Batch Complete 🫡
