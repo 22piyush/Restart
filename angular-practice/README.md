@@ -30,5 +30,5 @@
 42 ===> NGRX
 43 ===> CRUD using NGRX
 44 ===> Project
-45 ===> 
+45 ===> Project Discuss
 46 ===> Batch Complete 🫡
