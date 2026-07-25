@@ -25,6 +25,7 @@
 38 ===> Lazy Loading // @defer // build project // deploy project
 
 39 ===> Angular Material
-40 ===> Angular Unit Testing // NGRX
+40 ===> Angular Unit Testing
+41 ===> 
 
 46 ===> Batch Complete 🫡
