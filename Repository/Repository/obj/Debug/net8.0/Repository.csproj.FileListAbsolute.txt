@@ -1,0 +1,15 @@
+E:\Restart\Repository\Repository\bin\Debug\net8.0\Repository.exe
+E:\Restart\Repository\Repository\bin\Debug\net8.0\Repository.deps.json
+E:\Restart\Repository\Repository\bin\Debug\net8.0\Repository.runtimeconfig.json
+E:\Restart\Repository\Repository\bin\Debug\net8.0\Repository.dll
+E:\Restart\Repository\Repository\bin\Debug\net8.0\Repository.pdb
+E:\Restart\Repository\Repository\obj\Debug\net8.0\Repository.GeneratedMSBuildEditorConfig.editorconfig
+E:\Restart\Repository\Repository\obj\Debug\net8.0\Repository.AssemblyInfoInputs.cache
+E:\Restart\Repository\Repository\obj\Debug\net8.0\Repository.AssemblyInfo.cs
+E:\Restart\Repository\Repository\obj\Debug\net8.0\Repository.csproj.CoreCompileInputs.cache
+E:\Restart\Repository\Repository\obj\Debug\net8.0\Repository.sourcelink.json
+E:\Restart\Repository\Repository\obj\Debug\net8.0\Repository.dll
+E:\Restart\Repository\Repository\obj\Debug\net8.0\refint\Repository.dll
+E:\Restart\Repository\Repository\obj\Debug\net8.0\Repository.pdb
+E:\Restart\Repository\Repository\obj\Debug\net8.0\Repository.genruntimeconfig.cache
+E:\Restart\Repository\Repository\obj\Debug\net8.0\ref\Repository.dll
