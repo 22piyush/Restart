@@ -1,0 +1,15 @@
+E:\Restart\DataTypes\DataTypes\obj\Debug\net8.0\DataTypes.GeneratedMSBuildEditorConfig.editorconfig
+E:\Restart\DataTypes\DataTypes\obj\Debug\net8.0\DataTypes.AssemblyInfoInputs.cache
+E:\Restart\DataTypes\DataTypes\obj\Debug\net8.0\DataTypes.AssemblyInfo.cs
+E:\Restart\DataTypes\DataTypes\obj\Debug\net8.0\DataTypes.csproj.CoreCompileInputs.cache
+E:\Restart\DataTypes\DataTypes\obj\Debug\net8.0\DataTypes.sourcelink.json
+E:\Restart\DataTypes\DataTypes\bin\Debug\net8.0\DataTypes.exe
+E:\Restart\DataTypes\DataTypes\bin\Debug\net8.0\DataTypes.deps.json
+E:\Restart\DataTypes\DataTypes\bin\Debug\net8.0\DataTypes.runtimeconfig.json
+E:\Restart\DataTypes\DataTypes\bin\Debug\net8.0\DataTypes.dll
+E:\Restart\DataTypes\DataTypes\bin\Debug\net8.0\DataTypes.pdb
+E:\Restart\DataTypes\DataTypes\obj\Debug\net8.0\DataTypes.dll
+E:\Restart\DataTypes\DataTypes\obj\Debug\net8.0\refint\DataTypes.dll
+E:\Restart\DataTypes\DataTypes\obj\Debug\net8.0\DataTypes.pdb
+E:\Restart\DataTypes\DataTypes\obj\Debug\net8.0\DataTypes.genruntimeconfig.cache
+E:\Restart\DataTypes\DataTypes\obj\Debug\net8.0\ref\DataTypes.dll
