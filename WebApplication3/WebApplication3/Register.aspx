@@ -69,31 +69,7 @@
 
     </form>
 
-    <div style="margin-top:50px; padding:30px;">
 
-    <table style="width:100%; border-collapse:collapse; text-align:center;">
-
-        <tr style="background-color:#007ACC; color:white;">
-            <th style="border:1px solid black; padding:10px;">User Name</th>
-            <th style="border:1px solid black; padding:10px;">Password</th>
-            <th style="border:1px solid black; padding:10px;">Date of Birth</th>
-            <th style="border:1px solid black; padding:10px;">Phone Number</th>
-            <th style="border:1px solid black; padding:10px;">Email</th>
-            <th style="border:1px solid black; padding:10px;">Address</th>
-        </tr>
-
-        <tr>
-            <td style="border:1px solid black; padding:10px;">Piyush</td>
-            <td style="border:1px solid black; padding:10px;">******</td>
-            <td style="border:1px solid black; padding:10px;">01-01-2000</td>
-            <td style="border:1px solid black; padding:10px;">9876543210</td>
-            <td style="border:1px solid black; padding:10px;">piyush@gmail.com</td>
-            <td style="border:1px solid black; padding:10px;">Nagpur</td>
-        </tr>
-
-    </table>
-
-</div>
  
 </body>
 </html>

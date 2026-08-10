@@ -6,10 +6,44 @@
 <head runat="server">
     <title></title>
 </head>
-<body>
+<body style="margin:0; padding:0; background-color:#f2f2f2; font-family:Arial, Helvetica, sans-serif;">
+
     <form id="form1" runat="server">
-        <div>
+
+        <div style="width:420px; margin:50px auto; background-color:white; padding:25px; border-radius:10px; box-shadow:0px 0px 10px gray;">
+
+            <h1 style="background-color:yellow; color:red; text-align:center; padding:10px; margin-top:0; border-radius:5px;">
+                Login Form
+            </h1>
+
+            
+            <div style="margin-bottom:15px;">
+                <label style="font-weight:bold;">Email</label><br />
+                <asp:TextBox ID="textEmail" runat="server" TextMode="Email"
+                    style="width:95%; padding:8px; margin-top:5px;"></asp:TextBox>
+            </div>
+
+        
+
+            <div style="margin-bottom:15px;">
+                <label style="font-weight:bold;">Password</label><br />
+                <asp:TextBox ID="txtPwd" runat="server" TextMode="Password"
+                     style="width:95%; padding:8px; margin-top:5px;"></asp:TextBox>
+            </div>
+
+
+            <div style="text-align:center;">
+                <asp:Button ID="btnRegister" runat="server"
+                    Text="Login"
+                    style="background-color:#28a745; color:white; border:none; padding:10px 25px; border-radius:5px; cursor:pointer; margin-right:10px;" OnClick="btnRegister_Click" />
+
+                <asp:Button ID="btnReset" runat="server"
+                    Text="Reset"
+                    CausesValidation="false"
+                    style="background-color:#dc3545; color:white; border:none; padding:10px 25px; border-radius:5px; cursor:pointer;" OnClick="btnReset_Click" />
+            </div>
+
         </div>
+
     </form>
-</body>
 </html>
