@@ -24,5 +24,24 @@ namespace MVCProject1.Controllers
             return "Params: " + id;
         }
 
+        [ActionName("SayHello1")]
+        public string SayHello()
+        {
+            return "Hello SyaHello1";
+        }
+
+        [ActionName("SayHello2")]
+        public string SayHello(string Name)
+        {
+            return "Hello SyaHello2";
+        }
+
+        [NonAction]
+        public string Display()
+        {
+            return "Hello Display";
+        }
+
+
     }
 }
