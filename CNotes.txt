@@ -1,0 +1,5631 @@
+## C# Fundamentals
+
+1. What is C#?
+
+Answer:
+
+C# (C-Sharp) is a modern, statically typed, strongly typed, object-oriented programming language developed by Microsoft.
+
+It is mainly used with the .NET platform to develop different types of applications such as:
+
+Web applications
+Web APIs
+Desktop applications
+Cloud applications
+Mobile applications
+Games
+Console applications
+
+Interview Answer:
+
+C# is a statically typed object-oriented programming language developed by Microsoft. It is primarily used with the .NET platform to build different types of applications such as web applications, APIs, desktop applications, cloud applications, and games.
+
+2. What are the main features of C#?
+
+Answer:
+
+The main features of C# are:
+
+Object-Oriented – Supports encapsulation, inheritance, polymorphism, and abstraction.
+Statically Typed – Type checking is mainly performed at compile time.
+Strongly Typed – Prevents incompatible type assignments without proper conversion.
+Type Safe – Helps prevent invalid operations between incompatible types.
+Automatic Memory Management – Uses Garbage Collection to manage memory.
+Exception Handling – Provides try, catch, finally, and throw.
+Generics – Allows reusable and type-safe code.
+Delegates and Events – Supports callbacks and event-driven programming.
+LINQ – Allows querying collections and data sources using C# syntax.
+Asynchronous Programming – Supports async and await.
+Cross-Platform – Modern .NET applications can run on Windows, Linux, and macOS.
+
+Interview Answer:
+
+The main features of C# include object-oriented programming, static and strong typing, type safety, automatic memory management, exception handling, generics, delegates and events, LINQ, asynchronous programming, and cross-platform development through .NET.
+
+3. Why is C# called a strongly typed language?
+
+Answer:
+
+C# is called a strongly typed language because it does not normally allow us to perform operations or assign values between incompatible types without proper conversion.
+
+For example:
+
+int number = 10;
+
+
+string text = number; // ❌ Compile-time error
+
+Here, an int cannot directly be assigned to a string.
+
+We need explicit conversion:
+
+string text = number.ToString();
+
+Interview Answer:
+
+C# is called a strongly typed language because it enforces type compatibility. We cannot normally assign or use incompatible types together without an appropriate conversion, which helps prevent type-related errors.
+
+Important:
+Do not say that strongly typed means the type can never change. C# also has features such as dynamic, which provide runtime binding.
+
+4. What is the difference between C# and .NET?
+
+Answer:
+
+The simplest way to understand it is:
+
+C#  → Programming Language
+.NET → Development Platform
+
+C# is the language in which we write our code.
+
+.NET provides the runtime, libraries, SDK, and tools required to build and run applications.
+
+Example:
+
+Console.WriteLine("Hello World");
+
+The above code is written using C#, while the .NET platform provides the libraries and runtime required to execute it.
+
+Interview Answer:
+
+C# is a programming language, whereas .NET is a development platform that provides the runtime, libraries, SDK, and tools required to build and run applications written in C# and other .NET languages.
+
+5. What is Managed Code?
+
+Answer:
+
+Managed code is code that runs under the control of the CLR (Common Language Runtime).
+
+The CLR manages several important things for the application, such as:
+
+Memory management
+Garbage collection
+Exception handling
+Type safety
+Security-related runtime services
+
+For example, normal C# code compiled for .NET is managed code.
+
+class Employee
+{
+    public string Name { get; set; }
+}
+
+Interview Answer:
+
+Managed code is code that runs under the control of the CLR. The CLR provides services such as garbage collection, exception handling, type safety, and memory management.
+
+6. What is Unmanaged Code?
+
+Answer:
+
+Unmanaged code is code that runs outside the control of the CLR.
+
+The programmer or the operating system is responsible for managing resources such as memory.
+
+Common examples include code written in:
+
+C
+C++
+
+For example, native C/C++ code is generally considered unmanaged code.
+
+C# can also interact with unmanaged code using technologies such as:
+
+P/Invoke
+COM Interop
+unsafe code
+
+Interview Answer:
+
+Unmanaged code is code that executes outside the control of the CLR. The CLR does not provide automatic services such as garbage collection for that code. Native C and C++ code are common examples.
+
+7. What is CLR?
+
+CLR stands for Common Language Runtime.
+
+It is the runtime environment provided by .NET that executes managed code.
+
+The CLR provides services such as:
+
+Memory management
+Garbage collection
+Exception handling
+Type safety
+JIT compilation
+Thread management
+
+The basic flow is:
+
+C# Source Code
+      ↓
+Compiler
+      ↓
+IL
+      ↓
+CLR
+      ↓
+JIT
+      ↓
+Native Machine Code
+
+Interview Answer:
+
+CLR stands for Common Language Runtime. It is the runtime environment of .NET that executes managed code and provides services such as garbage collection, exception handling, type safety, and JIT compilation.
+
+8. What is CTS?
+
+CTS stands for Common Type System.
+
+CTS defines how types are declared, used, and managed in the .NET platform.
+
+It provides a common type system that allows different .NET languages to understand and work with the same types.
+
+For example:
+
+C#        → int
+VB.NET    → Integer
+F#        → int
+
+These can map to the same underlying .NET type:
+
+System.Int32
+
+Interview Answer:
+
+CTS stands for Common Type System. It defines the common rules and types supported by the .NET platform so that different .NET languages can work with compatible types.
+
+9. What is CLS?
+
+CLS stands for Common Language Specification.
+
+CLS is a set of rules that .NET languages follow so that code written in one .NET language can be used by another .NET language.
+
+For example:
+
+C# Code
+   ↓
+.NET
+   ↓
+VB.NET / F# / Other .NET languages
+
+CLS defines a common set of language features that are understood across .NET languages.
+
+Interview Answer:
+
+CLS stands for Common Language Specification. It is a set of rules that .NET languages follow to ensure language interoperability, allowing code written in one .NET language to be used by other .NET languages.
+
+Easy difference:
+CTS → Defines types
+CLS → Defines common language rules
+10. What is IL/MSIL?
+
+IL stands for Intermediate Language.
+
+It is the intermediate code generated by the C# compiler after compiling C# source code.
+
+It is also commonly called:
+
+IL
+CIL (Common Intermediate Language)
+MSIL (Microsoft Intermediate Language)
+
+Modern .NET documentation generally uses IL/CIL more often than MSIL.
+
+Example:
+
+C# Source Code
+      ↓
+C# Compiler
+      ↓
+IL
+      ↓
+JIT Compiler
+      ↓
+Native Machine Code
+
+IL is not directly executed by the CPU. The JIT compiler converts it into native machine code when needed.
+
+Interview Answer:
+
+IL, or Intermediate Language, is the CPU-independent code generated by the .NET compiler from C# source code. At runtime, the JIT compiler converts the IL into native machine code that the CPU can execute.
+
+11. What is JIT Compilation?
+
+JIT stands for Just-In-Time compilation.
+
+The JIT compiler converts IL code into native machine code that can be executed by the CPU.
+
+The basic process is:
+
+C# Code
+   ↓
+C# Compiler
+   ↓
+IL
+   ↓
+JIT Compiler
+   ↓
+Native Machine Code
+   ↓
+CPU
+
+JIT compilation happens at runtime.
+
+Interview Answer:
+
+JIT stands for Just-In-Time compilation. It is the process of converting IL code into native machine code at runtime so that the processor can execute it.
+
+12. What happens when a C# program is compiled and executed?
+
+Answer:
+
+The process can be understood in these steps:
+
+Step 1 — Write C# code
+Console.WriteLine("Hello World");
+Step 2 — Compilation
+
+The C# compiler compiles the source code.
+
+C# Source Code
+      ↓
+C# Compiler
+Step 3 — IL is generated
+
+The compiler generates:
+
+IL
+Metadata
+
+These are stored inside an assembly such as an .exe or .dll.
+
+C# Code
+   ↓
+IL + Metadata
+   ↓
+Assembly
+Step 4 — CLR loads the assembly
+
+When the application runs, the .NET runtime loads the required assembly.
+
+Step 5 — JIT compilation
+
+The JIT compiler converts the required IL into native machine code.
+
+IL
+ ↓
+JIT
+ ↓
+Native Code
+Step 6 — CPU executes the code
+
+The processor executes the native machine code.
+
+Complete flow:
+C# Source Code
+      ↓
+C# Compiler
+      ↓
+IL + Metadata
+      ↓
+Assembly (.exe / .dll)
+      ↓
+.NET Runtime / CLR
+      ↓
+JIT
+      ↓
+Native Machine Code
+      ↓
+CPU
+
+Interview Answer:
+
+When a C# program is compiled, the C# compiler converts the source code into IL and metadata, which are stored in an assembly. At runtime, the .NET runtime loads the assembly and the JIT compiler converts the required IL into native machine code, which is then executed by the CPU.
+
+13. What is an Assembly?
+
+Answer:
+
+An assembly is the compiled unit of a .NET application.
+
+It usually contains:
+
+IL code
+Metadata
+Manifest
+Resources, if required
+
+An assembly is commonly represented as:
+
+.exe
+.dll
+
+For example:
+
+MyApplication.dll
+MyApplication.exe
+
+An assembly contains information about the types and references used by the application.
+
+Interview Answer:
+
+An assembly is the compiled and deployable unit of a .NET application. It contains IL code, metadata, a manifest, and optionally resources. Assemblies are commonly stored as EXE or DLL files.
+
+14. What is the difference between an EXE and a DLL?
+
+Both are assemblies, but they are generally used differently.
+
+EXE
+
+EXE stands for executable file.
+
+It is generally used for an application that can be launched as an executable program.
+
+Example:
+
+MyApplication.exe
+DLL
+
+DLL stands for Dynamic Link Library.
+
+It is generally used to contain reusable code that can be referenced by other applications or libraries.
+
+Example:
+
+MyLibrary.dll
+Simple difference:
+EXE	DLL
+Usually represents an executable application	Usually represents a reusable library
+Can be launched as an application	Normally referenced by another application
+Common for console/desktop applications	Common for class libraries and reusable components
+
+Interview Answer:
+
+Both EXE and DLL are .NET assemblies. An EXE is generally used as an executable application, while a DLL is generally a reusable library referenced by other applications or assemblies.
+
+15. What is a Namespace?
+
+Answer:
+
+A namespace is a logical way of organizing related types such as:
+
+Classes
+Interfaces
+Structs
+Enums
+Delegates
+
+It also helps prevent naming conflicts.
+
+Example:
+
+namespace Company.Employee
+{
+    class Employee
+    {
+    }
+}
+
+Another namespace can have a class with the same name:
+
+namespace Company.Customer
+{
+    class Employee
+    {
+    }
+}
+
+Both classes can exist because they belong to different namespaces.
+
+Interview Answer:
+
+A namespace is a logical grouping of related types in C#. It helps organize code and prevents naming conflicts between types with the same name.
+
+16. What is the difference between a Namespace and an Assembly?
+
+These two concepts are often confused.
+
+Namespace
+
+A namespace is a logical organization of types.
+
+Company.Employee
+Company.Customer
+Assembly
+
+An assembly is a compiled physical unit of a .NET application.
+
+MyApplication.dll
+MyApplication.exe
+Important point
+
+A namespace does not necessarily correspond to one assembly.
+
+One assembly can contain multiple namespaces.
+
+Also, one namespace can contain types that are defined in different assemblies.
+
+Simple comparison:
+Namespace	Assembly
+Logical organization	Compiled unit
+Organizes types	Contains compiled code and metadata
+Mainly helps avoid naming conflicts	Used for deployment/versioning/loading
+Exists as a code concept	Usually represented by .dll or .exe
+
+Interview Answer:
+
+A namespace is a logical way to organize types and avoid naming conflicts, whereas an assembly is the compiled and deployable unit of a .NET application containing IL, metadata, and other information.
+
+17. What is the purpose of the using directive?
+
+Answer:
+
+The using directive allows us to use types from a namespace without writing the complete namespace name every time.
+
+Without using:
+
+System.Console.WriteLine("Hello");
+
+With using:
+
+using System;
+
+
+Console.WriteLine("Hello");
+
+So, using mainly improves code readability and convenience.
+
+Important
+
+using does not import or copy the entire namespace into your program.
+
+It tells the compiler that names from that namespace can be referenced more conveniently.
+
+Interview Answer:
+
+The using directive allows us to reference types from a namespace without specifying the fully qualified namespace name every time. It mainly improves code readability and reduces repetitive namespace names.
+
+18. What is the difference between using directive and using statement?
+
+These are two different uses of the using keyword.
+
+Using Directive
+
+Used to reference namespaces or create aliases.
+
+using System;
+using MyApplication.Models;
+
+It helps us use types without writing their fully qualified names.
+
+Using Statement
+
+Used for resource management.
+
+It ensures that an object implementing IDisposable is disposed of after use.
+
+Example:
+
+using (StreamReader reader = new StreamReader("data.txt"))
+{
+    string data = reader.ReadToEnd();
+}
+
+After the block finishes, the reader is disposed.
+
+Modern C# also supports a using declaration:
+
+using StreamReader reader = new StreamReader("data.txt");
+Simple difference:
+using System;
+      ↑
+Using Directive
+      ↓
+Namespace reference
+
+using (resource)
+{
+}
+      ↑
+Using Statement
+      ↓
+Resource management
+
+Interview Answer:
+
+A using directive is used to reference namespaces or create aliases, whereas a using statement or declaration is used for automatic disposal of objects that implement IDisposable.
+
+19. What is the Entry Point of a C# Program?
+
+Answer:
+
+The entry point is the place where execution of the application begins.
+
+In traditional C# applications, the entry point is the Main() method.
+
+Example:
+
+class Program
+{
+    static void Main()
+    {
+        Console.WriteLine("Hello World");
+    }
+}
+
+Execution starts from:
+
+Main()
+
+Depending on the application and C# version, Main can have different valid signatures.
+
+For example:
+
+static void Main()
+static void Main(string[] args)
+
+It can also return int:
+
+static int Main()
+
+Interview Answer:
+
+In a traditional C# application, the entry point is the Main() method. It is the method from which program execution begins.
+
+20. What are Top-Level Statements?
+
+Answer:
+
+Top-level statements were introduced in C# 9.
+
+They allow us to write executable code directly in a .cs file without explicitly creating a Program class and Main() method.
+
+Traditional approach:
+
+using System;
+
+
+class Program
+{
+    static void Main()
+    {
+        Console.WriteLine("Hello World");
+    }
+}
+
+With top-level statements:
+
+Console.WriteLine("Hello World");
+
+The compiler generates the necessary program structure behind the scenes.
+
+Important point
+
+Top-level statements don't mean that there is no entry point.
+
+The compiler still generates an appropriate entry point for the application.
+
+Interview Answer:
+
+Top-level statements allow us to write the executable part of a C# program directly in the source file without explicitly declaring a Program class and Main() method. The compiler generates the required program structure and entry point.
+
+21. What is the difference between Compile-Time and Runtime?
+Compile-Time
+
+Compile-time is the stage when the compiler checks and converts our source code into IL.
+
+Example:
+
+int number = "Hello";
+
+This produces a compile-time error because "Hello" is a string and cannot be assigned to an int.
+
+Source Code
+     ↓
+Compiler
+     ↓
+Compile-Time Error
+Runtime
+
+Runtime is when the compiled application is actually executed.
+
+Example:
+
+int a = 10;
+int b = 0;
+
+
+int result = a / b;
+
+This compiles, but when executed, it causes a runtime exception because division by zero is invalid.
+
+Compiled Program
+      ↓
+Runtime
+      ↓
+Exception
+Simple difference:
+Compile-Time	                        Runtime
+Happens during compilation	            Happens while program is running
+Compiler checks the code	            Program is executed
+Produces compile-time errors	        Can produce runtime exceptions
+Example: invalid type assignment	    Example: divide by zero
+
+Interview Answer:
+
+Compile-time is the stage where the compiler analyzes and compiles the source code into IL, while runtime is the stage where the compiled application is executed by the .NET runtime.
+
+22. What is Type Safety in C#?
+
+Answer:
+
+Type safety means that C# helps ensure that operations are performed only on compatible data types.
+
+For example:
+
+int age = 25;
+
+age = "Hello"; // ❌ Compile-time error
+
+C# prevents this because a string cannot be directly assigned to an int.
+
+Another example:
+
+int a = 10;
+string b = "20";
+
+int result = a + b; // ❌
+
+C# does not automatically treat the string "20" as the integer 20 in this operation.
+
+Type safety helps:
+
+Detect errors early
+Prevent invalid operations
+Make code more reliable
+Improve maintainability
+
+Interview Answer:
+
+Type safety in C# means that the compiler and runtime enforce rules about how values of different types can be used. It helps prevent invalid type conversions and operations and catches many errors before the program runs.
+
+23. What is the Common Type System?
+
+Answer:
+
+CTS stands for Common Type System.
+
+It is a part of the .NET specification that defines how types are declared, used, and managed.
+
+CTS provides a common set of types that can be understood by all .NET languages.
+
+For example, C# has:
+
+int number = 10;
+
+The int keyword in C# represents:
+
+System.Int32
+
+Another .NET language may use a different keyword for the same underlying type.
+
+For example:
+
+C#       → int
+VB.NET   → Integer
+          ↓
+      System.Int32
+
+Because .NET follows CTS, different .NET languages can work with compatible types.
+
+CTS mainly defines:
+Value types
+Reference types
+Classes
+Structs
+Interfaces
+Enums
+Delegates
+Arrays
+Built-in types
+
+Interview Answer:
+
+CTS, or Common Type System, is a .NET specification that defines the types supported by the .NET platform and the rules for how those types are declared, used, and managed. It provides a common type system so that different .NET languages can interoperate.
+
+
+
+## C# Type System
+
+24. What are Value Types?
+
+Answer:
+
+A value type directly contains its value.
+
+When we create a value-type variable, the variable itself contains the actual data.
+
+Examples of value types:
+
+int age = 25;
+double salary = 50000.50;
+bool isActive = true;
+
+Here, age contains the actual value 25.
+
+Common value types include:
+
+int
+double
+float
+decimal
+bool
+char
+struct
+enum
+Example
+int a = 10;
+int b = a;
+
+
+b = 20;
+
+
+Console.WriteLine(a); // 10
+Console.WriteLine(b); // 20
+
+When b = a happens, the value 10 is copied into b.
+
+Changing b does not affect a.
+
+Interview Answer:
+
+A value type stores its actual value directly. When a value-type variable is assigned to another variable, the value is copied, so changes to one variable do not affect the other.
+
+25. What are Reference Types?
+
+Answer:
+
+A reference type variable stores a reference to an object, rather than directly storing the object's data.
+
+Examples of reference types include:
+
+Classes
+Arrays
+Strings
+Delegates
+Interfaces
+Objects created from classes
+Example
+class Employee
+{
+    public string Name;
+}
+
+
+Employee e1 = new Employee();
+e1.Name = "Piyush";
+
+
+Employee e2 = e1;
+
+
+e2.Name = "Rahul";
+
+
+Console.WriteLine(e1.Name); // Rahul
+
+Here:
+
+e1 ──┐
+     ├──> Employee Object
+e2 ──┘
+
+Both e1 and e2 refer to the same object.
+
+Therefore, changing the object through e2 is visible through e1.
+
+Interview Answer:
+
+A reference type variable stores a reference to an object rather than directly storing the object's data. Multiple reference variables can refer to the same object.
+
+26. What is the difference between Value Type and Reference Type?
+
+The main difference is how the value is stored and copied.
+
+Value Type
+int a = 10;
+int b = a;
+
+
+b = 20;
+a → 10
+b → 20
+
+They have independent values.
+
+Reference Type
+Employee e1 = new Employee();
+Employee e2 = e1;
+e1 ──┐
+     ├──> Object
+e2 ──┘
+
+Both references point to the same object.
+
+Comparison
+Value Type	                                                     Reference Type
+Stores its value	                                             Stores a reference to an object
+Assignment copies the value	                                     Assignment copies the reference
+Usually stored inline or on the stack depending on context	     Objects are generally allocated on the managed heap
+Examples: int, bool, struct	Examples: class, string, array
+
+Interview Answer:
+
+The main difference is that a value type contains its value, while a reference type contains a reference to an object. Assigning a value type copies the value, whereas assigning a reference type copies the reference.
+
+Important interview point:
+Don't simply say "value types are stored on stack and reference types are stored on heap." That is an oversimplification. Storage depends on the context. For example, a value type can be a field inside a heap-allocated object.
+
+27. What are the Built-in Value Types in C#?
+
+C# provides several built-in value types.
+
+Integral types
+sbyte
+byte
+short
+ushort
+int
+uint
+long
+ulong
+Floating-point types
+float
+double
+Decimal type
+decimal
+Character type
+char
+Boolean type
+bool
+Other value types
+struct
+enum
+
+C# also has built-in aliases:
+
+int     → System.Int32
+long    → System.Int64
+bool    → System.Boolean
+char    → System.Char
+double  → System.Double
+decimal → System.Decimal
+
+Interview Answer:
+
+The main built-in value types in C# include integral types such as int and long, floating-point types such as float and double, decimal, char, bool, as well as user-defined value types such as structs and enums.
+
+28. What are the Built-in Reference Types in C#?
+
+Common reference types in C# include:
+
+object
+string
+class
+array
+delegate
+interface
+
+Examples:
+
+string name = "Piyush";
+
+
+object obj = 10;
+
+
+int[] numbers = { 10, 20, 30 };
+
+Here:
+
+string → reference type
+object → reference type
+array → reference type
+
+Classes, interfaces, and delegates are also reference types.
+
+Interview Answer:
+
+Common reference types in C# include object, string, classes, arrays, delegates, and interfaces.
+
+29. Is string a Value Type or Reference Type?
+
+Answer:
+
+string is a reference type.
+
+string name = "Piyush";
+
+Internally:
+
+string → System.String
+
+System.String is a class, so it is a reference type.
+
+But there is an important special behavior
+
+Strings are immutable.
+
+That means once a string object is created, its contents cannot be changed.
+
+For example:
+
+string name = "Piyush";
+
+
+name = "Rahul";
+
+This doesn't modify the original "Piyush" object. A different string value/object is assigned to the variable.
+
+Interview Answer:
+
+string is a reference type because System.String is a class. However, strings are immutable, meaning their contents cannot be modified after the string object is created.
+
+30. Is an Array a Value Type or Reference Type?
+
+Answer:
+
+An array is a reference type in C#.
+
+Example:
+
+int[] numbers = { 10, 20, 30 };
+
+Even though the elements are int, the array itself is a reference type.
+
+int → value type
+int[] → reference type
+Example
+int[] a = { 10, 20, 30 };
+int[] b = a;
+
+
+b[0] = 100;
+
+
+Console.WriteLine(a[0]); // 100
+
+Both a and b refer to the same array object.
+
+Interview Answer:
+
+An array is a reference type in C#, even if its elements are value types such as int.
+
+31. Is a Delegate a Value Type or Reference Type?
+
+Answer:
+
+A delegate is a reference type.
+
+A delegate is an object that represents a method or group of methods with a compatible signature.
+
+Example:
+
+delegate void MyDelegate();
+
+
+static void Hello()
+{
+    Console.WriteLine("Hello");
+}
+
+
+MyDelegate d = Hello;
+
+
+d();
+
+Here, MyDelegate is a reference type.
+
+Interview Answer:
+
+A delegate is a reference type. It represents a method or group of methods with a compatible signature and is commonly used for callbacks and events.
+
+32. Is object a Value Type or Reference Type?
+
+Answer:
+
+object is a reference type.
+
+object is an alias for:
+
+System.Object
+
+Example:
+
+object value = 10;
+
+Although 10 is an int value type, assigning it to object causes boxing.
+
+int
+ ↓
+boxing
+ ↓
+object
+
+Interview Answer:
+
+object is a reference type and is an alias for System.Object. Since every C# type ultimately derives from object, it can hold values of any type, with value types being boxed when stored as object.
+
+33. What is System.Object?
+
+Answer:
+
+System.Object is the ultimate base class of all .NET types.
+
+In C#, the keyword:
+
+object
+
+is an alias for:
+
+System.Object
+
+It provides common methods such as:
+
+ToString()
+Equals()
+GetHashCode()
+GetType()
+
+Example:
+
+int number = 10;
+
+
+Console.WriteLine(number.ToString());
+Console.WriteLine(number.GetType());
+
+Even though int is a value type, it ultimately derives from System.Object through System.ValueType.
+
+Interview Answer:
+
+System.Object is the ultimate base class of all .NET types. The C# keyword object is an alias for System.Object, which provides common methods such as ToString(), Equals(), GetHashCode(), and GetType().
+
+34. Why does every C# type ultimately derive from object?
+
+Answer:
+
+.NET provides a common base type called System.Object.
+
+All types ultimately derive from it, directly or indirectly.
+
+For a class:
+
+Employee
+   ↓
+object
+
+For a struct:
+
+int
+ ↓
+System.Int32
+ ↓
+System.ValueType
+ ↓
+System.Object
+
+This gives all types access to common functionality such as:
+
+ToString()
+Equals()
+GetHashCode()
+GetType()
+
+It also allows different types to be treated as object when necessary.
+
+Example:
+
+object a = 10;
+object b = "Hello";
+object c = new Employee();
+
+Interview Answer:
+
+Every C# type ultimately derives from System.Object because .NET provides it as the common base type for all types. This gives all types common methods and allows values of different types to be handled through the common object type.
+
+35. What is System.ValueType?
+
+Answer:
+
+System.ValueType is a class that serves as the base class for all value types in .NET.
+
+The hierarchy looks like:
+
+System.Object
+      ↓
+System.ValueType
+      ↓
+System.Int32
+System.Boolean
+System.Double
+...
+
+For example:
+
+int number = 10;
+
+int is an alias for:
+
+System.Int32
+
+And:
+
+System.Int32
+    ↓
+System.ValueType
+    ↓
+System.Object
+
+Structs and enums derive from System.ValueType directly or indirectly.
+
+Interview Answer:
+
+System.ValueType is the base class for all value types in .NET. It derives from System.Object, and types such as int, bool, structs, and enums ultimately derive from it.
+
+36. What is the difference between object and System.ValueType?
+
+Both are classes in the .NET type hierarchy, but their purposes are different.
+
+System.Object
+
+It is the base class of all .NET types.
+
+System.Object
+
+It is the root of the type hierarchy.
+
+System.ValueType
+
+It is the base class specifically for value types.
+
+System.Object
+      ↓
+System.ValueType
+      ↓
+Value Types
+Example
+object
+  ↓
+ValueType
+  ↓
+Int32
+
+So:
+
+object → all types
+ValueType → value types
+
+Interview Answer:
+
+System.Object is the ultimate base class for all .NET types, while System.ValueType is a derived class that serves as the base class for value types such as integers, structs, and enums.
+
+37. What is Compile-Time Type?
+
+Answer:
+
+The compile-time type is the type that the compiler knows for a variable or expression while compiling the program.
+
+Example:
+
+object value = "Hello";
+
+Here:
+
+Compile-time type → object
+Actual object     → string
+
+The compiler sees value as an object.
+
+For example:
+
+object value = "Hello";
+
+
+Console.WriteLine(value.Length); // ❌ Compile-time error
+
+Why?
+
+Because object does not have a Length property.
+
+The compiler only considers the compile-time type when checking the code.
+
+Interview Answer:
+
+Compile-time type is the type known to the compiler for a variable or expression during compilation. It is used for type checking and, among other things, overload resolution.
+
+38. What is Runtime Type?
+
+Answer:
+
+The runtime type is the actual type of the object that exists while the program is running.
+
+Example:
+
+object value = "Hello";
+
+Here:
+
+Compile-time type → object
+Runtime type      → string
+
+We can check the runtime type using:
+
+Console.WriteLine(value.GetType());
+
+Output:
+
+System.String
+
+Interview Answer:
+
+Runtime type is the actual type of the object that a reference refers to during program execution. It can be different from the compile-time type of the reference.
+
+39. Can Compile-Time Type and Runtime Type be Different?
+
+Answer:
+
+Yes. This commonly happens with inheritance and polymorphism.
+
+Example:
+
+class Animal
+{
+}
+
+
+class Dog : Animal
+{
+}
+
+
+Animal animal = new Dog();
+
+Here:
+
+Compile-time type → Animal
+Runtime type      → Dog
+
+The variable is declared as Animal, but the actual object created is Dog.
+
+animal
+   ↓
+Dog Object
+
+Interview Answer:
+
+Yes. Compile-time type and runtime type can be different. This commonly occurs when a base-class reference refers to an object of a derived class.
+
+40. What Controls Overload Resolution: Compile-Time Type or Runtime Type?
+
+Answer:
+
+Overload resolution is primarily based on the compile-time type.
+
+Example:
+
+class Test
+{
+    void Print(object value)
+    {
+        Console.WriteLine("Object");
+    }
+
+
+    void Print(string value)
+    {
+        Console.WriteLine("String");
+    }
+}
+
+Now:
+
+object value = "Hello";
+
+
+Test t = new Test();
+
+
+t.Print(value);
+
+The output is:
+
+Object
+
+Why?
+
+Because the compiler sees:
+
+value → object
+
+Even though the runtime object is actually a string.
+
+Interview Answer:
+
+Overload resolution is performed at compile time and is primarily based on the compile-time type of the arguments.
+
+41. What Controls Virtual Method Dispatch?
+
+Answer:
+
+For an overridden virtual method, the method that executes is determined by the runtime type of the object.
+
+Example:
+
+class Animal
+{
+    public virtual void Sound()
+    {
+        Console.WriteLine("Animal Sound");
+    }
+}
+
+
+class Dog : Animal
+{
+    public override void Sound()
+    {
+        Console.WriteLine("Dog Sound");
+    }
+}
+
+Now:
+
+Animal animal = new Dog();
+
+
+animal.Sound();
+
+Output:
+
+Dog Sound
+
+Why?
+
+Compile-time type → Animal
+Runtime type      → Dog
+
+The runtime type determines the overridden virtual method.
+
+Interview Answer:
+
+Virtual method dispatch is based on the runtime type of the object. Therefore, when a base-class reference refers to a derived-class object, the overridden method in the derived class is executed.
+
+42. What is Type Inference?
+
+Answer:
+
+Type inference means the compiler automatically determines the type of a variable or expression from the value assigned to it.
+
+The most common example is var.
+
+var number = 10;
+
+The compiler determines:
+
+number → int
+
+Another example:
+
+var name = "Piyush";
+
+The compiler determines:
+
+name → string
+
+The compiler knows the type at compile time.
+
+Interview Answer:
+
+Type inference is the process where the compiler automatically determines the type of a variable or expression based on the value or expression assigned to it.
+
+43. What is var?
+
+Answer:
+
+var allows the compiler to infer the variable's type at compile time.
+
+Example:
+
+var number = 10;
+
+The compiler determines:
+
+var → int
+
+So this:
+
+var number = 10;
+
+is effectively a strongly typed int variable.
+
+You cannot later assign a different incompatible type:
+
+var number = 10;
+
+
+number = "Hello"; // ❌ Compile-time error
+Important
+
+var does not mean "any type."
+
+It means:
+
+Let the compiler determine the actual type.
+
+Interview Answer:
+
+var is a C# keyword that allows the compiler to infer the variable's type at compile time. The variable remains strongly typed after the type has been inferred.
+
+44. Is var Dynamically Typed?
+
+Answer:
+
+No. var is not dynamically typed.
+
+Example:
+
+var number = 10;
+
+The compiler determines:
+
+number → int
+
+Therefore:
+
+number = "Hello"; // ❌ Compile-time error
+
+Compare:
+
+var a = 10;       // statically typed as int
+
+
+dynamic b = 10;   // dynamically typed
+
+Interview Answer:
+
+No. var is not dynamically typed. The compiler determines its actual type at compile time, so it remains strongly typed.
+
+45. What is dynamic?
+
+Answer:
+
+dynamic tells the compiler to defer certain type checking and member binding until runtime.
+
+Example:
+
+dynamic value = 10;
+
+
+Console.WriteLine(value + 20);
+
+Later:
+
+value = "Hello";
+
+
+Console.WriteLine(value.Length);
+
+The compiler allows these operations because value is dynamic.
+
+The actual operation is determined at runtime.
+
+Important
+
+dynamic does not mean the object has no type.
+
+The object still has a runtime type.
+
+It means the compiler performs less static checking and allows the runtime binder to resolve operations.
+
+Interview Answer:
+
+dynamic is a C# type that allows operations such as member access, method calls, and conversions to be resolved at runtime instead of being fully checked at compile time.
+
+46. What is the Difference Between var and dynamic?
+
+This is a very important interview question.
+
+var
+Type is determined at compile time.
+Statically typed.
+Compile-time checking is performed.
+Cannot change to an incompatible type.
+var value = 10;
+
+
+value = "Hello"; // ❌
+dynamic
+Operations are resolved at runtime.
+Runtime binding is used.
+Type-related errors can occur during execution.
+The variable can refer to objects of different types over its lifetime.
+dynamic value = 10;
+
+
+value = "Hello"; // ✅
+Comparison
+var	dynamic
+Compile-time type inference	Runtime binding
+Statically typed	Dynamically bound
+Compile-time checking	Many checks happen at runtime
+Cannot assign incompatible type	Can refer to different runtime types
+Faster/safer for normal code	Useful when runtime type information is needed
+
+Interview Answer:
+
+var uses compile-time type inference, so the variable remains statically typed. dynamic defers member binding and many type checks until runtime, so errors that would normally be caught by the compiler can occur during execution.
+
+47. What is the Difference Between dynamic and object?
+
+Both can hold values of different types, but they behave differently.
+
+object
+object value = "Hello";
+
+
+Console.WriteLine(value.Length); // ❌ Compile-time error
+
+The compiler sees value as object, and object does not have a Length property.
+
+You need a cast:
+
+object value = "Hello";
+
+
+Console.WriteLine(((string)value).Length);
+dynamic
+dynamic value = "Hello";
+
+
+Console.WriteLine(value.Length); // ✅
+
+The compiler allows the operation and the runtime resolves it.
+
+Comparison
+object	                                                 dynamic
+Statically typed	                                     Dynamically bound
+Compiler sees it as object	                             Compiler defers many operations
+Usually requires casting to access specific members	     No explicit cast required for member access
+Errors are often caught at compile time	                 Binding errors can occur at runtime
+
+Interview Answer:
+
+object is a statically typed base type, so the compiler treats the variable as object and usually requires casting to access derived-type members. dynamic defers member binding to runtime, allowing such operations without explicit casting, but errors can occur at runtime.
+
+48. Can var be Used Without Initialization?
+
+Answer:
+
+No.
+
+var requires an initializer because the compiler needs a value or expression to determine its type.
+
+This is invalid:
+
+var number; // ❌ Compile-time error
+
+This is valid:
+
+var number = 10;
+
+The compiler determines:
+
+number → int
+
+Interview Answer:
+
+No. var cannot be used without initialization because the compiler needs an initializer to infer the variable's type.
+
+49. Can var be Used as a Class-Level Field?
+
+Answer:
+
+No.
+
+var is mainly used for local variables.
+
+This is invalid:
+
+class Employee
+{
+    var name = "Piyush"; // ❌
+}
+
+For a field, we should explicitly specify the type:
+
+class Employee
+{
+    string name = "Piyush";
+}
+Why?
+
+Because class fields are part of the type's metadata and structure, while var is specifically a local-variable type inference feature.
+
+Interview Answer:
+
+No. var cannot be used for class-level fields. It is intended for local variables where the compiler can infer the type from the initializer.
+
+50. Can dynamic be Used as a Class-Level Field?
+
+Answer:
+
+Yes.
+
+Unlike var, dynamic can be used as a field.
+
+class Employee
+{
+    dynamic value;
+}
+
+We can also initialize it:
+
+class Employee
+{
+    dynamic value = 10;
+}
+
+Later:
+
+value = "Hello";
+
+This is allowed.
+
+Interview Answer:
+
+Yes. dynamic can be used for local variables, fields, properties, parameters, and return types because dynamic is a valid C# type.
+
+51. What Happens If a Dynamic Operation Fails at Runtime?
+
+Answer:
+
+If an operation on a dynamic value cannot be resolved at runtime, a runtime exception is thrown.
+
+Example:
+
+dynamic value = 10;
+
+
+Console.WriteLine(value.Length);
+
+value is an int, and int does not have a Length property.
+
+The code may compile, but at runtime the dynamic binder cannot find Length.
+
+This results in a runtime exception, commonly:
+
+Microsoft.CSharp.RuntimeBinder.RuntimeBinderException
+Example
+try
+{
+    dynamic value = 10;
+    Console.WriteLine(value.Length);
+}
+catch (Exception ex)
+{
+    Console.WriteLine(ex.Message);
+}
+
+Interview Answer:
+
+If a dynamic operation cannot be resolved at runtime, the runtime binder throws an exception, commonly a RuntimeBinderException. This is one of the main risks of using dynamic.
+
+52. When Would You Use dynamic?
+
+Answer:
+
+dynamic should generally be used only when runtime binding is genuinely required.
+
+Some situations where it can be useful are:
+
+1. COM Interop
+
+dynamic can simplify interaction with COM APIs where the available members are determined at runtime.
+
+2. Reflection-like scenarios
+
+When working with objects whose members are not conveniently known at compile time.
+
+3. Dynamic data
+
+Sometimes external data has a structure that is determined at runtime.
+
+4. Interoperability with dynamic languages
+
+It can be useful when interacting with systems where the type information is not available to the compiler.
+
+Example
+dynamic value = GetSomeObject();
+
+
+Console.WriteLine(value.Name);
+
+The compiler doesn't need to know whether the object has a Name property. The runtime tries to resolve it.
+
+But avoid unnecessary use
+
+Don't use:
+
+dynamic value = 10;
+
+when you already know the type is int.
+
+Prefer:
+
+int value = 10;
+
+because static typing gives you:
+
+Better compile-time checking
+Better IntelliSense
+Easier refactoring
+Fewer runtime errors
+
+Interview Answer:
+
+I would use dynamic when the type or members of an object are genuinely determined at runtime, such as certain COM interop, dynamic language interoperability, or dynamic data scenarios. I would avoid using it when the type is known at compile time because static typing provides better safety and tooling.
+
+
+## Value Types, Reference Types & Memory
+
+53. How does assignment work for Value Types?
+
+Answer:
+
+When we assign one value-type variable to another, the actual value is copied.
+
+Example:
+
+int a = 10;
+int b = a;
+
+
+b = 20;
+
+
+Console.WriteLine(a); // 10
+Console.WriteLine(b); // 20
+
+When this happens:
+
+int b = a;
+
+the value 10 is copied from a to b.
+
+So, a and b have independent values.
+
+a → 10
+
+
+b → 10
+
+
+After b = 20:
+
+
+a → 10
+b → 20
+
+Interview Answer:
+
+For value types, assignment copies the actual value. Therefore, after assigning one value-type variable to another, both variables contain independent copies of the value.
+
+54. How does assignment work for Reference Types?
+
+Answer:
+
+When we assign one reference-type variable to another, the reference is copied, not the object itself.
+
+Example:
+
+class Employee
+{
+    public string Name;
+}
+
+
+Employee e1 = new Employee();
+e1.Name = "Piyush";
+
+
+Employee e2 = e1;
+
+Now both variables refer to the same object:
+
+e1 ─────┐
+        ↓
+     Employee Object
+        ↑
+e2 ─────┘
+
+If we change the object through e2:
+
+e2.Name = "Rahul";
+
+
+Console.WriteLine(e1.Name);
+
+Output:
+
+Rahul
+
+Because e1 and e2 refer to the same object.
+
+Interview Answer:
+
+For reference types, assignment copies the reference to the object, not the object itself. Therefore, two variables can refer to the same object.
+
+55. What happens when you assign one object variable to another?
+
+Answer:
+
+When one reference-type variable is assigned to another, the reference is copied.
+
+Example:
+
+Employee e1 = new Employee();
+
+
+Employee e2 = e1;
+
+This does not create a new Employee object.
+
+Instead:
+
+e1 ─────┐
+        ↓
+     Employee
+        ↑
+e2 ─────┘
+
+Both variables point to the same object.
+
+Therefore:
+
+e2.Name = "Rahul";
+
+can be observed through:
+
+e1.Name
+
+Interview Answer:
+
+Assigning one object variable to another does not create a new object. It copies the reference, so both variables refer to the same object.
+
+56. Why do two reference variables sometimes point to the same object?
+
+Answer:
+
+Because assigning one reference variable to another copies the reference.
+
+Example:
+
+Employee e1 = new Employee();
+
+
+Employee e2 = e1;
+
+Only one object was created:
+
+Employee e1 = new Employee();
+
+The second line:
+
+Employee e2 = e1;
+
+only copies the reference.
+
+So:
+
+e1 ─────┐
+        ↓
+     Object
+        ↑
+e2 ─────┘
+
+If you want a separate object, you need to create another object:
+
+Employee e2 = new Employee();
+
+Now:
+
+e1 → Object 1
+
+
+e2 → Object 2
+
+Interview Answer:
+
+Two reference variables point to the same object when one reference is assigned to another because the reference itself is copied. A new object is created only when we explicitly create one, for example using new.
+
+57. What happens when you pass a Reference Type to a method?
+
+Answer:
+
+By default, C# passes arguments by value.
+
+For a reference type, this means the reference itself is copied.
+
+Example:
+
+class Employee
+{
+    public string Name;
+}
+
+
+static void ChangeName(Employee emp)
+{
+    emp.Name = "Rahul";
+}
+
+
+Employee e = new Employee();
+e.Name = "Piyush";
+
+
+ChangeName(e);
+
+
+Console.WriteLine(e.Name);
+
+Output:
+
+Rahul
+
+Why?
+
+Because the method receives a copy of the reference, but both references point to the same object.
+
+Original reference
+e ─────────────┐
+               ↓
+            Employee
+               ↑
+Copied reference
+emp ──────────┘
+
+Therefore, modifying the object's properties affects the same object.
+
+Interview Answer:
+
+When a reference type is passed normally to a method, C# passes the reference by value. A copy of the reference is passed to the method, but both references point to the same object, so the method can modify that object's state.
+
+58. Is C# always Pass-by-Value?
+
+Answer:
+
+C# argument passing is by value by default, but C# also supports explicit by-reference parameter passing using:
+
+ref
+out
+in
+
+Normal parameter:
+
+void Test(int x)
+{
+}
+
+Here x is passed by value.
+
+Using ref:
+
+void Test(ref int x)
+{
+}
+
+Here the parameter is passed by reference.
+
+So the best interview answer is:
+
+C# passes arguments by value by default, but it also supports explicit pass-by-reference semantics using ref, out, and in.
+
+Important
+
+Even when passing a reference type normally:
+
+void Test(Employee emp)
+
+the reference is passed by value.
+
+This distinction is very important.
+
+59. If C# is Pass-by-Value, how can an object be modified inside a method?
+
+Answer:
+
+Because when a reference type is passed by value, the reference is copied, but both the original and copied references point to the same object.
+
+Example:
+
+class Employee
+{
+    public string Name;
+}
+
+
+static void Change(Employee emp)
+{
+    emp.Name = "Rahul";
+}
+
+
+Employee e = new Employee();
+e.Name = "Piyush";
+
+
+Change(e);
+
+
+Console.WriteLine(e.Name);
+
+Output:
+
+Rahul
+
+The reference was copied:
+
+e ────────┐
+          ↓
+       Object
+          ↑
+emp ──────┘
+
+The method modifies the object through its copy of the reference.
+
+But notice something important
+
+If we assign a completely new object inside the method:
+
+static void Change(Employee emp)
+{
+    emp = new Employee();
+    emp.Name = "Rahul";
+}
+
+The caller's reference does not change.
+
+Why?
+
+Because emp is only a copy of the reference.
+
+Interview Answer:
+
+An object can be modified because a reference type is passed by value, meaning a copy of the reference is passed. Both references still point to the same object, so modifying the object's members affects the original object. However, assigning a new object to the parameter does not change the caller's reference.
+
+60. What is a Reference Passed by Value?
+
+Answer:
+
+A reference passed by value means that the reference to an object is copied and passed to the method.
+
+Example:
+
+static void Change(Employee emp)
+{
+    emp.Name = "Rahul";
+}
+
+When we call:
+
+Change(e);
+
+the reference stored in e is copied into emp.
+
+Caller:
+
+
+e ────────┐
+          ↓
+       Employee
+          ↑
+Method:   │
+emp ──────┘
+
+Both references point to the same object.
+
+But they are still two separate reference variables.
+
+Interview Answer:
+
+A reference passed by value means the reference itself is copied into the method parameter. Both the original reference and the parameter refer to the same object, but changing the parameter to refer to another object does not change the caller's reference.
+
+61. What is a Value Passed by Value?
+
+Answer:
+
+A value passed by value means that the actual value is copied into the method parameter.
+
+Example:
+
+static void Change(int x)
+{
+    x = 20;
+}
+
+
+int number = 10;
+
+
+Change(number);
+
+
+Console.WriteLine(number);
+
+Output:
+
+10
+
+Why?
+
+Because:
+
+number → 10
+
+
+x → 10
+
+x gets a separate copy.
+
+Changing x does not affect number.
+
+Interview Answer:
+
+A value passed by value means the actual value is copied into the method parameter. Changes made to the parameter do not affect the original variable.
+
+62. What is Stack Memory?
+
+Answer:
+
+The stack is a memory area used by the runtime for things such as method call information and local data associated with execution.
+
+For example:
+
+void Test()
+{
+    int number = 10;
+}
+
+The method call and its local execution context are associated with stack storage.
+
+The stack is typically:
+
+Fast
+Automatically managed
+Organized around method calls
+Used for call frames and certain local data
+Important interview point
+
+Do not say:
+
+"All value types are stored on the stack."
+
+That statement is incorrect.
+
+The actual storage location of a value depends on its context.
+
+Interview Answer:
+
+The stack is a memory area used by the runtime for method call frames and associated execution data. It is automatically managed as methods are called and return.
+
+63. What is Heap Memory?
+
+Answer:
+
+The managed heap is the memory area where objects managed by the .NET garbage collector are generally allocated.
+
+For example:
+
+Employee emp = new Employee();
+
+The Employee object is allocated on the managed heap.
+
+Stack                  Heap
+
+
+emp ───────────────→ Employee Object
+
+The reference variable and the object are conceptually separate.
+
+The Garbage Collector (GC) manages objects on the managed heap and reclaims memory when objects are no longer reachable.
+
+Interview Answer:
+
+The managed heap is the memory area where objects are generally allocated and managed by the .NET Garbage Collector. The GC automatically reclaims memory for objects that are no longer reachable.
+
+64. Where is a Reference-Type Object Stored?
+
+Answer:
+
+A reference-type object created with new is generally allocated on the managed heap.
+
+Example:
+
+Employee emp = new Employee();
+
+Conceptually:
+
+Stack                 Managed Heap
+
+
+emp ───────────────→ Employee Object
+
+Here:
+
+emp → reference
+Employee object → object in managed heap
+Important
+
+This is the normal conceptual model. Modern .NET runtimes have implementation details and optimizations, so avoid saying that every reference-related piece is always physically on the heap.
+
+Interview Answer:
+
+Reference-type objects are generally allocated on the managed heap, which is managed by the Garbage Collector. A variable holds a reference that points to the object.
+
+65. Where is a Local Variable Stored?
+
+Answer:
+
+There is no single answer for every local variable.
+
+It depends on:
+
+Whether it is a value type or reference type
+Whether it is captured by a closure
+Compiler optimizations
+Runtime implementation
+Whether it represents a reference to an object
+
+For example:
+
+void Test()
+{
+    int number = 10;
+}
+
+number is a local value-type variable, but you should not simply say "it is always on the stack."
+
+For:
+
+void Test()
+{
+    Employee emp = new Employee();
+}
+
+Conceptually:
+
+Local reference → emp
+                    ↓
+              Employee object
+                    ↓
+               Managed Heap
+
+Interview Answer:
+
+The storage location of a local variable depends on the context and runtime implementation. It is not correct to say that every local variable is always stored on the stack.
+
+66. Is it correct to say "all value types are always stored on the stack"?
+
+Answer:
+
+No.
+
+This is a common interview misconception.
+
+Value types can exist in different locations depending on their context.
+
+Example 1 — Local value type
+int number = 10;
+
+It may be represented in stack-related local storage, depending on runtime/JIT behavior.
+
+Example 2 — Value type as a class field
+class Employee
+{
+    public int Age;
+}
+
+When an Employee object is allocated on the heap, its Age field is part of that heap object.
+
+Heap
+┌─────────────────┐
+│ Employee Object │
+│ Age = 25        │
+└─────────────────┘
+
+Age is still a value type, but it is part of a heap-allocated object.
+
+Interview Answer:
+
+No. Value types are not always stored on the stack. Their storage depends on the context. For example, a value-type field inside a heap-allocated object is stored as part of that object on the managed heap.
+
+67. Is it correct to say "all reference types are always stored on the heap"?
+
+Answer:
+
+As a general conceptual rule, reference-type objects are allocated on the managed heap.
+
+However, saying "all reference types are always stored on the heap" can be misleading.
+
+For example:
+
+Employee emp = new Employee();
+
+The Employee object is generally on the managed heap, while emp is a reference variable whose storage depends on context.
+
+Also, modern .NET implementations may use optimizations internally.
+
+Better interview answer:
+
+Reference-type objects are generally allocated on the managed heap, but we should not oversimplify the rule by saying that every reference or every piece of reference-type-related data is always on the heap.
+
+68. What is Boxing?
+
+Answer:
+
+Boxing is the process of converting a value type into object or another compatible reference type.
+
+Example:
+
+int number = 10;
+
+
+object obj = number;
+
+Here, number is an int, which is a value type.
+
+When we assign it to object, boxing occurs.
+
+int value
+   ↓
+ Boxing
+   ↓
+object
+
+The runtime creates an object on the managed heap containing a copy of the value.
+
+Interview Answer:
+
+Boxing is the process of converting a value type into object or another compatible reference type. During boxing, the value is wrapped in an object on the managed heap.
+
+69. What is Unboxing?
+
+Answer:
+
+Unboxing is the process of extracting a value type from a boxed object.
+
+Example:
+
+int number = 10;
+
+
+object obj = number;   // Boxing
+
+
+int result = (int)obj; // Unboxing
+
+The flow is:
+
+int
+ ↓
+Boxing
+ ↓
+object
+ ↓
+Unboxing
+ ↓
+int
+
+The type being unboxed must be compatible with the original boxed value.
+
+For example:
+
+object obj = 10;
+
+
+long value = (long)obj; // ❌ Invalid
+
+Because the boxed value is an int, not a long.
+
+Correct:
+
+int value = (int)obj;
+
+Interview Answer:
+
+Unboxing is the explicit conversion of a boxed object back to its original value type. The target type must match the actual boxed value type.
+
+70. Why is Boxing Required if Value Types Ultimately Derive from object?
+
+Answer:
+
+This is an important conceptual question.
+
+Although value types ultimately derive from System.Object, they do not behave like normal reference-type objects.
+
+A value type such as:
+
+int number = 10;
+
+contains the value directly.
+
+But when we need to treat that value as an object:
+
+object obj = number;
+
+the runtime needs an object representation of that value.
+
+Therefore, boxing creates an object containing a copy of the value.
+
+Value Type
+
+
+int number = 10
+       ↓
+   Boxing
+       ↓
+Object containing 10
+Why?
+
+Because object is a reference type and the runtime needs a reference-compatible object representation.
+
+Interview Answer:
+
+Value types derive from System.Object in the type hierarchy, but they are still value types and do not inherently contain an object reference. When a value type must be treated as an object, the runtime creates an object representation containing a copy of the value. This process is called boxing.
+
+71. What Happens Internally During Boxing?
+
+Answer:
+
+Suppose we have:
+
+int number = 10;
+
+
+object obj = number;
+
+During boxing, conceptually:
+
+Step 1
+
+The value 10 exists as an int.
+
+number → 10
+Step 2
+
+The runtime allocates an object on the managed heap.
+
+Heap
+┌───────────────┐
+│ Boxed Int32   │
+│ Value = 10    │
+└───────────────┘
+Step 3
+
+The value 10 is copied into the boxed object.
+
+Step 4
+
+A reference to that boxed object is assigned to obj.
+
+obj ─────────→ [Boxed Int32: 10]
+
+So boxing involves:
+
+Allocating an object
+Copying the value into the object
+Returning a reference to the boxed object
+
+Interview Answer:
+
+During boxing, the runtime creates an object on the managed heap, copies the value-type value into that object, and returns a reference to the boxed object.
+
+72. What Happens Internally During Unboxing?
+
+Answer:
+
+Suppose:
+
+int number = 10;
+
+
+object obj = number;   // Boxing
+
+
+int result = (int)obj; // Unboxing
+
+During unboxing:
+
+Step 1
+
+The runtime checks the actual type of the boxed object.
+
+Boxed object → Int32
+Step 2
+
+It verifies that the requested value type is compatible.
+
+(int)obj
+Step 3
+
+The value is extracted from the boxed object.
+
+Boxed Int32
+     ↓
+    10
+     ↓
+result
+
+The result is a value-type value.
+
+Interview Answer:
+
+During unboxing, the runtime checks the actual type of the boxed object and extracts the stored value into a value-type variable. The requested type must be compatible with the actual boxed type.
+
+73. What are the Performance Implications of Boxing?
+
+Answer:
+
+Boxing can have a performance cost because it can involve:
+
+Heap allocation
+Copying the value
+Additional Garbage Collector work
+Unboxing and type checking when retrieving the value
+
+Example:
+
+int number = 10;
+
+
+object obj = number; // Boxing
+
+This creates a boxed object.
+
+If this happens thousands or millions of times, it can create unnecessary allocations and increase GC pressure.
+
+Example
+for (int i = 0; i < 1000000; i++)
+{
+    object value = i; // Boxing each iteration
+}
+
+This can create many boxed objects.
+
+Better approach
+
+Use a strongly typed collection:
+
+List<int> numbers = new List<int>();
+
+instead of:
+
+ArrayList numbers = new ArrayList();
+
+List<int> avoids boxing for normal integer storage.
+
+Interview Answer:
+
+Boxing can reduce performance because it may require heap allocation, copying the value, and additional garbage collection. Frequent boxing and unboxing can therefore increase memory usage and CPU overhead.
+
+74. How Can You Avoid Unnecessary Boxing?
+
+Answer:
+
+The best way is to use strongly typed code and generics whenever possible.
+
+1. Use Generic Collections
+
+Instead of:
+
+ArrayList list = new ArrayList();
+
+
+list.Add(10);
+list.Add(20);
+
+Prefer:
+
+List<int> list = new List<int>();
+
+
+list.Add(10);
+list.Add(20);
+
+ArrayList stores elements as object, so adding an int causes boxing.
+
+List<int> is strongly typed and avoids that boxing in normal use.
+
+2. Avoid Unnecessary object Parameters
+
+Instead of:
+
+void Print(object value)
+{
+    Console.WriteLine(value);
+}
+
+If you know the type:
+
+void Print(int value)
+{
+    Console.WriteLine(value);
+}
+
+This avoids boxing when an int is passed.
+
+3. Use Generics
+
+Instead of:
+
+object value = 10;
+
+prefer strongly typed code when the type is known:
+
+int value = 10;
+
+Generics allow code to work with different types while maintaining type safety.
+
+4. Be Careful with Interfaces
+
+Value types implementing interfaces can also be boxed when converted to an interface reference in situations that require an object representation.
+
+For example:
+
+int number = 10;
+
+
+IComparable comparable = number;
+
+This can involve boxing.
+
+So avoid unnecessary conversions of value types to interface or object references when performance matters.
+
+Interview Answer:
+
+We can avoid unnecessary boxing by using strongly typed variables, generic collections such as List<int>, generic methods, and avoiding unnecessary conversions of value types to object or interfaces. This reduces heap allocations and garbage collection overhead.
+
+
+
+## Type Casting & Conversions
+
+75. What is Type Casting?
+
+Answer:
+
+Type casting means converting a value from one type to another compatible type.
+
+For example:
+
+double price = 100.50;
+
+
+int value = (int)price;
+
+Here, double is explicitly converted to int.
+
+double
+   ↓
+(int)
+   ↓
+int
+
+The syntax for explicit casting is:
+
+TargetType variable = (TargetType)value;
+
+Interview Answer:
+
+Type casting is the process of converting a value from one data type to another compatible type. In C#, casting can be implicit or explicit depending on whether the conversion is safe and supported automatically.
+
+76. What is Implicit Conversion?
+
+Answer:
+
+An implicit conversion happens automatically when the compiler can safely convert one type to another without explicit casting.
+
+For example:
+
+int number = 100;
+
+
+long value = number;
+
+An int can be safely converted to long because long can represent all values that an int can represent.
+
+int
+ ↓
+long
+
+No cast is required:
+
+long value = number;
+Another example:
+int number = 10;
+
+
+double value = number;
+
+Interview Answer:
+
+Implicit conversion is a conversion performed automatically by the compiler when the source type can be converted to the destination type without a significant risk of data loss.
+
+77. What is Explicit Conversion?
+
+Answer:
+
+An explicit conversion requires us to tell the compiler that we intentionally want to convert one type into another.
+
+It is usually required when the conversion may result in data loss or is not guaranteed to be safe.
+
+Example:
+
+double number = 10.75;
+
+
+int value = (int)number;
+
+Here we explicitly tell the compiler:
+
+(int)number
+
+The fractional part is removed.
+
+10.75
+  ↓
+(int)
+  ↓
+10
+
+Interview Answer:
+
+Explicit conversion is a conversion that requires us to specify the target type, usually using a cast. It is commonly required when the conversion may result in data loss.
+
+78. What is Numeric Conversion?
+
+Answer:
+
+Numeric conversion means converting one numeric type into another numeric type.
+
+Examples:
+
+int number = 10;
+
+
+long value = number;       // Implicit
+double result = number;    // Implicit
+
+Explicit numeric conversion:
+
+double number = 10.75;
+
+
+int value = (int)number;
+
+Common numeric types include:
+
+byte
+short
+int
+long
+float
+double
+decimal
+Example
+int → long       Usually implicit
+int → double     Usually implicit
+double → int     Explicit
+long → int       Explicit
+
+Interview Answer:
+
+Numeric conversion is the conversion of one numeric data type to another, such as converting int to long or double to int. Depending on the conversion, it can be implicit or explicit.
+
+79. What is Reference Conversion?
+
+Answer:
+
+A reference conversion occurs when a reference to an object is converted between compatible reference types.
+
+The most common example is converting a derived-class reference to a base-class reference.
+
+class Animal
+{
+}
+
+
+class Dog : Animal
+{
+}
+
+
+Dog dog = new Dog();
+
+
+Animal animal = dog;
+
+This is an implicit reference conversion.
+
+Dog
+ ↓
+Animal
+
+The object itself is not changed. Only the type of reference used to access it changes.
+
+Explicit reference conversion
+
+The reverse conversion requires a cast:
+
+Animal animal = new Dog();
+
+
+Dog dog = (Dog)animal;
+
+Interview Answer:
+
+Reference conversion is the conversion of a reference from one compatible reference type to another, such as converting a derived-class reference to a base-class reference or casting a base-class reference back to a derived class.
+
+80. What is Boxing Conversion?
+
+Answer:
+
+Boxing conversion converts a value type into object or another compatible reference type.
+
+Example:
+
+int number = 10;
+
+
+object obj = number;
+
+Here:
+
+int
+ ↓
+Boxing
+ ↓
+object
+
+The runtime creates an object containing a copy of the value.
+
+Interview Answer:
+
+Boxing conversion is the conversion of a value type into object or another compatible reference type. The runtime creates an object containing the value.
+
+81. What is Unboxing Conversion?
+
+Answer:
+
+Unboxing conversion extracts a value type from a boxed object.
+
+Example:
+
+object obj = 10;
+
+
+int number = (int)obj;
+
+The flow is:
+
+int
+ ↓
+Boxing
+ ↓
+object
+ ↓
+Unboxing
+ ↓
+int
+
+The type being unboxed must be compatible with the actual boxed value.
+
+object obj = 10;
+
+
+long number = (long)obj; // ❌ Invalid
+
+Because the boxed value is actually an int.
+
+Interview Answer:
+
+Unboxing conversion is the explicit conversion of a boxed object back to its value type. The target type must match the actual type of the boxed value.
+
+82. What is a User-Defined Conversion?
+
+Answer:
+
+A user-defined conversion is a conversion that we define ourselves for our own classes or structs.
+
+C# allows us to define conversions using:
+
+implicit
+explicit
+
+Example:
+
+class Employee
+{
+    public int Id;
+
+
+    public static explicit operator int(Employee emp)
+    {
+        return emp.Id;
+    }
+}
+
+Now:
+
+Employee emp = new Employee();
+emp.Id = 101;
+
+
+int id = (int)emp;
+
+The conversion works because we defined it.
+
+Syntax
+public static explicit operator TargetType(SourceType value)
+{
+    // conversion logic
+}
+
+Interview Answer:
+
+A user-defined conversion is a custom conversion defined by a programmer for a class or struct using implicit or explicit conversion operators.
+
+83. What is the Difference Between Casting and Conversion?
+
+This is a very important distinction.
+
+Casting
+
+Casting usually means telling the compiler to treat a value or reference as another compatible type.
+
+Example:
+
+double number = 10.5;
+
+
+int value = (int)number;
+Conversion
+
+Conversion is a broader concept where a value is transformed from one type or representation into another.
+
+For example:
+
+string text = "100";
+
+
+int number = Convert.ToInt32(text);
+
+Here we are converting a string representation into an integer.
+
+Important point
+
+Casting and conversion are related but not exactly the same thing.
+
+For example:
+
+object obj = 10;
+
+
+int number = (int)obj;
+
+This is an unboxing cast.
+
+But:
+
+string text = "10";
+
+
+int number = int.Parse(text);
+
+This is parsing/conversion, not a cast.
+
+Interview Answer:
+
+Casting is generally used to treat a value or reference as another compatible type, while conversion is a broader process of transforming a value from one type or representation to another. Casting uses syntax such as (int)value, while conversion can use methods such as Convert.ToInt32() or Parse().
+
+84. What Happens When You Cast double to int?
+
+Answer:
+
+When a double is explicitly converted to an int, the fractional part is discarded.
+
+Example:
+
+double number = 10.75;
+
+
+int result = (int)number;
+
+
+Console.WriteLine(result);
+
+Output:
+
+10
+
+Another example:
+
+double number = -10.75;
+
+
+int result = (int)number;
+
+Result:
+
+-10
+
+It truncates toward zero.
+
+Important
+
+It does not round the value.
+
+10.75 → 10
+10.99 → 10
+-10.75 → -10
+
+Interview Answer:
+
+When a double is explicitly cast to int, the fractional part is discarded and the value is truncated toward zero. It does not perform normal rounding.
+
+85. What Happens When an Explicit Numeric Conversion Loses Data?
+
+Answer:
+
+If an explicit numeric conversion cannot represent the complete original value, some information may be lost.
+
+Example:
+
+double number = 10.75;
+
+
+int result = (int)number;
+
+The .75 is lost:
+
+10.75 → 10
+
+Another example:
+
+long number = 300;
+
+
+byte value = (byte)number;
+
+A byte can only store:
+
+0 to 255
+
+So 300 cannot be represented by a byte.
+
+Without checked, the result can wrap according to the numeric conversion rules.
+
+Interview Answer:
+
+When an explicit numeric conversion cannot represent the complete source value, data may be lost. For example, converting 10.75 to int removes the fractional part. For integral conversions, values outside the target range can also produce overflow behavior.
+
+86. What is checked?
+
+Answer:
+
+checked tells C# to perform overflow checking for integral arithmetic and conversions.
+
+Example:
+
+int number = int.MaxValue;
+
+
+int result = checked(number + 1);
+
+This causes an:
+
+OverflowException
+
+because the result cannot fit into an int.
+
+Block syntax
+checked
+{
+    int result = number + 1;
+}
+Explicit conversion
+int number = 300;
+
+
+byte value = checked((byte)number);
+
+This throws an OverflowException because 300 cannot fit in a byte.
+
+Interview Answer:
+
+checked enables overflow checking for integral arithmetic and conversions. If the result cannot be represented by the target type, an OverflowException is thrown.
+
+87. What is unchecked?
+
+Answer:
+
+unchecked tells C# to disable overflow checking for integral arithmetic and conversions.
+
+Example:
+
+int number = int.MaxValue;
+
+
+int result = unchecked(number + 1);
+
+The operation does not throw an overflow exception.
+
+Instead, the result follows the unchecked integral overflow behavior.
+
+Example
+int result = unchecked((int)2147483648L);
+
+The value wraps according to the two's-complement representation.
+
+Interview Answer:
+
+unchecked disables overflow checking for integral arithmetic and conversions. When an overflow occurs, an exception is not thrown and the operation follows the unchecked numeric behavior.
+
+88. What is the Difference Between checked and unchecked?
+checked	unchecked
+Enables overflow checking	Disables overflow checking
+Throws OverflowException when checked arithmetic/conversion overflows	Does not throw for that overflow
+Useful when overflow must be detected	Useful when overflow behavior is intentionally allowed
+Example
+int x = int.MaxValue;
+
+
+int a = checked(x + 1);   
+// OverflowException
+
+Whereas:
+
+int b = unchecked(x + 1);
+// No OverflowException
+
+Interview Answer:
+
+checked enables overflow detection for integral arithmetic and conversions, while unchecked disables that checking. checked throws an OverflowException when the operation overflows in a checked context.
+
+89. What is the Convert Class?
+
+Answer:
+
+Convert is a class in the System namespace that provides methods for converting values between common types.
+
+Examples:
+
+int number = Convert.ToInt32("100");
+
+
+double value = Convert.ToDouble("10.5");
+
+
+string text = Convert.ToString(100);
+
+Common methods include:
+
+Convert.ToInt32()
+Convert.ToInt64()
+Convert.ToDouble()
+Convert.ToDecimal()
+Convert.ToBoolean()
+Convert.ToString()
+Example
+string input = "100";
+
+
+int number = Convert.ToInt32(input);
+
+Result:
+
+100
+
+Interview Answer:
+
+Convert is a class in the System namespace that provides methods for converting values between common data types, such as converting strings to numeric values or numeric values to strings.
+
+90. What is the Difference Between Convert.ToInt32() and (int)?
+
+This is a common interview question.
+
+They are not the same operation.
+
+(int) — Cast
+
+Example:
+
+double number = 10.75;
+
+
+int result = (int)number;
+
+Result:
+
+10
+
+The fractional part is discarded.
+
+Convert.ToInt32()
+double number = 10.75;
+
+
+int result = Convert.ToInt32(number);
+
+Result:
+
+11
+
+For floating-point input, Convert.ToInt32() uses rounding rules rather than simple truncation.
+
+Another important difference
+object obj = 10;
+
+
+int a = (int)obj;              // Unboxing
+int b = Convert.ToInt32(obj);  // Conversion
+
+Also, their handling of null differs.
+
+For example:
+
+object obj = null;
+
+
+int value = Convert.ToInt32(obj);
+
+Convert.ToInt32(object) returns 0 for a null object reference.
+
+But:
+
+int value = (int)obj;
+
+throws because the cast attempts to unbox a null reference.
+
+Interview Answer:
+
+(int) is a cast and, for a double, it truncates the fractional part. Convert.ToInt32() performs a conversion and for floating-point values uses rounding rules. They also differ in how they handle some inputs such as null.
+
+91. What is the Difference Between Parse() and TryParse()?
+
+Both are commonly used to convert a string into another type, especially numeric types.
+
+Parse()
+int number = int.Parse("100");
+
+If the input is invalid, it throws an exception.
+
+int number = int.Parse("abc");
+// FormatException
+TryParse()
+int number;
+
+
+bool success = int.TryParse("100", out number);
+
+If conversion succeeds:
+
+success → true
+number  → 100
+
+If conversion fails:
+
+bool success = int.TryParse("abc", out number);
+
+Then:
+
+success → false
+
+No parsing exception is thrown for ordinary invalid input.
+
+Comparison
+Parse()	TryParse()
+Returns converted value	Returns bool
+Invalid input throws exception	Invalid input returns false
+Useful when input is expected to be valid	Good for user/external input
+Exception-based failure	Boolean-based failure
+
+Interview Answer:
+
+Parse() converts a string and throws an exception if the input is invalid. TryParse() attempts the conversion and returns true or false, making it safer and more efficient for expected invalid input such as user input.
+
+92. What Happens When int.Parse() Receives Invalid Input?
+
+Answer:
+
+If the string cannot be converted to an integer, int.Parse() throws an exception.
+
+Example:
+
+int number = int.Parse("Hello");
+
+This throws:
+
+FormatException
+
+If the numeric value is outside the range of int, it can throw:
+
+OverflowException
+
+Example:
+
+int number = int.Parse("999999999999999999");
+
+Interview Answer:
+
+If int.Parse() receives a string that is not in a valid integer format, it throws a FormatException. If the value is outside the range of Int32, it can throw an OverflowException.
+
+93. Why is TryParse() Safer for User Input?
+
+Answer:
+
+User input cannot always be trusted to contain valid data.
+
+For example, suppose we ask the user to enter their age:
+
+string input = Console.ReadLine();
+
+The user might enter:
+
+25
+
+or:
+
+abc
+
+Using Parse():
+
+int age = int.Parse(input);
+
+If the user enters "abc", the application gets an exception.
+
+With TryParse():
+
+if (int.TryParse(input, out int age))
+{
+    Console.WriteLine($"Age: {age}");
+}
+else
+{
+    Console.WriteLine("Please enter a valid age.");
+}
+
+The application can handle invalid input normally.
+
+Interview Answer:
+
+TryParse() is safer for user input because invalid input is expected to happen. Instead of throwing an exception, it returns false, allowing us to handle the invalid input normally.
+
+94. What is the as Operator?
+
+Answer:
+
+The as operator is used for reference conversions and nullable boxing conversions where applicable.
+
+It attempts a conversion and returns null if the conversion cannot be performed, instead of throwing an InvalidCastException.
+
+Example:
+
+object obj = "Hello";
+
+
+string text = obj as string;
+
+The conversion succeeds:
+
+text → "Hello"
+
+If:
+
+object obj = 100;
+
+
+string text = obj as string;
+
+The result is:
+
+text → null
+
+No InvalidCastException is thrown.
+
+Interview Answer:
+
+The as operator attempts a compatible reference or nullable conversion. If the conversion succeeds, it returns the converted reference; otherwise, it returns null instead of throwing an InvalidCastException.
+
+95. What is the is Operator?
+
+Answer:
+
+The is operator checks whether an object is compatible with a specified type.
+
+Example:
+
+object value = "Hello";
+
+
+if (value is string)
+{
+    Console.WriteLine("It is a string");
+}
+
+Output:
+
+It is a string
+
+The is operator returns a bool:
+
+true
+false
+
+Modern C# also allows pattern matching:
+
+if (value is string text)
+{
+    Console.WriteLine(text.Length);
+}
+
+Interview Answer:
+
+The is operator checks whether an expression is compatible with a specified type or pattern. It returns true or false and can also perform pattern matching and type extraction.
+
+96. What is the Difference Between as and Explicit Casting?
+Explicit Casting
+object obj = "Hello";
+
+
+string text = (string)obj;
+
+If the object isn't compatible:
+
+object obj = 100;
+
+
+string text = (string)obj;
+
+This throws:
+
+InvalidCastException
+as
+object obj = 100;
+
+
+string text = obj as string;
+
+Instead of throwing an exception:
+
+text → null
+Comparison
+Explicit Cast	as
+(string)obj	obj as string
+Throws InvalidCastException if incompatible	Returns null if conversion fails
+Can be used for numeric conversions/casts where valid	Does not perform arbitrary conversions
+Useful when failure should be treated as an error	Useful when failure is an expected possibility
+
+Interview Answer:
+
+An explicit cast throws an InvalidCastException when the reference is not compatible with the target type, whereas as returns null when the conversion fails. as is generally used for compatible reference or nullable conversions, not arbitrary conversions.
+
+97. When does as return null?
+
+Answer:
+
+as returns null when the attempted compatible reference/nullable conversion cannot be performed.
+
+Example:
+
+object obj = 100;
+
+
+string text = obj as string;
+
+The actual object is an int, not a string.
+
+Therefore:
+
+text → null
+
+Another example:
+
+object obj = null;
+
+
+string text = obj as string;
+
+Result:
+
+text → null
+Important
+
+as does not throw InvalidCastException for an incompatible reference conversion.
+
+Interview Answer:
+
+as returns null when the source reference is null or when the object is not compatible with the target reference or nullable type.
+
+98. Can as be Used with Value Types?
+
+Answer:
+
+It has limited support for value types.
+
+You cannot use as with a non-nullable value type:
+
+object obj = 10;
+
+
+int number = obj as int; // ❌
+
+This is not allowed because int cannot contain null.
+
+But you can use as with a nullable value type:
+
+object obj = 10;
+
+
+int? number = obj as int?;
+
+This can work because int? can represent null.
+
+Example:
+
+object obj = "Hello";
+
+
+int? number = obj as int?;
+
+
+Console.WriteLine(number == null);
+
+Output:
+
+True
+
+Interview Answer:
+
+as cannot be used with non-nullable value types such as int. It can be used with nullable value types such as int?, because the result can be null.
+
+99. Can as Perform Numeric Conversions?
+
+Answer:
+
+No.
+
+The as operator does not perform arbitrary numeric conversions.
+
+For example:
+
+object obj = 10;
+
+
+long number = obj as long; // ❌
+
+Even though int can be implicitly converted to long, as does not perform that numeric conversion.
+
+If you need numeric conversion, use an appropriate conversion:
+
+long number = Convert.ToInt64(obj);
+
+Or, when the object actually contains a boxed long:
+
+object obj = 10L;
+
+
+long number = (long)obj;
+
+Interview Answer:
+
+No. as does not perform numeric conversions. It is used for compatible reference conversions and nullable conversions. For numeric conversion, use casting or conversion methods such as Convert.ToInt64().
+
+100. What is Pattern Matching with is?
+
+Answer:
+
+Pattern matching allows us to check an object's type and, if the check succeeds, directly obtain a variable of that type.
+
+Example:
+
+object value = "Hello";
+
+
+if (value is string text)
+{
+    Console.WriteLine(text.Length);
+}
+
+Here:
+
+value is string text
+
+does two things:
+
+Checks whether value is a string.
+If it is, creates the variable text containing the string reference.
+Without pattern matching
+
+We might write:
+
+if (value is string)
+{
+    string text = (string)value;
+
+
+    Console.WriteLine(text.Length);
+}
+With pattern matching
+if (value is string text)
+{
+    Console.WriteLine(text.Length);
+}
+
+It is cleaner and safer.
+
+Pattern matching can also check conditions
+object value = 25;
+
+
+if (value is int number && number > 18)
+{
+    Console.WriteLine("Adult");
+}
+
+Here:
+
+value is int number
+
+checks the type and assigns the value to number.
+
+Interview Answer:
+
+Pattern matching with is allows us to check an object's type and, at the same time, assign it to a variable of that type. It makes type checking and casting more concise and readable.
+
+
+## Variables, Constants & Modifiers
+
+101. What is a Local Variable?
+
+Answer:
+
+A local variable is a variable declared inside a method, constructor, property accessor, block, or other local scope.
+
+It can only be accessed within the scope where it is declared.
+
+Example:
+
+class Employee
+{
+    void Display()
+    {
+        int age = 25;   // Local variable
+
+
+        Console.WriteLine(age);
+    }
+}
+
+Here:
+
+int age = 25;
+
+is a local variable because it is declared inside the Display() method.
+
+We cannot directly access it outside that method:
+
+void Test()
+{
+    Console.WriteLine(age); // ❌ Error
+}
+Important point
+
+A local variable must be definitely assigned before it is read.
+
+int age;
+
+
+Console.WriteLine(age); // ❌ Error
+
+But:
+
+int age = 25;
+
+
+Console.WriteLine(age); // ✅
+
+Interview Answer:
+
+A local variable is a variable declared inside a method, constructor, or local scope. It is accessible only within that scope and must be definitely assigned before it is read.
+
+102. What is a Field?
+
+Answer:
+
+A field is a variable declared directly inside a class or struct, but outside methods, constructors, and properties.
+
+Example:
+
+class Employee
+{
+    int age;              // Field
+    string name;          // Field
+
+
+    void Display()
+    {
+        Console.WriteLine(age);
+        Console.WriteLine(name);
+    }
+}
+
+Here:
+
+int age;
+string name;
+
+are fields.
+
+Fields can be:
+
+Instance fields
+Static fields
+readonly fields
+const fields
+Field vs Local Variable
+class Employee
+{
+    int age;              // Field
+
+
+    void Display()
+    {
+        int salary = 50000; // Local variable
+    }
+}
+age
+→ Field
+→ Belongs to Employee object
+
+
+salary
+→ Local variable
+→ Exists only in Display() scope
+
+Interview Answer:
+
+A field is a variable declared inside a class or struct but outside methods and other members. Fields represent data associated with an object or with the type itself.
+
+103. What is a Constant?
+
+Answer:
+
+A constant is a value that cannot be changed after it is defined.
+
+In C#, constants are declared using the const keyword.
+
+Example:
+
+const double PI = 3.14159;
+
+Once defined, we cannot change it:
+
+PI = 4.5; // ❌ Error
+
+Constants are useful for values that are known at compile time and should never change.
+
+Examples:
+
+const int MaxUsers = 100;
+const string CompanyName = "ABC";
+const double TaxRate = 18.0;
+
+Interview Answer:
+
+A constant is a value that cannot be changed after it is declared. In C#, constants are declared using the const keyword and their value must be known at compile time.
+
+104. What is const?
+
+Answer:
+
+const is a keyword used to declare a compile-time constant.
+
+Example:
+
+class Employee
+{
+    public const int MaxAge = 60;
+}
+
+We can access it using the class name:
+
+Console.WriteLine(Employee.MaxAge);
+
+A const variable must be initialized when it is declared:
+
+const int number = 10; // ✅
+
+This is not allowed:
+
+const int number; // ❌
+
+And this is also not allowed:
+
+const int number = GetNumber(); // ❌
+
+because a constant must have a compile-time constant value.
+
+Interview Answer:
+
+const is used to declare a compile-time constant. Its value must be assigned at declaration time and cannot be changed afterward.
+
+105. What is readonly?
+
+Answer:
+
+readonly is a keyword used for fields whose value can be assigned only during initialization or inside a constructor.
+
+Example:
+
+class Employee
+{
+    readonly int id;
+
+
+    public Employee(int employeeId)
+    {
+        id = employeeId;
+    }
+}
+
+Here the value of id is assigned inside the constructor.
+
+After the constructor finishes:
+
+id = 100; // ❌ Cannot assign
+
+You can also initialize it directly:
+
+readonly int id = 100;
+Important difference from const
+
+readonly does not require the value to be known at compile time.
+
+Example:
+
+class Employee
+{
+    readonly int id;
+
+
+    public Employee()
+    {
+        id = GetEmployeeId();
+    }
+
+
+    int GetEmployeeId()
+    {
+        return 101;
+    }
+}
+
+This is valid.
+
+Interview Answer:
+
+readonly is used for fields whose value can be assigned during declaration or inside a constructor. After the object is constructed, the readonly field cannot normally be reassigned.
+
+106. What is the Difference Between const and readonly?
+
+This is a very important interview question.
+
+const	readonly
+Compile-time constant	Runtime-initializable field
+Must be initialized at declaration	Can be initialized at declaration or constructor
+Cannot change	Cannot be reassigned after construction
+Implicitly static	Can be instance or static
+Value must be compile-time constant	Value can be determined at runtime
+Mainly for values that are truly constant	Useful for values fixed after object construction
+Example
+class Employee
+{
+    public const int MaxAge = 60;
+
+
+    public readonly int EmployeeId;
+
+
+    public Employee(int id)
+    {
+        EmployeeId = id;
+    }
+}
+
+Here:
+
+MaxAge
+→ const
+→ Same compile-time constant
+
+
+EmployeeId
+→ readonly
+→ Can be different for each object
+
+For example:
+
+Employee e1 = new Employee(101);
+Employee e2 = new Employee(102);
+
+Then:
+
+e1.EmployeeId → 101
+e2.EmployeeId → 102
+
+Interview Answer:
+
+const is a compile-time constant and must be initialized at declaration. readonly is a field that can be initialized at declaration or in a constructor, allowing its value to be determined at runtime. A const is implicitly static, while a readonly field can be either instance or static.
+
+107. Can a const Field Be Static?
+
+Answer:
+
+A const field is implicitly static.
+
+Therefore, you do not need to write static.
+
+Example:
+
+class Employee
+{
+    public const int MaxAge = 60;
+}
+
+You access it using:
+
+Console.WriteLine(Employee.MaxAge);
+
+You can technically write:
+
+public static const int MaxAge = 60;
+
+but this is invalid because const already has static semantics.
+
+So use:
+
+public const int MaxAge = 60;
+
+Interview Answer:
+
+A const field is implicitly static. We don't need to explicitly specify the static keyword for a const field.
+
+108. Can a readonly Field Be Assigned Inside a Constructor?
+
+Answer:
+
+Yes.
+
+This is one of the main differences between readonly and const.
+
+Example:
+
+class Employee
+{
+    readonly int id;
+
+
+    public Employee(int employeeId)
+    {
+        id = employeeId;
+    }
+}
+
+This is completely valid.
+
+We can also initialize it during declaration:
+
+readonly int id = 101;
+
+But after construction, we cannot normally assign it again:
+
+public void ChangeId()
+{
+    id = 200; // ❌ Error
+}
+
+Interview Answer:
+
+Yes. A readonly field can be assigned in its declaration or inside an instance constructor. After the constructor has completed, it cannot normally be reassigned.
+
+109. What is a Static Field?
+
+Answer:
+
+A static field belongs to the class itself, rather than to individual objects.
+
+Example:
+
+class Employee
+{
+    public static int count = 0;
+}
+
+We access it using the class name:
+
+Employee.count++;
+
+Suppose we create multiple objects:
+
+Employee e1 = new Employee();
+Employee e2 = new Employee();
+
+There is still only one shared static field:
+
+Employee.count
+       ↑
+       │
+ ┌─────┴─────┐
+ e1          e2
+
+All objects access the same static field.
+
+Instance field
+public int age;
+
+Each object gets its own value.
+
+Static field
+public static int count;
+
+One value is shared by the type.
+
+Interview Answer:
+
+A static field belongs to the type rather than to an individual object. There is one shared static field for the type, and it can be accessed using the class name.
+
+110. What is a Static Local Variable?
+
+Answer:
+
+In C#, unlike some languages such as C++, you cannot declare a local variable with the static keyword.
+
+For example:
+
+void Test()
+{
+    static int count = 0; // ❌ Not allowed
+}
+
+C# does support static fields, methods, local functions, classes, etc., but not a C++-style static local variable.
+
+If you want a variable that retains its value between method calls, you can use a static field:
+
+class Test
+{
+    static int count = 0;
+
+
+    static void Display()
+    {
+        count++;
+        Console.WriteLine(count);
+    }
+}
+
+Calling:
+
+Display();
+Display();
+Display();
+
+produces:
+
+1
+2
+3
+
+Interview Answer:
+
+C# does not support static local variables in the same way as C++. If we need a value that is shared and persists across method calls, we normally use a static field.
+
+111. What is the static Keyword?
+
+Answer:
+
+The static keyword means that a member belongs to the type itself, rather than to a particular object.
+
+It can be used with several members, including:
+
+Fields
+Methods
+Properties
+Constructors
+Classes
+Local functions
+
+Example:
+
+class Employee
+{
+    public static string Company = "ABC";
+
+
+    public static void DisplayCompany()
+    {
+        Console.WriteLine(Company);
+    }
+}
+
+We don't need to create an object:
+
+Employee.DisplayCompany();
+Instance member
+Employee emp = new Employee();
+emp.Display();
+Static member
+Employee.DisplayCompany();
+
+Interview Answer:
+
+The static keyword makes a member belong to the type itself rather than to an individual object. Static members can generally be accessed using the class name without creating an object.
+
+112. Can a Static Method Access Instance Members Directly?
+
+Answer:
+
+No.
+
+A static method does not have an instance (this) associated with it, so it cannot directly access instance members.
+
+Example:
+
+class Employee
+{
+    int age = 25;
+
+
+    static void Display()
+    {
+        Console.WriteLine(age); // ❌ Error
+    }
+}
+
+The compiler gives an error because age belongs to an object.
+
+To access it, we need an object:
+
+static void Display()
+{
+    Employee emp = new Employee();
+
+
+    Console.WriteLine(emp.age);
+}
+
+Interview Answer:
+
+No. A static method cannot directly access instance members because it is associated with the type and does not have an instance context. An object reference is required to access instance members.
+
+113. Why Can't a Static Method Directly Access Instance Fields?
+
+Answer:
+
+Because an instance field belongs to a particular object, while a static method belongs to the class itself.
+
+Consider:
+
+class Employee
+{
+    int age;
+
+
+    static void Display()
+    {
+        Console.WriteLine(age); // ❌
+    }
+}
+
+Which age should the method access?
+
+Suppose:
+
+Employee e1 = new Employee();
+Employee e2 = new Employee();
+
+There are potentially two different age values:
+
+e1 → age = 25
+e2 → age = 30
+
+But:
+
+Employee.Display();
+
+doesn't specify an object.
+
+Therefore, there is no this object from which the instance field can be accessed.
+
+Interview Answer:
+
+A static method cannot directly access an instance field because the field belongs to a specific object, while the static method belongs to the type and has no this instance. The method must receive or create an object reference to access the field.
+
+114. What is the this Keyword?
+
+Answer:
+
+this refers to the current instance of the class or struct.
+
+Example:
+
+class Employee
+{
+    int id;
+
+
+    public Employee(int id)
+    {
+        this.id = id;
+    }
+}
+
+Here:
+
+this.id
+
+means the id field belonging to the current object.
+
+The parameter is also called id:
+
+public Employee(int id)
+
+So:
+
+this.id = id;
+
+means:
+
+current object's id = parameter id
+Another example
+class Employee
+{
+    public void Display()
+    {
+        Console.WriteLine(this);
+    }
+}
+
+this represents the current object.
+
+Important
+
+A static method cannot use this because there is no current instance.
+
+static void Test()
+{
+    Console.WriteLine(this); // ❌
+}
+
+Interview Answer:
+
+this is a reference to the current instance of a class or struct. It is commonly used to distinguish instance fields from parameters with the same name and to access members of the current object.
+
+115. What is the base Keyword?
+
+Answer:
+
+The base keyword is used to access members of the base class from a derived class.
+
+Example:
+
+class Animal
+{
+    public void Speak()
+    {
+        Console.WriteLine("Animal speaks");
+    }
+}
+
+
+class Dog : Animal
+{
+    public void Test()
+    {
+        base.Speak();
+    }
+}
+
+Here:
+
+base.Speak();
+
+calls the Speak() method from the parent/base class.
+
+Calling base constructor
+
+base can also be used to call a base-class constructor:
+
+class Animal
+{
+    public Animal(string name)
+    {
+        Console.WriteLine(name);
+    }
+}
+
+
+class Dog : Animal
+{
+    public Dog() : base("Dog")
+    {
+    }
+}
+
+Interview Answer:
+
+The base keyword is used in a derived class to access members of its base class, including base-class methods, fields, properties, and constructors.
+
+116. What is the new Modifier?
+
+Answer:
+
+The new modifier is used to explicitly hide a member inherited from a base class.
+
+Example:
+
+class Animal
+{
+    public void Speak()
+    {
+        Console.WriteLine("Animal speaks");
+    }
+}
+
+
+class Dog : Animal
+{
+    public new void Speak()
+    {
+        Console.WriteLine("Dog speaks");
+    }
+}
+
+Here:
+
+public new void Speak()
+
+means that Dog.Speak() is intentionally hiding the inherited Animal.Speak() member.
+
+Example:
+
+Dog dog = new Dog();
+
+
+dog.Speak();
+
+Output:
+
+Dog speaks
+
+But:
+
+Animal animal = dog;
+
+
+animal.Speak();
+
+Output:
+
+Animal speaks
+
+because this is member hiding, not overriding.
+
+Important
+
+new modifier is different from override.
+
+new
+→ hides inherited member
+
+
+override
+→ replaces virtual/abstract base implementation through polymorphism
+
+Interview Answer:
+
+The new modifier explicitly hides an inherited member in a derived class. It is different from override, because hiding does not provide virtual polymorphic dispatch.
+
+117. What is the Difference Between new Modifier and new Operator?
+
+This is a very common interview question because both use the same keyword.
+
+But they have completely different purposes.
+
+new Operator
+
+Used to create an object or instance.
+
+Employee emp = new Employee();
+
+Here:
+
+new Employee()
+
+creates an object.
+
+new Modifier
+
+Used to hide an inherited member.
+
+class Dog : Animal
+{
+    public new void Speak()
+    {
+    }
+}
+
+Here new is telling the compiler that the derived member intentionally hides the base member.
+
+Comparison
+new Operator	new Modifier
+Creates an object/instance	Hides an inherited member
+Used with types	Used with inherited members
+Example: new Employee()	Example: new void Speak()
+
+Interview Answer:
+
+The new operator creates an object or instance, while the new modifier hides an inherited member from the base class. They use the same keyword but have completely different purposes.
+
+118. What is the nameof Operator?
+
+Answer:
+
+nameof returns the name of a variable, type, method, property, or other symbol as a string.
+
+Example:
+
+string name = "Piyush";
+
+
+Console.WriteLine(nameof(name));
+
+Output:
+
+name
+
+It does not return the value:
+
+Console.WriteLine(name);
+
+Output:
+
+Piyush
+Example with a property
+class Employee
+{
+    public string Name { get; set; }
+}
+
+
+Console.WriteLine(nameof(Employee.Name));
+
+Output:
+
+Name
+Why is nameof useful?
+
+It is safer than manually writing names as strings.
+
+Instead of:
+
+throw new Exception("EmployeeName is invalid");
+
+we can use:
+
+throw new Exception($"{nameof(Employee.Name)} is invalid");
+
+If the property is renamed using refactoring tools, the nameof expression can be updated by the compiler/tooling rather than leaving a hard-coded string behind.
+
+Interview Answer:
+
+nameof returns the name of a symbol as a string at compile time. It is useful for error messages, validation, logging, and refactoring-safe code.
+
+119. What is typeof?
+
+Answer:
+
+typeof is used to obtain a System.Type object representing a type.
+
+Example:
+
+Type type = typeof(int);
+
+
+Console.WriteLine(type);
+
+Output:
+
+System.Int32
+
+Another example:
+
+Type type = typeof(Employee);
+
+This gives information about the Employee type.
+
+You can then use reflection-related APIs:
+
+Console.WriteLine(type.Name);
+Console.WriteLine(type.FullName);
+typeof vs GetType()
+
+This is also useful in interviews.
+
+typeof(Employee)
+
+gets type information from the type itself.
+
+Whereas:
+
+Employee emp = new Employee();
+
+
+emp.GetType();
+
+gets the runtime type of an object.
+
+Interview Answer:
+
+typeof is an operator used to obtain a System.Type object representing a type. It is commonly used when we need type metadata or reflection information.
+
+120. What is sizeof?
+
+Answer:
+
+sizeof returns the size in bytes of an unmanaged type known at compile time.
+
+Example:
+
+Console.WriteLine(sizeof(int));
+
+Output:
+
+4
+
+Because an int is 4 bytes.
+
+Other examples:
+
+Console.WriteLine(sizeof(byte));   // 1
+Console.WriteLine(sizeof(short));  // 2
+Console.WriteLine(sizeof(long));   // 8
+Example
+int size = sizeof(int);
+
+
+Console.WriteLine(size);
+
+Output:
+
+4
+Important
+
+Do not confuse:
+
+sizeof(int)
+
+with:
+
+typeof(int)
+
+sizeof → size in bytes.
+
+typeof → System.Type information.
+
+Interview Answer:
+
+sizeof returns the size in bytes of an unmanaged type. For example, sizeof(int) returns 4.
+
+121. What is default?
+
+Answer:
+
+default is used to obtain the default value of a type.
+
+For value types, it generally means the zero/default representation.
+
+Examples:
+
+int number = default;
+
+Result:
+
+0
+bool value = default;
+
+Result:
+
+false
+
+For reference types:
+
+string text = default;
+
+Result:
+
+null
+
+For a nullable type:
+
+int? number = default;
+
+Result:
+
+null
+Examples
+int a = default;        // 0
+double b = default;     // 0
+bool c = default;       // false
+string d = default;     // null
+
+For a custom struct:
+
+MyStruct value = default;
+
+its fields get their default values.
+
+Interview Answer:
+
+default produces the default value of a type. For example, the default value of int is 0, bool is false, and reference types such as string have a default value of null.
+
+122. What is the Difference Between default Operator and default Literal?
+
+Answer:
+
+There are two related forms:
+
+1. default(T) — Default Operator
+
+The type is explicitly specified.
+
+int number = default(int);
+
+Result:
+
+0
+
+Example:
+
+string text = default(string);
+
+Result:
+
+null
+2. default — Default Literal
+
+The type is inferred from the context.
+
+int number = default;
+
+The compiler knows that number is an int, so it understands:
+
+default(int)
+
+Similarly:
+
+string text = default;
+
+is understood as:
+
+default(string)
+Comparison
+int a = default(int);  // Default operator
+int b = default;       // Default literal
+
+Both produce:
+
+0
+Why was the default literal introduced?
+
+It makes code shorter and cleaner when the compiler can determine the target type from context.
+
+Interview Answer:
+
+default(T) explicitly specifies the type whose default value we want, while default is the default literal and allows the compiler to infer the type from context. For example, int x = default(int) and int x = default both produce 0.
+
+
+## Nullable Types & Null Handling
+
+123. What is null?
+
+Answer:
+
+null means that a reference does not currently refer to an object.
+
+For example:
+
+string name = null;
+
+Here, name does not refer to any string object.
+
+We can also have:
+
+Employee emp = null;
+
+This means the emp reference is not pointing to an Employee object.
+
+If we try to access a member through a null reference:
+
+Console.WriteLine(emp.Name);
+
+it can cause a:
+
+NullReferenceException
+Important point
+
+null is commonly associated with:
+
+Reference types
+Nullable value types
+
+Interview Answer:
+
+null represents the absence of an object or value. A reference containing null does not currently refer to an object.
+
+124. Why Can't a Normal int Store null?
+
+Answer:
+
+int is a non-nullable value type.
+
+A normal int always has an integer value.
+
+For example:
+
+int age = 25;
+
+We cannot write:
+
+int age = null; // ❌ Error
+
+because int represents values from:
+
+-2,147,483,648
+to
+ 2,147,483,647
+
+null is not an integer value.
+
+If we need an integer that can also represent "no value", we use:
+
+int? age = null;
+
+Interview Answer:
+
+int is a non-nullable value type, so it must always contain an integer value. If we need an integer that can also represent the absence of a value, we use int?.
+
+125. What is Nullable<T>?
+
+Answer:
+
+Nullable<T> is a generic value type that allows a non-nullable value type to also represent null.
+
+Example:
+
+Nullable<int> age = null;
+
+This means age can contain either:
+
+an int value
+OR
+null
+
+For example:
+
+Nullable<int> age = 25;
+
+
+age = null;
+
+Both are valid.
+
+Important restriction
+
+T must be a non-nullable value type.
+
+For example:
+
+Nullable<int>
+Nullable<double>
+Nullable<bool>
+
+are valid.
+
+But:
+
+Nullable<string>
+
+is not valid because string is a reference type.
+
+Interview Answer:
+
+Nullable<T> is a value type that allows a non-nullable value type to also represent null. For example, Nullable<int> can contain either an integer or null.
+
+126. What Does int? Mean?
+
+Answer:
+
+int? is shorthand syntax for:
+
+Nullable<int>
+
+For example:
+
+int? age = null;
+
+is equivalent to:
+
+Nullable<int> age = null;
+
+It can contain:
+
+int value
+OR
+null
+
+Example:
+
+int? age = 25;
+
+
+age = null;
+
+Both are valid.
+
+Why is this useful?
+
+Suppose a database column allows NULL:
+
+Employee
+----------------
+Id       → 101
+Age      → NULL
+
+A normal:
+
+int age;
+
+cannot represent that database NULL.
+
+So we can use:
+
+int? age;
+
+Interview Answer:
+
+int? is shorthand for Nullable<int>. It allows an integer variable to contain either an int value or null.
+
+127. Difference Between int and int?
+
+This is an important interview question.
+
+int	int?
+Non-nullable value type	Nullable value type
+Cannot store null	Can store null
+Always contains an integer value	Can contain an integer or no value
+Alias for System.Int32	Alias for Nullable<System.Int32>
+Example
+int age = 25;
+
+Valid.
+
+int age = null; // ❌
+
+Invalid.
+
+But:
+
+int? age = 25;
+
+Valid.
+
+int? age = null;
+
+Also valid.
+
+Example from database
+int? age = null;
+
+can represent:
+
+Age = NULL
+
+Interview Answer:
+
+int cannot contain null, whereas int? can contain either an integer value or null. int? is shorthand for Nullable<int>.
+
+128. What are HasValue and Value?
+
+Answer:
+
+HasValue and Value are properties of Nullable<T>.
+
+HasValue
+
+HasValue tells us whether the nullable variable contains a value.
+
+Example:
+
+int? age = 25;
+
+
+Console.WriteLine(age.HasValue);
+
+Output:
+
+True
+
+If:
+
+int? age = null;
+
+
+Console.WriteLine(age.HasValue);
+
+Output:
+
+False
+Value
+
+Value returns the actual value stored inside the nullable value.
+
+int? age = 25;
+
+
+Console.WriteLine(age.Value);
+
+Output:
+
+25
+Important
+
+You should check HasValue before accessing .Value when the value may be null.
+
+int? age = 25;
+
+
+if (age.HasValue)
+{
+    Console.WriteLine(age.Value);
+}
+
+Interview Answer:
+
+HasValue tells us whether a nullable value contains a value, while Value returns the underlying value. Accessing Value when the nullable value is null causes an exception.
+
+129. What Happens When You Access .Value on a Null Nullable Value?
+
+Answer:
+
+If the nullable value is null and we access .Value, C# throws an:
+
+InvalidOperationException
+
+Example:
+
+int? age = null;
+
+
+Console.WriteLine(age.Value);
+
+This throws:
+
+InvalidOperationException
+Safer approach
+
+Check HasValue:
+
+if (age.HasValue)
+{
+    Console.WriteLine(age.Value);
+}
+
+Or use ??:
+
+Console.WriteLine(age ?? 0);
+
+If age is null, 0 is used.
+
+Interview Answer:
+
+Accessing .Value when a nullable value is null throws an InvalidOperationException. We should check HasValue, use pattern matching, or use the ?? operator instead.
+
+130. What is the Null-Coalescing Operator ???
+
+Answer:
+
+The ?? operator is used to provide a fallback value when the left-hand side is null.
+
+Example:
+
+string name = null;
+
+
+string result = name ?? "Unknown";
+
+Since name is null:
+
+result → "Unknown"
+
+If:
+
+string name = "Piyush";
+
+
+string result = name ?? "Unknown";
+
+then:
+
+result → "Piyush"
+Nullable value example
+int? age = null;
+
+
+int result = age ?? 0;
+
+Result:
+
+0
+Simple way to remember
+value ?? fallback
+
+means:
+
+"If value is not null, use it; otherwise use fallback."
+
+Interview Answer:
+
+The null-coalescing operator ?? returns the left-hand value if it is not null; otherwise, it returns the right-hand fallback value.
+
+131. What is the Null-Coalescing Assignment Operator ??=?
+
+Answer:
+
+??= assigns a value to a variable only when that variable is currently null.
+
+Example:
+
+string name = null;
+
+
+name ??= "Unknown";
+
+After this:
+
+name → "Unknown"
+
+If the variable already has a value:
+
+string name = "Piyush";
+
+
+name ??= "Unknown";
+
+The value remains:
+
+name → "Piyush"
+Think of it as:
+name ??= "Unknown";
+
+roughly means:
+
+if (name == null)
+{
+    name = "Unknown";
+}
+
+Interview Answer:
+
+??= is the null-coalescing assignment operator. It assigns the right-hand value only if the left-hand variable is currently null.
+
+132. What is the Null-Conditional Operator ?.?
+
+Answer:
+
+The ?. operator allows us to safely access a member when an object might be null.
+
+Without ?.:
+
+Employee emp = null;
+
+
+Console.WriteLine(emp.Name);
+
+This can throw:
+
+NullReferenceException
+
+Using ?.:
+
+Employee emp = null;
+
+
+Console.WriteLine(emp?.Name);
+
+Instead of throwing an exception, the expression evaluates to null.
+
+Example
+Employee emp = GetEmployee();
+
+
+string name = emp?.Name;
+
+If emp exists:
+
+name → Employee's name
+
+If emp is null:
+
+name → null
+Method call
+
+It can also be used for methods:
+
+emp?.Display();
+
+If emp is null, the method is not called.
+
+Interview Answer:
+
+The null-conditional operator ?. allows us to safely access a member or call a method when the object may be null. If the object is null, the operation produces null instead of throwing a NullReferenceException.
+
+133. What is Null-Conditional Element Access ?[]?
+
+Answer:
+
+?[] is used for null-safe element or index access.
+
+It is useful when an array, list, dictionary, or another indexable object might be null.
+
+Example:
+
+string[] names = null;
+
+
+string name = names?[0];
+
+Since names is null, the expression returns null instead of throwing a NullReferenceException.
+
+With an actual array
+string[] names = { "John", "Piyush" };
+
+
+string name = names?[0];
+
+Result:
+
+John
+Difference
+
+Normal indexing:
+
+names[0]
+
+If names is null → exception.
+
+Null-conditional indexing:
+
+names?[0]
+
+If names is null → null.
+
+Interview Answer:
+
+?[] is the null-conditional element access operator. It allows safe indexing when the object being indexed might be null. If the object is null, the result is null instead of throwing a null-reference exception.
+
+134. Difference Between ?. and ??
+
+These operators solve different problems.
+
+?. — Safe member access
+string name = employee?.Name;
+
+It means:
+
+"Access Name only if employee is not null."
+
+If employee is null:
+
+result → null
+?? — Provide fallback
+string name = employee?.Name ?? "Unknown";
+
+This combines both:
+
+employee
+   ↓
+?.Name
+   ↓
+null?
+   ↓
+?? "Unknown"
+   ↓
+result
+Example
+Employee employee = null;
+
+
+string name = employee?.Name ?? "Unknown";
+
+
+Console.WriteLine(name);
+
+Output:
+
+Unknown
+
+Interview Answer:
+
+?. is used for null-safe member or element access, while ?? is used to provide a fallback value when an expression is null. They are often used together.
+
+135. What are Nullable Reference Types?
+
+Answer:
+
+Nullable reference types are a C# compiler feature that helps developers identify possible null-reference problems.
+
+For example:
+
+string name = null;
+
+When nullable reference type analysis is enabled, the compiler can warn us because name is declared as a non-nullable reference type.
+
+We can explicitly indicate that null is allowed:
+
+string? name = null;
+
+So:
+
+string
+   ↓
+Should normally not be null
+
+
+string?
+   ↓
+May be null
+Important point
+
+Nullable reference types are primarily a compile-time analysis feature.
+
+They do not create a completely different runtime string type.
+
+Interview Answer:
+
+Nullable reference types are a C# feature that uses annotations and compiler analysis to warn about possible null-reference problems. string indicates a non-null expectation, while string? indicates that null is allowed.
+
+136. What Does string? Mean?
+
+Answer:
+
+string? means that the reference is allowed to be null under nullable reference type analysis.
+
+Example:
+
+string? name = null;
+
+This is explicitly saying:
+
+name may contain a string or null.
+
+Compare:
+
+string name = "Piyush";
+
+Here the nullable analysis treats name as expected to contain a non-null reference.
+
+Example
+string? name = GetName();
+
+
+Console.WriteLine(name.Length);
+
+The compiler can warn that name might be null.
+
+We can handle it safely:
+
+Console.WriteLine(name?.Length);
+
+or:
+
+if (name != null)
+{
+    Console.WriteLine(name.Length);
+}
+
+Interview Answer:
+
+string? means that the reference is allowed to be null. It is part of C# nullable reference type analysis and helps the compiler identify possible null-related errors.
+
+137. What Does Nullable Reference Type Analysis Do?
+
+Answer:
+
+Nullable reference type analysis is a compile-time feature that analyzes how references are used and warns us about possible null-related problems.
+
+For example:
+
+string? name = null;
+
+
+Console.WriteLine(name.Length);
+
+The compiler can warn that name might be null.
+
+We can fix it with:
+
+if (name != null)
+{
+    Console.WriteLine(name.Length);
+}
+
+Or:
+
+Console.WriteLine(name?.Length);
+Important
+
+The compiler is not guaranteeing that null will never happen.
+
+It is providing warnings and flow analysis to help us write safer code.
+
+Interview Answer:
+
+Nullable reference type analysis is a compile-time analysis feature that tracks whether references may be null and produces warnings when code might dereference a null value.
+
+138. Is string? a Different Runtime Type from string?
+
+Answer:
+
+No.
+
+string? does not create a completely different runtime type from string.
+
+Both represent:
+
+System.String
+
+The ? for nullable reference types primarily provides information to the compiler's nullable analysis.
+
+Example:
+
+string name1 = "Hello";
+string? name2 = null;
+
+At runtime, both are references to System.String when they contain strings.
+
+Important distinction
+
+For value types:
+
+int?
+
+actually represents:
+
+Nullable<int>
+
+But for nullable reference types:
+
+string?
+
+does not create:
+
+Nullable<string>
+
+Interview Answer:
+
+No. string? and string are both System.String at runtime. The ? on a reference type is mainly used by the compiler's nullable reference type analysis.
+
+139. What is the Nullable Warning Context?
+
+Answer:
+
+The nullable warning context controls whether the C# compiler performs nullable reference type analysis and generates nullable warnings.
+
+It can be enabled or disabled.
+
+For example:
+
+#nullable enable
+
+enables nullable analysis for the relevant scope.
+
+#nullable disable
+
+disables it.
+
+Example:
+
+#nullable enable
+
+
+string? name = null;
+
+
+Console.WriteLine(name.Length);
+
+The compiler can warn because name may be null.
+
+Project level
+
+Nullable analysis can also be configured in the project file:
+
+<Nullable>enable</Nullable>
+
+Modern .NET projects commonly enable nullable analysis.
+
+Important
+
+This is primarily a compiler feature, not a runtime null-check mechanism.
+
+Interview Answer:
+
+The nullable warning context controls whether nullable reference type analysis is enabled. When enabled, the compiler tracks possible null values and produces warnings for potentially unsafe operations.
+
+140. What is the Null-Forgiving Operator !?
+
+Answer:
+
+The null-forgiving operator ! tells the compiler:
+
+"I know this value is not null here, so don't warn me."
+
+Example:
+
+string? name = GetName();
+
+
+Console.WriteLine(name!.Length);
+
+The ! tells the compiler to suppress the nullable warning for that expression.
+
+Important
+
+The ! operator does not perform a runtime null check.
+
+For example:
+
+string? name = null;
+
+
+Console.WriteLine(name!.Length);
+
+The compiler warning may be suppressed, but at runtime this can still throw:
+
+NullReferenceException
+
+So ! should only be used when you are actually confident the value is not null.
+
+Interview Answer:
+
+The null-forgiving operator ! tells the compiler that we know a nullable reference is not null at that point. It suppresses nullable warnings but does not perform any runtime null check or make the value non-null.
+
+141. Difference Between ? and ! in Nullable Reference Types
+
+This is an important interview question.
+
+?
+
+? indicates that null is allowed.
+
+string? name;
+
+Meaning:
+
+name may be null
+
+The compiler takes this possibility into account.
+
+!
+
+! tells the compiler:
+
+"Treat this expression as non-null here."
+
+Example:
+
+string? name = GetName();
+
+
+Console.WriteLine(name!.Length);
+Comparison
+?	!
+Indicates null may be allowed	Suppresses nullable warning
+Used in type annotation like string?	Used after an expression like name!
+Tells compiler value may be null	Tells compiler to assume value isn't null at this point
+Helps identify possible null problems	Suppresses a warning
+Does not create a different runtime reference type	Does not create a runtime null check
+Important
+
+Neither one magically changes the runtime object.
+
+Interview Answer:
+
+? indicates that a reference may be null, while ! tells the compiler that we believe a nullable expression is not null at that particular point. ? communicates possible nullability; ! suppresses a nullable warning.
+
+142. Can Nullable<T> Be Used with Reference Types?
+
+Answer:
+
+No.
+
+Nullable<T> is designed for non-nullable value types.
+
+For example:
+
+Nullable<int> age = null;       // ✅
+Nullable<double> price = null;  // ✅
+Nullable<bool> active = null;   // ✅
+
+But:
+
+Nullable<string> name = null; // ❌
+
+is not allowed because string is a reference type.
+
+For reference types, use nullable reference type syntax:
+
+string? name = null;
+Remember
+Value type
+    ↓
+Nullable<T>
+    ↓
+int?
+
+But:
+
+Reference type
+    ↓
+Nullable reference type syntax
+    ↓
+string?
+
+Interview Answer:
+
+No. Nullable<T> can only be used with non-nullable value types. For reference types such as string, we use nullable reference type syntax like string?
