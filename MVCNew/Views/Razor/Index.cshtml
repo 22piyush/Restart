@@ -1,0 +1,74 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+
+    @*Single Line Statements*@
+
+    @{ int count = 0;}
+    @{ count += 100;}
+    @{ string str = "Hello";}
+    @{Object Obj = new object();}
+
+
+    @*Inline Line Statements*@
+
+    Value of Count is: @count; <br />
+
+    Value of str is: @str; <br />
+
+    <span>Value of str is: @str</span>
+
+    <span>Value of Object: @Obj.GetType()</span>
+
+
+    @*Multiline Line Statements*@
+    @{
+        string date1 = DateTime.Now.ToLongDateString();
+        string date2 = DateTime.Now.ToShortTimeString();
+    }
+
+    <hr />
+
+    @{
+        int i = 131;
+
+        if (1 % 2 == 0)
+        {
+            @i @:is an even number.
+        }
+        else
+        {
+            @i @:is an odd number.
+        }
+
+
+    }
+
+    <hr />
+
+    @{
+        string[] colors = { "Red", "Blue", "Green", "Yellow" };
+    }
+
+    @* Loop in Razor *@
+
+    @{
+        for (int j = 0; j < colors.Length; j++)
+        {
+            <span>@colors[j]</span>
+        }
+    }
+
+
+</body>
+</html>

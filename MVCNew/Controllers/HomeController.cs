@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿
 using System.Web.Mvc;
 
 namespace MVCNew.Controllers
@@ -34,8 +31,9 @@ namespace MVCNew.Controllers
             return View("~/Views/Home/ResetPwd.cshtml");
         }
 
-        public ViewResult Contact()
+        public ViewResult About()
         {
+            //return View("~/Views/Home/About.cshtml");
             return View();
         }
 
