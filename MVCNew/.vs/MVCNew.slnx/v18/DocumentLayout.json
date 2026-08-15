@@ -11,15 +11,15 @@
       "RelativeMoniker": "D:0:0:{1CDD3C67-28DD-4547-8EDF-F06BF1E32F2B}|MVCNew.csproj|solutionrelative:controllers\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1CDD3C67-28DD-4547-8EDF-F06BF1E32F2B}|MVCNew.csproj|e:\\restart\\mvcnew\\views\\shared\\contact.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{1CDD3C67-28DD-4547-8EDF-F06BF1E32F2B}|MVCNew.csproj|E:\\Restart\\MVCNew\\views\\shared\\contact.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{1CDD3C67-28DD-4547-8EDF-F06BF1E32F2B}|MVCNew.csproj|solutionrelative:views\\shared\\contact.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1CDD3C67-28DD-4547-8EDF-F06BF1E32F2B}|MVCNew.csproj|e:\\restart\\mvcnew\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{1CDD3C67-28DD-4547-8EDF-F06BF1E32F2B}|MVCNew.csproj|E:\\Restart\\MVCNew\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{1CDD3C67-28DD-4547-8EDF-F06BF1E32F2B}|MVCNew.csproj|solutionrelative:views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1CDD3C67-28DD-4547-8EDF-F06BF1E32F2B}|MVCNew.csproj|e:\\restart\\mvcnew\\views\\shared\\error.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{1CDD3C67-28DD-4547-8EDF-F06BF1E32F2B}|MVCNew.csproj|E:\\Restart\\MVCNew\\views\\shared\\error.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{1CDD3C67-28DD-4547-8EDF-F06BF1E32F2B}|MVCNew.csproj|solutionrelative:views\\shared\\error.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
@@ -27,11 +27,11 @@
       "RelativeMoniker": "D:0:0:{1CDD3C67-28DD-4547-8EDF-F06BF1E32F2B}|MVCNew.csproj|solutionrelative:views\\home\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1CDD3C67-28DD-4547-8EDF-F06BF1E32F2B}|MVCNew.csproj|e:\\restart\\mvcnew\\views\\home\\resetpwd.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{1CDD3C67-28DD-4547-8EDF-F06BF1E32F2B}|MVCNew.csproj|E:\\Restart\\MVCNew\\views\\home\\resetpwd.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{1CDD3C67-28DD-4547-8EDF-F06BF1E32F2B}|MVCNew.csproj|solutionrelative:views\\home\\resetpwd.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1CDD3C67-28DD-4547-8EDF-F06BF1E32F2B}|MVCNew.csproj|e:\\restart\\mvcnew\\views\\home\\forgotpwd.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{1CDD3C67-28DD-4547-8EDF-F06BF1E32F2B}|MVCNew.csproj|E:\\Restart\\MVCNew\\views\\home\\forgotpwd.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{1CDD3C67-28DD-4547-8EDF-F06BF1E32F2B}|MVCNew.csproj|solutionrelative:views\\home\\forgotpwd.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
@@ -83,8 +83,7 @@
               "RelativeToolTip": "Views\\Shared\\Error.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-08-14T18:24:58.207Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-08-14T18:24:58.207Z"
             },
             {
               "$type": "Document",
@@ -96,8 +95,7 @@
               "RelativeToolTip": "Controllers\\controllers\\HomeController.cs",
               "ViewState": "AgIAABwAAAAAAAAAAAAkwC4AAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-14T17:08:34.512Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-08-14T17:08:34.512Z"
             },
             {
               "$type": "Document",
@@ -109,8 +107,7 @@
               "RelativeToolTip": "Views\\Shared\\Contact.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-08-14T18:28:43.768Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-08-14T18:28:43.768Z"
             },
             {
               "$type": "Document",
@@ -122,8 +119,7 @@
               "RelativeToolTip": "Views\\Home\\Index.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-08-14T17:11:13.606Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-08-14T17:11:13.606Z"
             },
             {
               "$type": "Document",
@@ -135,8 +131,7 @@
               "RelativeToolTip": "Views\\Home\\Login.cshtml",
               "ViewState": "AgIAAGAAAAAAAAAAAAAAAGUAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-08-14T16:56:04.61Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-08-14T16:56:04.61Z"
             },
             {
               "$type": "Document",
@@ -148,8 +143,7 @@
               "RelativeToolTip": "Views\\Home\\ResetPwd.cshtml",
               "ViewState": "AgIAAFoAAAAAAAAAAAAswGYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-08-14T17:25:14.257Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-08-14T17:25:14.257Z"
             },
             {
               "$type": "Document",
@@ -161,8 +155,7 @@
               "RelativeToolTip": "Views\\Home\\ForgotPwd.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-08-14T17:24:32.664Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-08-14T17:24:32.664Z"
             },
             {
               "$type": "Document",

@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title - My MVC App</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .header {
+            background-color: #1f2937;
+            padding: 0 30px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            color: white;
+            font-size: 22px;
+            font-weight: bold;
+            text-decoration: none;
+            margin-right: 40px;
+        }
+
+        .nav {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .nav a:hover {
+            color: #60a5fa;
+        }
+
+        .content {
+            padding: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header">
+
+        <!-- Logo -->
+        <a href="@Url.Action("Index", "Home")" class="logo">
+            My MVC App
+        </a>
+
+        <!-- Navigation -->
+        <nav class="nav">
+
+            <a href="@Url.Action("Index", "Home")">
+                Home
+            </a>
+
+            <a href="@Url.Action("About", "Home")">
+                About
+            </a>
+
+            <a href="@Url.Action("Contact", "Home")">
+                Contact
+            </a>
+
+        </nav>
+
+    </header>
+
+    <!-- Page Content -->
+    <div class="content">
+        @RenderBody()
+    </div>
+
+</body>
+</html>

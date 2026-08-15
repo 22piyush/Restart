@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "E:\\Restart\\MVCNew\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1CDD3C67-28DD-4547-8EDF-F06BF1E32F2B}|MVCNew.csproj|E:\\Restart\\MVCNew\\controllers\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1CDD3C67-28DD-4547-8EDF-F06BF1E32F2B}|MVCNew.csproj|solutionrelative:controllers\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{1CDD3C67-28DD-4547-8EDF-F06BF1E32F2B}|MVCNew.csproj|e:\\restart\\mvcnew\\views\\test\\mission.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{1CDD3C67-28DD-4547-8EDF-F06BF1E32F2B}|MVCNew.csproj|solutionrelative:views\\test\\mission.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1CDD3C67-28DD-4547-8EDF-F06BF1E32F2B}|MVCNew.csproj|E:\\Restart\\MVCNew\\controllers\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1CDD3C67-28DD-4547-8EDF-F06BF1E32F2B}|MVCNew.csproj|solutionrelative:controllers\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1CDD3C67-28DD-4547-8EDF-F06BF1E32F2B}|MVCNew.csproj|e:\\restart\\mvcnew\\views\\shared\\contact.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -54,7 +54,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -62,7 +62,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Mission.cshtml",
               "DocumentMoniker": "E:\\Restart\\MVCNew\\Views\\Test\\Mission.cshtml",
               "RelativeDocumentMoniker": "Views\\Test\\Mission.cshtml",
@@ -88,7 +88,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "HomeController.cs",
               "DocumentMoniker": "E:\\Restart\\MVCNew\\Controllers\\controllers\\HomeController.cs",
               "RelativeDocumentMoniker": "Controllers\\controllers\\HomeController.cs",
