@@ -219,6 +219,7 @@ CLS stands for Common Language Specification. It is a set of rules that .NET lan
 Easy difference:
 CTS → Defines types
 CLS → Defines common language rules
+
 10. What is IL/MSIL?
 
 IL stands for Intermediate Language.
@@ -1799,6 +1800,9 @@ Fewer runtime errors
 Interview Answer:
 
 I would use dynamic when the type or members of an object are genuinely determined at runtime, such as certain COM interop, dynamic language interoperability, or dynamic data scenarios. I would avoid using it when the type is known at compile time because static typing provides better safety and tooling.
+
+
+===================================================================== PHASE - 1 ======================================================================================================
 
 
 ## Value Types, Reference Types & Memory
@@ -3719,6 +3723,9 @@ Interview Answer:
 Pattern matching with is allows us to check an object's type and, at the same time, assign it to a variable of that type. It makes type checking and casting more concise and readable.
 
 
+==========================================================================================================================================================================================
+
+
 ## Variables, Constants & Modifiers
 
 101. What is a Local Variable?
@@ -4769,6 +4776,7 @@ Interview Answer:
 
 default(T) explicitly specifies the type whose default value we want, while default is the default literal and allows the compiler to infer the type from context. For example, int x = default(int) and int x = default both produce 0.
 
+============================================================================================================================================================================
 
 ## Nullable Types & Null Handling
 

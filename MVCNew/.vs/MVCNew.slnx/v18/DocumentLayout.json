@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "E:\\Restart\\MVCNew\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1CDD3C67-28DD-4547-8EDF-F06BF1E32F2B}|MVCNew.csproj|e:\\restart\\mvcnew\\views\\razor\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{1CDD3C67-28DD-4547-8EDF-F06BF1E32F2B}|MVCNew.csproj|solutionrelative:views\\razor\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{1CDD3C67-28DD-4547-8EDF-F06BF1E32F2B}|MVCNew.csproj|E:\\Restart\\MVCNew\\controllers\\razorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1CDD3C67-28DD-4547-8EDF-F06BF1E32F2B}|MVCNew.csproj|solutionrelative:controllers\\razorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1CDD3C67-28DD-4547-8EDF-F06BF1E32F2B}|MVCNew.csproj|e:\\restart\\mvcnew\\controllers\\razorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1CDD3C67-28DD-4547-8EDF-F06BF1E32F2B}|MVCNew.csproj|solutionrelative:controllers\\razorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1CDD3C67-28DD-4547-8EDF-F06BF1E32F2B}|MVCNew.csproj|e:\\restart\\mvcnew\\views\\razor\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1CDD3C67-28DD-4547-8EDF-F06BF1E32F2B}|MVCNew.csproj|solutionrelative:views\\razor\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -26,26 +26,26 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Index.cshtml",
               "DocumentMoniker": "E:\\Restart\\MVCNew\\Views\\Razor\\Index.cshtml",
               "RelativeDocumentMoniker": "Views\\Razor\\Index.cshtml",
               "ToolTip": "E:\\Restart\\MVCNew\\Views\\Razor\\Index.cshtml",
               "RelativeToolTip": "Views\\Razor\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEIAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAAAEAAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2026-08-15T09:19:54.798Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "RazorController.cs",
               "DocumentMoniker": "E:\\Restart\\MVCNew\\Controllers\\RazorController.cs",
               "RelativeDocumentMoniker": "Controllers\\RazorController.cs",
               "ToolTip": "E:\\Restart\\MVCNew\\Controllers\\RazorController.cs",
               "RelativeToolTip": "Controllers\\RazorController.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABAAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-08-15T09:18:55.569Z",
               "EditorCaption": ""

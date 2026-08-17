@@ -1,16 +1,14 @@
-﻿using System;
+﻿
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace MVCNew.Controllers
 {
     public class RazorController : Controller
     {
-        // GET: Razor
         public ActionResult Index()
         {
+            List<string> colors = new List<string> { };
             return View();
         }
     }
