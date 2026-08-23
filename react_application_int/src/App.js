@@ -1,34 +1,27 @@
-import React, { useState } from "react";
+import React from "react";
+import { useSelector } from "react-redux";
+import User from "./components/User";
 
 function App() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    console.log("Name:", name);
-    console.log("Email:", email);
-  };
+  const user = useSelector((state) => state.user.user);
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        placeholder="Enter name"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-      />
+    <div>
 
-      <input
-        type="email"
-        placeholder="Enter email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
+      <h1>Redux Example</h1>
 
-      <button type="submit">Submit</button>
-    </form>
+      <User />
+
+      {user ? (
+        <>
+          <h2>Name: {user.name}</h2>
+          <p>Email: {user.email}</p>
+        </>
+      ) : (
+        <h2>No user logged in</h2>
+      )}
+    </div>
   );
 }
 

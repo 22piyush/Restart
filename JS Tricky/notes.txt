@@ -1,8 +1,4 @@
 
-
-
-
-
 NPX
 ===
 -NPX : node package executer. 
@@ -1892,7 +1888,7 @@ Code Splitting/Lazy Loading
      <OtherComponent />
  </Suspense>
  
- 
+
 
 Q: What are the ways to handle errors in react application?
 Ans: 1. try-Catch    2. Error Boundary
