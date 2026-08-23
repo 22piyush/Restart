@@ -1,0 +1,494 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Reverse Words in a Sentence
+const str = "I am learning JavaScript";
+
+const words = str.split(" ");
+let result = "";
+
+for (let i = words.length - 1; i >= 0; i--) {
+    result += words[i];
+
+    if (i !== 0) {
+        result += " ";
+    }
+}
+
+console.log(result);
+
+
+
+
+
+
+
+// Check if Array is Sorted
+let arr = [2,3,1,4,5,6];
+
+let isSorted = true;
+
+for(let i=0; i<arr.length - 1; i++){
+    if(arr[i] > arr[i+1]){
+        isSorted = false;
+        break;
+    }
+}
+
+console.log(isSorted);
+
+
+
+
+// Merge Two Sorted Arrays
+let arr1 = [1,2,3,4,5];
+let arr2 = [6,7,8,9,0];
+
+const res = [...arr1, ...arr2].sort((a, b) => a - b);
+
+console.log(res);
+
+
+
+
+// Rotate an Array Left/Right
+let arr = [1,2,3,4,5,6,7];
+
+let first = arr[0];
+
+for(let i=0; i<arr.length; i++){
+
+    arr[i] = arr[i + 1];
+
+}
+
+arr[arr.length - 1] = first;
+
+console.log(arr);
+
+
+
+
+
+
+// Move All Zeros to the End
+let arr = [1,0,2,0,4,0,5,6,7,0];
+
+let res = [];
+let zero = 0;
+
+for(let i=0; i<arr.length; i++){
+    if(arr[i] !== 0){
+        res.push(arr[i]);
+    }else{
+        zero++;
+    }
+}
+
+for(let i=0; i<zero; i++){
+    res.push(0)
+}
+
+console.log(res);
+
+
+
+
+// Find Missing Number
+const arr = [1,2,3,5,6];
+
+const n = arr.length + 1;
+
+let expect = 0;
+let actual = 0;
+
+for(let i=1; i<=n; i++){
+    expect += i;
+}
+
+for(let i =0; i< arr.length; i++){
+    actual += arr[i];
+}
+
+console.log(expect - actual);
+
+
+
+
+
+// Frequency Count 
+const arr = [10, 20, 60, 40, 60, 60];
+
+let frequency = {};
+
+for (let i = 0; i < arr.length; i++) {
+
+    if (frequency[arr[i]]) {
+       frequency[arr[i]]++
+    } else{
+        frequency[arr[i]] = 1
+    }
+
+}
+console.log(frequency);
+
+
+
+
+// Remove and Find Duplicates 
+const arr = [10, 20, 60, 40, 60, 60];
+
+// const unique = [...new Set(arr)];
+// console.log(unique);
+
+const unique = [];
+const dup = [];
+
+for (let i = 0; i < arr.length; i++) {
+
+    if (!unique.includes(arr[i])) {
+        unique.push(arr[i]);
+    } else if (!dup.includes(arr[i])) {
+        dup.push(arr[i]);
+    }
+
+}
+
+console.log(unique);
+console.log(dup);
+
+
+
+
+
+// Remove Duplicates from an Array
+const arr = [10,20,60,40,60];
+
+// const unique = [...new Set(arr)];
+// console.log(unique);
+
+const unique = [];
+
+for(let i=0; i<arr.length; i++){
+
+    if(!unique.includes(arr[i])){
+        unique.push(arr[i])
+    }
+
+}
+
+console.log(unique);
+
+
+
+
+// Second Heightst 
+const arr = [10,20,60,40,60];
+
+let heighest = -Infinity;
+let secondHighest = -Infinity;
+
+for(let i=0; i<arr.length; i++){
+    if(arr[i] < heighest){
+        secondHighest = heighest;
+        heighest = arr[i];
+    }
+    else if(arr[i] < secondHighest && arr[i] !== heighest){
+        secondHighest = arr[i];
+    }
+}
+
+console.log(secondHighest);
+
+
+
+
+// Second Lowest 
+const arr = [10,20,60,40,60];
+
+let heighest = Infinity;
+let secondHighest = Infinity;
+
+for(let i=0; i<arr.length; i++){
+    if(arr[i] > heighest){
+        secondHighest = heighest;
+        heighest = arr[i];
+    }
+    else if(arr[i] > secondHighest && arr[i] !== heighest){
+        secondHighest = arr[i];
+    }
+}
+
+console.log(secondHighest);
+
+
+
+
+
+
+
+
+
+
+
+
+// Find Longest Word in a Sentence
+
+const str = "I am learning JavaScript";
+
+const words = str.split(" ");
+
+let longest = "";
+
+for (let i = 0; i < words.length; i++) {
+    if (words[i].length > longest.length) {
+        longest = words[i];
+    }
+}
+
+console.log(longest);
+
+
+// Reverse Each Word in a Sentence
+const str = "I am learning JavaScript";
+
+const words = str.split(" ");
+let result = "";
+
+for (let i = 0; i < words.length; i++) {
+
+    let word = "";
+
+    for (let j = words[i].length - 1; j >= 0; j--) {
+        word += words[i][j];
+    }
+
+    result += word;
+
+    if (i !== words.length - 1) {
+        result += " ";
+    }
+}
+
+console.log(result);
+
+
+
+
+
+
+
+
+// Remove Duplicate Words
+let str = "I love I javascript";
+
+let words = str.split(" ");
+const unique = [];
+
+for (let i = 0; i < str.length; i++) {
+
+    let isDuplicate = false;
+
+    for (let j = 0; j < unique.length; j++) {
+
+        if (words[i] == unique[j]) {
+            isDuplicate = true;
+            break;
+        }
+
+    }
+
+
+    if (!isDuplicate) {
+        unique.push(words[i]);
+    }
+
+}
+
+console.log(unique.join(" "));
+
+
+
+
+// Remove Duplicate Characters
+const str = "aabbcde";
+
+const frequency = {};
+const dup = [];
+
+for (let i = 0; i < str.length; i++) {
+
+    if (frequency[str[i]]) {
+        frequency[str[i]]++
+    } else {
+        frequency[str[i]] = 1
+    }
+
+}
+
+for (let key in frequency) {
+    if (frequency[key] > 1) {
+        dup.push(key)
+    }
+}
+
+console.log(dup);
+
+
+
+
+
+
+
+
+
+// First Non-Repeated Character
+const str = "aabbcde";
+
+const frequency = {};
+
+for (let i = 0; i < str.length; i++) {
+
+    if (frequency[str[i]]) {
+        frequency[str[i]]++
+        // break First Repeated Character
+        
+    } else {
+        frequency[str[i]] = 1
+    }
+
+}
+
+for (let i = 0; i < str.length; i++) {
+    if (frequency[str[i]] == 1) {
+        console.log(str[i]);
+        break
+    }
+}
+
+
+
+
+
+
+
+// Count Words in a Sentence
+
+const str = "I am learning JavaScript";
+let res = str.split(' ')
+console.log(res.length);
+
+const str = "I am learning JavaScript";
+
+let count = 0;
+for (let i = 0; i < str.length; i++) {
+    if (str[i] !== " " && (i === 0 || str[i - 1] === " ")) {
+        count++;
+    }
+}
+console.log(count);
+
+
+
+
+
+
+// Count Character Frequency
+let str = "asdftgbniAOU";
+let fre = {};
+let count = 0;
+
+for(let i=0; i<str.length; i++){
+
+    if(fre[str[i]]){
+        fre[str[i]] = count + 1;
+    }else{
+        fre[str[i]] =  1;
+    }
+
+}
+
+console.log(fre);
+
+
+
+
+
+
+// Count Vowels
+let str = "asdftgbniAOU";
+let count = 0;
+var news = "";
+
+for(let i=0; i<str.length; i++){
+    
+    if("aeiouAEIOU".includes(str[i])){
+        count++;
+        news += str[i]
+    }
+
+}
+console.log(count);
+console.log(news);
+
+
+
+
+
+
+// Anagram 
+const str1 = "listen";
+const str2 = "silent";
+
+const a = str1.split("").sort().join("");
+const b = str2.split("").sort().join("");
+
+console.log(a === b ? "Anagram" : "Not Anagram");
+
+
+// Check if String is Palindrome
+let str = 'madam';
+
+let rev = str.split('').reverse().join('');
+
+if(str == rev){
+    console.log("Palin");
+    
+}else{
+    console.log("Not");
+    
+}
+
+
+
+
+// reverse string 
+
+let str = "piyush";
+
+let res = "";
+
+for(let i = str.length - 1; i >=0; i--){
+    res += str[i];
+}
+
+console.log(res);
+
+
+
+
+let str = "piyush";
+
+let res = str.split('').reverse().join('')
+
+console.log(res);

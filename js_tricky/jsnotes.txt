@@ -1,0 +1,165 @@
+
+
+<!-- Garbage Collection -->
+
+Garbage Collection (GC) is the automatic process of freeing memory that is no longer used by the program.
+EX:
+let name = "Piyush";
+console.log(name);
+name = null;
+Q: What does Garbage Collection remove?
+Answer: It removes unreachable values/objects from memory, not the variables themselves.
+Variables are removed only when their scope ends (for example, after a function finishes executing). Even then, the garbage collector frees the memory used by values that are no longer reachable.
+No variable points to "Piyush" anymore.
+The JavaScript engine recognizes that the string is unreachable, so during the next garbage collection cycle it removes it from memory.
+
+
+<!-- JS Errors Types -->
+
+The main built-in JavaScript error types you should know are:
+
+Error – Base class for all errors.
+SyntaxError – Invalid JavaScript syntax.
+ReferenceError – Variable or identifier is not defined.
+TypeError – Invalid operation on a value of a particular type.
+RangeError – Value is outside the allowed range.
+URIError – Invalid use of URI encoding/decoding functions.
+EvalError – Related to eval() (rarely used in modern JavaScript).
+AggregateError – Represents multiple errors together (introduced with Promise.any()).
+
+// Error
+throw new Error("Something went wrong");
+
+// SyntaxError
+console.log("Hello"
+
+// ReferenceError
+console.log(user);
+
+// TypeError
+(123).toUpperCase();
+
+// RangeError
+new Array(-1);
+
+// URIError
+decodeURIComponent("%");
+
+// EvalError
+// Rarely encountered in modern JavaScript
+
+// AggregateError
+Promise.any([
+Promise.reject("Error 1"),
+Promise.reject("Error 2")
+]);
+
+<!-- REST VS SPREAD  -->
+
+| Feature   | Rest Operator                      | Spread Operator                         |
+| --------- | ---------------------------------- | --------------------------------------- |
+| Purpose   | Collects multiple values into one  | Expands values into individual elements |
+| Used In   | Function parameters, destructuring | Arrays, Objects, Function calls         |
+| Direction | Many → One                         | One → Many                              |
+
+<!-- Cookie , Local, Session Storage in js -->
+
+| Feature            | Cookies                          | Local Storage                 | Session Storage                    |
+| ------------------ | -------------------------------- | ----------------------------- | ---------------------------------- |
+| Storage Size       | ~4 KB                            | ~5–10 MB                      | ~5–10 MB                           |
+| Expiration         | Can be set                       | Never expires (until cleared) | Cleared when tab/browser is closed |
+| Sent to Server     | ✅ Yes (with every HTTP request) | ❌ No                         | ❌ No                              |
+| Accessible in JS   | ✅ Yes (unless `HttpOnly`)       | ✅ Yes                        | ✅ Yes                             |
+| Shared Across Tabs | ✅ Yes (same domain)             | ✅ Yes (same origin)          | ❌ No (per tab)                    |
+| Best Use           | Authentication, session cookies  | User preferences, app data    | Temporary data for one tab         |
+
+<!-- Web Workers -->
+
+A Web Worker is a JavaScript feature that allows you to run CPU-intensive tasks in a separate background thread, preventing the main UI thread from being blocked. This keeps the application responsive while heavy computations are performed. Web Workers communicate with the main thread using postMessage() and onmessage(), and they cannot directly access the DOM.
+
+JavaScript is single-threaded. It has only one main Call Stack for executing JavaScript. The Event Loop only schedules tasks; it doesn't execute code in parallel. If a CPU-intensive task runs on the main thread, it blocks the Call Stack, causing the UI, timers, and event handlers to wait. Web Workers solve this by moving heavy computation to another thread.
+
+<!-- IIFE -->
+
+IIFE (Immediately Invoked Function Expression) is a function that is defined and executed immediately after it is created. It is mainly used to execute code only once and to create a private scope, preventing variables from polluting the global scope.
+EX:
+(function () {
+var count = 10;
+})();
+
+<!-- Factory Func -->
+
+A Factory Function is used to creates and returns a new object. It helps create multiple objects with the same properties and methods to avoiding code duplication.
+
+<!-- Pure vs Impure Func -->
+
+// Pure Function
+A Pure Function always produces the same output for the same input and does not cause any side effects or modify external state.
+EX:
+function add(a, b) {
+return a + b;
+}
+console.log(add(10, 20)); // 30
+console.log(add(10, 20)); // 30
+
+// Impure Func
+An Impure Function either produces different outputs for the same input or modifies external data, causing side effects.
+EX:
+let count = 0;
+
+function increment() {
+count++;
+return count;
+}
+
+console.log(increment()); // 1
+
+<!-- Undeclered , Undefined, null -->
+
+Undefined:- A variable has been declared, but no value has been assigned to it yet.
+ex:- let name;
+
+Null:- you assign null yourself.
+ex:- let user = null;
+
+Undeclered:- An undeclared variable is a variable that has never been declared.
+Ex:- console.log(city); //ReferenceError: city is not defined
+
+<!-- Sync / Async -->
+
+Synchronous execution means JavaScript runs code one statement at a time, waiting for each statement to finish before executing the next. Asynchronous execution allows long-running operations, such as API calls or timers, to run without blocking the main thread.
+
+JavaScript itself is synchronous and single-threaded. However, it can perform asynchronous operations using browser APIs (like setTimeout and fetch) or Node.js APIs, with the Event Loop coordinating when callbacks are executed.
+
+<!-- MAP , Set  -->
+
+MAP:- A Map is a collection of key-value pairs where each key is unique and can be of any data type.
+A Map cannot have duplicate keys, but it can have duplicate values.
+EX:-
+const user = new Map();
+
+user.set("name", "Piyush");
+user.set("age", 25);
+user.set("city", "Pune");
+console.log(user);
+
+SET:- A Set is a built-in JavaScript object that stores only unique values.
+EX:-
+const numbers = [10, 20, 10, 30, 20, 40];
+const uniqueNumbers = new Set(numbers);
+console.log(uniqueNumbers);
+Output:- {10, 20, 30, 40}
+
+<!-- Cors  -->
+
+CORS (Cross-Origin Resource Sharing) is a browser security feature that allows or restricts a web application from accessing resources on a different origin.
+
+
+
+
+
+
+
+
+
+
