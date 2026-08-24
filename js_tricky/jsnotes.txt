@@ -31,7 +31,7 @@ AggregateError – Represents multiple errors together (introduced with Promise.
 throw new Error("Something went wrong");
 
 // SyntaxError
-console.log("Hello"
+console.log("Hello")
 
 // ReferenceError
 console.log(user);

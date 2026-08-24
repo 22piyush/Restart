@@ -329,6 +329,7 @@
 // [ 1, 2, 3, 4 ]
 // [ 1, 2, 3, 4 ]
 
+
 // const obj1 = {
 //     name: "Piyush",
 //     age: 25
@@ -732,8 +733,8 @@
 // Both True
 
 
-// console.log(null === undefined);
-// console.log(null == undefined);
+// console.log(null === undefined); False
+// console.log(null == undefined); True
 
 
 
@@ -807,8 +808,6 @@
 // obj.a = 20;
 
 // console.log(obj.a);  10
-
-
 
 
 
