@@ -62,6 +62,7 @@ Promise.reject("Error 2")
 | Used In   | Function parameters, destructuring | Arrays, Objects, Function calls         |
 | Direction | Many → One                         | One → Many                              |
 
+
 <!-- Cookie , Local, Session Storage in js -->
 
 | Feature            | Cookies                          | Local Storage                 | Session Storage                    |
