@@ -1,16 +1,370 @@
 ---- Access Modifiers -----
 =========================================
-What are access modifiers?
-What is public?
-What is private?
-What is protected?
-What is internal?
-What is protected internal?
-What is private protected?
-Difference between protected and private.
-Difference between internal and public.
-Difference between protected internal and private protected.
-What is the default accessibility of a class?
-What is the default accessibility of a class member?
-Can a top-level class be private?
-Can a nested class be private?
+## What are access modifiers?
+-- Access modifiers are keywords in C# that are used to control the accessibility or visibility of a class and its members.
+--In simple words, access modifiers decide who can access a class, method, property, field, etc., and from where.
+
+## What is public?
+-- public is an access modifier in C# that makes a class or its members accessible from anywhere, as long as the containing type itself is accessible.
+-- In simple words, if we declare something as public, other classes can access it.
+
+## What is private?
+-- private is an access modifier in C# that restricts access to a class or its members.
+-- In simple words, a private member can be accessed only inside the class where it is declared.
+
+## What is protected?
+-- protected is an access modifier that allows a member to be accessed inside its own class and inside classes that inherit from it.
+--In simple words:
+-protected = accessible within the class + derived/child classes.
+
+-- Example 
+class GrandParent
+{
+    protected int age = 50;
+}
+
+class Parent : GrandParent
+{
+}
+
+class Child : Parent
+{
+}
+
+class SubChild : Child
+{
+    public void Display()
+    {
+        Console.WriteLine(age); // ✅
+    }
+}
+
+
+## What is internal?
+-- internal is an access modifier in C# that allows a class or member to be accessed anywhere within the same assembly.
+-- In simple words:
+- internal = accessible within the same project/assembly, but not directly from another assembly.
+
+
+## What is protected internal?(OR || )
+-- protected internal means a member can be accessed if either of these conditions is true:
+-- The code is inside the same assembly/project → internal rule
+-- The code is inside a derived/child class → protected rule
+-- So remember:
+- protected internal = same assembly OR derived class
+== It is OR, not AND.
+
+-- Example
+
+1. Basic example — same project
+public class Parent
+{
+    protected internal int age = 25;
+}
+
+Now another class in the same project:
+
+public class Test
+{
+    public void Display()
+    {
+        Parent obj = new Parent();
+
+        Console.WriteLine(obj.age); // ✅
+    }
+}
+
+Why is this allowed?
+
+Because Test and Parent are in the same assembly/project.
+
+Parent
+   |
+   | protected internal
+   ↓
+Same Project
+   ✅ Can access
+
+Notice that Test does not inherit from Parent.
+
+It can still access age because of the internal part.
+
+2. Different project + inheritance
+
+Suppose we have two projects.
+
+Project A
+public class Parent
+{
+    protected internal int age = 25;
+}
+Project B
+public class Child : Parent
+{
+    public void Display()
+    {
+        Console.WriteLine(age); // ✅
+    }
+}
+
+Even though Child is in a different project, it can access age.
+
+Why?
+
+Because Child inherits from Parent.
+
+So the protected rule allows access.
+
+Project A
+
+Parent
+  |
+  | protected internal
+  |
+  ↓
+age
+
+
+Project B
+
+Child : Parent
+     |
+     └── can access age ✅
+3. Different project + NOT inherited
+
+Now suppose Project B has an unrelated class:
+
+public class Test
+{
+    public void Display()
+    {
+        Parent obj = new Parent();
+
+        Console.WriteLine(obj.age); // ❌
+    }
+}
+
+This will not work.
+
+Why?
+
+Because:
+
+Test is in a different assembly ❌
+Test does not inherit from Parent ❌
+
+Therefore, neither condition is satisfied.
+
+Same assembly?       ❌
+Derived class?       ❌
+                         ↓
+                  Cannot access
+
+
+
+## What is private protected?(AND &&)
+-- private protected is an access modifier in C# that allows a member to be accessed only inside the same assembly(project) AND only by derived classes.
+-- The important word is AND.
+-- private protected = same assembly AND derived class
+
+
+## Difference between protected and private.
+
+| Point                                    | `private`                                                    | `protected`                                                |
+| ---------------------------------------- | ------------------------------------------------------------ | ---------------------------------------------------------- |
+| **Meaning**                              | Accessible only inside the class where it is declared        | Accessible inside the class and its derived/child classes  |
+| **Access from same class**               | ✅ Yes                                                        | ✅ Yes                                                      |
+| **Access from child class**              | ❌ No                                                         | ✅ Yes                                                      |
+| **Access from unrelated class**          | ❌ No                                                         | ❌ No                                                       |
+| **Access from another assembly/project** | ❌ No                                                         | ✅ Only through inheritance                                 |
+| **Main purpose**                         | Hide data completely from other classes                      | Share data/behavior with child classes                     |
+| **Inheritance**                          | Private members are not directly accessible by child classes | Protected members are directly accessible by child classes |
+| **Encapsulation**                        | Provides stronger restriction                                | Provides controlled access for inheritance                 |
+| **Common use**                           | Internal implementation details                              | Members that child classes need to use or extend           |
+
+
+
+## Difference between internal and public.
+
+| Point                                  | `internal`                                   | `public`                                              |
+| -------------------------------------- | -------------------------------------------- | ----------------------------------------------------- |
+| **Meaning**                            | Accessible within the **same assembly**      | Accessible from **anywhere**                          |
+| **Same project/assembly**              | ✅ Yes                                        | ✅ Yes                                                 |
+| **Different project/assembly**         | ❌ No                                         | ✅ Yes                                                 |
+| **Different class in same project**    | ✅ Yes                                        | ✅ Yes                                                 |
+| **Different class in another project** | ❌ No                                         | ✅ Yes                                                 |
+| **Inheritance required?**              | ❌ No                                         | ❌ No                                                  |
+| **Main purpose**                       | Restrict access to your own assembly/project | Make something available to other assemblies/projects |
+| **Default for top-level class**        | ✅ Yes                                        | ❌ No                                                  |
+
+
+## Difference between protected internal and private protected.
+
+| Point                                    | `protected internal`                                   | `private protected`                                           |
+| ---------------------------------------- | ------------------------------------------------------ | ------------------------------------------------------------- |
+| **Meaning**                              | Accessible from the **same assembly OR derived class** | Accessible from the **same assembly AND derived class**       |
+| **Same assembly + derived class**        | ✅ Yes                                                  | ✅ Yes                                                         |
+| **Same assembly + unrelated class**      | ✅ Yes                                                  | ❌ No                                                          |
+| **Different assembly + derived class**   | ✅ Yes                                                  | ❌ No                                                          |
+| **Different assembly + unrelated class** | ❌ No                                                   | ❌ No                                                          |
+| **Uses**                                 | `protected` **OR** `internal`                          | `protected` **AND** `internal`                                |
+| **More accessible?**                     | More accessible                                        | More restricted                                               |
+| **Main purpose**                         | Allow access to assembly members and derived classes   | Allow access only to derived classes within the same assembly |
+
+
+## What is the default accessibility of a class?
+
+For a **top-level class**, the default accessibility is **`internal`**.
+
+```csharp
+class Employee
+{
+}
+```
+
+This is the same as:
+
+```csharp
+internal class Employee
+{
+}
+```
+
+So the class can be accessed within the **same assembly/project**, but not directly from another assembly.
+
+---
+
+## What is the default accessibility of a class member?
+
+The default accessibility of a **class member** is **`private`**.
+
+This applies to members such as fields, methods, properties, etc.
+
+```csharp
+class Employee
+{
+    string name;       // private by default
+    int age;           // private by default
+
+    void Display()     // private by default
+    {
+    }
+}
+```
+
+It is equivalent to:
+
+```csharp
+class Employee
+{
+    private string name;
+    private int age;
+
+    private void Display()
+    {
+    }
+}
+```
+
+---
+
+## Can a top-level class be `private`?
+
+**No.**
+
+A top-level class cannot be declared as `private`.
+
+```csharp
+private class Employee   // ❌ Not allowed
+{
+}
+```
+
+A top-level class can normally be:
+
+```csharp
+public class Employee
+{
+}
+```
+
+or:
+
+```csharp
+internal class Employee
+{
+}
+```
+
+If no modifier is specified, it is `internal` by default.
+
+---
+
+## Can a nested class be `private`?
+
+**Yes.**
+
+A nested class is a class declared inside another class.
+
+```csharp
+class Employee
+{
+    private class Address
+    {
+    }
+}
+```
+
+In fact, a nested class is **`private` by default** if no access modifier is specified:
+
+```csharp
+class Employee
+{
+    class Address
+    {
+    }
+}
+```
+
+This is equivalent to:
+
+```csharp
+class Employee
+{
+    private class Address
+    {
+    }
+}
+```
+
+---
+
+## Quick Summary
+
+| Question                                        | Answer     |
+| ----------------------------------------------- | ---------- |
+| Default accessibility of a **top-level class**? | `internal` |
+| Default accessibility of a **class member**?    | `private`  |
+| Can a **top-level class** be `private`?         | ❌ No       |
+| Can a **nested class** be `private`?            | ✅ Yes      |
+| Default accessibility of a **nested class**?    | `private`  |
+
+### Easy way to remember
+
+```text
+Top-level class
+      ↓
+   internal
+
+Class member
+      ↓
+   private
+
+Top-level class → private ❌
+
+Nested class → private ✅
+```
+
+### Interview Answer
+
+**A top-level class is `internal` by default, while class members are `private` by default. A top-level class cannot be declared as `private`, but a nested class can be private and is private by default.**
