@@ -368,3 +368,467 @@ Nested class → private ✅
 ### Interview Answer
 
 **A top-level class is `internal` by default, while class members are `private` by default. A top-level class cannot be declared as `private`, but a nested class can be private and is private by default.**
+
+
+
+## How to restrict a class not to be accessible for any other class to consume?
+
+First, we need to understand what **“restrict a class”** means.
+
+If we want to prevent other classes from **directly creating an object** of a class, we can make the class's constructor `private`.
+
+### Example
+
+```csharp
+public class Employee
+{
+    private Employee()
+    {
+    }
+
+    public void Display()
+    {
+        Console.WriteLine("Employee");
+    }
+}
+```
+
+Now suppose another class tries to create an object:
+
+```csharp
+class Test
+{
+    public void Method()
+    {
+        Employee emp = new Employee(); // ❌ Error
+    }
+}
+```
+
+This is not allowed because the `Employee` constructor is `private`.
+
+### Why does this happen?
+
+When we write:
+
+```csharp
+Employee emp = new Employee();
+```
+
+C# needs to call the constructor:
+
+```csharp
+Employee()
+```
+
+But the constructor is:
+
+```csharp
+private Employee()
+```
+
+A `private` constructor can be accessed **only from within the `Employee` class itself**.
+
+Therefore, another class cannot create an object of `Employee`.
+
+---
+
+## Important: The class is still accessible
+
+Notice that:
+
+```csharp
+public class Employee
+```
+
+means another class **can see/reference the class**.
+
+For example, this is valid:
+
+```csharp
+Employee emp;
+```
+
+But this is not:
+
+```csharp
+Employee emp = new Employee(); // ❌
+```
+
+So there is an important difference:
+
+| Operation                                       | Private Constructor |
+| ----------------------------------------------- | ------------------- |
+| See/reference the class                         | ✅ Yes               |
+| Declare a variable of that type                 | ✅ Yes               |
+| Create an object using `new`                    | ❌ No                |
+| Call the private constructor from another class | ❌ No                |
+
+---
+
+## What about inheritance?
+
+This is an important point.
+
+If the constructor is `private`, another class **cannot inherit from `Employee`** either.
+
+```csharp
+public class Employee
+{
+    private Employee()
+    {
+    }
+}
+
+public class Manager : Employee
+{
+}
+```
+
+This gives an error:
+
+```text
+❌ Manager cannot access Employee's private constructor
+```
+
+Why?
+
+When a derived class is created, it must call a constructor of its parent class.
+
+For example:
+
+```csharp
+Manager manager = new Manager();
+```
+
+Internally, the `Employee` constructor must also be called.
+
+But:
+
+```csharp
+private Employee()
+```
+
+can only be accessed inside `Employee`.
+
+Therefore:
+
+```text
+private constructor
+        ↓
+Other classes cannot create Employee
+        ↓
+Other classes cannot inherit from Employee
+```
+
+---
+
+## What if we use a protected constructor?
+
+If we want to prevent direct object creation but **allow inheritance**, we can use a `protected` constructor.
+
+```csharp
+public class Employee
+{
+    protected Employee()
+    {
+    }
+}
+```
+
+Now this is not allowed:
+
+```csharp
+Employee emp = new Employee(); // ❌
+```
+
+But inheritance is allowed:
+
+```csharp
+public class Manager : Employee
+{
+}
+```
+
+```text
+protected constructor
+        ↓
+Other classes cannot directly create Employee
+        ↓
+Derived classes CAN inherit Employee
+```
+
+So `private` and `protected` constructors are different.
+
+| Constructor | Direct object creation | Inheritance |
+| ----------- | ---------------------- | ----------- |
+| `private`   | ❌                      | ❌           |
+| `protected` | ❌                      | ✅           |
+| `public`    | ✅                      | ✅           |
+
+---
+
+## What about `private protected`?
+
+`private protected` can also be used when we want the constructor to be accessible only to **derived classes within the same assembly**.
+
+```csharp
+public class Employee
+{
+    private protected Employee()
+    {
+    }
+}
+```
+
+A derived class in the **same assembly** can inherit:
+
+```csharp
+public class Manager : Employee
+{
+}
+```
+
+This works because `Manager` is:
+
+* a derived class ✅
+* in the same assembly ✅
+
+But a derived class from another assembly cannot access this constructor.
+
+```text
+private protected
+        ↓
+Derived class AND same assembly
+        ↓
+Both conditions must be satisfied
+```
+
+### Comparison
+
+| Constructor         | Same assembly derived class | Different assembly derived class | Normal class |
+| ------------------- | --------------------------: | -------------------------------: | -----------: |
+| `private`           |                           ❌ |                                ❌ |            ❌ |
+| `protected`         |                           ✅ |                                ✅ |            ❌ |
+| `private protected` |                           ✅ |                                ❌ |            ❌ |
+| `public`            |                           ✅ |                                ✅ |            ✅ |
+
+---
+
+## Controlled object creation
+
+A private constructor is commonly used when we don't want normal object creation from outside the class.
+
+For example:
+
+```csharp
+public class Employee
+{
+    private Employee()
+    {
+    }
+
+    public static Employee CreateEmployee()
+    {
+        return new Employee();
+    }
+}
+```
+
+Now another class cannot do:
+
+```csharp
+Employee emp = new Employee(); // ❌
+```
+
+But it can use the class's controlled method:
+
+```csharp
+Employee emp = Employee.CreateEmployee(); // ✅
+```
+
+Here, the `Employee` class itself calls its private constructor.
+
+---
+
+## Very Important Distinction
+
+There are actually **two different requirements** we should not confuse:
+
+### 1. Prevent object creation
+
+Use a **private constructor**:
+
+```csharp
+public class Employee
+{
+    private Employee()
+    {
+    }
+}
+```
+
+The class is still visible, but objects cannot be created directly.
+
+### 2. Prevent access to the class itself
+
+A private constructor does **not** do this.
+
+For a top-level class, we cannot write:
+
+```csharp
+private class Employee // ❌
+{
+}
+```
+
+Instead, we can use `internal` if we want to restrict a top-level class to the same assembly:
+
+```csharp
+internal class Employee
+{
+}
+```
+
+Or we can make it a private nested class:
+
+```csharp
+public class Company
+{
+    private class Employee
+    {
+    }
+}
+```
+
+Here, `Employee` can only be accessed inside `Company`.
+
+---
+
+## Interview Answer
+
+**If we want to prevent other classes from directly creating an object of a class, we can make its constructor private. A private constructor can only be accessed from within the same class, so other classes cannot use the `new` keyword to create an object. It also prevents other classes from inheriting from that class because a derived class cannot access the private constructor. If we want to allow inheritance while preventing direct object creation, we can use a protected constructor.**
+
+
+
+## How to restrict a class so that another class cannot create its instance?
+
+**Answer:**
+
+If we want to prevent other unrelated classes from creating an instance of a class, we can make the class constructor `protected`.
+
+```csharp
+public class Employee
+{
+    protected Employee()
+    {
+    }
+}
+```
+
+Now another normal class cannot create an object:
+
+```csharp
+public class Test
+{
+    public void Method()
+    {
+        Employee emp = new Employee(); // ❌ Error
+    }
+}
+```
+
+But a derived class can inherit from `Employee`:
+
+```csharp
+public class Manager : Employee
+{
+    // ✅ Allowed
+}
+```
+
+So, a `protected` constructor means:
+
+* Normal/unrelated class → ❌ Cannot create an instance
+* Derived class → ✅ Can inherit
+* The class itself → ✅ Can still be used as a type
+
+**Interview answer:**
+
+> If we want to prevent other unrelated classes from directly creating an instance of a class while still allowing inheritance, we can declare the constructor as `protected`. A protected constructor cannot be accessed by normal classes, but it can be accessed by derived classes.
+
+
+## How to restrict a class not to be inherited for any other class? 
+Ans: This can be done by declaring class as sealed. 
+
+
+## Why can we consume an Abstract Class only through inheritance?
+
+An **abstract class cannot be instantiated directly**. That means we cannot create its object using the `new` keyword.
+
+```csharp
+public abstract class Animal
+{
+    protected Animal()
+    {
+    }
+}
+```
+
+We cannot do:
+
+```csharp
+Animal obj = new Animal(); // ❌ Cannot create object
+```
+
+Instead, we use the abstract class through **inheritance**:
+
+```csharp
+public class Dog : Animal
+{
+}
+```
+
+Now we can create an object of the child class:
+
+```csharp
+Dog dog = new Dog(); // ✅
+```
+
+The important point is that **an abstract class is designed to be a base/parent class**. Its purpose is to provide common members or rules that child classes can inherit and implement.
+
+### About the constructor
+
+The statement:
+
+> "The constructor of an abstract class is protected."
+
+is **not completely correct**.
+
+An abstract class **can have a public, protected, or private constructor**. However, we still cannot directly create an object of the abstract class because the class itself is marked `abstract`.
+
+For example:
+
+```csharp
+public abstract class Animal
+{
+    public Animal()
+    {
+    }
+}
+```
+
+Even though the constructor is `public`:
+
+```csharp
+Animal obj = new Animal(); // ❌ Still not allowed
+```
+
+So the main reason is:
+
+> **We cannot instantiate an abstract class because the class itself is abstract, not because its constructor is protected.**
+
+### Interview answer
+
+> An abstract class cannot be instantiated directly. It is mainly used as a base class, so we consume it through inheritance by creating objects of its derived classes. The constructor of an abstract class can have different access modifiers; it is not necessarily protected.
+
