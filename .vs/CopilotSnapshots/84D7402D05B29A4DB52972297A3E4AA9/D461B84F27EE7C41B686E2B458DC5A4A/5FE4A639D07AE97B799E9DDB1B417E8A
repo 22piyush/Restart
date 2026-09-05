@@ -1,0 +1,6 @@
+﻿namespace FirstApi.Entities
+{
+    public class Employee
+    {
+    }
+}

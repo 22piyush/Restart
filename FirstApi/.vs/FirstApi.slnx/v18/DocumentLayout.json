@@ -1,0 +1,176 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\Restart\\FirstApi\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{AE525012-1722-9A70-4DDF-E0D06BC84F24}|FirstApi\\FirstApi.csproj|e:\\restart\\firstapi\\firstapi\\firstapi.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{AE525012-1722-9A70-4DDF-E0D06BC84F24}|FirstApi\\FirstApi.csproj|solutionrelative:firstapi\\firstapi.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AE525012-1722-9A70-4DDF-E0D06BC84F24}|FirstApi\\FirstApi.csproj|e:\\restart\\firstapi\\firstapi\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AE525012-1722-9A70-4DDF-E0D06BC84F24}|FirstApi\\FirstApi.csproj|solutionrelative:firstapi\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AE525012-1722-9A70-4DDF-E0D06BC84F24}|FirstApi\\FirstApi.csproj|e:\\restart\\firstapi\\firstapi\\iservice\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AE525012-1722-9A70-4DDF-E0D06BC84F24}|FirstApi\\FirstApi.csproj|solutionrelative:firstapi\\iservice\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AE525012-1722-9A70-4DDF-E0D06BC84F24}|FirstApi\\FirstApi.csproj|e:\\restart\\firstapi\\firstapi\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AE525012-1722-9A70-4DDF-E0D06BC84F24}|FirstApi\\FirstApi.csproj|solutionrelative:firstapi\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AE525012-1722-9A70-4DDF-E0D06BC84F24}|FirstApi\\FirstApi.csproj|e:\\restart\\firstapi\\firstapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{AE525012-1722-9A70-4DDF-E0D06BC84F24}|FirstApi\\FirstApi.csproj|solutionrelative:firstapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AE525012-1722-9A70-4DDF-E0D06BC84F24}|FirstApi\\FirstApi.csproj|e:\\restart\\firstapi\\firstapi\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AE525012-1722-9A70-4DDF-E0D06BC84F24}|FirstApi\\FirstApi.csproj|solutionrelative:firstapi\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AE525012-1722-9A70-4DDF-E0D06BC84F24}|FirstApi\\FirstApi.csproj|e:\\restart\\firstapi\\firstapi\\entities\\employee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AE525012-1722-9A70-4DDF-E0D06BC84F24}|FirstApi\\FirstApi.csproj|solutionrelative:firstapi\\entities\\employee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AE525012-1722-9A70-4DDF-E0D06BC84F24}|FirstApi\\FirstApi.csproj|e:\\restart\\firstapi\\firstapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AE525012-1722-9A70-4DDF-E0D06BC84F24}|FirstApi\\FirstApi.csproj|solutionrelative:firstapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AE525012-1722-9A70-4DDF-E0D06BC84F24}|FirstApi\\FirstApi.csproj|e:\\restart\\firstapi\\firstapi\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AE525012-1722-9A70-4DDF-E0D06BC84F24}|FirstApi\\FirstApi.csproj|solutionrelative:firstapi\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 28,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AuthService.cs",
+              "DocumentMoniker": "E:\\Restart\\FirstApi\\FirstApi\\Services\\AuthService.cs",
+              "RelativeDocumentMoniker": "FirstApi\\Services\\AuthService.cs",
+              "ToolTip": "E:\\Restart\\FirstApi\\FirstApi\\Services\\AuthService.cs",
+              "RelativeToolTip": "FirstApi\\Services\\AuthService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-05T14:53:47.082Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "FirstApi",
+              "DocumentMoniker": "E:\\Restart\\FirstApi\\FirstApi\\FirstApi.csproj",
+              "RelativeDocumentMoniker": "FirstApi\\FirstApi.csproj",
+              "ToolTip": "E:\\Restart\\FirstApi\\FirstApi\\FirstApi.csproj",
+              "RelativeToolTip": "FirstApi\\FirstApi.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-09-05T14:53:18.737Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "IAuthService.cs",
+              "DocumentMoniker": "E:\\Restart\\FirstApi\\FirstApi\\IService\\IAuthService.cs",
+              "RelativeDocumentMoniker": "FirstApi\\IService\\IAuthService.cs",
+              "ToolTip": "E:\\Restart\\FirstApi\\FirstApi\\IService\\IAuthService.cs",
+              "RelativeToolTip": "FirstApi\\IService\\IAuthService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-05T14:53:59.325Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "E:\\Restart\\FirstApi\\FirstApi\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "FirstApi\\Controllers\\AuthController.cs",
+              "ToolTip": "E:\\Restart\\FirstApi\\FirstApi\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "FirstApi\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-05T14:50:23.294Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "E:\\Restart\\FirstApi\\FirstApi\\appsettings.json",
+              "RelativeDocumentMoniker": "FirstApi\\appsettings.json",
+              "ToolTip": "E:\\Restart\\FirstApi\\FirstApi\\appsettings.json",
+              "RelativeToolTip": "FirstApi\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-09-05T14:41:58.638Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "E:\\Restart\\FirstApi\\FirstApi\\Data\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "FirstApi\\Data\\AppDbContext.cs",
+              "ToolTip": "E:\\Restart\\FirstApi\\FirstApi\\Data\\AppDbContext.cs",
+              "RelativeToolTip": "FirstApi\\Data\\AppDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-05T14:27:49.026Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Program.cs",
+              "DocumentMoniker": "E:\\Restart\\FirstApi\\FirstApi\\Program.cs",
+              "RelativeDocumentMoniker": "FirstApi\\Program.cs",
+              "ToolTip": "E:\\Restart\\FirstApi\\FirstApi\\Program.cs",
+              "RelativeToolTip": "FirstApi\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-05T14:31:38.189Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Employee.cs",
+              "DocumentMoniker": "E:\\Restart\\FirstApi\\FirstApi\\Entities\\Employee.cs",
+              "RelativeDocumentMoniker": "FirstApi\\Entities\\Employee.cs",
+              "ToolTip": "E:\\Restart\\FirstApi\\FirstApi\\Entities\\Employee.cs",
+              "RelativeToolTip": "FirstApi\\Entities\\Employee.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-05T14:23:57.3Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "User.cs",
+              "DocumentMoniker": "E:\\Restart\\FirstApi\\FirstApi\\Entities\\User.cs",
+              "RelativeDocumentMoniker": "FirstApi\\Entities\\User.cs",
+              "ToolTip": "E:\\Restart\\FirstApi\\FirstApi\\Entities\\User.cs",
+              "RelativeToolTip": "FirstApi\\Entities\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-05T14:04:11.903Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
