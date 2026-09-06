@@ -1,0 +1,46 @@
+﻿@model IEnumerable<MVCWithADO.Models.Student>
+
+@{
+    ViewBag.Title = "DisplayStudents";
+}
+
+<h2>DisplayStudents</h2>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Sid</th>
+            <th>Name</th>
+            <th>Class</th>
+            <th>Fees</th>
+            <th>Photo</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var student in Model)
+        {
+            <tr>
+                <td>@student.Sid</td>
+                <td>@student.Name</td>
+                <td>@student.Fees</td>
+                <td>@student.Photo</td>
+                <td>@student.Status</td>
+                <td>
+                    @Html.ActionLink("Details", "DisplayStudent", new { Sid = student.Sid })
+                    |
+                    @Html.ActionLink("Edit", "EditStudent", new { Sid = student.Sid })
+                    |
+                    @Html.ActionLink(
+                         "Delete",
+                         "DeleteStudent",
+                         new { Sid = student.Sid },
+                         new { onclick = "return confirm('Are you sure you want to delete student " + student.Sid + "?');" }
+                     )
+                </td>
+            </tr>
+         }
+    </tbody>
+</table>

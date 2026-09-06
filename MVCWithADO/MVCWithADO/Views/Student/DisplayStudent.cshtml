@@ -1,0 +1,18 @@
+﻿@model IEnumerable<MVCWithADO.Models.Student>
+
+@{
+    ViewBag.Title = "DisplayStudent";
+}
+
+<h2>Student Details</h2>
+
+@foreach (var student in Model)
+{
+    <div>
+        <p><strong>Student ID:</strong> @student.Sid</p>
+        <p><strong>Name:</strong> @student.Name</p>
+        <p><strong>Fees:</strong> @student.Fees</p>
+        <p><strong>Status:</strong> @student.Status</p>
+        <p><strong>Photo:</strong> @student.Photo</p>
+    </div>
+}

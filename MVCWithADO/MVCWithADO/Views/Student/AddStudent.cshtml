@@ -1,0 +1,40 @@
+﻿@model MVCWithADO.Models.Student
+
+@{
+    ViewBag.Title = "AddStudent";
+}
+
+<h2>Add Student</h2>
+
+@using (Html.BeginForm("AddStudent", "Student", FormMethod.Post))
+{
+    <div>
+        @Html.LabelFor(x => x.Sid)
+        @Html.TextBoxFor(x => x.Sid)
+    </div>
+
+    <br />
+
+    <div>
+        @Html.LabelFor(x => x.Name)
+        @Html.TextBoxFor(x => x.Name)
+    </div>
+
+    <br />
+
+    <div>
+        @Html.LabelFor(x => x.Fees)
+        @Html.TextBoxFor(x => x.Fees)
+    </div>
+
+    <br />
+
+    <div>
+        @Html.LabelFor(x => x.Status)
+        @Html.CheckBoxFor(x => x.Status)
+    </div>
+
+    <br />
+
+    <input type="submit" value="Add Student" />
+}
