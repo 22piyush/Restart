@@ -1,0 +1,1403 @@
+# Finalizers in C#
+
+## 1. What is a Finalizer?
+
+Finalizers are used to perform cleanup when an object (instance) of a class is being destroyed/reclaimed.
+
+A Finalizer is a special method similar to a Constructor.
+
+* A **Constructor** is called when an instance of a class is created.
+* A **Finalizer** is executed when an instance of a class is being destroyed/reclaimed by the Garbage Collector.
+* Both use the class name, but a Finalizer is differentiated from a Constructor by using the **tilde (`~`) operator** before the class name.
+
+### Syntax
+
+```csharp
+class Test
+{
+    // Constructor
+    Test()
+    {
+        // Constructor code
+    }
+
+    // Finalizer
+    ~Test()
+    {
+        // Finalizer code
+    }
+}
+```
+
+The `~Test()` method is the Finalizer of the `Test` class.
+
+---
+
+# 2. Important Characteristics of Finalizers
+
+## 2.1 Finalizers can be defined only in Classes
+
+Finalizers cannot be defined inside structs.
+
+```text
+Class  → Finalizer can be defined
+Struct → Finalizer cannot be defined
+```
+
+Finalizers are therefore associated with classes/reference types.
+
+---
+
+## 2.2 Constructor vs Finalizer
+
+A constructor is executed when an object is created.
+
+A finalizer is executed when an object is being finalized/reclaimed.
+
+```text
+Object Created
+      ↓
+Constructor Executes
+      ↓
+Object is Used
+      ↓
+Object is No Longer Required
+      ↓
+Garbage Collector
+      ↓
+Finalizer Executes
+      ↓
+Object is Reclaimed
+```
+
+---
+
+## 2.3 Finalizers are used for Cleanup
+
+Constructors are generally responsible for initializing an object.
+
+For example:
+
+```csharp
+class Student
+{
+    int id;
+
+    public Student(int id)
+    {
+        this.id = id;
+    }
+}
+```
+
+The constructor initializes the object.
+
+A finalizer works in the opposite direction and is associated with cleanup/releasing resources held by the object.
+
+---
+
+## 2.4 Finalizers Cannot Have Parameters
+
+Constructors can have parameters:
+
+```csharp
+class Student
+{
+    public Student(int id)
+    {
+    }
+}
+```
+
+But finalizers cannot have parameters:
+
+```csharp
+class Student
+{
+    ~Student()
+    {
+    }
+}
+```
+
+Therefore, finalizers cannot be parameterized.
+
+---
+
+## 2.5 Finalizers Cannot Be Overloaded
+
+Because a finalizer cannot have parameters, it cannot be overloaded.
+
+For example, this is invalid:
+
+```csharp
+class Student
+{
+    ~Student()
+    {
+    }
+
+    ~Student(int id)   // ❌ Invalid
+    {
+    }
+}
+```
+
+A class can have only one finalizer.
+
+---
+
+## 2.6 Finalizers Cannot Have Access Modifiers
+
+Constructors can have access modifiers:
+
+```csharp
+public Student()
+{
+}
+```
+
+But finalizers cannot have access modifiers.
+
+Correct:
+
+```csharp
+~Student()
+{
+}
+```
+
+Incorrect:
+
+```csharp
+public ~Student()   // ❌ Invalid
+{
+}
+```
+
+---
+
+## 2.7 Finalizers Are Called Automatically
+
+A programmer does not explicitly call a finalizer.
+
+The Garbage Collector is responsible for determining when the finalizer should execute.
+
+For example:
+
+```csharp
+class Test
+{
+    ~Test()
+    {
+        Console.WriteLine("Finalizer called");
+    }
+}
+```
+
+We do not call:
+
+```csharp
+obj.~Test();   // ❌ Invalid
+```
+
+Instead, the Garbage Collector handles finalization automatically.
+
+---
+
+# 3. When Does a Finalizer Execute?
+
+The programmer has **no control over exactly when a finalizer is called**.
+
+The Garbage Collector determines when an object should be finalized.
+
+There are different situations in which finalization can occur.
+
+---
+
+## 3.1 At the End of Program Execution
+
+When a program finishes execution, objects associated with the program can be cleaned up and their finalizers may execute.
+
+For example:
+
+```csharp
+class Test
+{
+    ~Test()
+    {
+        Console.WriteLine("Finalizer called");
+    }
+}
+```
+
+When the application terminates, finalization may occur as part of runtime cleanup.
+
+---
+
+## 3.2 When an Object Is No Longer Used
+
+Consider:
+
+```csharp
+Test obj = new Test();
+```
+
+Later:
+
+```csharp
+obj = null;
+```
+
+The object is no longer reachable through `obj`.
+
+The object becomes **eligible for garbage collection**.
+
+When the Garbage Collector performs collection, the object's finalizer can execute.
+
+Important:
+
+```text
+Object becomes unused
+        ↓
+Eligible for GC
+        ↓
+GC decides when to collect
+        ↓
+Finalizer executes
+        ↓
+Object is reclaimed
+```
+
+Be careful with the word **eligible**.
+
+Becoming eligible for garbage collection does not mean that the finalizer executes immediately.
+
+---
+
+# 4. Forcing Garbage Collection Using GC.Collect()
+
+C# provides:
+
+```csharp
+GC.Collect();
+```
+
+This requests the Garbage Collector to perform garbage collection.
+
+Example:
+
+```csharp
+Test obj = new Test();
+
+obj = null;
+
+GC.Collect();
+```
+
+After the object becomes unreachable, `GC.Collect()` requests garbage collection.
+
+However, manually calling `GC.Collect()` should generally be avoided unless there is a specific reason.
+
+---
+
+## Why Should We Avoid GC.Collect()?
+
+Garbage collection requires runtime work and can temporarily suspend application execution while collection is performed.
+
+Therefore, unnecessarily forcing garbage collection can cause performance problems.
+
+Normally, the .NET Garbage Collector should be allowed to decide when garbage collection should occur.
+
+```text
+Usually:
+Application
+    ↓
+.NET GC automatically decides
+    ↓
+Garbage Collection
+
+Avoid:
+Application
+    ↓
+GC.Collect() unnecessarily
+    ↓
+Forced collection
+    ↓
+Possible performance impact
+```
+
+---
+
+# 5. Example of Finalizer
+
+```csharp
+using System;
+
+internal class DestDemo1
+{
+    public DestDemo1()
+    {
+        Console.WriteLine("Instance1 is created.");
+    }
+
+    ~DestDemo1()
+    {
+        Console.WriteLine("Instance1 is destroyed.");
+    }
+
+    static void Main(string[] args)
+    {
+        DestDemo1 d1 = new DestDemo1();
+        DestDemo1 d2 = new DestDemo1();
+        DestDemo1 d3 = new DestDemo1();
+
+        Console.ReadLine();
+    }
+}
+```
+
+### Explanation
+
+Three objects are created:
+
+```csharp
+DestDemo1 d1 = new DestDemo1();
+DestDemo1 d2 = new DestDemo1();
+DestDemo1 d3 = new DestDemo1();
+```
+
+Therefore, the constructor executes three times.
+
+The output initially will contain:
+
+```text
+Instance1 is created.
+Instance1 is created.
+Instance1 is created.
+```
+
+The program then waits at:
+
+```csharp
+Console.ReadLine();
+```
+
+When the program finishes, the finalizers can execute for the objects.
+
+Therefore, you may see:
+
+```text
+Instance1 is destroyed.
+Instance1 is destroyed.
+Instance1 is destroyed.
+```
+
+The important concept is that finalizers are handled by the runtime and their exact execution timing is not controlled by the programmer.
+
+---
+
+# 6. Example Using GC.Collect()
+
+Consider:
+
+```csharp
+using System;
+
+internal class DestDemo1
+{
+    public DestDemo1()
+    {
+        Console.WriteLine("Instance is created.");
+    }
+
+    ~DestDemo1()
+    {
+        Console.WriteLine("Instance is destroyed.");
+    }
+
+    static void Main(string[] args)
+    {
+        DestDemo1 d1 = new DestDemo1();
+        DestDemo1 d2 = new DestDemo1();
+        DestDemo1 d3 = new DestDemo1();
+
+        d1 = null;
+        d3 = null;
+
+        GC.Collect();
+
+        Console.ReadLine();
+    }
+}
+```
+
+Here:
+
+```csharp
+d1 = null;
+d3 = null;
+```
+
+makes the objects previously referenced by `d1` and `d3` no longer reachable through those variables.
+
+Then:
+
+```csharp
+GC.Collect();
+```
+
+requests garbage collection.
+
+Therefore, those objects can be finalized before `Console.ReadLine()`.
+
+The remaining object can be finalized later when it becomes eligible for cleanup.
+
+---
+
+# 7. Finalizers and Inheritance
+
+Finalizers also work with inheritance.
+
+Suppose we have a parent class:
+
+```csharp
+class DestDemo1
+{
+    public DestDemo1()
+    {
+        Console.WriteLine("Parent Constructor");
+    }
+
+    ~DestDemo1()
+    {
+        Console.WriteLine("Parent Finalizer");
+    }
+}
+```
+
+And a child class:
+
+```csharp
+class DestDemo2 : DestDemo1
+{
+    public DestDemo2()
+    {
+        Console.WriteLine("Child Constructor");
+    }
+
+    ~DestDemo2()
+    {
+        Console.WriteLine("Child Finalizer");
+    }
+}
+```
+
+Now create an object:
+
+```csharp
+DestDemo2 obj = new DestDemo2();
+```
+
+---
+
+## Constructor Order
+
+When a child object is created, the parent constructor executes first.
+
+Therefore:
+
+```text
+Parent Constructor
+        ↓
+Child Constructor
+```
+
+Constructors execute in:
+
+```text
+Top → Bottom
+Parent → Child
+```
+
+---
+
+## Finalizer Order
+
+Finalization occurs in the opposite hierarchy order.
+
+Therefore:
+
+```text
+Child Finalizer
+        ↓
+Parent Finalizer
+```
+
+Finalizers execute in:
+
+```text
+Bottom → Top
+Child → Parent
+```
+
+### Easy way to remember
+
+```text
+CONSTRUCTOR
+
+Parent
+  ↓
+Child
+
+Top → Bottom
+
+
+FINALIZER
+
+Child
+  ↓
+Parent
+
+Bottom → Top
+```
+
+---
+
+# 8. Why Are Finalizers Needed?
+
+.NET has a Garbage Collector that automatically manages the memory used by managed objects.
+
+Therefore, in normal C# programming, developers usually don't manually release the memory occupied by ordinary managed objects.
+
+However, applications can work with **unmanaged resources**.
+
+Examples include:
+
+* Files
+* Database connections
+* Network connections
+* File handles
+* Other resources outside normal managed-memory management
+
+When a class holds unmanaged resources, those resources need proper cleanup.
+
+Finalizers can provide a backup mechanism for releasing such resources.
+
+---
+
+# 9. Managed Resources vs Unmanaged Resources
+
+## Managed Resources
+
+Managed resources are resources managed by the .NET runtime and Garbage Collector.
+
+Examples include normal C# objects such as:
+
+```csharp
+string name = "Piyush";
+
+Student student = new Student();
+```
+
+The Garbage Collector manages the memory used by these objects.
+
+---
+
+## Unmanaged Resources
+
+Unmanaged resources are resources that are not directly managed by the .NET Garbage Collector.
+
+Examples include:
+
+```text
+File handles
+Database connections
+Network sockets
+Native operating-system resources
+```
+
+These resources require explicit cleanup.
+
+This is where `Dispose()` and, in appropriate cases, a finalizer become important.
+
+---
+
+# 10. Dispose Method
+
+The `Dispose()` method is part of the:
+
+```csharp
+IDisposable
+```
+
+interface.
+
+It is used to explicitly release resources when an object is no longer needed.
+
+Example:
+
+```csharp
+class DisposeDemo1 : IDisposable
+{
+    FileStream fs;
+
+    public DisposeDemo1(string filePath)
+    {
+        fs = new FileStream(filePath, FileMode.Create);
+    }
+
+    public void WriteLine(string str)
+    {
+        byte[] bytes = Encoding.UTF8.GetBytes(str);
+
+        fs.Write(bytes, 0, bytes.Length);
+    }
+
+    public void Dispose()
+    {
+        if (fs != null)
+        {
+            fs.Dispose();
+        }
+    }
+}
+```
+
+Here the class implements:
+
+```csharp
+IDisposable
+```
+
+and provides:
+
+```csharp
+Dispose()
+```
+
+to explicitly clean up the `FileStream`.
+
+---
+
+# 11. Why Do We Need Dispose() If FileStream Is a Managed Class?
+
+`FileStream` is a managed .NET class, but it represents/wraps an underlying operating-system file resource.
+
+Therefore, simply waiting for the Garbage Collector is not ideal when we need the file resource released promptly.
+
+Calling:
+
+```csharp
+fs.Dispose();
+```
+
+releases the resource explicitly.
+
+This is why `Dispose()` is important for resource cleanup.
+
+---
+
+# 12. Calling Dispose() Explicitly
+
+Example:
+
+```csharp
+class TestDisposeDemo1
+{
+    static void Main()
+    {
+        DisposeDemo1 d1 =
+            new DisposeDemo1("D:\\CSharp\\Test1.txt");
+
+        d1.WriteLine("Hello World");
+
+        d1.Dispose();
+    }
+}
+```
+
+Here:
+
+```csharp
+d1.Dispose();
+```
+
+explicitly releases the resource.
+
+We don't need to wait for the Garbage Collector to decide when cleanup should happen.
+
+---
+
+# 13. Using `using` for Automatic Dispose
+
+Instead of manually calling `Dispose()`, we can use a `using` block.
+
+```csharp
+using (DisposeDemo1 d2 =
+       new DisposeDemo1("D:\\CSharp\\Test2.txt"))
+{
+    d2.WriteLine("Hello World");
+}
+```
+
+When the `using` block ends, `Dispose()` is automatically called.
+
+Conceptually:
+
+```text
+using block starts
+       ↓
+Object created
+       ↓
+Object used
+       ↓
+using block ends
+       ↓
+Dispose() called automatically
+       ↓
+Resource released
+```
+
+Therefore, `using` is preferred when working with objects that implement `IDisposable`.
+
+---
+
+# 14. Using Declaration in C# 8.0
+
+C# 8.0 introduced the using declaration.
+
+Example:
+
+```csharp
+using DisposeDemo1 d3 =
+    new DisposeDemo1("D:\\CSharp\\Test3.txt");
+
+d3.WriteLine("Hello World");
+```
+
+The resource is disposed automatically when the variable goes out of scope.
+
+---
+
+# 15. Finalizer + Dispose Together
+
+A class can implement both:
+
+* `IDisposable`
+* `Dispose()`
+* Finalizer
+
+Example:
+
+```csharp
+using System;
+using System.IO;
+using System.Text;
+
+internal class DisposeDemo2 : IDisposable
+{
+    FileStream fs;
+
+    bool disposed = false;
+
+    public DisposeDemo2(string filePath)
+    {
+        fs = new FileStream(filePath, FileMode.Create);
+    }
+
+    public void WriteLine(string str)
+    {
+        byte[] bytes = Encoding.UTF8.GetBytes(str);
+
+        fs.Write(bytes, 0, bytes.Length);
+    }
+
+    ~DisposeDemo2()
+    {
+        if (!disposed)
+        {
+            fs.Dispose();
+            disposed = true;
+        }
+
+        Console.WriteLine("Finalizer method is called.");
+    }
+
+    public void Dispose()
+    {
+        if (!disposed)
+        {
+            GC.SuppressFinalize(this);
+
+            fs.Dispose();
+
+            disposed = true;
+        }
+
+        Console.WriteLine("Dispose method is called.");
+    }
+}
+```
+
+---
+
+# 16. Why Do We Use the `disposed` Variable?
+
+We use:
+
+```csharp
+bool disposed = false;
+```
+
+to track whether the resource has already been released.
+
+Initially:
+
+```text
+disposed = false
+```
+
+This means the resource has not yet been cleaned up.
+
+When cleanup occurs:
+
+```csharp
+disposed = true;
+```
+
+Now the program knows that cleanup has already happened.
+
+This helps prevent the same resource from being cleaned up multiple times.
+
+---
+
+# 17. How Dispose() and Finalizer Work Together
+
+Suppose we create:
+
+```csharp
+DisposeDemo2 d =
+    new DisposeDemo2("D:\\CSharp\\Test.txt");
+
+d.WriteLine("Hello World");
+```
+
+but we **do not call**:
+
+```csharp
+d.Dispose();
+```
+
+Eventually, when the object is finalized, the finalizer can perform the required cleanup.
+
+The flow is:
+
+```text
+Dispose() NOT called
+        ↓
+Object becomes eligible for GC
+        ↓
+GC finalizes object
+        ↓
+Finalizer executes
+        ↓
+Resource is released
+```
+
+The finalizer therefore acts as a **backup cleanup mechanism**.
+
+---
+
+# 18. What Happens If Dispose() Is Called?
+
+Now consider:
+
+```csharp
+DisposeDemo2 d =
+    new DisposeDemo2("D:\\CSharp\\Test.txt");
+
+d.WriteLine("Hello World");
+
+d.Dispose();
+```
+
+The `Dispose()` method executes.
+
+Inside it:
+
+```csharp
+GC.SuppressFinalize(this);
+```
+
+is called.
+
+Then the resource is released:
+
+```csharp
+fs.Dispose();
+```
+
+Therefore:
+
+```text
+d.Dispose()
+     ↓
+Resource released
+     ↓
+GC.SuppressFinalize(this)
+     ↓
+Finalizer does not need to execute
+```
+
+This prevents unnecessary finalization after the resource has already been cleaned up.
+
+---
+
+# 19. What is GC.SuppressFinalize()?
+
+`GC.SuppressFinalize(this)` tells the Garbage Collector:
+
+> The object has already performed its required cleanup, so the finalizer does not need to be called.
+
+Example:
+
+```csharp
+public void Dispose()
+{
+    if (!disposed)
+    {
+        fs.Dispose();
+
+        disposed = true;
+
+        GC.SuppressFinalize(this);
+    }
+}
+```
+
+This is particularly useful when a class implements both `Dispose()` and a finalizer.
+
+---
+
+# 20. Complete Cleanup Flow
+
+### When Dispose() is called
+
+```text
+Object created
+      ↓
+Object used
+      ↓
+Dispose() called
+      ↓
+Resource released
+      ↓
+GC.SuppressFinalize(this)
+      ↓
+Finalizer skipped
+```
+
+### When Dispose() is NOT called
+
+```text
+Object created
+      ↓
+Object used
+      ↓
+Object becomes unreachable
+      ↓
+Garbage Collector
+      ↓
+Finalizer executes
+      ↓
+Resource released
+```
+
+This is the main reason a finalizer can be considered a **safety net**.
+
+---
+
+# 21. Finalizer vs Dispose
+
+| Feature      | Finalizer                                       | Dispose                                |
+| ------------ | ----------------------------------------------- | -------------------------------------- |
+| Purpose      | Cleanup unmanaged resources as a backup         | Primary cleanup mechanism              |
+| Triggered by | Garbage Collector                               | Explicit call or `using`               |
+| Syntax       | `~ClassName()`                                  | `Dispose()`                            |
+| Interface    | No interface required                           | `IDisposable`                          |
+| Timing       | Non-deterministic                               | Deterministic                          |
+| Parameters   | Cannot have parameters                          | Standard `Dispose()` has no parameters |
+| Overloading  | Cannot be overloaded                            | `Dispose()` itself has no parameters   |
+| Performance  | More GC overhead                                | More efficient for immediate cleanup   |
+| Suppression  | Can be suppressed using `GC.SuppressFinalize()` | Not applicable                         |
+| Best use     | Safety mechanism for unmanaged resources        | Primary resource cleanup               |
+
+---
+
+# 22. Deterministic vs Non-Deterministic Cleanup
+
+This is an important interview concept.
+
+## Finalizer — Non-Deterministic
+
+We don't know exactly when the finalizer will execute.
+
+```text
+Object unused
+     ↓
+Wait for GC
+     ↓
+Finalizer
+```
+
+The timing depends on the Garbage Collector.
+
+---
+
+## Dispose — Deterministic
+
+We explicitly decide when cleanup happens:
+
+```csharp
+d.Dispose();
+```
+
+or:
+
+```csharp
+using (var d = new Resource())
+{
+    // Use resource
+}
+```
+
+Therefore:
+
+```text
+Dispose → Known cleanup point
+Finalizer → Unknown cleanup point
+```
+
+---
+
+# 23. Why Finalizers Are Generally Avoided When Possible
+
+Finalizers are generally avoided when possible because:
+
+### 1. They are non-deterministic
+
+We don't know exactly when the Garbage Collector will execute them.
+
+### 2. They add Garbage Collector overhead
+
+Objects that have finalizers require additional finalization processing.
+
+### 3. Resources may remain occupied longer
+
+If cleanup depends only on a finalizer, the unmanaged resource may remain allocated until the GC performs finalization.
+
+### 4. Dispose() provides better control
+
+With `Dispose()`:
+
+```csharp
+resource.Dispose();
+```
+
+we can release the resource at a known point.
+
+Therefore:
+
+```text
+Finalizer
+   ↓
+Backup / Safety mechanism
+
+Dispose
+   ↓
+Primary cleanup mechanism
+```
+
+---
+
+# 24. Best Practices
+
+## 1. Use Dispose() for resource cleanup
+
+When a class works with unmanaged resources, implement `IDisposable` and provide a `Dispose()` method.
+
+```csharp
+class ResourceManager : IDisposable
+{
+    public void Dispose()
+    {
+        // Release resources
+    }
+}
+```
+
+---
+
+## 2. Use `using` whenever possible
+
+```csharp
+using (var resource = new ResourceManager())
+{
+    // Use resource
+}
+```
+
+This ensures `Dispose()` is called automatically.
+
+---
+
+## 3. Use `GC.SuppressFinalize()` when both Dispose and Finalizer are implemented
+
+```csharp
+public void Dispose()
+{
+    // Cleanup
+
+    GC.SuppressFinalize(this);
+}
+```
+
+This prevents the Garbage Collector from unnecessarily calling the finalizer after cleanup has already been performed.
+
+---
+
+## 4. Avoid unnecessary `GC.Collect()`
+
+Do not normally force garbage collection manually:
+
+```csharp
+GC.Collect();
+```
+
+Let the .NET Garbage Collector decide when collection should happen unless there is a specific reason to force it.
+
+---
+
+# 25. Finalizer vs Constructor — Quick Comparison
+
+| Constructor                    | Finalizer                                |
+| ------------------------------ | ---------------------------------------- |
+| Initializes an object          | Performs cleanup                         |
+| Called when object is created  | Called during finalization               |
+| Same name as class             | `~` + class name                         |
+| Can have parameters            | Cannot have parameters                   |
+| Can be overloaded              | Cannot be overloaded                     |
+| Can have access modifiers      | Cannot have access modifiers             |
+| Called during object creation  | Called by GC/runtime                     |
+| Developer can call constructor | Developer cannot directly call finalizer |
+
+---
+
+# 26. Important Interview Points
+
+### Q1. What is a Finalizer?
+
+A finalizer is a special method written using `~ClassName()` that is automatically invoked by the runtime during object finalization. It can be used as a backup mechanism for cleaning up unmanaged resources.
+
+---
+
+### Q2. Who calls the Finalizer?
+
+The **Garbage Collector/runtime** handles finalization.
+
+The programmer does not explicitly call the finalizer.
+
+---
+
+### Q3. Can we call a Finalizer manually?
+
+No.
+
+```csharp
+obj.~Test(); // ❌ Invalid
+```
+
+---
+
+### Q4. Can a Finalizer have parameters?
+
+No.
+
+```csharp
+~Test(int id) // ❌ Invalid
+{
+}
+```
+
+---
+
+### Q5. Can Finalizers be overloaded?
+
+No.
+
+Because finalizers cannot have parameters, they cannot be overloaded.
+
+---
+
+### Q6. Can structs have Finalizers?
+
+No.
+
+Finalizers can be defined only in classes.
+
+---
+
+### Q7. When does a Finalizer execute?
+
+The exact timing is determined by the Garbage Collector. The programmer cannot predict or control the exact execution time.
+
+---
+
+### Q8. What is `GC.Collect()`?
+
+`GC.Collect()` requests the Garbage Collector to perform garbage collection.
+
+```csharp
+GC.Collect();
+```
+
+It should generally not be called unnecessarily because forced collection can affect performance.
+
+---
+
+### Q9. What is IDisposable?
+
+`IDisposable` is an interface that provides the `Dispose()` method for explicit resource cleanup.
+
+```csharp
+class Test : IDisposable
+{
+    public void Dispose()
+    {
+        // Cleanup
+    }
+}
+```
+
+---
+
+### Q10. Why is Dispose() preferred over Finalizer?
+
+`Dispose()` provides deterministic cleanup.
+
+The programmer can explicitly call:
+
+```csharp
+Dispose();
+```
+
+or use:
+
+```csharp
+using
+```
+
+A finalizer is non-deterministic because its execution depends on the Garbage Collector.
+
+---
+
+### Q11. Why use `GC.SuppressFinalize()`?
+
+It tells the Garbage Collector not to execute the finalizer because cleanup has already been performed by `Dispose()`.
+
+---
+
+# 27. Final Summary
+
+```text
+FINALIZERS IN C#
+================
+
+1. A Finalizer is a special method used for cleanup during object
+   finalization.
+
+2. Syntax:
+
+       ~ClassName()
+       {
+       }
+
+3. Finalizers:
+   - Can be defined only in classes.
+   - Cannot be defined in structs.
+   - Cannot have parameters.
+   - Cannot be overloaded.
+   - Cannot have access modifiers.
+   - Cannot be called explicitly by the programmer.
+   - Are handled by the Garbage Collector/runtime.
+
+4. The programmer does not control exactly when a finalizer executes.
+
+5. An object becoming unreachable only makes it eligible for garbage
+   collection. It does not mean that its finalizer runs immediately.
+
+6. GC.Collect() can request garbage collection, but it should generally
+   not be used unnecessarily because it can affect performance.
+
+7. In inheritance:
+
+       Constructors → Parent → Child
+                     Top → Bottom
+
+       Finalizers   → Child → Parent
+                     Bottom → Top
+
+8. Finalizers are mainly relevant when working with unmanaged resources.
+
+9. IDisposable provides the Dispose() method for deterministic cleanup.
+
+10. Dispose() can be called explicitly:
+
+       obj.Dispose();
+
+11. The using statement automatically calls Dispose():
+
+       using (var obj = new Resource())
+       {
+           // Use resource
+       }
+
+12. If a class uses both Dispose() and a finalizer, Dispose() can call:
+
+       GC.SuppressFinalize(this);
+
+    This prevents the finalizer from running after cleanup has already
+    been performed.
+
+13. Finalizer = Backup/Safety cleanup
+    Dispose   = Primary/Deterministic cleanup
+
+14. Finalizers are generally avoided when possible because they are
+    non-deterministic and add Garbage Collector overhead.
+
+15. Best practice:
+    - Use IDisposable for explicit resource cleanup.
+    - Use using whenever possible.
+    - Avoid unnecessary GC.Collect().
+    - Use a finalizer only when appropriate for unmanaged-resource
+      cleanup.
+```
+
+## ⭐ Most Important Concept
+
+```text
+                 Resource Cleanup
+                       |
+              ┌────────┴────────┐
+              ↓                 ↓
+          Dispose()          Finalizer
+              ↓                 ↓
+       Explicit cleanup    GC-based cleanup
+              ↓                 ↓
+        Deterministic      Non-deterministic
+              ↓                 ↓
+        PRIMARY METHOD      SAFETY NET
+```
+
+This is the core concept you should remember for interviews: **`Dispose()` is the primary mechanism for deterministic resource cleanup; a finalizer is a backup mechanism when appropriate for unmanaged resources.**

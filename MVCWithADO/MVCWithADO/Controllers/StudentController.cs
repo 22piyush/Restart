@@ -35,9 +35,39 @@ namespace MVCWithADO.Controllers
         }
 
         [HttpPost]
-        public ViewResult AddStudent(Student student)
+        public ActionResult AddStudent(Student student)
         {
-            return View();
+            dal.InsertStudent(student);
+
+            return RedirectToAction("DisplayStudents");
+        }
+
+
+        [HttpGet]
+        public ViewResult EditStudent(int Sid)
+        {
+            List<Student> students = dal.SelectStudent(Sid, null);
+
+            Student student = students[0];
+
+            return View(student);
+        }
+
+        [HttpPost]
+        public ActionResult EditStudent(Student student)
+        {
+            dal.UpdateStudent(student);
+
+            return RedirectToAction("DisplayStudents");
+        }
+
+
+        [HttpGet]
+        public ActionResult DeleteStudent(int Sid)
+        {
+            dal.DeleteStudent(Sid);
+
+            return RedirectToAction("DisplayStudents");
         }
 
     }

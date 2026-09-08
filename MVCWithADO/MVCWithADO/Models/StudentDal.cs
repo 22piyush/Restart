@@ -72,5 +72,117 @@ namespace MVCWithADO.Models
 
             return students;
         }
+
+        public void InsertStudent(Student student)
+        {
+            try
+            {
+                cmd.Parameters.Clear();
+
+                cmd.CommandText = "Student_Insert";
+
+                cmd.Parameters.AddWithValue(
+                    "@p_Sid",
+                    student.Sid
+                );
+
+                cmd.Parameters.AddWithValue(
+                    "@p_Name",
+                    student.Name
+                );
+
+                cmd.Parameters.AddWithValue(
+                    "@p_Fees",
+                    student.Fees
+                );
+
+                cmd.Parameters.AddWithValue(
+                    "@p_Status",
+                    student.Status
+                );
+
+                con.Open();
+
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
+        public void UpdateStudent(Student student)
+        {
+            try
+            {
+                cmd.Parameters.Clear();
+
+                cmd.CommandText = "Student_Update";
+
+                cmd.Parameters.AddWithValue(
+                    "@p_Sid",
+                    student.Sid
+                );
+
+                cmd.Parameters.AddWithValue(
+                    "@p_Name",
+                    student.Name
+                );
+
+                cmd.Parameters.AddWithValue(
+                    "@p_Fees",
+                    student.Fees
+                );
+
+                cmd.Parameters.AddWithValue(
+                    "@p_Status",
+                    student.Status
+                );
+
+                con.Open();
+
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
+        public void DeleteStudent(int Sid)
+        {
+            try
+            {
+                cmd.Parameters.Clear();
+
+                cmd.CommandText = "Student_Delete";
+
+                cmd.Parameters.AddWithValue(
+                    "@p_Sid",
+                    Sid
+                );
+
+                con.Open();
+
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
     }
 }

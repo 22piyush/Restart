@@ -1,0 +1,35 @@
+﻿@model MVCWithADO.Models.Student
+
+@{
+    ViewBag.Title = "EditStudent";
+}
+
+<h2>Edit Student</h2>
+
+@using (Html.BeginForm("EditStudent", "Student", FormMethod.Post))
+{
+    @Html.HiddenFor(x => x.Sid)
+
+    <div>
+        @Html.LabelFor(x => x.Name)
+        @Html.TextBoxFor(x => x.Name)
+    </div>
+
+    <br />
+
+    <div>
+        @Html.LabelFor(x => x.Fees)
+        @Html.TextBoxFor(x => x.Fees)
+    </div>
+
+    <br />
+
+    <div>
+        @Html.LabelFor(x => x.Status)
+        @Html.CheckBoxFor(x => x.Status)
+    </div>
+
+    <br />
+
+    <input type="submit" value="Update Student" />
+}
