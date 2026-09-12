@@ -1,0 +1,1250 @@
+# Primary Constructors in C#
+
+## 1. Introduction
+
+A **Primary Constructor** is a feature introduced in **C# 12**.
+
+It provides a concise way to declare constructor parameters directly in the **class or struct declaration**.
+
+### Traditional constructor
+
+Before C# 12, we normally declared the constructor separately inside the class:
+
+```csharp
+public class Employee
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+
+    public Employee(int id, string name)
+    {
+        Id = id;
+        Name = name;
+    }
+}
+```
+
+### Primary constructor
+
+With C# 12, the same concept can be written as:
+
+```csharp
+public class Employee(int id, string name)
+{
+    public int Id { get; set; } = id;
+    public string Name { get; set; } = name;
+}
+```
+
+The parameters:
+
+```text
+id
+name
+```
+
+are the **primary constructor parameters**.
+
+---
+
+# 2. Syntax of a Primary Constructor
+
+The basic syntax is:
+
+```csharp
+public class ClassName(parameter1, parameter2, ...)
+{
+    // Class members
+}
+```
+
+Example:
+
+```csharp
+public class Student(int id, string name)
+{
+    public int Id { get; set; } = id;
+    public string Name { get; set; } = name;
+}
+```
+
+Here:
+
+```csharp
+Student(int id, string name)
+```
+
+is the primary constructor.
+
+---
+
+# 3. Why Do We Use Primary Constructors?
+
+The main purpose of a primary constructor is to **reduce boilerplate code**.
+
+### Without primary constructor:
+
+```csharp
+public class Student
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+
+    public Student(int id, string name)
+    {
+        Id = id;
+        Name = name;
+    }
+}
+```
+
+### With primary constructor:
+
+```csharp
+public class Student(int id, string name)
+{
+    public int Id { get; set; } = id;
+    public string Name { get; set; } = name;
+}
+```
+
+The second version is shorter and easier to read.
+
+---
+
+# 4. Rules of Primary Constructors
+
+There are several important rules to remember.
+
+## Rule 1: Can be used with classes and structs
+
+A primary constructor can be declared for a:
+
+* Class
+* Struct
+
+Example:
+
+```csharp
+public class Employee(int id)
+{
+}
+```
+
+And:
+
+```csharp
+public struct Point(int x, int y)
+{
+}
+```
+
+---
+
+## Rule 2: Parameters are declared after the type name
+
+Example:
+
+```csharp
+public class Employee(int id, string name)
+{
+}
+```
+
+The parameters are:
+
+```text
+id
+name
+```
+
+---
+
+## Rule 3: Primary constructor parameters are in scope throughout the type
+
+Primary constructor parameters can be used throughout the class or struct definition.
+
+Example:
+
+```csharp
+public class Employee(int id, string name)
+{
+    public void Display()
+    {
+        Console.WriteLine(id);
+        Console.WriteLine(name);
+    }
+}
+```
+
+Here `id` and `name` can be accessed inside the `Display()` method.
+
+---
+
+# 5. Primary Constructor Parameters Are Parameters, Not Members
+
+This is one of the most important concepts.
+
+Consider:
+
+```csharp
+public class Employee(int id, string name)
+{
+}
+```
+
+Here:
+
+```text
+id
+name
+```
+
+are **parameters**.
+
+They are NOT:
+
+* Properties
+* Fields
+* Class members
+
+Therefore, this is invalid:
+
+```csharp
+public class Employee(int id, string name)
+{
+    public void Display()
+    {
+        Console.WriteLine(this.id);   // ❌
+        Console.WriteLine(this.name); // ❌
+    }
+}
+```
+
+Why?
+
+Because `id` and `name` are not members of the class.
+
+Correct:
+
+```csharp
+public class Employee(int id, string name)
+{
+    public void Display()
+    {
+        Console.WriteLine(id);   // ✅
+        Console.WriteLine(name); // ✅
+    }
+}
+```
+
+### Important point
+
+Primary constructor parameters are **in scope throughout the type**, but they are still **parameters**.
+
+---
+
+# 6. Primary Constructor Parameters Are Not Automatically Properties
+
+Consider:
+
+```csharp
+public class Employee(int id, string name)
+{
+}
+```
+
+This does NOT automatically create:
+
+```csharp
+obj.id
+obj.name
+```
+
+If you want to expose these values as properties, you must explicitly declare properties.
+
+Example:
+
+```csharp
+public class Employee(int id, string name)
+{
+    public int Id { get; set; } = id;
+    public string Name { get; set; } = name;
+}
+```
+
+Now we can access:
+
+```csharp
+Employee obj = new Employee(101, "Piyush");
+
+Console.WriteLine(obj.Id);
+Console.WriteLine(obj.Name);
+```
+
+Output:
+
+```text
+101
+Piyush
+```
+
+---
+
+# 7. Parameters Do Not Always Need to Be Stored
+
+A primary constructor parameter does not necessarily have to be stored in a field or property.
+
+Example:
+
+```csharp
+public class Employee(string name)
+{
+    public void Display()
+    {
+        Console.WriteLine(name);
+    }
+}
+```
+
+Here `name` is available throughout the class.
+
+We have not declared:
+
+```csharp
+public string Name
+```
+
+or:
+
+```csharp
+private string _name
+```
+
+So the important point is:
+
+> Primary constructor parameters do not automatically create fields or properties.
+
+You only store them when your class needs to retain the value as part of its state.
+
+---
+
+# 8. Storing a Primary Constructor Parameter in a Property
+
+We can initialize a property using a primary constructor parameter.
+
+Example:
+
+```csharp
+public class Employee(int id, string name)
+{
+    public int Id { get; set; } = id;
+    public string Name { get; set; } = name;
+}
+```
+
+Here:
+
+```csharp
+public int Id { get; set; } = id;
+```
+
+means:
+
+> Initialize the `Id` property with the value received through the primary constructor parameter `id`.
+
+Similarly:
+
+```csharp
+public string Name { get; set; } = name;
+```
+
+means:
+
+> Initialize the `Name` property with the value received through the primary constructor parameter `name`.
+
+---
+
+# 9. Storing a Primary Constructor Parameter in a Field
+
+A primary constructor parameter can also be used to initialize a field.
+
+Example:
+
+```csharp
+public class Employee(int id, string name)
+{
+    private int _id = id;
+    private string _name = name;
+}
+```
+
+Here:
+
+```text
+id
+```
+
+is the primary constructor parameter.
+
+And:
+
+```text
+_id
+```
+
+is a field of the class.
+
+The value is copied from the parameter into the field.
+
+---
+
+# 10. Complete Distributor Example
+
+Consider the following example:
+
+```csharp
+public class Distributor(
+    int Id,
+    string Name,
+    string Product,
+    string City,
+    string Phone)
+{
+    public int Id { get; init; } = Id;
+
+    public string Name { get; set; } = Name;
+
+    public string Product = Product;
+
+    public string City { get; } = City;
+
+    public string Phone { get; set; } = Phone;
+}
+```
+
+The primary constructor is:
+
+```csharp
+public class Distributor(
+    int Id,
+    string Name,
+    string Product,
+    string City,
+    string Phone)
+```
+
+It accepts five parameters:
+
+```text
+Id
+Name
+Product
+City
+Phone
+```
+
+---
+
+# 11. Understanding the Id Property
+
+Code:
+
+```csharp
+public int Id { get; init; } = Id;
+```
+
+There are two `Id`s here.
+
+```text
+Id
+│
+├── Primary constructor parameter
+│
+└── Property
+    public int Id
+```
+
+The right-side `Id` refers to the primary constructor parameter.
+
+Therefore:
+
+```csharp
+public int Id { get; init; } = Id;
+```
+
+means:
+
+> Create an `Id` property and initialize it with the value received through the primary constructor.
+
+If we create:
+
+```csharp
+Distributor obj = new Distributor(
+    1001,
+    "Ashok Industries",
+    "Soaps",
+    "Hyderabad",
+    "2374 6666"
+);
+```
+
+then:
+
+```text
+obj.Id = 1001
+```
+
+---
+
+# 12. Understanding the Name Property
+
+Code:
+
+```csharp
+public string Name { get; set; } = Name;
+```
+
+The right-side `Name` is the primary constructor parameter.
+
+The property `Name` is initialized with that value.
+
+Because the property has:
+
+```csharp
+set;
+```
+
+its value can be changed after object creation.
+
+Example:
+
+```csharp
+obj.Name = "ABC Industries";
+```
+
+This is valid.
+
+---
+
+# 13. Understanding the Product Field
+
+Code:
+
+```csharp
+public string Product = Product;
+```
+
+The left-side `Product` is a **field**.
+
+The right-side `Product` is the **primary constructor parameter**.
+
+Therefore:
+
+```csharp
+public string Product = Product;
+```
+
+means:
+
+> Create a field named `Product` and initialize it using the primary constructor parameter `Product`.
+
+For example:
+
+```csharp
+Distributor obj = new Distributor(
+    1001,
+    "Ashok Industries",
+    "Soaps",
+    "Hyderabad",
+    "2374 6666"
+);
+```
+
+Then:
+
+```csharp
+obj.Product
+```
+
+contains:
+
+```text
+Soaps
+```
+
+---
+
+# 14. Understanding the City Property
+
+Code:
+
+```csharp
+public string City { get; } = City;
+```
+
+This is a **read-only property**.
+
+It has:
+
+```csharp
+get;
+```
+
+but does not have:
+
+```csharp
+set;
+```
+
+or:
+
+```csharp
+init;
+```
+
+Therefore, after initialization:
+
+```csharp
+obj.City = "Pune";
+```
+
+is not allowed.
+
+We can only read it:
+
+```csharp
+Console.WriteLine(obj.City);
+```
+
+---
+
+# 15. Understanding the Phone Property
+
+Code:
+
+```csharp
+public string Phone { get; set; } = Phone;
+```
+
+The property is initialized using the primary constructor parameter.
+
+Because it contains:
+
+```csharp
+set;
+```
+
+the value can be changed later.
+
+Example:
+
+```csharp
+obj.Phone = "9999999999";
+```
+
+This is allowed.
+
+---
+
+# 16. Complete Distributor Program
+
+```csharp
+using System;
+
+public class Distributor(
+    int Id,
+    string Name,
+    string Product,
+    string City,
+    string Phone)
+{
+    public int Id { get; init; } = Id;
+
+    public string Name { get; set; } = Name;
+
+    public string Product = Product;
+
+    public string City { get; } = City;
+
+    public string Phone { get; set; } = Phone;
+}
+
+internal class TestDistributor
+{
+    static void Main()
+    {
+        Distributor obj = new Distributor(
+            1001,
+            "Ashok Industries",
+            "Soaps",
+            "Hyderabad",
+            "2374 6666"
+        );
+
+        Console.WriteLine("Distributor Id: " + obj.Id);
+        Console.WriteLine("Distributor Name: " + obj.Name);
+        Console.WriteLine("Distributing Product: " + obj.Product);
+        Console.WriteLine("Distributor City: " + obj.City);
+        Console.WriteLine("Distributor Phone: " + obj.Phone);
+
+        Console.ReadLine();
+    }
+}
+```
+
+Output:
+
+```text
+Distributor Id: 1001
+Distributor Name: Ashok Industries
+Distributing Product: Soaps
+Distributor City: Hyderabad
+Distributor Phone: 2374 6666
+```
+
+---
+
+# 17. What Happens When We Create the Object?
+
+When we write:
+
+```csharp
+Distributor obj = new Distributor(
+    1001,
+    "Ashok Industries",
+    "Soaps",
+    "Hyderabad",
+    "2374 6666"
+);
+```
+
+the values are passed to the primary constructor:
+
+```text
+Id      → 1001
+Name    → Ashok Industries
+Product → Soaps
+City    → Hyderabad
+Phone   → 2374 6666
+```
+
+Then the properties/field are initialized:
+
+```text
+Distributor object
+
+Id      = 1001
+Name    = "Ashok Industries"
+Product = "Soaps"
+City    = "Hyderabad"
+Phone   = "2374 6666"
+```
+
+---
+
+# 18. `init` Accessor
+
+The `init` accessor was introduced in **C# 9**.
+
+It allows a property to be assigned during object initialization, but prevents normal assignment after initialization is complete.
+
+Example:
+
+```csharp
+public class Person
+{
+    public string FirstName { get; init; }
+}
+```
+
+We can initialize it using an object initializer:
+
+```csharp
+Person person = new Person
+{
+    FirstName = "Piyush"
+};
+```
+
+But after initialization:
+
+```csharp
+person.FirstName = "Rahul"; // ❌
+```
+
+is not allowed.
+
+---
+
+# 19. `init` vs `set`
+
+This is very important.
+
+## `set`
+
+```csharp
+public string Name { get; set; }
+```
+
+The property can be assigned during initialization and changed later.
+
+Example:
+
+```csharp
+Person person = new Person
+{
+    Name = "Piyush"
+};
+
+person.Name = "Rahul"; // ✅
+```
+
+---
+
+## `init`
+
+```csharp
+public string Name { get; init; }
+```
+
+The property can be assigned during initialization but cannot normally be changed afterward.
+
+Example:
+
+```csharp
+Person person = new Person
+{
+    Name = "Piyush"
+};
+
+person.Name = "Rahul"; // ❌
+```
+
+### Easy way to remember
+
+```text
+set
+→ Can set initially
+→ Can change later
+
+init
+→ Can set initially
+→ Cannot change later
+```
+
+---
+
+# 20. Read-Only Property vs `init` Property
+
+Consider:
+
+```csharp
+public string FirstName { get; }
+```
+
+and:
+
+```csharp
+public string FirstName { get; init; }
+```
+
+They are not exactly the same.
+
+## Read-only property
+
+```csharp
+public class Person
+{
+    public string FirstName { get; }
+
+    public Person()
+    {
+        FirstName = "Raju";
+    }
+}
+```
+
+A `get`-only property can be assigned:
+
+* At declaration
+* In a constructor
+
+But it cannot be assigned using an object initializer.
+
+Example:
+
+```csharp
+Person person = new Person
+{
+    FirstName = "Piyush" // ❌
+};
+```
+
+---
+
+## `init` property
+
+```csharp
+public class Person
+{
+    public string FirstName { get; init; }
+}
+```
+
+It can be assigned:
+
+* At declaration
+* In a constructor
+* Using an object initializer
+
+Example:
+
+```csharp
+Person person = new Person
+{
+    FirstName = "Piyush" // ✅
+};
+```
+
+But after initialization:
+
+```csharp
+person.FirstName = "Rahul"; // ❌
+```
+
+---
+
+# 21. Primary Constructor + `init`
+
+These two features can be used together.
+
+Example:
+
+```csharp
+public class Employee(int id, string name)
+{
+    public int Id { get; init; } = id;
+    public string Name { get; init; } = name;
+}
+```
+
+Create the object:
+
+```csharp
+Employee emp = new Employee(101, "Piyush");
+```
+
+The values are initialized.
+
+After that:
+
+```csharp
+emp.Id = 102;       // ❌
+emp.Name = "Rahul"; // ❌
+```
+
+because both properties use `init`.
+
+---
+
+# 22. Primary Constructor + Object Initializer
+
+Primary constructors and object initializers can be used together.
+
+Example:
+
+```csharp
+public class Employee(int id, string name)
+{
+    public int Id { get; init; } = id;
+    public string Name { get; set; } = name;
+}
+```
+
+Object creation:
+
+```csharp
+Employee emp = new Employee(101, "Piyush")
+{
+    Name = "Rahul"
+};
+```
+
+Here:
+
+```csharp
+new Employee(101, "Piyush")
+```
+
+uses the **primary constructor**.
+
+And:
+
+```csharp
+{
+    Name = "Rahul"
+}
+```
+
+is the **object initializer**.
+
+---
+
+# 23. Primary Constructor vs Traditional Constructor
+
+## Traditional Constructor
+
+```csharp
+public class Employee
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+
+    public Employee(int id, string name)
+    {
+        Id = id;
+        Name = name;
+    }
+}
+```
+
+## Primary Constructor
+
+```csharp
+public class Employee(int id, string name)
+{
+    public int Id { get; set; } = id;
+    public string Name { get; set; } = name;
+}
+```
+
+### Difference
+
+| Traditional Constructor                 | Primary Constructor                         |
+| --------------------------------------- | ------------------------------------------- |
+| Constructor declared inside class       | Parameters declared with class declaration  |
+| More code                               | Less boilerplate                            |
+| Parameters available inside constructor | Parameters are in scope throughout the type |
+| Separate constructor body               | No separate constructor body required       |
+| Available before C# 12                  | Introduced in C# 12                         |
+
+---
+
+# 24. Primary Constructor with Dependency Injection
+
+Primary constructors are particularly useful in modern .NET and ASP.NET Core applications.
+
+### Traditional Dependency Injection
+
+```csharp
+public class EmployeeService
+{
+    private readonly IEmployeeRepository _repository;
+
+    public EmployeeService(IEmployeeRepository repository)
+    {
+        _repository = repository;
+    }
+
+    public void GetEmployees()
+    {
+        _repository.GetEmployees();
+    }
+}
+```
+
+With a primary constructor:
+
+```csharp
+public class EmployeeService(IEmployeeRepository repository)
+{
+    public void GetEmployees()
+    {
+        repository.GetEmployees();
+    }
+}
+```
+
+This reduces boilerplate code.
+
+The parameter:
+
+```csharp
+IEmployeeRepository repository
+```
+
+is available throughout the class.
+
+---
+
+# 25. Important Interview Questions
+
+## Q1. What is a Primary Constructor?
+
+**Answer:**
+
+> A primary constructor is a C# 12 feature that allows constructor parameters to be declared directly in the class or struct declaration. These parameters are in scope throughout the type and can be used to initialize fields or properties or directly in other members.
+
+---
+
+## Q2. Which version of C# introduced Primary Constructors?
+
+**Answer:**
+
+> Primary constructors were introduced in **C# 12**.
+
+---
+
+## Q3. Can primary constructors be used with classes and structs?
+
+**Answer:**
+
+> Yes. Primary constructors can be used with both classes and structs.
+
+---
+
+## Q4. Are primary constructor parameters fields or properties?
+
+**Answer:**
+
+> No. Primary constructor parameters are parameters, not members of the class. They do not automatically become fields or properties.
+
+---
+
+## Q5. Can we access primary constructor parameters using `this`?
+
+No.
+
+Example:
+
+```csharp
+public class Employee(int id)
+{
+    public void Display()
+    {
+        Console.WriteLine(id);       // ✅
+        Console.WriteLine(this.id);  // ❌
+    }
+}
+```
+
+Why?
+
+Because `id` is a parameter and not a class member.
+
+---
+
+## Q6. Do primary constructor parameters have to be stored?
+
+No.
+
+They only need to be stored if the class needs to retain them as state.
+
+Example:
+
+```csharp
+public class Employee(string name)
+{
+    public void Display()
+    {
+        Console.WriteLine(name);
+    }
+}
+```
+
+Here `name` is used directly without explicitly declaring a property.
+
+---
+
+## Q7. What is `init`?
+
+**Answer:**
+
+> `init` is an accessor introduced in C# 9 that allows a property to be assigned during object initialization, but prevents normal assignment after the object has been initialized.
+
+Example:
+
+```csharp
+public string Name { get; init; }
+```
+
+---
+
+## Q8. Difference between `set` and `init`?
+
+```text
+set
+→ Value can be assigned during initialization.
+→ Value can also be changed later.
+
+init
+→ Value can be assigned during initialization.
+→ Value cannot normally be changed after initialization.
+```
+
+---
+
+# 26. Quick Revision
+
+```text
+Primary Constructor
+        ↓
+Introduced in C# 12
+        ↓
+Parameters declared with class/struct
+        ↓
+Parameters are available throughout the type
+        ↓
+Parameters are NOT class members
+        ↓
+They do NOT automatically become properties/fields
+        ↓
+Can be used to initialize fields/properties
+        ↓
+Reduces constructor boilerplate
+```
+
+### Example to remember:
+
+```csharp
+public class Student(int id, string name)
+{
+    public int Id { get; set; } = id;
+    public string Name { get; set; } = name;
+
+    public void Display()
+    {
+        Console.WriteLine(Id);
+        Console.WriteLine(Name);
+    }
+}
+```
+
+Object creation:
+
+```csharp
+Student student = new Student(101, "Piyush");
+
+student.Display();
+```
+
+---
+
+# 27. Most Important Points for Interview
+
+1. **Primary constructors were introduced in C# 12.**
+2. They allow constructor parameters to be declared directly with the class or struct declaration.
+3. Primary constructor parameters are **in scope throughout the type**.
+4. They are **parameters, not fields or properties**.
+5. They cannot be accessed using `this.parameterName`.
+6. They do **not automatically become class properties**.
+7. We can explicitly store their values in fields or properties.
+8. They don't need to be stored if the value is not required as part of the object's state.
+9. They help reduce constructor boilerplate.
+10. They are commonly useful with **dependency injection** in ASP.NET Core.
+11. `init` was introduced in **C# 9**.
+12. `init` allows assignment during initialization but not normal modification afterward.
+13. `set` allows modification after object creation.
+14. A `get`-only property is more restrictive than an `init` property because an `init` property can also be assigned through an object initializer.
+15. **Primary Constructor, Object Initializer, and `init` are three different concepts**, although they can be used together.
