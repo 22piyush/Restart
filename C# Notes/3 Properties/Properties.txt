@@ -1,0 +1,2266 @@
+# C# Properties
+
+## 1. What is a Property?
+
+A **property** is a class member that provides a flexible mechanism to **read, write, or compute the value of a private field**.
+
+Properties are used like public fields, but internally they are implemented using special methods called **accessors**.
+
+The two main accessors are:
+
+* `get` → Used to read a value.
+* `set` → Used to write/change a value.
+
+### Simple Definition
+
+> A property provides controlled access to the data stored in a field.
+
+---
+
+# 2. Why Do We Need Properties?
+
+Suppose a class contains a value and we want to expose that value outside the class.
+
+There are different ways to provide access to that value.
+
+The simplest approach is to make the field public.
+
+```csharp
+public class Circle
+{
+    public double Radius = 12.34;
+}
+```
+
+Now we can access it from outside:
+
+```csharp
+class TestCircle
+{
+    static void Main()
+    {
+        Circle c = new Circle();
+
+        double radius = c.Radius;  // Getting the old value
+
+        c.Radius = 56.78;          // Setting a new value
+
+        Console.ReadLine();
+    }
+}
+```
+
+### Problem with a Public Field
+
+The field provides **direct read and write access**.
+
+Anyone can do:
+
+```csharp
+c.Radius = -100;
+c.Radius = 50000;
+```
+
+There is no control or validation.
+
+Therefore:
+
+```text
+Public Field
+    ↓
+Direct Access
+    ↓
+No Control
+```
+
+Properties solve this problem by providing controlled access.
+
+---
+
+# 3. Property as Controlled Access
+
+Instead of exposing the field directly, we can keep the field private and expose it through a property.
+
+```csharp
+public class Circle
+{
+    private double _radius;
+
+    public double Radius
+    {
+        get
+        {
+            return _radius;
+        }
+
+        set
+        {
+            _radius = value;
+        }
+    }
+}
+```
+
+Now the field is protected:
+
+```csharp
+private double _radius;
+```
+
+and the property controls access:
+
+```csharp
+public double Radius
+{
+    get { return _radius; }
+    set { _radius = value; }
+}
+```
+
+This allows us to add validation or other logic later.
+
+---
+
+# 4. Three Types of Access Through Properties
+
+A property can provide access in three ways:
+
+### 1. Read-Only Property
+
+Only `get` is provided.
+
+```csharp
+public int Id
+{
+    get
+    {
+        return _id;
+    }
+}
+```
+
+Outside code can read the value but cannot change it.
+
+---
+
+### 2. Write-Only Property
+
+Only `set` is provided.
+
+```csharp
+public string Password
+{
+    set
+    {
+        _password = value;
+    }
+}
+```
+
+Outside code can assign a value but cannot read it through the property.
+
+---
+
+### 3. Read-Write Property
+
+Both `get` and `set` are provided.
+
+```csharp
+public string Name
+{
+    get
+    {
+        return _name;
+    }
+
+    set
+    {
+        _name = value;
+    }
+}
+```
+
+Outside code can both read and change the value.
+
+---
+
+# 5. Syntax of a Property
+
+General syntax:
+
+```csharp
+[modifiers] type PropertyName
+{
+    get
+    {
+        // statements
+    }
+
+    set
+    {
+        // statements
+    }
+}
+```
+
+Example:
+
+```csharp
+public string Name
+{
+    get
+    {
+        return _Name;
+    }
+
+    set
+    {
+        _Name = value;
+    }
+}
+```
+
+Here:
+
+```text
+public       → Access modifier
+string       → Property type
+Name         → Property name
+get          → Get accessor
+set          → Set accessor
+value        → Value being assigned
+```
+
+---
+
+# 6. Property Accessors
+
+A property can contain one or two accessors:
+
+```text
+get
+set
+```
+
+The property can have:
+
+```text
+get only
+set only
+get + set
+```
+
+---
+
+# 7. Get Accessor
+
+The `get` accessor is executed when the property is **read**.
+
+Example:
+
+```csharp
+private string _Name = "John";
+
+public string Name
+{
+    get
+    {
+        return _Name;
+    }
+}
+```
+
+When we write:
+
+```csharp
+Console.WriteLine(obj.Name);
+```
+
+the `get` accessor executes.
+
+Conceptually:
+
+```text
+obj.Name
+   ↓
+get executes
+   ↓
+return _Name
+```
+
+The `get` accessor must return a value of the property type.
+
+For example, if the property is:
+
+```csharp
+public int Age
+```
+
+then the `get` accessor must return an `int`.
+
+---
+
+# 8. Set Accessor
+
+The `set` accessor is executed when a new value is assigned to the property.
+
+Example:
+
+```csharp
+private string _Name;
+
+public string Name
+{
+    set
+    {
+        _Name = value;
+    }
+}
+```
+
+When we write:
+
+```csharp
+obj.Name = "Piyush";
+```
+
+the `set` accessor executes.
+
+The assigned value is automatically available through the contextual keyword:
+
+```csharp
+value
+```
+
+Therefore:
+
+```csharp
+_Name = value;
+```
+
+means:
+
+```text
+_Name = "Piyush";
+```
+
+---
+
+# 9. What is `value` in a Property?
+
+`value` is a contextual keyword used inside a `set` accessor.
+
+It represents the value that the caller is trying to assign to the property.
+
+Example:
+
+```csharp
+public int Age
+{
+    set
+    {
+        Console.WriteLine(value);
+    }
+}
+```
+
+If we write:
+
+```csharp
+obj.Age = 25;
+```
+
+then:
+
+```text
+value = 25
+```
+
+So the setter receives the assigned value through `value`.
+
+### Important
+
+`value` behaves similar to an input parameter of a method, but we do not explicitly declare it.
+
+---
+
+# 10. Read-Only Property
+
+A property without a `set` accessor is considered a **read-only property**.
+
+Example:
+
+```csharp
+private int _Custid;
+
+public int Custid
+{
+    get
+    {
+        return _Custid;
+    }
+}
+```
+
+We can read:
+
+```csharp
+Console.WriteLine(obj.Custid);
+```
+
+But this is invalid:
+
+```csharp
+obj.Custid = 1005;
+```
+
+because there is no `set` accessor.
+
+---
+
+# 11. Write-Only Property
+
+A property without a `get` accessor is considered a **write-only property**.
+
+Example:
+
+```csharp
+private string _Password;
+
+public string Password
+{
+    set
+    {
+        _Password = value;
+    }
+}
+```
+
+We can write:
+
+```csharp
+obj.Password = "abc123";
+```
+
+but cannot read:
+
+```csharp
+Console.WriteLine(obj.Password);
+```
+
+because there is no `get`.
+
+> Write-only properties are uncommon in modern C#; methods are often preferred when an operation should only accept input.
+
+---
+
+# 12. Read-Write Property
+
+A property with both `get` and `set` is called a **read-write property**.
+
+Example:
+
+```csharp
+private bool _Status;
+
+public bool Status
+{
+    get
+    {
+        return _Status;
+    }
+
+    set
+    {
+        _Status = value;
+    }
+}
+```
+
+Usage:
+
+```csharp
+Console.WriteLine(obj.Status);
+
+obj.Status = true;
+```
+
+Therefore:
+
+```text
+get + set
+    ↓
+Read + Write
+```
+
+---
+
+# 13. Properties Can Contain Logic
+
+One of the biggest advantages of properties is that we can put logic inside the accessors.
+
+Example:
+
+```csharp
+private int _Age;
+
+public int Age
+{
+    get
+    {
+        return _Age;
+    }
+
+    set
+    {
+        if (value >= 18)
+        {
+            _Age = value;
+        }
+    }
+}
+```
+
+Now:
+
+```csharp
+obj.Age = 25;  // Allowed
+obj.Age = 10;  // Not assigned
+```
+
+The property provides validation before storing the value.
+
+---
+
+# 14. Access Modifiers on Properties
+
+Properties can have access modifiers such as:
+
+```text
+public
+private
+protected
+internal
+protected internal
+private protected
+```
+
+Example:
+
+```csharp
+public string Name
+{
+    get
+    {
+        return _Name;
+    }
+
+    private set
+    {
+        _Name = value;
+    }
+}
+```
+
+The property itself is public, but the setter is private.
+
+Therefore:
+
+```text
+Outside class:
+get → Allowed
+set → Not allowed
+```
+
+Inside the class:
+
+```text
+get → Allowed
+set → Allowed
+```
+
+---
+
+# 15. Different Access Modifiers for `get` and `set`
+
+The `get` and `set` accessors of the same property can have different access modifiers.
+
+Example:
+
+```csharp
+public string State
+{
+    get
+    {
+        return _State;
+    }
+
+    protected set
+    {
+        _State = value;
+    }
+}
+```
+
+Here:
+
+```text
+Property → public
+get      → public
+set      → protected
+```
+
+This means normal outside code can read the property, but only the class and derived classes can use the protected setter.
+
+---
+
+# 16. Static Property
+
+A property can be declared as `static`.
+
+Example:
+
+```csharp
+public class Company
+{
+    public static string CompanyName
+    {
+        get;
+        set;
+    }
+}
+```
+
+A static property belongs to the class rather than an individual object.
+
+Therefore we can access it using the class name:
+
+```csharp
+Company.CompanyName = "ABC";
+
+Console.WriteLine(Company.CompanyName);
+```
+
+We don't need to create an object.
+
+Example of a framework property:
+
+```csharp
+Console.BackgroundColor = ConsoleColor.Blue;
+```
+
+`BackgroundColor` is a static property of the `Console` class.
+
+---
+
+# 17. Virtual Property
+
+A property can be declared using the `virtual` keyword.
+
+A virtual property allows a derived class to override the property behavior.
+
+Example:
+
+```csharp
+public class Animal
+{
+    public virtual string Sound
+    {
+        get
+        {
+            return "Some sound";
+        }
+    }
+}
+```
+
+Derived class:
+
+```csharp
+public class Dog : Animal
+{
+    public override string Sound
+    {
+        get
+        {
+            return "Bark";
+        }
+    }
+}
+```
+
+Usage:
+
+```csharp
+Animal animal = new Dog();
+
+Console.WriteLine(animal.Sound);
+```
+
+Output:
+
+```text
+Bark
+```
+
+---
+
+# 18. Sealed Override Property
+
+A property overriding a virtual property can be marked as `sealed`.
+
+Example:
+
+```csharp
+public class Dog : Animal
+{
+    public sealed override string Sound
+    {
+        get
+        {
+            return "Bark";
+        }
+    }
+}
+```
+
+`sealed` prevents further derived classes from overriding that property.
+
+---
+
+# 19. Abstract Property
+
+A property can be declared using the `abstract` keyword.
+
+An abstract property does not contain an implementation in the abstract base class.
+
+Example:
+
+```csharp
+public abstract class Animal
+{
+    public abstract string Sound
+    {
+        get;
+    }
+}
+```
+
+A derived class must provide the implementation:
+
+```csharp
+public class Dog : Animal
+{
+    public override string Sound
+    {
+        get
+        {
+            return "Bark";
+        }
+    }
+}
+```
+
+Therefore:
+
+```text
+abstract property
+       ↓
+No implementation in base class
+       ↓
+Derived class must implement it
+```
+
+---
+
+# 20. Enum
+
+An `enum` is a distinct type that contains a set of named constants.
+
+Example:
+
+```csharp
+public enum Days
+{
+    Monday,
+    Tuesday,
+    Wednesday,
+    Thursday,
+    Friday
+}
+```
+
+By default, the first enum value has index `0`.
+
+Therefore:
+
+```text
+Monday    → 0
+Tuesday   → 1
+Wednesday → 2
+Thursday  → 3
+Friday    → 4
+```
+
+Each successive value is automatically increased by `1`.
+
+---
+
+# 21. Why Use Enum?
+
+Enums are useful when a value should come from a predefined list.
+
+For example:
+
+```csharp
+public enum Cities
+{
+    Bengaluru,
+    Chennai,
+    Delhi,
+    Hyderabad,
+    Kolkata,
+    Mumbai
+}
+```
+
+Instead of allowing any string:
+
+```csharp
+string city;
+```
+
+we can restrict the value to the enum:
+
+```csharp
+Cities city;
+```
+
+Usage:
+
+```csharp
+city = Cities.Hyderabad;
+```
+
+This makes the code more readable and type-safe.
+
+---
+
+# 22. Enumerated Property
+
+A property whose type is an enum is called an **enumerated property**.
+
+Example enum:
+
+```csharp
+public enum Days
+{
+    Monday,
+    Tuesday,
+    Wednesday,
+    Thursday,
+    Friday
+}
+```
+
+Field:
+
+```csharp
+Days _Day = Days.Monday;
+```
+
+Property:
+
+```csharp
+public Days Day
+{
+    get
+    {
+        return _Day;
+    }
+
+    set
+    {
+        _Day = value;
+    }
+}
+```
+
+Usage:
+
+```csharp
+obj.Day = Days.Friday;
+```
+
+---
+
+# 23. Steps to Create an Enumerated Property
+
+### Step 1: Define an Enum
+
+```csharp
+public enum Days
+{
+    Monday,
+    Tuesday,
+    Wednesday,
+    Thursday,
+    Friday
+}
+```
+
+### Step 2: Declare a Field of Enum Type
+
+```csharp
+Days _Day = Days.Monday;
+```
+
+Other possibilities:
+
+```csharp
+Days _Day = 0;
+```
+
+or:
+
+```csharp
+Days _Day = (Days)0;
+```
+
+### Step 3: Define a Property
+
+```csharp
+public Days Day
+{
+    get
+    {
+        return _Day;
+    }
+
+    set
+    {
+        _Day = value;
+    }
+}
+```
+
+Now we can write:
+
+```csharp
+obj.Day = Days.Friday;
+```
+
+---
+
+# 24. Auto-Implemented Properties
+
+C# provides a shorter syntax when no additional logic is required in `get` and `set`.
+
+Traditional property:
+
+```csharp
+private string _Country;
+
+public string Country
+{
+    get
+    {
+        return _Country;
+    }
+
+    set
+    {
+        _Country = value;
+    }
+}
+```
+
+If there is no additional logic, we can write:
+
+```csharp
+public string Country
+{
+    get;
+    set;
+}
+```
+
+This is called an **auto-implemented property**.
+
+The compiler automatically provides the hidden backing storage.
+
+---
+
+# 25. Auto-Implemented Property with Private Setter
+
+We can also specify different access levels.
+
+Example:
+
+```csharp
+public string Country
+{
+    get;
+    private set;
+}
+```
+
+This means:
+
+```text
+Outside class:
+Read  → Yes
+Write → No
+
+Inside class:
+Read  → Yes
+Write → Yes
+```
+
+Example:
+
+```csharp
+public Customer()
+{
+    Country = "India";
+}
+```
+
+The constructor can set `Country` because it is inside the class.
+
+---
+
+# 26. Auto Property Initializer
+
+C# 6 introduced the ability to initialize an auto-property directly at its declaration.
+
+Example:
+
+```csharp
+public string Continent { get; } = "Asia";
+```
+
+This property:
+
+* Has no explicit backing field.
+* Has only a `get`.
+* Is initialized to `"Asia"`.
+* Cannot be assigned through the property after initialization.
+
+We don't need to write:
+
+```csharp
+public string Continent { get; }
+
+public Customer()
+{
+    Continent = "Asia";
+}
+```
+
+Instead:
+
+```csharp
+public string Continent { get; } = "Asia";
+```
+
+is enough.
+
+---
+
+# 27. Customer Example
+
+First define the enum:
+
+```csharp
+public enum Cities
+{
+    Bengaluru,
+    Chennai,
+    Delhi,
+    Hyderabad,
+    Kolkata,
+    Mumbai
+}
+```
+
+---
+
+# 28. Customer Class
+
+```csharp
+public class Customer
+{
+    int _Custid;
+    bool _Status;
+    string _Name, _State;
+    double _Balance;
+    Cities _City;
+
+    public Customer(int Custid)
+    {
+        _Custid = Custid;
+        _Status = false;
+        _Name = "John";
+        _Balance = 5000.00;
+        _City = Cities.Bengaluru;
+        _State = "Karnataka";
+        Country = "India";
+    }
+
+    // Read-Only Property
+    public int Custid
+    {
+        get
+        {
+            return _Custid;
+        }
+    }
+
+    // Read-Write Property
+    public bool Status
+    {
+        get
+        {
+            return _Status;
+        }
+
+        set
+        {
+            _Status = value;
+        }
+    }
+
+    // Read-Write Property with condition in Set Accessor
+    public string Name
+    {
+        get
+        {
+            return _Name;
+        }
+
+        set
+        {
+            if (_Status)
+            {
+                _Name = value;
+            }
+        }
+    }
+
+    // Read-Write Property with conditions in Get and Set
+    public double Balance
+    {
+        get
+        {
+            if (_Status)
+            {
+                return _Balance;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+        set
+        {
+            if (_Status)
+            {
+                if (value >= 500)
+                {
+                    _Balance = value;
+                }
+            }
+        }
+    }
+
+    // Enumerated Property
+    public Cities City
+    {
+        get
+        {
+            return _City;
+        }
+
+        set
+        {
+            if (_Status)
+            {
+                _City = value;
+            }
+        }
+    }
+
+    // Different access modifiers for get and set
+    public string State
+    {
+        get
+        {
+            return _State;
+        }
+
+        protected set
+        {
+            if (_Status)
+            {
+                _State = value;
+            }
+        }
+    }
+
+    // Auto-Implemented Property
+    public string Country
+    {
+        get;
+        private set;
+    }
+
+    // Read-Only Auto Property with Initializer
+    public string Continent { get; } = "Asia";
+}
+```
+
+---
+
+# 29. Understanding Each Customer Property
+
+## 29.1 Custid
+
+```csharp
+public int Custid
+{
+    get
+    {
+        return _Custid;
+    }
+}
+```
+
+Type:
+
+```text
+int
+```
+
+Access:
+
+```text
+Read → Yes
+Write → No
+```
+
+Therefore it is a **read-only property**.
+
+---
+
+# 30. Status
+
+```csharp
+public bool Status
+{
+    get
+    {
+        return _Status;
+    }
+
+    set
+    {
+        _Status = value;
+    }
+}
+```
+
+Both `get` and `set` are present.
+
+Therefore:
+
+```text
+Read  → Yes
+Write → Yes
+```
+
+It is a **read-write property**.
+
+---
+
+# 31. Name
+
+```csharp
+public string Name
+{
+    get
+    {
+        return _Name;
+    }
+
+    set
+    {
+        if (_Status)
+        {
+            _Name = value;
+        }
+    }
+}
+```
+
+The name can only be changed when:
+
+```csharp
+_Status == true
+```
+
+Therefore the property contains a business condition in its setter.
+
+If the customer is inactive:
+
+```csharp
+obj.Name = "Piyush";
+```
+
+the assignment is rejected.
+
+If the customer is active:
+
+```csharp
+obj.Status = true;
+obj.Name = "Piyush";
+```
+
+the assignment succeeds.
+
+---
+
+# 32. Balance
+
+```csharp
+public double Balance
+{
+    get
+    {
+        if (_Status)
+        {
+            return _Balance;
+        }
+        else
+        {
+            return 0;
+        }
+    }
+
+    set
+    {
+        if (_Status)
+        {
+            if (value >= 500)
+            {
+                _Balance = value;
+            }
+        }
+    }
+}
+```
+
+There are conditions in both accessors.
+
+### Get Condition
+
+If customer is active:
+
+```text
+Return actual balance
+```
+
+If customer is inactive:
+
+```text
+Return 0
+```
+
+### Set Condition
+
+The customer must be active and the new balance must be at least `500`.
+
+```text
+_Status == true
+        AND
+value >= 500
+```
+
+Only then is the balance updated.
+
+---
+
+# 33. Why Does `Balance -= 4600` Fail?
+
+Suppose:
+
+```text
+Balance = 5000
+```
+
+We write:
+
+```csharp
+obj.Balance -= 4600;
+```
+
+This is effectively:
+
+```csharp
+obj.Balance = obj.Balance - 4600;
+```
+
+Therefore:
+
+```text
+5000 - 4600 = 400
+```
+
+C# tries to assign:
+
+```csharp
+obj.Balance = 400;
+```
+
+But the setter requires:
+
+```csharp
+value >= 500
+```
+
+Since:
+
+```text
+400 >= 500 → false
+```
+
+the update is rejected.
+
+The balance remains:
+
+```text
+5000
+```
+
+---
+
+# 34. Why Does `Balance -= 4500` Succeed?
+
+Current balance:
+
+```text
+5000
+```
+
+Calculation:
+
+```text
+5000 - 4500 = 500
+```
+
+C# effectively performs:
+
+```csharp
+obj.Balance = 500;
+```
+
+The setter checks:
+
+```csharp
+value >= 500
+```
+
+Since:
+
+```text
+500 >= 500 → true
+```
+
+the update succeeds.
+
+New balance:
+
+```text
+500
+```
+
+---
+
+# 35. City Property
+
+```csharp
+public Cities City
+{
+    get
+    {
+        return _City;
+    }
+
+    set
+    {
+        if (_Status)
+        {
+            _City = value;
+        }
+    }
+}
+```
+
+The property type is:
+
+```csharp
+Cities
+```
+
+which is an enum.
+
+Example:
+
+```csharp
+obj.City = Cities.Hyderabad;
+```
+
+The property accepts only values of the `Cities` enum type.
+
+---
+
+# 36. State Property
+
+```csharp
+public string State
+{
+    get
+    {
+        return _State;
+    }
+
+    protected set
+    {
+        if (_Status)
+        {
+            _State = value;
+        }
+    }
+}
+```
+
+Here the property is public, but the setter is protected.
+
+Therefore:
+
+```csharp
+Console.WriteLine(obj.State);
+```
+
+is allowed.
+
+But:
+
+```csharp
+obj.State = "Telangana";
+```
+
+is not allowed from an unrelated external class.
+
+The protected setter can be accessed from the class itself and derived classes.
+
+---
+
+# 37. Country Property
+
+```csharp
+public string Country
+{
+    get;
+    private set;
+}
+```
+
+This is an auto-implemented property.
+
+The getter is public.
+
+The setter is private.
+
+Therefore:
+
+```text
+Outside class:
+Read  → Yes
+Write → No
+
+Inside class:
+Read  → Yes
+Write → Yes
+```
+
+The constructor can initialize it:
+
+```csharp
+Country = "India";
+```
+
+---
+
+# 38. Continent Property
+
+```csharp
+public string Continent { get; } = "Asia";
+```
+
+This is a read-only auto-implemented property with an initializer.
+
+It automatically contains:
+
+```text
+Asia
+```
+
+Usage:
+
+```csharp
+Console.WriteLine(obj.Continent);
+```
+
+Output:
+
+```text
+Asia
+```
+
+There is no setter.
+
+---
+
+# 39. Consuming the Customer Properties
+
+Create the object:
+
+```csharp
+Customer obj = new Customer(1001);
+```
+
+The constructor initializes the customer.
+
+Initial values:
+
+```text
+Custid  = 1001
+Status  = false
+Name    = John
+Balance = 5000
+City    = Bengaluru
+State   = Karnataka
+Country = India
+Continent = Asia
+```
+
+---
+
+# 40. Reading Custid
+
+```csharp
+Console.WriteLine("Custid: " + obj.Custid);
+```
+
+Output:
+
+```text
+Custid: 1001
+```
+
+This works because `Custid` has a `get`.
+
+This would not work:
+
+```csharp
+obj.Custid = 1005;
+```
+
+because `Custid` is read-only.
+
+---
+
+# 41. Checking Status
+
+```csharp
+if (obj.Status)
+{
+    Console.WriteLine("Customer Status: Active");
+}
+else
+{
+    Console.WriteLine("Customer Status: In-Active");
+}
+```
+
+Initially:
+
+```text
+_Status = false
+```
+
+Therefore:
+
+```text
+Customer Status: In-Active
+```
+
+---
+
+# 42. Reading Name
+
+```csharp
+Console.WriteLine("Customer Name: " + obj.Name);
+```
+
+Output:
+
+```text
+Customer Name: John
+```
+
+---
+
+# 43. Trying to Update Name While Inactive
+
+```csharp
+obj.Name += " Smith";
+```
+
+This is effectively:
+
+```csharp
+obj.Name = obj.Name + " Smith";
+```
+
+Current name:
+
+```text
+John
+```
+
+Therefore C# tries:
+
+```csharp
+obj.Name = "John Smith";
+```
+
+But the setter checks:
+
+```csharp
+if (_Status)
+```
+
+Since:
+
+```text
+_Status = false
+```
+
+the assignment fails.
+
+Name remains:
+
+```text
+John
+```
+
+---
+
+# 44. Activating the Customer
+
+```csharp
+obj.Status = true;
+```
+
+The setter executes:
+
+```csharp
+_Status = value;
+```
+
+Here:
+
+```text
+value = true
+```
+
+Therefore:
+
+```text
+_Status = true
+```
+
+Now the customer is active.
+
+---
+
+# 45. Updating Name While Active
+
+```csharp
+obj.Name += " Smith";
+```
+
+Now `_Status` is `true`.
+
+Therefore the setter allows:
+
+```csharp
+_Name = value;
+```
+
+The name becomes:
+
+```text
+John Smith
+```
+
+---
+
+# 46. Balance Transaction
+
+```csharp
+obj.Balance -= 4600;
+```
+
+Calculation:
+
+```text
+5000 - 4600 = 400
+```
+
+The setter rejects `400` because:
+
+```text
+value >= 500
+```
+
+is false.
+
+Then:
+
+```csharp
+obj.Balance -= 4500;
+```
+
+Calculation:
+
+```text
+5000 - 4500 = 500
+```
+
+The setter accepts `500`.
+
+Final balance:
+
+```text
+500
+```
+
+---
+
+# 47. Changing City
+
+Read current city:
+
+```csharp
+Console.WriteLine($"Customer City: {obj.City}");
+```
+
+Initially:
+
+```text
+Bengaluru
+```
+
+Change city:
+
+```csharp
+obj.City = Cities.Hyderabad;
+```
+
+Since the customer is active, the setter allows the change.
+
+Now:
+
+```text
+Customer City: Hyderabad
+```
+
+---
+
+# 48. Reading State
+
+```csharp
+Console.WriteLine("Customer State: " + obj.State);
+```
+
+Output:
+
+```text
+Customer State: Karnataka
+```
+
+Reading is allowed because `get` is public.
+
+This is not allowed from external code:
+
+```csharp
+obj.State = "Telangana";
+```
+
+because the setter is protected.
+
+---
+
+# 49. Reading Country
+
+```csharp
+Console.WriteLine("Customer Country: " + obj.Country);
+```
+
+Output:
+
+```text
+Customer Country: India
+```
+
+The outside code can read it, but cannot assign a new value because the setter is private.
+
+---
+
+# 50. Reading Continent
+
+```csharp
+Console.WriteLine("Customer Continent: " + obj.Continent);
+```
+
+Output:
+
+```text
+Customer Continent: Asia
+```
+
+It is read-only.
+
+---
+
+# 51. Complete TestCustomer Program
+
+```csharp
+internal class TestCustomer
+{
+    static void Main()
+    {
+        Customer obj = new Customer(1001);
+
+        Console.WriteLine("Custid: " + obj.Custid + "\n");
+
+        if (obj.Status)
+        {
+            Console.WriteLine("Customer Status: Active");
+        }
+        else
+        {
+            Console.WriteLine("Customer Status: In-Active");
+        }
+
+        Console.WriteLine("Customer Name: " + obj.Name);
+
+        obj.Name += " Smith";
+
+        Console.WriteLine("Name when update failed: " + obj.Name);
+
+        Console.WriteLine(
+            "Balance when status is in-active: "
+            + obj.Balance + "\n"
+        );
+
+        obj.Status = true;
+
+        if (obj.Status)
+        {
+            Console.WriteLine("Customer Status: Active");
+        }
+        else
+        {
+            Console.WriteLine("Customer Status: In-Active");
+        }
+
+        Console.WriteLine("Customer Name: " + obj.Name);
+
+        obj.Name += " Smith";
+
+        Console.WriteLine("Name when update succeeded: " + obj.Name);
+
+        Console.WriteLine(
+            "Balance when status is active: "
+            + obj.Balance + "\n"
+        );
+
+        obj.Balance -= 4600;
+
+        Console.WriteLine(
+            "Balance when transaction failed: "
+            + obj.Balance
+        );
+
+        obj.Balance -= 4500;
+
+        Console.WriteLine(
+            "Balance when transaction succeeded: "
+            + obj.Balance + "\n"
+        );
+
+        Console.WriteLine($"Customer City: {obj.City}");
+
+        obj.City = Cities.Hyderabad;
+
+        Console.WriteLine($"Modified City: {obj.City}");
+
+        Console.WriteLine("Customer State: " + obj.State);
+
+        // Invalid because set accessor is protected
+        // obj.State = "Telangana";
+
+        Console.WriteLine("Customer Country: " + obj.Country);
+
+        Console.WriteLine("Customer Continent: " + obj.Continent);
+
+        Console.ReadLine();
+    }
+}
+```
+
+---
+
+# 52. Property Types — Quick Revision
+
+| Property    | Type     | Access              | Special Feature           |
+| ----------- | -------- | ------------------- | ------------------------- |
+| `Custid`    | `int`    | `get`               | Read-only                 |
+| `Status`    | `bool`   | `get/set`           | Read-write                |
+| `Name`      | `string` | `get/set`           | Condition in setter       |
+| `Balance`   | `double` | `get/set`           | Conditions in get/set     |
+| `City`      | `Cities` | `get/set`           | Enum property             |
+| `State`     | `string` | `get/protected set` | Different accessor access |
+| `Country`   | `string` | `get/private set`   | Auto-property             |
+| `Continent` | `string` | `get`               | Auto-property initializer |
+
+---
+
+# 53. Property vs Public Field
+
+### Public Field
+
+```csharp
+public int Age;
+```
+
+Advantages:
+
+* Simple
+* Direct access
+
+Disadvantages:
+
+* No controlled access
+* Difficult to enforce validation
+* Anyone can modify it
+
+---
+
+### Property
+
+```csharp
+private int _Age;
+
+public int Age
+{
+    get
+    {
+        return _Age;
+    }
+
+    set
+    {
+        if (value >= 0)
+        {
+            _Age = value;
+        }
+    }
+}
+```
+
+Advantages:
+
+* Controlled access
+* Validation can be added
+* Different access levels can be used
+* Logic can be added to `get` and `set`
+* Supports read-only/write-only/read-write access
+* Commonly used in APIs and Entity Framework Core
+
+---
+
+# 54. Important Property Syntaxes
+
+### Normal Property
+
+```csharp
+public string Name
+{
+    get
+    {
+        return _Name;
+    }
+
+    set
+    {
+        _Name = value;
+    }
+}
+```
+
+### Read-Only
+
+```csharp
+public string Name
+{
+    get;
+}
+```
+
+### Auto-Implemented
+
+```csharp
+public string Name
+{
+    get;
+    set;
+}
+```
+
+### Public Getter + Private Setter
+
+```csharp
+public string Name
+{
+    get;
+    private set;
+}
+```
+
+### Public Getter + Protected Setter
+
+```csharp
+public string Name
+{
+    get;
+    protected set;
+}
+```
+
+### Read-Only with Initial Value
+
+```csharp
+public string Country { get; } = "India";
+```
+
+---
+
+# 55. Key Points to Remember
+
+1. A property provides controlled access to data.
+2. Properties are commonly used with private fields.
+3. `get` is used to read a property.
+4. `set` is used to assign a value to a property.
+5. `value` represents the value being assigned in a `set` accessor.
+6. A property with only `get` is read-only.
+7. A property with only `set` is write-only.
+8. A property with both `get` and `set` is read-write.
+9. Logic and validation can be placed inside accessors.
+10. `get` and `set` can have different access modifiers.
+11. Properties can be `static`.
+12. Properties can be `virtual`.
+13. Properties can be `abstract`.
+14. A property can use an enum as its type.
+15. Auto-implemented properties reduce boilerplate code.
+16. C# supports auto-property initializers.
+17. `private set` allows outside code to read but prevents outside code from changing the property.
+18. `protected set` allows the class and derived classes to change the property.
+19. Properties are heavily used in ASP.NET Core, Entity Framework Core, DTOs, models, and Web APIs.
+
+---
+
+# 56. Interview Definition
+
+### What is a Property in C#?
+
+> A property is a class member that provides controlled access to a field or value through `get` and `set` accessors. It allows us to read, write, validate, or compute values while controlling how the data is accessed.
+
+### Why do we use Properties?
+
+> We use properties to provide controlled access to data, apply validation or business logic, restrict read/write access, and encapsulate the internal state of a class.
+
+### What is the difference between `get` and `set`?
+
+```text
+get → Executes when a property is read.
+
+set → Executes when a value is assigned to a property.
+
+value → Represents the value being assigned.
+```
+
+### Most Important Example
+
+```csharp
+private int _Age;
+
+public int Age
+{
+    get
+    {
+        return _Age;
+    }
+
+    set
+    {
+        if (value >= 0)
+        {
+            _Age = value;
+        }
+    }
+}
+```
+
+Here:
+
+```text
+_Age
+  ↓
+Private field that stores the value
+
+Age
+  ↓
+Property that controls access
+
+get
+  ↓
+Reads _Age
+
+set
+  ↓
+Writes _Age
+
+value
+  ↓
+New value supplied by the caller
+
+if
+  ↓
+Validation / business rule
+```

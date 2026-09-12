@@ -1,0 +1,863 @@
+# Object Initializers in C#
+
+## 1. Introduction
+
+* **Object Initializers** were introduced in **C# 3.0**.
+* Object Initializers provide a simple way to initialize the properties or accessible fields of an object at the time of object creation.
+* They allow us to assign values without writing separate property-assignment statements.
+* Object Initializers make object creation and initialization more readable and concise.
+
+---
+
+## 2. Definition
+
+> **Object Initializer is a C# feature that allows us to create an object and initialize its accessible properties or fields at the same time, without explicitly writing separate assignment statements.**
+
+Example:
+
+```csharp
+Student s1 = new Student
+{
+    Id = 101,
+    Name = "Raju",
+    Class = 10
+};
+```
+
+Here:
+
+* `new Student` creates the object.
+* `{ }` contains the Object Initializer.
+* `Id`, `Name`, and `Class` are initialized immediately.
+
+---
+
+# 3. General Syntax
+
+```csharp
+ClassName objectName = new ClassName
+{
+    Property1 = value1,
+    Property2 = value2,
+    Property3 = value3
+};
+```
+
+Example:
+
+```csharp
+Student s1 = new Student
+{
+    Id = 101,
+    Name = "Raju",
+    Class = 10
+};
+```
+
+---
+
+# 4. How Object Initializer Works
+
+Consider:
+
+```csharp
+Student s1 = new Student
+{
+    Id = 101,
+    Name = "Raju",
+    Class = 10
+};
+```
+
+Conceptually, it works like:
+
+```csharp
+Student s1 = new Student();
+
+s1.Id = 101;
+s1.Name = "Raju";
+s1.Class = 10;
+```
+
+Therefore, the process is:
+
+```text
+1. Create the Student object
+          ↓
+2. Constructor is executed
+          ↓
+3. Assign values to the specified properties
+          ↓
+4. Object is ready to use
+```
+
+---
+
+# 5. Does Object Initializer Use a Constructor?
+
+Yes.
+
+Object Initializers do **not** mean that a constructor is completely avoided.
+
+When we write:
+
+```csharp
+Student s1 = new Student
+{
+    Id = 101,
+    Name = "Raju"
+};
+```
+
+the object is first created using:
+
+```csharp
+new Student()
+```
+
+Then the properties are initialized.
+
+Conceptually:
+
+```csharp
+Student s1 = new Student();
+
+s1.Id = 101;
+s1.Name = "Raju";
+```
+
+### Important Point
+
+> Object Initializer initializes the object after the object has been created by a constructor.
+
+---
+
+# 6. Student Class Example
+
+```csharp
+public class Student
+{
+    int? _Id;
+    int? _Class;
+    string? _Name;
+    float? _Marks;
+    float? _Fees;
+
+    public int? Id
+    {
+        get { return _Id; }
+        set { _Id = value; }
+    }
+
+    public int? Class
+    {
+        get { return _Class; }
+        set { _Class = value; }
+    }
+
+    public string? Name
+    {
+        get { return _Name; }
+        set { _Name = value; }
+    }
+
+    public float? Marks
+    {
+        get { return _Marks; }
+        set { _Marks = value; }
+    }
+
+    public float? Fees
+    {
+        get { return _Fees; }
+        set { _Fees = value; }
+    }
+
+    public override string ToString()
+    {
+        return "Id: " + _Id +
+               "\nName: " + _Name +
+               "\nClass: " + _Class +
+               "\nMarks: " + _Marks +
+               "\nFees: " + _Fees;
+    }
+}
+```
+
+---
+
+# 7. Why Are the Fields Declared With `?`
+
+The fields are:
+
+```csharp
+int? _Id;
+int? _Class;
+string? _Name;
+float? _Marks;
+float? _Fees;
+```
+
+The `?` means the value can be `null`.
+
+For example:
+
+```csharp
+int? Id;
+```
+
+can contain:
+
+```text
+101
+```
+
+or:
+
+```text
+null
+```
+
+Similarly:
+
+```csharp
+float? Marks;
+```
+
+can contain:
+
+```text
+575.00
+```
+
+or:
+
+```text
+null
+```
+
+This is useful in this example because we don't initialize every property for every student.
+
+---
+
+# 8. Properties Used by the Object Initializer
+
+Example:
+
+```csharp
+public int? Id
+{
+    get { return _Id; }
+    set { _Id = value; }
+}
+```
+
+The property has:
+
+### Getter
+
+```csharp
+get { return _Id; }
+```
+
+The getter returns the value of `_Id`.
+
+### Setter
+
+```csharp
+set { _Id = value; }
+```
+
+The setter assigns the supplied value to `_Id`.
+
+Therefore:
+
+```csharp
+s1.Id = 101;
+```
+
+will call the setter and effectively store:
+
+```csharp
+_Id = 101;
+```
+
+---
+
+# 9. Why Can We Use Properties in an Object Initializer?
+
+The properties are declared as:
+
+```csharp
+public
+```
+
+and have a `set` accessor.
+
+For example:
+
+```csharp
+public string? Name
+{
+    get { return _Name; }
+    set { _Name = value; }
+}
+```
+
+Therefore, we can write:
+
+```csharp
+Student s1 = new Student
+{
+    Name = "Raju"
+};
+```
+
+The Object Initializer assigns the value through the property setter.
+
+---
+
+# 10. Creating the First Student Object
+
+```csharp
+Student s1 = new Student
+{
+    Id = 101,
+    Name = "Raju",
+    Class = 10,
+    Marks = 575.00f,
+    Fees = 5000.00f
+};
+```
+
+All five properties are initialized.
+
+Final values:
+
+```text
+Id     = 101
+Name   = Raju
+Class  = 10
+Marks  = 575
+Fees   = 5000
+```
+
+---
+
+# 11. Creating the Second Student Object
+
+```csharp
+Student s2 = new Student
+{
+    Id = 102,
+    Name = "Vijay",
+    Class = 10
+};
+```
+
+Only three properties are initialized.
+
+Final values:
+
+```text
+Id     = 102
+Name   = Vijay
+Class  = 10
+Marks  = null
+Fees   = null
+```
+
+### Important Point
+
+We don't have to initialize every property.
+
+Only the properties we specify will be assigned values.
+
+---
+
+# 12. Creating the Third Student Object
+
+```csharp
+Student s3 = new Student
+{
+    Id = 103,
+    Marks = 560.00f,
+    Fees = 5000.00f
+};
+```
+
+Final values:
+
+```text
+Id     = 103
+Name   = null
+Class  = null
+Marks  = 560
+Fees   = 5000
+```
+
+---
+
+# 13. Creating the Fourth Student Object
+
+```csharp
+Student s4 = new Student
+{
+    Id = 104,
+    Class = 10,
+    Fees = 5000.00f
+};
+```
+
+Final values:
+
+```text
+Id     = 104
+Name   = null
+Class  = 10
+Marks  = null
+Fees   = 5000
+```
+
+---
+
+# 14. Creating the Fifth Student Object
+
+```csharp
+Student s5 = new Student
+{
+    Id = 105,
+    Name = "Raju",
+    Marks = 575.00f
+};
+```
+
+Final values:
+
+```text
+Id     = 105
+Name   = Raju
+Class  = null
+Marks  = 575
+Fees   = null
+```
+
+---
+
+# 15. Creating the Sixth Student Object
+
+```csharp
+Student s6 = new Student
+{
+    Id = 106,
+    Class = 10,
+    Marks = 575.00f
+};
+```
+
+Final values:
+
+```text
+Id     = 106
+Name   = null
+Class  = 10
+Marks  = 575
+Fees   = null
+```
+
+---
+
+# 16. Complete Object Initializer Example
+
+```csharp
+Student s1 = new Student
+{
+    Id = 101,
+    Name = "Raju",
+    Class = 10,
+    Marks = 575.00f,
+    Fees = 5000.00f
+};
+
+Student s2 = new Student
+{
+    Id = 102,
+    Name = "Vijay",
+    Class = 10
+};
+
+Student s3 = new Student
+{
+    Id = 103,
+    Marks = 560.00f,
+    Fees = 5000.00f
+};
+```
+
+Each object can have different properties initialized.
+
+---
+
+# 17. What Is `ToString()`?
+
+Every C# class ultimately inherits from the `object` class.
+
+The `object` class provides a method called:
+
+```csharp
+ToString()
+```
+
+By default, `ToString()` provides a string representation of an object.
+
+We can override it to provide our own output.
+
+Example:
+
+```csharp
+public override string ToString()
+{
+    return "Id: " + _Id +
+           "\nName: " + _Name +
+           "\nClass: " + _Class +
+           "\nMarks: " + _Marks +
+           "\nFees: " + _Fees;
+}
+```
+
+---
+
+# 18. Why Is `ToString()` Used Here?
+
+The program contains:
+
+```csharp
+Console.WriteLine(s1);
+```
+
+Because `s1` is an object, C# uses its `ToString()` method to get its string representation.
+
+So:
+
+```csharp
+Console.WriteLine(s1);
+```
+
+is conceptually similar to:
+
+```csharp
+Console.WriteLine(s1.ToString());
+```
+
+Because we have overridden `ToString()`, the student information is displayed.
+
+Output:
+
+```text
+Id: 101
+Name: Raju
+Class: 10
+Marks: 575
+Fees: 5000
+```
+
+---
+
+# 19. Complete Program
+
+```csharp
+using System;
+
+namespace OOPSProject
+{
+    public class Student
+    {
+        int? _Id, _Class;
+        string? _Name;
+        float? _Marks, _Fees;
+
+        public int? Id
+        {
+            get { return _Id; }
+            set { _Id = value; }
+        }
+
+        public int? Class
+        {
+            get { return _Class; }
+            set { _Class = value; }
+        }
+
+        public string? Name
+        {
+            get { return _Name; }
+            set { _Name = value; }
+        }
+
+        public float? Marks
+        {
+            get { return _Marks; }
+            set { _Marks = value; }
+        }
+
+        public float? Fees
+        {
+            get { return _Fees; }
+            set { _Fees = value; }
+        }
+
+        public override string ToString()
+        {
+            return "Id: " + _Id +
+                   "\nName: " + _Name +
+                   "\nClass: " + _Class +
+                   "\nMarks: " + _Marks +
+                   "\nFees: " + _Fees;
+        }
+    }
+
+    internal class TestStudent
+    {
+        static void Main()
+        {
+            Student s1 = new Student
+            {
+                Id = 101,
+                Name = "Raju",
+                Class = 10,
+                Marks = 575.00f,
+                Fees = 5000.00f
+            };
+
+            Student s2 = new Student
+            {
+                Id = 102,
+                Name = "Vijay",
+                Class = 10
+            };
+
+            Student s3 = new Student
+            {
+                Id = 103,
+                Marks = 560.00f,
+                Fees = 5000.00f
+            };
+
+            Student s4 = new Student
+            {
+                Id = 104,
+                Class = 10,
+                Fees = 5000.00f
+            };
+
+            Student s5 = new Student
+            {
+                Id = 105,
+                Name = "Raju",
+                Marks = 575.00f
+            };
+
+            Student s6 = new Student
+            {
+                Id = 106,
+                Class = 10,
+                Marks = 575.00f
+            };
+
+            Console.WriteLine(s1);
+            Console.WriteLine(s2);
+            Console.WriteLine(s3);
+            Console.WriteLine(s4);
+            Console.WriteLine(s5);
+            Console.WriteLine(s6);
+
+            Console.ReadLine();
+        }
+    }
+}
+```
+
+---
+
+# 20. Advantages of Object Initializers
+
+### 1. Less code
+
+Instead of:
+
+```csharp
+Student s = new Student();
+
+s.Id = 101;
+s.Name = "Raju";
+s.Class = 10;
+```
+
+we can write:
+
+```csharp
+Student s = new Student
+{
+    Id = 101,
+    Name = "Raju",
+    Class = 10
+};
+```
+
+### 2. More readable
+
+All the initial values are visible together.
+
+### 3. No need to create many constructors
+
+For example, without object initializers, we might create different constructors:
+
+```csharp
+Student(int id)
+Student(int id, string name)
+Student(int id, string name, int classNo)
+Student(int id, string name, int classNo, float marks)
+```
+
+Object initializers can reduce the need for such constructor overloads when simple property assignment is sufficient.
+
+### 4. Can initialize only required properties
+
+Example:
+
+```csharp
+Student s = new Student
+{
+    Id = 101,
+    Name = "Raju"
+};
+```
+
+We don't have to initialize every property.
+
+---
+
+# 21. Object Initializer vs Normal Property Assignment
+
+## Normal approach
+
+```csharp
+Student s = new Student();
+
+s.Id = 101;
+s.Name = "Raju";
+s.Class = 10;
+```
+
+## Object Initializer
+
+```csharp
+Student s = new Student
+{
+    Id = 101,
+    Name = "Raju",
+    Class = 10
+};
+```
+
+### Difference
+
+| Normal Assignment                              | Object Initializer                         |
+| ---------------------------------------------- | ------------------------------------------ |
+| Object is created first                        | Object is created and initialized together |
+| Properties are assigned in separate statements | Properties are assigned inside `{ }`       |
+| More lines of code                             | Less code                                  |
+| Can be less readable with many properties      | Usually more readable                      |
+
+---
+
+# 22. Object Initializer vs Parameterized Constructor
+
+### Parameterized Constructor
+
+```csharp
+Student s = new Student(101, "Raju", 10);
+```
+
+Values are passed to the constructor.
+
+### Object Initializer
+
+```csharp
+Student s = new Student
+{
+    Id = 101,
+    Name = "Raju",
+    Class = 10
+};
+```
+
+Values are assigned to properties.
+
+### Main Difference
+
+```text
+Parameterized Constructor
+        ↓
+Values → Constructor
+
+Object Initializer
+        ↓
+Object → Properties
+```
+
+---
+
+# 23. Important Points to Remember
+
+1. Object Initializers were introduced in **C# 3.0**.
+2. They allow us to initialize an object during object creation.
+3. They use `{ }` syntax.
+4. They generally initialize accessible properties or fields.
+5. A property should have an accessible setter if we want to assign it through an object initializer.
+6. The object is still created using a constructor.
+7. Object Initializers do not mean that constructors are completely removed.
+8. We don't have to initialize every property.
+9. Properties not initialized will retain their default values.
+10. In this example, nullable types allow those uninitialized values to be `null`.
+11. Object Initializers improve code readability.
+12. They reduce repetitive property-assignment statements.
+13. They can reduce the need for multiple constructor overloads in simple initialization scenarios.
+14. `ToString()` can be overridden to provide a meaningful string representation of the object.
+
+---
+
+# 24. Interview Definition
+
+> **Object Initializer in C# is a feature introduced in C# 3.0 that allows us to create an object and initialize its accessible properties or fields at the same time using `{ }` syntax. It internally creates the object using a constructor and then assigns the specified property or field values.**
+
+---
+
+# 25. One-Line Memory Trick
+
+```text
+Object Initializer = Create Object + Initialize Properties Together
+```
+
+Example:
+
+```csharp
+Student s = new Student
+{
+    Id = 101,
+    Name = "Raju",
+    Class = 10
+};
+```
+
+Think:
+
+```text
+new Student()
+     ↓
+Create Object
+     ↓
+Initialize Properties
+     ↓
+Object Ready
+```
