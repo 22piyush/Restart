@@ -1,0 +1,1521 @@
+# Deconstructors in C#
+
+## 1. What is a Deconstructor?
+
+A **Deconstructor** is a special method in C# that allows us to **extract/expose values from an object** and assign those values to separate variables.
+
+In simple words:
+
+> A constructor is used to initialize an object, whereas a deconstructor is used to extract values from an object.
+
+For example, a `Teacher` object may contain:
+
+```text
+Id
+Name
+Subject
+Designation
+Salary
+```
+
+A deconstructor allows us to extract these values like:
+
+```csharp
+var (Id, Name, Subject, Designation, Salary) = obj;
+```
+
+Instead of accessing each value separately, the values can be extracted together.
+
+---
+
+# 2. Deconstructor Version
+
+Deconstructors were introduced in **C# 7.0**.
+
+They provide another way to expose values associated with a class, apart from:
+
+* Fields
+* Properties
+* Indexers
+
+A deconstructor is useful when we want to **unpack an object into individual variables**.
+
+---
+
+# 3. Constructor vs Deconstructor
+
+The easiest way to understand a deconstructor is to compare it with a constructor.
+
+### Constructor
+
+A constructor takes values from outside and puts them into an object.
+
+```csharp
+Teacher obj = new Teacher(
+    1005,
+    "Suresh",
+    "English",
+    "Lecturer",
+    25000
+);
+```
+
+Conceptually:
+
+```text
+Outside values
+      ↓
+  Constructor
+      ↓
+   Object
+```
+
+---
+
+### Deconstructor
+
+A deconstructor takes values from the object and gives them to outside variables.
+
+```csharp
+var (Id, Name, Subject, Designation, Salary) = obj;
+```
+
+Conceptually:
+
+```text
+   Object
+      ↓
+Deconstructor
+      ↓
+Outside variables
+```
+
+Therefore:
+
+```text
+Constructor   → Values go INTO object
+
+Deconstructor → Values come OUT OF object
+```
+
+This is the easiest way to remember it.
+
+---
+
+# 4. Syntax of a Deconstructor
+
+A deconstructor is normally written as:
+
+```csharp
+public void Deconstruct(
+    out int Id,
+    out string Name
+)
+{
+    Id = this.Id;
+    Name = this.Name;
+}
+```
+
+Important points:
+
+* Method name must be `Deconstruct`
+* It is generally an instance method
+* It returns `void`
+* It uses `out` parameters
+* It is used to expose values from the object
+
+Example:
+
+```csharp
+public void Deconstruct(
+    out int Id,
+    out string Name
+)
+{
+    Id = this.Id;
+    Name = this.Name;
+}
+```
+
+---
+
+# 5. Important: Name Must Be `Deconstruct`
+
+The method name is:
+
+```csharp
+Deconstruct
+```
+
+This name is important.
+
+For normal methods, we can choose our own method name:
+
+```csharp
+GetTeacher()
+GetDetails()
+GetData()
+```
+
+But for the deconstruction pattern, the method must be named:
+
+```csharp
+Deconstruct
+```
+
+Example:
+
+```csharp
+public void Deconstruct(out int Id, out string Name)
+{
+    Id = this.Id;
+    Name = this.Name;
+}
+```
+
+---
+
+# 6. Deconstructor Is a Non-Returning Method
+
+A deconstructor does not return a single value using `return`.
+
+Therefore, its return type is:
+
+```csharp
+void
+```
+
+Example:
+
+```csharp
+public void Deconstruct(
+    out int Id,
+    out string Name
+)
+{
+    Id = this.Id;
+    Name = this.Name;
+}
+```
+
+Instead of returning one value, it provides multiple values through `out` parameters.
+
+---
+
+# 7. Why Does Deconstructor Use `out`?
+
+A deconstructor can expose multiple values.
+
+For example:
+
+```csharp
+public void Deconstruct(
+    out int Id,
+    out string Name,
+    out string Subject
+)
+{
+    Id = this.Id;
+    Name = this.Name;
+    Subject = this.Subject;
+}
+```
+
+Here the method provides three values:
+
+```text
+Id
+Name
+Subject
+```
+
+The `out` parameters allow the method to assign values to variables provided by the caller.
+
+---
+
+# 8. Basic Deconstructor Example
+
+Let's start with a simple example.
+
+```csharp
+class Student
+{
+    int Id;
+    string Name;
+
+    public Student(int Id, string Name)
+    {
+        this.Id = Id;
+        this.Name = Name;
+    }
+
+    public void Deconstruct(
+        out int Id,
+        out string Name
+    )
+    {
+        Id = this.Id;
+        Name = this.Name;
+    }
+}
+```
+
+Create an object:
+
+```csharp
+Student obj = new Student(101, "Piyush");
+```
+
+Now deconstruct it:
+
+```csharp
+var (Id, Name) = obj;
+```
+
+Now:
+
+```text
+Id   = 101
+Name = Piyush
+```
+
+We can print them:
+
+```csharp
+Console.WriteLine(Id);
+Console.WriteLine(Name);
+```
+
+---
+
+# 9. Understanding the Teacher Example
+
+Your notes use a `Teacher` class.
+
+The class contains:
+
+```csharp
+int? Id;
+string? Name, Subject, Designation;
+double? Salary;
+```
+
+These fields store:
+
+```text
+Id          → Teacher ID
+Name        → Teacher Name
+Subject     → Teaching Subject
+Designation → Teacher Designation
+Salary      → Teacher Salary
+```
+
+---
+
+# 10. Teacher Constructor
+
+The constructor is:
+
+```csharp
+public Teacher(
+    int? Id,
+    string? Name,
+    string? Subject,
+    string? Designation,
+    double? Salary
+)
+{
+    this.Id = Id;
+    this.Name = Name;
+    this.Subject = Subject;
+    this.Designation = Designation;
+    this.Salary = Salary;
+}
+```
+
+When we create:
+
+```csharp
+Teacher obj = new Teacher(
+    1005,
+    "Suresh",
+    "English",
+    "Lecturer",
+    25000.00
+);
+```
+
+The object contains:
+
+```text
+Id          = 1005
+Name        = Suresh
+Subject     = English
+Designation = Lecturer
+Salary      = 25000
+```
+
+---
+
+# 11. Teacher Deconstructor
+
+The deconstructor is:
+
+```csharp
+public void Deconstruct(
+    out int? Id,
+    out string? Name,
+    out string? Subject,
+    out string? Designation,
+    out double? Salary
+)
+{
+    Id = this.Id;
+    Name = this.Name;
+    Subject = this.Subject;
+    Designation = this.Designation;
+    Salary = this.Salary;
+}
+```
+
+Notice the important difference.
+
+The constructor does:
+
+```csharp
+this.Id = Id;
+```
+
+The deconstructor does:
+
+```csharp
+Id = this.Id;
+```
+
+This is essentially the reverse direction.
+
+### Constructor
+
+```text
+Parameter → Object field
+```
+
+### Deconstructor
+
+```text
+Object field → Output parameter
+```
+
+---
+
+# 12. Complete Teacher Example
+
+```csharp
+namespace OOPSProject
+{
+    public class Teacher
+    {
+        int? Id;
+        string? Name, Subject, Designation;
+        double? Salary;
+
+        // Constructor
+        public Teacher(
+            int? Id,
+            string? Name,
+            string? Subject,
+            string? Designation,
+            double? Salary
+        )
+        {
+            this.Id = Id;
+            this.Name = Name;
+            this.Subject = Subject;
+            this.Designation = Designation;
+            this.Salary = Salary;
+        }
+
+        // Deconstructor
+        public void Deconstruct(
+            out int? Id,
+            out string? Name,
+            out string? Subject,
+            out string? Designation,
+            out double? Salary
+        )
+        {
+            Id = this.Id;
+            Name = this.Name;
+            Subject = this.Subject;
+            Designation = this.Designation;
+            Salary = this.Salary;
+        }
+    }
+
+    class TestTeacher
+    {
+        static void Main()
+        {
+            Teacher obj = new Teacher(
+                1005,
+                "Suresh",
+                "English",
+                "Lecturer",
+                25000.00
+            );
+
+            var (Id, Name, Subject, Designation, Salary) = obj;
+
+            Console.WriteLine("Teacher Id: " + Id);
+            Console.WriteLine("Teacher Name: " + Name);
+            Console.WriteLine("Teacher Subject: " + Subject);
+            Console.WriteLine("Teacher Designation: " + Designation);
+            Console.WriteLine("Teacher Salary: " + Salary);
+
+            Console.ReadLine();
+        }
+    }
+}
+```
+
+---
+
+# 13. How Does This Statement Work?
+
+The most important statement is:
+
+```csharp
+var (Id, Name, Subject, Designation, Salary) = obj;
+```
+
+This tells C#:
+
+> Deconstruct the `obj` object and place its values into these five variables.
+
+Conceptually:
+
+```text
+obj
+ │
+ │ Deconstruct()
+ ↓
+┌──────┬────────┬─────────┬─────────────┬────────┐
+│ 1005 │ Suresh │ English │ Lecturer    │ 25000  │
+└──────┴────────┴─────────┴─────────────┴────────┘
+   ↓       ↓         ↓          ↓            ↓
+  Id     Name     Subject   Designation    Salary
+```
+
+---
+
+# 14. Deconstruction Using Explicit Types
+
+We can explicitly specify the types:
+
+```csharp
+(int? Id1,
+ string? Name1,
+ string? Subject1,
+ string? Designation1,
+ double? Salary1) = obj;
+```
+
+Example:
+
+```csharp
+(int? Id1, string? Name1, string? Subject1,
+ string? Designation1, double? Salary1) = obj;
+```
+
+Now the values are stored in:
+
+```text
+Id1
+Name1
+Subject1
+Designation1
+Salary1
+```
+
+---
+
+# 15. Deconstruction Using `var`
+
+Instead of writing all the types, we can use `var`.
+
+Example:
+
+```csharp
+(var Id2,
+ var Name2,
+ var Subject2,
+ var Designation2,
+ var Salary2) = obj;
+```
+
+This is shorter.
+
+The compiler determines the types from the values returned by the deconstructor.
+
+---
+
+# 16. Even Shorter Syntax
+
+We can simplify the previous statement further:
+
+```csharp
+var (Id2, Name2, Subject2, Designation2, Salary2) = obj;
+```
+
+This is the commonly used syntax.
+
+The compiler determines the types automatically.
+
+For example:
+
+```text
+Id2          → int?
+Name2        → string?
+Subject2     → string?
+Designation2 → string?
+Salary2      → double?
+```
+
+---
+
+# 17. Deconstructor Does Not Give Write Access
+
+A deconstructor is used to **read/extract values**.
+
+It does not provide a mechanism to update the object's fields.
+
+For example:
+
+```csharp
+var (Id, Name, Subject, Designation, Salary) = obj;
+```
+
+This extracts values from the object.
+
+It does not mean:
+
+```csharp
+obj.Id = 2000;
+```
+
+can be performed through the deconstructor.
+
+Therefore:
+
+> Deconstruction provides a way to read/extract values from an object, not to write values back into the object.
+
+---
+
+# 18. Deconstructor vs Properties
+
+Properties allow values to be individually accessed.
+
+Example:
+
+```csharp
+obj.Name
+obj.Subject
+obj.Salary
+```
+
+A deconstructor allows multiple values to be extracted together:
+
+```csharp
+var (Id, Name, Subject, Designation, Salary) = obj;
+```
+
+Therefore, deconstruction can make object unpacking more convenient.
+
+---
+
+# 19. Deconstructor Overloading
+
+A class can have multiple `Deconstruct` methods.
+
+This is called:
+
+> Deconstructor Overloading.
+
+For example, the Teacher class already has:
+
+```csharp
+public void Deconstruct(
+    out int? Id,
+    out string? Name,
+    out string? Subject,
+    out string? Designation,
+    out double? Salary
+)
+```
+
+We can add another:
+
+```csharp
+public void Deconstruct(
+    out int? Id,
+    out string? Name,
+    out string? Subject
+)
+{
+    Id = this.Id;
+    Name = this.Name;
+    Subject = this.Subject;
+}
+```
+
+Now there are two deconstructors.
+
+---
+
+# 20. Why Overload the Deconstructor?
+
+Suppose we only need:
+
+```text
+Id
+Name
+Subject
+```
+
+We don't need:
+
+```text
+Designation
+Salary
+```
+
+Instead of extracting all five values, we can use the three-output deconstructor:
+
+```csharp
+var (Id3, Name3, Subject3) = obj;
+```
+
+C# finds the `Deconstruct` method having three `out` parameters.
+
+---
+
+# 21. Complete Deconstructor Overloading Example
+
+```csharp
+public void Deconstruct(
+    out int? Id,
+    out string? Name,
+    out string? Subject,
+    out string? Designation,
+    out double? Salary
+)
+{
+    Id = this.Id;
+    Name = this.Name;
+    Subject = this.Subject;
+    Designation = this.Designation;
+    Salary = this.Salary;
+}
+
+public void Deconstruct(
+    out int? Id,
+    out string? Name,
+    out string? Subject
+)
+{
+    Id = this.Id;
+    Name = this.Name;
+    Subject = this.Subject;
+}
+```
+
+Now:
+
+```csharp
+var (Id, Name, Subject, Designation, Salary) = obj;
+```
+
+uses the five-output deconstructor.
+
+And:
+
+```csharp
+var (Id, Name, Subject) = obj;
+```
+
+uses the three-output deconstructor.
+
+---
+
+# 22. Using `_` to Ignore Values
+
+We don't always need every value.
+
+For example, suppose the object contains:
+
+```text
+Id
+Name
+Subject
+Designation
+Salary
+```
+
+But we only need:
+
+```text
+Id
+Subject
+Salary
+```
+
+We can use `_` for values we don't need:
+
+```csharp
+var (Id4, _, Subject4, _, Salary4) = obj;
+```
+
+Here:
+
+```text
+Id4       → received
+_         → ignored
+Subject4  → received
+_         → ignored
+Salary4   → received
+```
+
+So:
+
+```text
+Id          → Id4
+Name        → ignored
+Subject     → Subject4
+Designation → ignored
+Salary      → Salary4
+```
+
+---
+
+# 23. What Does `_` Mean?
+
+The `_` is called a **discard** in this context.
+
+It means:
+
+> I don't need this value.
+
+Example:
+
+```csharp
+var (Id, _, Subject, _, Salary) = obj;
+```
+
+means:
+
+```text
+Id          → store
+Name        → ignore
+Subject     → store
+Designation → ignore
+Salary      → store
+```
+
+The ignored values don't need to be stored in variables.
+
+---
+
+# 24. Another Discard Example
+
+Suppose we only need:
+
+```text
+Name
+Designation
+```
+
+We can write:
+
+```csharp
+var (_, Name, _, Designation, _) = obj;
+```
+
+This means:
+
+```text
+Id          → ignored
+Name        → stored
+Subject     → ignored
+Designation → stored
+Salary      → ignored
+```
+
+Then:
+
+```csharp
+Console.WriteLine(Name);
+Console.WriteLine(Designation);
+```
+
+---
+
+# 25. Important: Position Matters
+
+When using deconstruction, the order of variables must match the order of `out` parameters.
+
+The deconstructor:
+
+```csharp
+public void Deconstruct(
+    out int? Id,
+    out string? Name,
+    out string? Subject,
+    out string? Designation,
+    out double? Salary
+)
+```
+
+returns values in this order:
+
+```text
+1 → Id
+2 → Name
+3 → Subject
+4 → Designation
+5 → Salary
+```
+
+Therefore:
+
+```csharp
+var (Id, Name, Subject, Designation, Salary) = obj;
+```
+
+matches correctly.
+
+And:
+
+```csharp
+var (Id, _, Subject, _, Salary) = obj;
+```
+
+also matches correctly.
+
+The `_` does not change the position; it only ignores that value.
+
+---
+
+# 26. Full Example with Discards
+
+```csharp
+Teacher obj = new Teacher(
+    1005,
+    "Suresh",
+    "English",
+    "Lecturer",
+    25000.00
+);
+
+var (Id, _, Subject, _, Salary) = obj;
+
+Console.WriteLine("Teacher Id: " + Id);
+Console.WriteLine("Teacher Subject: " + Subject);
+Console.WriteLine("Teacher Salary: " + Salary);
+```
+
+Output:
+
+```text
+Teacher Id: 1005
+Teacher Subject: English
+Teacher Salary: 25000
+```
+
+---
+
+# 27. Multiple Deconstruction Examples
+
+### Extract all values
+
+```csharp
+var (Id, Name, Subject, Designation, Salary) = obj;
+```
+
+---
+
+### Extract only Id, Subject and Salary
+
+```csharp
+var (Id, _, Subject, _, Salary) = obj;
+```
+
+---
+
+### Extract only Id, Name, Designation and Salary
+
+```csharp
+var (Id, Name, _, Designation, Salary) = obj;
+```
+
+---
+
+### Extract only Name and Designation
+
+```csharp
+var (_, Name, _, Designation, _) = obj;
+```
+
+---
+
+# 28. Complete Teacher Example with Overloaded Deconstructors
+
+```csharp
+namespace OOPSProject
+{
+    public class Teacher
+    {
+        int? Id;
+        string? Name, Subject, Designation;
+        double? Salary;
+
+        public Teacher(
+            int? Id,
+            string? Name,
+            string? Subject,
+            string? Designation,
+            double? Salary
+        )
+        {
+            this.Id = Id;
+            this.Name = Name;
+            this.Subject = Subject;
+            this.Designation = Designation;
+            this.Salary = Salary;
+        }
+
+        // Deconstructor with 5 values
+        public void Deconstruct(
+            out int? Id,
+            out string? Name,
+            out string? Subject,
+            out string? Designation,
+            out double? Salary
+        )
+        {
+            Id = this.Id;
+            Name = this.Name;
+            Subject = this.Subject;
+            Designation = this.Designation;
+            Salary = this.Salary;
+        }
+
+        // Overloaded Deconstructor with 3 values
+        public void Deconstruct(
+            out int? Id,
+            out string? Name,
+            out string? Subject
+        )
+        {
+            Id = this.Id;
+            Name = this.Name;
+            Subject = this.Subject;
+        }
+    }
+
+    class TestTeacher
+    {
+        static void Main()
+        {
+            Teacher obj = new Teacher(
+                1005,
+                "Suresh",
+                "English",
+                "Lecturer",
+                25000.00
+            );
+
+            // Get all values
+            var (Id1, Name1, Subject1, Designation1, Salary1) = obj;
+
+            Console.WriteLine("Teacher Id: " + Id1);
+            Console.WriteLine("Teacher Name: " + Name1);
+            Console.WriteLine("Teacher Subject: " + Subject1);
+            Console.WriteLine("Teacher Designation: " + Designation1);
+            Console.WriteLine("Teacher Salary: " + Salary1);
+
+            Console.WriteLine();
+
+            // Get only 3 values using overloaded Deconstructor
+            var (Id2, Name2, Subject2) = obj;
+
+            Console.WriteLine("Teacher Id: " + Id2);
+            Console.WriteLine("Teacher Name: " + Name2);
+            Console.WriteLine("Teacher Subject: " + Subject2);
+
+            Console.WriteLine();
+
+            // Use discard to ignore unwanted values
+            var (Id3, _, Subject3, _, Salary3) = obj;
+
+            Console.WriteLine("Teacher Id: " + Id3);
+            Console.WriteLine("Teacher Subject: " + Subject3);
+            Console.WriteLine("Teacher Salary: " + Salary3);
+
+            Console.ReadLine();
+        }
+    }
+}
+```
+
+---
+
+# 29. Important Difference: Constructor vs Deconstructor
+
+| Constructor                   | Deconstructor                   |
+| ----------------------------- | ------------------------------- |
+| Initializes an object         | Extracts values from an object  |
+| Values go into object         | Values come out of object       |
+| Called when object is created | Called during deconstruction    |
+| Has same name as class        | Name is `Deconstruct`           |
+| Can have return? No           | Return type is `void`           |
+| Uses normal parameters        | Uses `out` parameters           |
+| Used with `new`               | Used with deconstruction syntax |
+| Example: `new Teacher(...)`   | Example: `var (...) = obj`      |
+
+---
+
+# 30. Constructor Flow
+
+```csharp
+Teacher obj = new Teacher(
+    1005,
+    "Suresh",
+    "English",
+    "Lecturer",
+    25000
+);
+```
+
+Flow:
+
+```text
+1005
+Suresh
+English
+Lecturer
+25000
+   ↓
+Constructor
+   ↓
+Teacher Object
+```
+
+---
+
+# 31. Deconstructor Flow
+
+```csharp
+var (Id, Name, Subject, Designation, Salary) = obj;
+```
+
+Flow:
+
+```text
+Teacher Object
+      ↓
+ Deconstruct()
+      ↓
+1005
+Suresh
+English
+Lecturer
+25000
+      ↓
+Id / Name / Subject / Designation / Salary
+```
+
+---
+
+# 32. Deconstructor vs Destructor
+
+This is VERY important for interviews.
+
+The words **Deconstructor** and **Destructor/Finalizer** sound similar, but they are completely different.
+
+### Deconstructor
+
+```csharp
+public void Deconstruct(...)
+```
+
+Purpose:
+
+> Extract values from an object.
+
+Example:
+
+```csharp
+var (Id, Name) = obj;
+```
+
+---
+
+### Destructor / Finalizer
+
+```csharp
+~ClassName()
+{
+}
+```
+
+Purpose:
+
+> Allows cleanup logic associated with an object's finalization.
+
+It is related to garbage collection and unmanaged resource cleanup scenarios.
+
+Therefore:
+
+```text
+Deconstructor ≠ Destructor
+```
+
+Do not confuse them in an interview.
+
+---
+
+# 33. Deconstructor and Tuple
+
+Deconstruction works nicely with tuple syntax.
+
+Example:
+
+```csharp
+var (Id, Name, Subject) = obj;
+```
+
+The values produced by `Deconstruct()` are assigned to these variables.
+
+This makes it convenient to unpack multiple values from an object.
+
+---
+
+# 34. Why Use Deconstructors?
+
+Deconstructors are useful when:
+
+* We want to extract multiple values from an object.
+* We want cleaner object unpacking syntax.
+* We want to expose selected values without accessing each property individually.
+* We want to support tuple-style assignment.
+* We want users of a class to easily extract important data.
+* We want to provide multiple deconstruction options through overloads.
+
+---
+
+# 35. Important Rules of Deconstructors
+
+Remember these points:
+
+1. Deconstructors were introduced in **C# 7.0**.
+
+2. The method must be named:
+
+```csharp
+Deconstruct
+```
+
+3. A deconstructor returns:
+
+```csharp
+void
+```
+
+4. It normally uses:
+
+```csharp
+out
+```
+
+parameters.
+
+5. It can expose multiple values.
+
+6. A class can have multiple overloaded `Deconstruct` methods.
+
+7. Deconstruction uses tuple-like syntax:
+
+```csharp
+var (a, b, c) = obj;
+```
+
+8. `_` can be used as a discard when a value is not required:
+
+```csharp
+var (a, _, c) = obj;
+```
+
+9. The order of the variables must correspond to the order of the `out` parameters.
+
+10. Deconstruction is primarily used to **extract/read values**, not to update the original object.
+
+---
+
+# 36. Most Important Syntax to Remember
+
+### Basic Deconstructor
+
+```csharp
+public void Deconstruct(
+    out int Id,
+    out string Name
+)
+{
+    Id = this.Id;
+    Name = this.Name;
+}
+```
+
+### Using the Deconstructor
+
+```csharp
+var (Id, Name) = obj;
+```
+
+### Using explicit types
+
+```csharp
+(int Id, string Name) = obj;
+```
+
+### Using discards
+
+```csharp
+var (Id, _, Name) = obj;
+```
+
+### Overloaded Deconstructor
+
+```csharp
+public void Deconstruct(
+    out int Id,
+    out string Name
+)
+{
+    Id = this.Id;
+    Name = this.Name;
+}
+
+public void Deconstruct(
+    out int Id,
+    out string Name,
+    out string Subject
+)
+{
+    Id = this.Id;
+    Name = this.Name;
+    Subject = this.Subject;
+}
+```
+
+---
+
+# 37. Interview Questions
+
+## Q1. What is a Deconstructor in C#?
+
+A deconstructor is a special `Deconstruct` method that allows an object's values to be extracted into separate variables using deconstruction syntax.
+
+Example:
+
+```csharp
+var (Id, Name) = obj;
+```
+
+---
+
+## Q2. In which version of C# were deconstructors introduced?
+
+Deconstruction support was introduced in **C# 7.0**.
+
+---
+
+## Q3. What is the name of the deconstructor method?
+
+The method must be named:
+
+```csharp
+Deconstruct
+```
+
+---
+
+## Q4. What is the return type of a Deconstruct method?
+
+It is:
+
+```csharp
+void
+```
+
+because the values are provided through `out` parameters.
+
+---
+
+## Q5. Why are `out` parameters used?
+
+`out` parameters allow a `Deconstruct` method to provide multiple values to the caller.
+
+Example:
+
+```csharp
+public void Deconstruct(
+    out int Id,
+    out string Name
+)
+```
+
+---
+
+## Q6. Can we overload a Deconstruct method?
+
+Yes.
+
+We can define multiple `Deconstruct` methods with different numbers/types of `out` parameters.
+
+Example:
+
+```csharp
+Deconstruct(out int Id, out string Name)
+```
+
+and:
+
+```csharp
+Deconstruct(out int Id, out string Name, out string Subject)
+```
+
+---
+
+## Q7. What is the use of `_` during deconstruction?
+
+`_` is a discard.
+
+It means:
+
+> We don't need this particular value.
+
+Example:
+
+```csharp
+var (Id, _, Subject) = obj;
+```
+
+The second value is ignored.
+
+---
+
+## Q8. Is a Deconstructor the same as a Destructor?
+
+No.
+
+A deconstructor:
+
+```csharp
+Deconstruct()
+```
+
+is used to extract values.
+
+A destructor/finalizer:
+
+```csharp
+~ClassName()
+```
+
+is related to object finalization and cleanup.
+
+They are completely different concepts.
+
+---
+
+## Q9. What is the difference between a constructor and a deconstructor?
+
+Constructor:
+
+```text
+External values → Object
+```
+
+Deconstructor:
+
+```text
+Object → External variables
+```
+
+---
+
+# 38. Quick Revision
+
+```text
+DECONSTRUCTOR
+     ↓
+Introduced in C# 7.0
+     ↓
+Special method named Deconstruct
+     ↓
+Returns void
+     ↓
+Uses out parameters
+     ↓
+Extracts values from an object
+     ↓
+Used with:
+var (a, b, c) = obj;
+     ↓
+Can be overloaded
+     ↓
+Can use _ as discard
+     ↓
+Provides read/extract access
+```
+
+---
+
+# 39. One-Line Interview Definition
+
+> **A deconstructor in C# is a special `Deconstruct` method that uses `out` parameters to extract multiple values from an object and assign them to separate variables using deconstruction syntax.**
+
+---
+
+# 40. Easy Way to Remember
+
+Remember this:
+
+```text
+CONSTRUCTOR
+
+Input
+  ↓
+Constructor
+  ↓
+Object
+```
+
+Whereas:
+
+```text
+DECONSTRUCTOR
+
+Object
+  ↓
+Deconstruct()
+  ↓
+Output variables
+```
+
+So the simplest memory trick is:
+
+> **Constructor = Put values IN**
+> **Deconstructor = Take values OUT**

@@ -1,0 +1,2002 @@
+# Indexers in C#
+
+## 1. What is an Indexer?
+
+An **Indexer** in C# allows an instance of a class or struct to be accessed using the **array indexing syntax `[]`**.
+
+In simple words:
+
+> An indexer allows an object of a class or struct to behave like an array.
+
+For example, normally an array is accessed like:
+
+```csharp
+string[] names = { "Raj", "Amit", "Piyush" };
+
+Console.WriteLine(names[0]);
+Console.WriteLine(names[1]);
+```
+
+Using an indexer, we can create a class whose object can also be accessed using:
+
+```csharp
+obj[0]
+obj[1]
+obj[2]
+```
+
+Therefore, indexers are useful when a class internally manages or represents **array-like or collection-like data**.
+
+---
+
+# 2. Why Do We Need Indexers?
+
+Suppose we have an `Employee` class containing:
+
+* Id
+* Name
+* Job
+* Salary
+* Status
+
+Without an indexer, we normally access these values through properties:
+
+```csharp
+Employee emp = new Employee();
+
+Console.WriteLine(emp.Id);
+Console.WriteLine(emp.Name);
+Console.WriteLine(emp.Job);
+```
+
+With an indexer, we can provide an alternative array-like way:
+
+```csharp
+Console.WriteLine(emp[1]);
+Console.WriteLine(emp[2]);
+Console.WriteLine(emp[3]);
+```
+
+The indexer decides what value should be returned for each index.
+
+For example:
+
+```text
+emp[1] → Id
+emp[2] → Name
+emp[3] → Job
+emp[4] → Salary
+emp[5] → Status
+```
+
+So an indexer provides a convenient way to access values from an object.
+
+---
+
+# 3. Important Point
+
+An indexer is similar to a **property**.
+
+The main difference is:
+
+### Property
+
+A property does not normally take parameters.
+
+```csharp
+public string Name
+{
+    get;
+    set;
+}
+```
+
+Access:
+
+```csharp
+emp.Name
+```
+
+### Indexer
+
+An indexer takes one or more parameters.
+
+```csharp
+public string this[int index]
+{
+    get
+    {
+        // logic
+    }
+}
+```
+
+Access:
+
+```csharp
+emp[1]
+```
+
+Therefore:
+
+> Indexers are similar to properties, but their accessors can take parameters.
+
+---
+
+# 4. Syntax of an Indexer
+
+The general syntax is:
+
+```csharp
+[modifiers] <type> this[<parameter list>]
+{
+    get
+    {
+        // statements
+    }
+
+    set
+    {
+        // statements
+    }
+}
+```
+
+Example:
+
+```csharp
+public string this[int index]
+{
+    get
+    {
+        return "Some Value";
+    }
+
+    set
+    {
+        // assign value
+    }
+}
+```
+
+---
+
+# 5. Understanding the Syntax
+
+Consider:
+
+```csharp
+public string this[int index]
+{
+    get
+    {
+        return "Hello";
+    }
+
+    set
+    {
+        // logic
+    }
+}
+```
+
+### `public`
+
+Defines the accessibility of the indexer.
+
+```csharp
+public
+```
+
+means it can be accessed from outside the class.
+
+---
+
+### `string`
+
+This is the return/assigned type of the indexer.
+
+```csharp
+public string
+```
+
+means the indexer works with `string` values.
+
+The indexer can also return other types:
+
+```csharp
+public int this[int index]
+```
+
+or:
+
+```csharp
+public object this[int index]
+```
+
+---
+
+### `this`
+
+The `this` keyword is mandatory when defining an indexer.
+
+```csharp
+public string this[int index]
+```
+
+Unlike a property, an indexer does not have a normal name.
+
+---
+
+### `[int index]`
+
+This is the parameter used for indexing.
+
+```csharp
+this[int index]
+```
+
+When we write:
+
+```csharp
+emp[1]
+```
+
+the value `1` is passed to:
+
+```csharp
+index
+```
+
+---
+
+### `get`
+
+The `get` accessor returns a value.
+
+```csharp
+get
+{
+    return "Hello";
+}
+```
+
+---
+
+### `set`
+
+The `set` accessor assigns/updates a value.
+
+Inside a `set` accessor, the special keyword:
+
+```csharp
+value
+```
+
+represents the value being assigned.
+
+For example:
+
+```csharp
+emp[2] = "John";
+```
+
+The `"John"` value is available inside the setter through:
+
+```csharp
+value
+```
+
+---
+
+# 6. Simple Indexer Example
+
+```csharp
+class Student
+{
+    private string[] names =
+    {
+        "Raj",
+        "Amit",
+        "Piyush"
+    };
+
+    public string this[int index]
+    {
+        get
+        {
+            return names[index];
+        }
+
+        set
+        {
+            names[index] = value;
+        }
+    }
+}
+```
+
+Usage:
+
+```csharp
+Student student = new Student();
+
+Console.WriteLine(student[0]);
+Console.WriteLine(student[1]);
+
+student[1] = "Rahul";
+
+Console.WriteLine(student[1]);
+```
+
+Output:
+
+```text
+Raj
+Amit
+Rahul
+```
+
+Here the object:
+
+```csharp
+student
+```
+
+behaves like an array.
+
+---
+
+# 7. How Indexer Works
+
+When we write:
+
+```csharp
+student[1]
+```
+
+C# internally calls the indexer's `get` accessor.
+
+Conceptually:
+
+```csharp
+student[1]
+```
+
+means:
+
+```text
+Call indexer
+    ↓
+Pass 1 as index
+    ↓
+Execute get
+    ↓
+Return the required value
+```
+
+When we write:
+
+```csharp
+student[1] = "Rahul";
+```
+
+C# calls the indexer's `set` accessor.
+
+Conceptually:
+
+```text
+student[1] = "Rahul"
+        ↓
+Call indexer setter
+        ↓
+index = 1
+value = "Rahul"
+        ↓
+Execute set
+```
+
+---
+
+# 8. Indexers Do Not Have a Specific Name
+
+Properties have names:
+
+```csharp
+public string Name
+{
+    get;
+    set;
+}
+```
+
+The property name is:
+
+```text
+Name
+```
+
+An indexer does not have a normal name.
+
+Instead, we use:
+
+```csharp
+this
+```
+
+Example:
+
+```csharp
+public string this[int index]
+```
+
+Therefore:
+
+> The `this` keyword is used to define an indexer.
+
+---
+
+# 9. Indexer Parameters
+
+An indexer must have parameters.
+
+Example:
+
+```csharp
+public string this[int index]
+```
+
+Here:
+
+```text
+int index
+```
+
+is the parameter.
+
+When we write:
+
+```csharp
+obj[5]
+```
+
+`5` is passed as the parameter.
+
+Important:
+
+> `ref` and `out` parameters are not allowed in indexers.
+
+For example, this is not allowed:
+
+```csharp
+public string this[ref int index]
+```
+
+And:
+
+```csharp
+public string this[out int index]
+```
+
+is also not allowed.
+
+---
+
+# 10. Indexer Does Not Have to Use an Integer
+
+A very important point:
+
+> An indexer does not have to use an integer as the index.
+
+We can use other types such as:
+
+```csharp
+string
+```
+
+For example:
+
+```csharp
+public object this[string key]
+{
+    get
+    {
+        // logic
+    }
+
+    set
+    {
+        // logic
+    }
+}
+```
+
+Now we can access the object using:
+
+```csharp
+emp["Name"]
+emp["Salary"]
+emp["Job"]
+```
+
+Therefore, the indexer can implement any lookup mechanism that makes sense for the class.
+
+---
+
+# 11. Indexers Can Be Overloaded
+
+C# allows us to define multiple indexers with different parameter lists.
+
+For example:
+
+```csharp
+public object this[int index]
+{
+    get
+    {
+        // logic
+    }
+
+    set
+    {
+        // logic
+    }
+}
+```
+
+and:
+
+```csharp
+public object this[string key]
+{
+    get
+    {
+        // logic
+    }
+
+    set
+    {
+        // logic
+    }
+}
+```
+
+Now both are possible:
+
+```csharp
+emp[1]
+```
+
+and:
+
+```csharp
+emp["Name"]
+```
+
+The compiler decides which indexer to call based on the parameter type.
+
+This is called **indexer overloading**.
+
+---
+
+# 12. Indexers Cannot Be Static
+
+Indexers cannot be declared as `static`.
+
+Invalid:
+
+```csharp
+public static string this[int index]
+{
+    get
+    {
+        return "";
+    }
+}
+```
+
+An indexer works with an **instance/object**.
+
+Correct usage:
+
+```csharp
+Employee emp = new Employee();
+
+emp[1]
+```
+
+---
+
+# 13. Indexers Can Have Multiple Parameters
+
+An indexer can have more than one parameter.
+
+For example:
+
+```csharp
+public int this[int row, int column]
+{
+    get
+    {
+        return data[row, column];
+    }
+
+    set
+    {
+        data[row, column] = value;
+    }
+}
+```
+
+Now we can access it like:
+
+```csharp
+obj[2, 3]
+```
+
+This is useful for two-dimensional or multi-dimensional data.
+
+Example:
+
+```csharp
+matrix[2, 3]
+```
+
+---
+
+# 14. `value` Keyword in Indexers
+
+The `value` keyword is automatically available inside the `set` accessor.
+
+Example:
+
+```csharp
+public string this[int index]
+{
+    set
+    {
+        names[index] = value;
+    }
+}
+```
+
+Suppose we write:
+
+```csharp
+student[1] = "Rahul";
+```
+
+Then:
+
+```text
+index = 1
+value = "Rahul"
+```
+
+So:
+
+```csharp
+names[index] = value;
+```
+
+becomes:
+
+```csharp
+names[1] = "Rahul";
+```
+
+---
+
+# 15. Complete Employee Indexer Example
+
+The following example demonstrates:
+
+1. Integer indexer
+2. String indexer
+3. Getter
+4. Setter
+5. Indexer overloading
+6. Read-only index value
+7. Case-insensitive string lookup
+
+```csharp
+namespace OOPSProject
+{
+    public class Employee
+    {
+        int? _Id;
+        string? _Name, _Job;
+        double? _Salary;
+        bool? _Status;
+
+        public Employee(int Id)
+        {
+            _Id = Id;
+            _Name = "Nicholas";
+            _Job = "Manager";
+            _Salary = 50000.00;
+            _Status = true;
+        }
+
+        // Integer Indexer
+        public object? this[int Index]
+        {
+            get
+            {
+                if (Index == 1)
+                    return _Id;
+                else if (Index == 2)
+                    return _Name;
+                else if (Index == 3)
+                    return _Job;
+                else if (Index == 4)
+                    return _Salary;
+                else if (Index == 5)
+                    return _Status;
+                else
+                    return null;
+            }
+
+            set
+            {
+                if (Index == 2)
+                    _Name = (string?)value;
+                else if (Index == 3)
+                    _Job = (string?)value;
+                else if (Index == 4)
+                    _Salary = (double?)value;
+                else if (Index == 5)
+                    _Status = (bool?)value;
+            }
+        }
+
+        // String Indexer
+        public object? this[string Key]
+        {
+            get
+            {
+                if (Key.ToUpper() == "ID")
+                    return _Id;
+                else if (Key.ToUpper() == "NAME")
+                    return _Name;
+                else if (Key.ToUpper() == "JOB")
+                    return _Job;
+                else if (Key.ToUpper() == "SALARY")
+                    return _Salary;
+                else if (Key.ToUpper() == "STATUS")
+                    return _Status;
+                else
+                    return null;
+            }
+
+            set
+            {
+                if (Key.ToLower() == "name")
+                    _Name = (string?)value;
+                else if (Key.ToLower() == "job")
+                    _Job = (string?)value;
+                else if (Key.ToLower() == "salary")
+                    _Salary = (double?)value;
+                else if (Key.ToLower() == "status")
+                    _Status = (bool?)value;
+            }
+        }
+    }
+
+    internal class TestEmployee
+    {
+        static void Main()
+        {
+            Employee Emp = new Employee(1005);
+
+            Console.WriteLine("Employee ID: " + Emp[1]);
+            Console.WriteLine("Employee Name: " + Emp[2]);
+            Console.WriteLine("Employee Job: " + Emp[3]);
+            Console.WriteLine("Employee Salary: " + Emp[4]);
+            Console.WriteLine("Employee Status: " + Emp[5]);
+
+            Console.WriteLine();
+
+            Emp[3] = "Sr. Manager";
+            Emp["Salary"] = 75000.00;
+
+            Console.WriteLine("Employee ID: " + Emp["Id"]);
+            Console.WriteLine("Employee Name: " + Emp["name"]);
+            Console.WriteLine("Employee Job: " + Emp["JOB"]);
+            Console.WriteLine("Employee Salary: " + Emp["SaLaRy"]);
+            Console.WriteLine("Employee Status: " + Emp["Status"]);
+
+            Console.ReadLine();
+        }
+    }
+}
+```
+
+---
+
+# 16. Understanding the Employee Class
+
+The class contains these private fields:
+
+```csharp
+int? _Id;
+string? _Name, _Job;
+double? _Salary;
+bool? _Status;
+```
+
+They store:
+
+```text
+_Id      → Employee ID
+_Name    → Employee Name
+_Job     → Employee Job
+_Salary  → Employee Salary
+_Status  → Employee Status
+```
+
+The constructor initializes them:
+
+```csharp
+public Employee(int Id)
+{
+    _Id = Id;
+    _Name = "Nicholas";
+    _Job = "Manager";
+    _Salary = 50000.00;
+    _Status = true;
+}
+```
+
+So:
+
+```csharp
+Employee Emp = new Employee(1005);
+```
+
+creates:
+
+```text
+Id      = 1005
+Name    = Nicholas
+Job     = Manager
+Salary  = 50000
+Status  = true
+```
+
+---
+
+# 17. Integer Indexer
+
+The first indexer is:
+
+```csharp
+public object? this[int Index]
+```
+
+This means:
+
+> This indexer accepts an integer parameter.
+
+Therefore:
+
+```csharp
+Emp[1]
+Emp[2]
+Emp[3]
+Emp[4]
+Emp[5]
+```
+
+are valid.
+
+The `get` accessor contains:
+
+```csharp
+if (Index == 1)
+    return _Id;
+else if (Index == 2)
+    return _Name;
+else if (Index == 3)
+    return _Job;
+else if (Index == 4)
+    return _Salary;
+else if (Index == 5)
+    return _Status;
+```
+
+So the mapping is:
+
+| Index    | Value           |
+| -------- | --------------- |
+| `Emp[1]` | Employee ID     |
+| `Emp[2]` | Employee Name   |
+| `Emp[3]` | Employee Job    |
+| `Emp[4]` | Employee Salary |
+| `Emp[5]` | Employee Status |
+
+---
+
+# 18. Reading Values Using Integer Indexer
+
+Code:
+
+```csharp
+Console.WriteLine("Employee ID: " + Emp[1]);
+```
+
+The indexer receives:
+
+```text
+Index = 1
+```
+
+Then:
+
+```csharp
+if (Index == 1)
+    return _Id;
+```
+
+So it returns:
+
+```text
+1005
+```
+
+Similarly:
+
+```csharp
+Emp[2]
+```
+
+returns:
+
+```text
+Nicholas
+```
+
+and:
+
+```csharp
+Emp[3]
+```
+
+returns:
+
+```text
+Manager
+```
+
+---
+
+# 19. Setting Values Using Integer Indexer
+
+The setter is:
+
+```csharp
+set
+{
+    if (Index == 2)
+        _Name = (string?)value;
+    else if (Index == 3)
+        _Job = (string?)value;
+    else if (Index == 4)
+        _Salary = (double?)value;
+    else if (Index == 5)
+        _Status = (bool?)value;
+}
+```
+
+Suppose:
+
+```csharp
+Emp[3] = "Sr. Manager";
+```
+
+Then:
+
+```text
+Index = 3
+value = "Sr. Manager"
+```
+
+Therefore:
+
+```csharp
+_Job = (string?)value;
+```
+
+updates:
+
+```text
+Job = Sr. Manager
+```
+
+---
+
+# 20. Why Can't We Assign `Emp[1]`?
+
+Notice that the setter contains:
+
+```csharp
+if (Index == 2)
+    _Name = ...
+else if (Index == 3)
+    _Job = ...
+else if (Index == 4)
+    _Salary = ...
+else if (Index == 5)
+    _Status = ...
+```
+
+There is no:
+
+```csharp
+if (Index == 1)
+```
+
+Therefore, the setter does not provide a way to update `_Id`.
+
+So:
+
+```csharp
+Emp[1] = 1010;
+```
+
+will not update the ID.
+
+However, reading is allowed:
+
+```csharp
+Console.WriteLine(Emp[1]);
+```
+
+because the `get` accessor contains logic for `Index == 1`.
+
+This is similar to a **read-only value through the indexer**.
+
+---
+
+# 21. String Indexer
+
+The second indexer is:
+
+```csharp
+public object? this[string Key]
+```
+
+This means the indexer accepts a `string` instead of an integer.
+
+Therefore, we can write:
+
+```csharp
+Emp["Id"]
+Emp["Name"]
+Emp["Job"]
+Emp["Salary"]
+Emp["Status"]
+```
+
+The lookup is based on the string key.
+
+---
+
+# 22. String Indexer Mapping
+
+The string indexer provides:
+
+| Key        | Value           |
+| ---------- | --------------- |
+| `"Id"`     | Employee ID     |
+| `"Name"`   | Employee Name   |
+| `"Job"`    | Employee Job    |
+| `"Salary"` | Employee Salary |
+| `"Status"` | Employee Status |
+
+For example:
+
+```csharp
+Emp["Name"]
+```
+
+returns:
+
+```text
+Nicholas
+```
+
+---
+
+# 23. Why `ToUpper()` Is Used?
+
+The code contains:
+
+```csharp
+if (Key.ToUpper() == "ID")
+```
+
+This converts the supplied key to uppercase.
+
+For example:
+
+```csharp
+"Id".ToUpper()
+```
+
+becomes:
+
+```text
+"ID"
+```
+
+Similarly:
+
+```csharp
+"name".ToUpper()
+```
+
+becomes:
+
+```text
+"NAME"
+```
+
+Therefore, these can all work:
+
+```csharp
+Emp["Id"]
+Emp["ID"]
+Emp["id"]
+```
+
+because the key is converted to uppercase before comparison.
+
+---
+
+# 24. Why `ToLower()` Is Used in Setter?
+
+The setter contains:
+
+```csharp
+if (Key.ToLower() == "name")
+```
+
+This converts the supplied key to lowercase.
+
+For example:
+
+```csharp
+"NAME".ToLower()
+```
+
+becomes:
+
+```text
+"name"
+```
+
+Therefore:
+
+```csharp
+Emp["Name"] = "Rahul";
+```
+
+and:
+
+```csharp
+Emp["NAME"] = "Rahul";
+```
+
+can be treated the same way.
+
+---
+
+# 25. Indexer Overloading in This Example
+
+The Employee class contains two indexers:
+
+```csharp
+public object? this[int Index]
+```
+
+and:
+
+```csharp
+public object? this[string Key]
+```
+
+They have different parameter types:
+
+```text
+int
+string
+```
+
+Therefore, C# can determine which indexer should be called.
+
+For:
+
+```csharp
+Emp[1]
+```
+
+C# selects:
+
+```csharp
+this[int Index]
+```
+
+For:
+
+```csharp
+Emp["Name"]
+```
+
+C# selects:
+
+```csharp
+this[string Key]
+```
+
+This is called:
+
+> Indexer Overloading.
+
+---
+
+# 26. Indexer vs Array
+
+An array:
+
+```csharp
+string[] names = new string[3];
+```
+
+has predefined indexing behavior:
+
+```csharp
+names[0]
+names[1]
+names[2]
+```
+
+An indexer allows us to define our own indexing behavior.
+
+For example:
+
+```csharp
+Emp[1]
+```
+
+does not necessarily mean:
+
+```text
+first element
+```
+
+We decide what `1` means.
+
+In our Employee example:
+
+```text
+1 → Id
+2 → Name
+3 → Job
+4 → Salary
+5 → Status
+```
+
+Therefore:
+
+> An indexer provides custom indexing behavior for a class or struct.
+
+---
+
+# 27. Indexer vs Property
+
+| Property              | Indexer                      |
+| --------------------- | ---------------------------- |
+| Has a name            | Does not have a normal name  |
+| Uses property name    | Uses `this`                  |
+| Normally no parameter | Takes one or more parameters |
+| Accessed using `.`    | Accessed using `[]`          |
+| Example: `emp.Name`   | Example: `emp[2]`            |
+| Can be static         | Indexers cannot be static    |
+
+Example property:
+
+```csharp
+public string Name
+{
+    get;
+    set;
+}
+```
+
+Usage:
+
+```csharp
+emp.Name
+```
+
+Example indexer:
+
+```csharp
+public string this[int index]
+{
+    get;
+    set;
+}
+```
+
+Usage:
+
+```csharp
+emp[1]
+```
+
+---
+
+# 28. One-Dimensional Indexer
+
+Most commonly, an indexer has one parameter:
+
+```csharp
+public string this[int index]
+{
+    get
+    {
+        return names[index];
+    }
+
+    set
+    {
+        names[index] = value;
+    }
+}
+```
+
+Usage:
+
+```csharp
+obj[0]
+```
+
+---
+
+# 29. Multi-Parameter Indexer
+
+An indexer can have multiple parameters.
+
+Example:
+
+```csharp
+private int[,] numbers = new int[3, 3];
+
+public int this[int row, int column]
+{
+    get
+    {
+        return numbers[row, column];
+    }
+
+    set
+    {
+        numbers[row, column] = value;
+    }
+}
+```
+
+Usage:
+
+```csharp
+obj[0, 1]
+obj[1, 2]
+obj[2, 2]
+```
+
+This is useful for two-dimensional data.
+
+---
+
+# 30. Important Rules of Indexers
+
+Remember these important rules:
+
+### Rule 1: `this` keyword is used
+
+```csharp
+public string this[int index]
+```
+
+---
+
+### Rule 2: Indexers can have parameters
+
+```csharp
+this[int index]
+```
+
+---
+
+### Rule 3: `ref` and `out` are not allowed
+
+Invalid:
+
+```csharp
+this[ref int index]
+```
+
+Invalid:
+
+```csharp
+this[out int index]
+```
+
+---
+
+### Rule 4: `get` returns a value
+
+```csharp
+get
+{
+    return data[index];
+}
+```
+
+---
+
+### Rule 5: `set` assigns a value
+
+```csharp
+set
+{
+    data[index] = value;
+}
+```
+
+---
+
+### Rule 6: `value` is available inside `set`
+
+```csharp
+set
+{
+    data[index] = value;
+}
+```
+
+---
+
+### Rule 7: Integer indexing is not mandatory
+
+We can use:
+
+```csharp
+this[string key]
+```
+
+---
+
+### Rule 8: Indexers can be overloaded
+
+Example:
+
+```csharp
+this[int index]
+```
+
+and:
+
+```csharp
+this[string key]
+```
+
+---
+
+### Rule 9: Indexers cannot be static
+
+We cannot define:
+
+```csharp
+static this
+```
+
+---
+
+### Rule 10: Multiple parameters are allowed
+
+Example:
+
+```csharp
+this[int row, int column]
+```
+
+---
+
+# 31. Real-World Use Cases
+
+Indexers are useful when a class represents or encapsulates:
+
+* Arrays
+* Collections
+* Dictionaries
+* Matrices
+* Lookup tables
+* Custom collections
+* Configuration data
+* Key/value based data
+
+For example, a custom collection class can allow:
+
+```csharp
+employees[0]
+employees[1]
+employees[2]
+```
+
+A dictionary-like class can allow:
+
+```csharp
+settings["Theme"]
+settings["Language"]
+settings["TimeZone"]
+```
+
+A matrix class can allow:
+
+```csharp
+matrix[2, 3]
+```
+
+---
+
+# 32. Simple Real-World Example
+
+Suppose we create a `ProductCollection` class:
+
+```csharp
+class ProductCollection
+{
+    private string[] products =
+    {
+        "Laptop",
+        "Mobile",
+        "Keyboard"
+    };
+
+    public string this[int index]
+    {
+        get
+        {
+            return products[index];
+        }
+
+        set
+        {
+            products[index] = value;
+        }
+    }
+}
+```
+
+Usage:
+
+```csharp
+ProductCollection products = new ProductCollection();
+
+Console.WriteLine(products[0]);
+
+products[1] = "iPhone";
+
+Console.WriteLine(products[1]);
+```
+
+Output:
+
+```text
+Laptop
+iPhone
+```
+
+The class behaves like an array.
+
+---
+
+# 33. Important Concept: Indexer Does Not Automatically Store Data
+
+An indexer itself does not automatically create an array or storage.
+
+For example:
+
+```csharp
+public string this[int index]
+{
+    get
+    {
+        return "Hello";
+    }
+}
+```
+
+The indexer simply defines what should happen when someone writes:
+
+```csharp
+obj[index]
+```
+
+The actual storage can be:
+
+* Array
+* List
+* Dictionary
+* Fields
+* Database-related data
+* Any other custom logic
+
+Example:
+
+```csharp
+private string[] names;
+```
+
+The indexer can use that array internally.
+
+---
+
+# 34. How to Remember Indexers
+
+Think of an indexer as:
+
+```text
+Class Object
+     ↓
+    []
+     ↓
+Custom lookup logic
+     ↓
+Return / Update value
+```
+
+For example:
+
+```csharp
+employee[1]
+```
+
+means:
+
+```text
+Employee object
+     ↓
+Indexer
+     ↓
+Index = 1
+     ↓
+Return Employee ID
+```
+
+And:
+
+```csharp
+employee["Salary"]
+```
+
+means:
+
+```text
+Employee object
+     ↓
+Indexer
+     ↓
+Key = "Salary"
+     ↓
+Return Employee Salary
+```
+
+---
+
+# 35. Interview Definition
+
+### What is an Indexer in C#?
+
+An indexer is a special class or struct member that allows objects to be accessed using array-like `[]` syntax.
+
+It is similar to a property, but unlike a property, an indexer can accept parameters and is declared using the `this` keyword.
+
+Example:
+
+```csharp
+public string this[int index]
+{
+    get
+    {
+        return names[index];
+    }
+
+    set
+    {
+        names[index] = value;
+    }
+}
+```
+
+---
+
+# 36. Interview Questions and Answers
+
+### Q1. What is an indexer in C#?
+
+An indexer allows an object of a class or struct to be accessed using array-like `[]` syntax.
+
+Example:
+
+```csharp
+obj[0]
+```
+
+---
+
+### Q2. Which keyword is used to define an indexer?
+
+The:
+
+```csharp
+this
+```
+
+keyword is used.
+
+Example:
+
+```csharp
+public string this[int index]
+```
+
+---
+
+### Q3. How is an indexer different from a property?
+
+A property is normally accessed using a name:
+
+```csharp
+obj.Name
+```
+
+An indexer is accessed using `[]` and accepts parameters:
+
+```csharp
+obj[0]
+```
+
+---
+
+### Q4. Can an indexer use a string as an index?
+
+Yes.
+
+Example:
+
+```csharp
+public object this[string key]
+{
+    get
+    {
+        // logic
+    }
+
+    set
+    {
+        // logic
+    }
+}
+```
+
+Usage:
+
+```csharp
+obj["Name"]
+```
+
+---
+
+### Q5. Can indexers be overloaded?
+
+Yes.
+
+For example:
+
+```csharp
+public object this[int index]
+```
+
+and:
+
+```csharp
+public object this[string key]
+```
+
+---
+
+### Q6. Can an indexer be static?
+
+No.
+
+Indexers cannot be static.
+
+---
+
+### Q7. Can an indexer have multiple parameters?
+
+Yes.
+
+Example:
+
+```csharp
+public int this[int row, int column]
+```
+
+Usage:
+
+```csharp
+obj[2, 3]
+```
+
+---
+
+### Q8. What is the `value` keyword in an indexer?
+
+`value` represents the value being assigned through the indexer's `set` accessor.
+
+For:
+
+```csharp
+obj[1] = "Hello";
+```
+
+inside the setter:
+
+```text
+index = 1
+value = "Hello"
+```
+
+---
+
+### Q9. Are `ref` and `out` parameters allowed in indexers?
+
+No.
+
+`ref` and `out` parameters are not allowed in indexers.
+
+---
+
+### Q10. Does an indexer have a name?
+
+No.
+
+Unlike a property, an indexer does not have a normal name.
+
+It is defined using:
+
+```csharp
+this
+```
+
+---
+
+# 37. Quick Revision
+
+```text
+INDEXER
+   ↓
+Allows object to behave like an array
+   ↓
+Uses [] syntax
+   ↓
+Defined using this keyword
+   ↓
+Can have parameters
+   ↓
+Can have get/set
+   ↓
+set uses value keyword
+   ↓
+Doesn't have to use int
+   ↓
+Can use string/custom lookup
+   ↓
+Can be overloaded
+   ↓
+Cannot be static
+   ↓
+Can have multiple parameters
+   ↓
+ref/out parameters are not allowed
+```
+
+---
+
+# 38. Most Important Example to Remember
+
+```csharp
+class Student
+{
+    private string[] names =
+    {
+        "Raj",
+        "Amit",
+        "Piyush"
+    };
+
+    public string this[int index]
+    {
+        get
+        {
+            return names[index];
+        }
+
+        set
+        {
+            names[index] = value;
+        }
+    }
+}
+```
+
+Usage:
+
+```csharp
+Student s = new Student();
+
+Console.WriteLine(s[0]);
+
+s[1] = "Rahul";
+
+Console.WriteLine(s[1]);
+```
+
+Output:
+
+```text
+Raj
+Rahul
+```
+
+The important thing to understand is:
+
+```csharp
+s[0]
+```
+
+calls:
+
+```csharp
+get
+```
+
+and:
+
+```csharp
+s[1] = "Rahul"
+```
+
+calls:
+
+```csharp
+set
+```
+
+with:
+
+```text
+index = 1
+value = "Rahul"
+```
+
+---
+
+# 39. Final Definition
+
+> **An indexer in C# is a special member of a class or struct that allows its objects to be accessed using array-like `[]` syntax. Indexers are similar to properties, but their accessors can accept parameters. They are defined using the `this` keyword and can be overloaded, can use different parameter types, and can have multiple parameters.**
