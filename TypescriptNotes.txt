@@ -1,0 +1,620 @@
+## What is TypeScript?
+TypeScript is a statically typed superset of JavaScript. It helps us detect type-related errors during development or compile time, instead of finding them later at runtime. TypeScript code is then transformed into JavaScript, which can be executed by the browser.
+
+## Why was TypeScript created?
+TypeScript was created to overcome some limitations of JavaScript, especially when working with large and complex applications. JavaScript is dynamically typed, so some errors are only discovered at runtime. TypeScript introduced static typing, which helps developers catch these errors during development and makes the code easier to maintain and understand.
+
+            
+## Advantages of TypeScript
+
+1. **Static Typing** – We can define the type of data a variable, function, or object should contain.
+
+2. **Early Error Detection** – TypeScript catches many type-related errors during development instead of at runtime.
+
+3. **Better Code Completion** – Provides better autocomplete, suggestions, and error highlighting in editors like VS Code.
+
+4. **Easy to Maintain** – Types make large codebases easier to understand and maintain.
+
+5. **Better Code Readability** – Types clearly show what kind of data a variable or function expects.
+
+6. **Better Refactoring** – The TypeScript compiler helps identify places that may be affected when we change existing code.
+
+7. **Supports OOP Features** – TypeScript supports classes, interfaces, access modifiers, abstract classes, etc.
+
+8. **Good for Large Projects** – TypeScript makes it easier for large teams to work on and manage large applications.
+
+
+
+## Disadvantages of TypeScript
+
+1. **Learning Curve** – Developers need to learn TypeScript concepts such as types, interfaces, generics, and type narrowing.
+
+2. **More Code** – We sometimes need to write additional type annotations and type definitions.
+
+3. **Build Step Required** – TypeScript code needs to be transformed into JavaScript before it can run in the browser.
+
+4. **Configuration Required** – Projects may require configuration such as `tsconfig.json` and build-tool settings.
+
+5. **Type Maintenance** – When APIs or data structures change, their corresponding type definitions may also need to be updated.
+
+6. **Can Become Complex** – Advanced TypeScript features such as generics and complex types can make code difficult to understand.
+
+7. **Migration Takes Time** – Converting a large existing JavaScript project to TypeScript can require significant effort.
+
+8. **Development Overhead** – Developers have to maintain types along with the application code.
+
+
+
+## What is the difference between TypeScript and JavaScript?
+
+| **JavaScript**                                                               | **TypeScript**                                                           |
+
+| ---------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+
+| JavaScript is a **dynamically typed** language.                              | TypeScript provides **static type checking**.                            |
+
+| Types are checked mainly at **runtime**.                                     | Type-related errors can be detected during **development/compile time**. |
+
+| Does not require type annotations.                                           | Supports **type annotations**.                                           |
+
+| Can run directly in the browser.                                             | Must be **transformed into JavaScript** before browser execution.        |
+
+| Generally easier to start with.                                              | Has a learning curve because of additional TypeScript features.          |
+
+| Suitable for small to large applications.                                    | Particularly useful for maintaining large and complex applications.      |
+
+| Does not have TypeScript-specific features like interfaces and type aliases. | Supports **interfaces, type aliases, generics, enums, etc.**             |
+
+| JavaScript files generally use `.js`.                                        | TypeScript files use `.ts` and `.tsx` for JSX.                           |
+
+
+
+## Is TypeScript a superset of JavaScript?
+
+Yes, TypeScript is a superset of JavaScript. This means that all valid JavaScript code is also valid TypeScript code. TypeScript adds additional features such as static typing, interfaces, type aliases, generics, and other features on top of JavaScript.”**
+
+##Example
+
+let name = "Piyush"; // Valid JavaScript and TypeScript
+
+let age: number = 25; // TypeScript feature
+
+**Any valid JavaScript code can generally be used in a TypeScript file, but TypeScript provides additional features that JavaScript does not have.**
+
+## Does the browser understand TypeScript?
+
+No, browsers do not directly understand TypeScript. Browsers understand and execute JavaScript. Therefore, TypeScript code is transformed into JavaScript using the TypeScript compiler or a build tool, and then the browser executes the generated JavaScript.”**
+
+# Flow
+
+TypeScript (.ts)
+
+   ↓
+
+Type Checking / Transformation
+
+   ↓
+
+JavaScript (.js)
+
+   ↓
+
+Browser
+
+   ↓
+
+JavaScript Engine
+
+   ↓
+
+Execution
+
+## How does TypeScript compile?
+
+TypeScript is transformed into JavaScript using the TypeScript compiler or a build tool. During the process, TypeScript checks the code for type-related errors and then removes TypeScript-specific syntax such as type annotations. The resulting JavaScript can then be executed by the browser or Node.js.
+
+### Example
+
+TypeScript:
+
+```ts
+
+function add(a: number, b: number): number {
+
+return a + b;
+
+}
+
+```
+
+After transformation:
+
+```js
+
+function add(a, b) {
+
+return a + b;
+
+}
+
+```
+
+The `number` type information is removed because JavaScript does not need it at runtime.
+
+### Flow
+
+```
+
+.ts file
+
+↓
+
+TypeScript Compiler / Build Tool
+
+↓
+
+Type Checking
+
+↓
+
+TypeScript-specific syntax removed
+
+↓
+
+JavaScript generated
+
+↓
+
+JavaScript Runtime
+
+```
+
+## What is `tsc`?
+
+`tsc` stands for TypeScript Compiler. It is the command-line tool provided by TypeScript that checks TypeScript code for type errors and can transform TypeScript code into JavaScript according to the project configuration.”**
+
+## What is `tsconfig.json`?
+
+`tsconfig.json` is the configuration file for a TypeScript project. It tells the TypeScript compiler how the project should be compiled and which TypeScript files should be included or excluded.”**
+
+# Example
+
+```json
+
+{
+
+"compilerOptions": {
+
+"target": "ES2020",
+
+"module": "ESNext",
+
+"strict": true,
+
+"outDir": "./dist"
+
+}
+
+}
+
+```
+
+## What is `target` in TypeScript?
+
+The `target` option in `tsconfig.json` specifies which version of JavaScript TypeScript should generate as output.
+
+# Example
+
+```json
+
+{
+
+"compilerOptions": {
+
+"target": "ES2020"
+
+}
+
+}
+
+```
+
+## Why do we need it?
+
+Different environments may support different JavaScript features.
+
+For example:
+
+```json
+
+"target": "ES5"
+
+```
+
+means generate older JavaScript.
+
+```json
+
+"target": "ES2020"
+
+```
+
+means generate more modern JavaScript.
+
+### Key Point
+
+> **`target` = Which JavaScript version should be generated?**
+
+## What is `module` in TypeScript?
+
+The `module` option specifies how TypeScript should handle and generate JavaScript modules, such as how `import` and `export` statements are represented in the output.
+
+### Example
+
+```ts
+
+import { add } from "./math";
+
+export function calculate() {
+
+return add(10, 20);
+
+}
+
+```
+
+The `module` configuration determines the module system used for the generated JavaScript.
+
+For example:
+
+```json
+
+{
+
+"compilerOptions": {
+
+"module": "ESNext"
+
+}
+
+}
+
+```
+
+## What is `strict` in TypeScript?
+
+The `strict` option enables a group of stricter type-checking rules in TypeScript. It helps us catch more potential errors during development and encourages us to write safer and more predictable code.
+
+# Example
+
+```json
+
+{
+
+"compilerOptions": {
+
+"strict": true
+
+}
+
+}
+
+```
+
+With strict checking, TypeScript becomes more careful about things like:
+
+* `null` and `undefined`
+
+* implicit `any`
+
+* function parameters
+
+* type assignments
+
+* other unsafe type situations
+
+# Example
+
+```ts
+
+let name: string = null;
+
+```
+
+With strict null checking enabled, TypeScript can report this as an error.
+
+## What is Compile Time?
+
+Compile time is the stage when our source code is checked and transformed before it is executed. In TypeScript, compile time is when TypeScript can perform type checking and transform TypeScript code into JavaScript.”**
+
+# Example
+
+```ts
+
+let age: number = 25;
+
+age = "Piyush";
+
+```
+
+TypeScript can detect the type error during the development/compile stage.
+
+```text
+
+TypeScript Code
+
+  ↓
+
+Compile Time
+
+  ↓
+
+Type Checking
+
+  ↓
+
+JavaScript
+
+```
+
+### Key Point
+
+> **Compile time = Before the program actually runs.**
+
+
+
+## What is Runtime?
+
+Runtime is the stage when the generated JavaScript code is actually executed by a JavaScript runtime, such as a browser or Node.js.”**
+
+```js
+
+let a = 10;
+
+let b = 20;
+
+console.log(a + b);
+
+```
+
+When the JavaScript engine executes this code, that is **runtime**.
+
+### Flow
+
+```text
+
+Source Code
+
+↓
+
+Compile / Transform
+
+↓
+
+JavaScript
+
+↓
+
+Runtime
+
+↓
+
+Program Execution
+
+```
+
+### Key Point
+
+> **Runtime = When the program is actually executing.**
+
+---
+
+## Compile-Time Errors vs Runtime Errors
+
+| **Compile-Time Error**                         | **Runtime Error**                                    |
+
+| ---------------------------------------------- | ---------------------------------------------------- |
+
+| Occurs before the program executes.            | Occurs while the program is running.                 |
+
+| Usually detected by the compiler/type checker. | Detected by the JavaScript runtime.                  |
+
+| TypeScript can catch many type-related errors. | Happens when the executed code encounters a problem. |
+
+| Example: incorrect type assignment.            | Example: calling something that is not a function.   |
+
+# Compile-Time Example
+
+```ts
+
+let age: number = 25;
+
+age = "Piyush";
+
+```
+
+TypeScript reports an error before the code is considered valid for compilation.
+
+### Runtime Example
+
+```js
+
+let user = null;
+
+console.log(user.name);
+
+```
+
+The code can get to runtime, but accessing `name` from `null` causes a runtime error.
+
+## Easy way to remember
+
+> **Compile time → Before execution**
+
+> **Runtime → During execution**
+
+
+
+# 15. What is Type Checking?
+
+Type checking is the process of checking whether values, variables, function parameters, and return values are being used according to their expected types. TypeScript performs this checking during development or compile time.”**
+
+# Example
+
+```ts
+
+let age: number = 25;
+
+age = "Piyush";
+
+```
+
+TypeScript checks:
+
+```text
+
+Expected → number
+
+Received → string
+
+```
+
+So it reports an error.
+
+### Function example
+
+```ts
+
+function add(a: number, b: number): number {
+
+return a + b;
+
+}
+
+add(10, "20"); // Error
+
+```
+
+TypeScript checks that both arguments should be numbers.
+
+### Key Point
+
+> **Type checking helps us find incorrect type usage before runtime.**
+
+
+
+## What is Type Erasure?
+
+Type erasure means that TypeScript-specific type information is removed when TypeScript is transformed into JavaScript. Types are mainly used for development and type checking, but they are not present in the normal generated JavaScript runtime code.”**
+
+### TypeScript
+
+```ts
+
+let age: number = 25;
+
+function greet(name: string): string {
+
+return "Hello " + name;
+
+}
+
+```
+
+### JavaScript
+
+```js
+
+let age = 25;
+
+function greet(name) {
+
+return "Hello " + name;
+
+}
+
+```
+
+Notice: number string are removed.
+
+### Why?
+
+Because JavaScript does not use TypeScript's type annotations at runtime.
+
+### Important interview point
+
+> **“TypeScript types are primarily compile-time information; they are erased from the generated JavaScript.”**
+
+
+
+## What is Type Annotation?
+
+A type annotation is when we explicitly specify the type of a variable, function parameter, function return value, or other value in TypeScript.
+
+# Example 1 — Variable
+
+```ts
+
+let age: number = 25;
+
+```
+
+Here:
+
+```
+
+age → variable
+
+number → type annotation
+
+```
+
+### Example 2 — String
+
+```ts
+
+let name: string = "Piyush";
+
+```
+
+### Example 3 — Function Parameter
+
+```ts
+
+function greet(name: string) {
+
+console.log(name);
+
+}
+
+```
+
+Here, `name` must be a string.
+
+### Example 4 — Return Type
+
+```ts
+
+function add(a: number, b: number): number {
+
+return a + b;
+
+}
+
+```
+
+Here:
+
+```
+
+a → number
+
+b → number
+
+return value → number
+
+```
+
+# Key Point
+
+**Type annotation means explicitly telling TypeScript what type something should have.**
