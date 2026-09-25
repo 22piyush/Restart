@@ -1,5 +1,6 @@
 
 import Link from "next/link";
+import ComponentsPage from "./_components/page";
 
 export const metadata = {
   title: "Home Page",
@@ -9,6 +10,9 @@ export const metadata = {
 export default function Home() {
   return (
     <div>
+
+      <ComponentsPage />
+
       <h1 className="text-3xl font-bold underline">Hello world! 2</h1>
       <p><Link href="/about">About</Link></p>
       <p><Link href="/services">Services</Link></p>
