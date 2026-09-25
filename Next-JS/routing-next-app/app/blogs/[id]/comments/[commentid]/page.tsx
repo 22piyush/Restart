@@ -3,9 +3,9 @@
 const  Comments =() => {
   return (
     <div>     
-        Comments - id
+      Comments - id
     </div>
- )
+  )
 }
 
 export default Comments;
