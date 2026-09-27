@@ -1162,9 +1162,11 @@ ngOnInit()
 
 ngDoCheck()
 -Invoked when the change detector of the given component is invoked. 
--ngOnChanges can't detect if someone changes a property of an object or push an item into array. So ngDoCheck comes to recuse. data changes might be seen in child component UI but ngOnChanges is not being called.
+-Due to default behavior of angular change detection, ngOnChanges can't detect if someone changes a property of an object or push an item into array. So ngDoCheck comes to recuse. 
 -By using ngDoCheck, we can monitor changes in complex objects that might not be caught by Angular's default change detection mechanism.
 
+this.cdr.markedForCheck(); Anything change Repaint Component.
+if we use changedetection.onPush mechanism in that case if we push anything in array and we use this parent veriable array in child in that case child not called because changedetection.onPush so in that case we use this.cdr.markedForCheck(); to repaint child component.
 
 ngAfterContentInit()  
 -Invoked after Angular performs any content projection into the components view 
@@ -1219,10 +1221,6 @@ There are 2 change detection strategies:
 OnPush
 ======
 -When Zone.js triggers change detection, Angular starts from the root component and traverses the component tree. If it encounters an OnPush component, Angular checks whether it is marked as dirty. Only dirty components (and their children) are checked; otherwise, they are skipped, reducing unnecessary computations.
-
-
-
-
 
 
 
