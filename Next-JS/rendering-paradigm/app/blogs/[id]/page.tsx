@@ -1,3 +1,12 @@
+
+
+
+export function generateStaticParams() {
+    return [{ id: "1" }, { id: "2" }, { id: "3" }];
+}
+
+
+
 interface BlogProps {
   params: Promise<{
     id: string;
@@ -5,6 +14,7 @@ interface BlogProps {
 }
 
 export default async function Blog({ params }: BlogProps) {
+
   const { id } = await params;
 
   return (
@@ -14,4 +24,5 @@ export default async function Blog({ params }: BlogProps) {
       <p>This is Blog {id} page.</p>
     </div>
   );
+  
 }
