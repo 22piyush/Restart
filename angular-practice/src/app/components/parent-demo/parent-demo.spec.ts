@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CustomDirectives } from './custom-directives';
+import { ParentDemo } from './parent-demo';
 
-describe('CustomDirectives', () => {
-  let component: CustomDirectives;
-  let fixture: ComponentFixture<CustomDirectives>;
+describe('ParentDemo', () => {
+  let component: ParentDemo;
+  let fixture: ComponentFixture<ParentDemo>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CustomDirectives],
+      imports: [ParentDemo],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(CustomDirectives);
+    fixture = TestBed.createComponent(ParentDemo);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

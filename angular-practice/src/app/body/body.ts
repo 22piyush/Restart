@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-import { CustomDirectives } from '../components/custom-directives/custom-directives';
 
 @Component({
   selector: 'app-body',
-  imports: [CustomDirectives],
+  imports: [],
   templateUrl: './body.html',
   styleUrl: './body.css',
 })
