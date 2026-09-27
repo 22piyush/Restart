@@ -1,1 +1,16 @@
 <p>parent-demo works!</p>
+
+
+<div>
+    <h1>Parent Component</h1>
+    <div>My Own Data A - {{userName}}</div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <app-child1-demo (messageEvent)="receiveMessage($event)"  [name]="userName"></app-child1-demo>
+    </div>
+    <div class="col-md-6">
+        <app-child2-demo></app-child2-demo>
+    </div>
+</div>

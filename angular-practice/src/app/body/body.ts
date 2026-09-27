@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
+import { ParentDemo } from '../components/parent-demo/parent-demo';
 
 @Component({
   selector: 'app-body',
-  imports: [],
+  imports: [ParentDemo],
   templateUrl: './body.html',
   styleUrl: './body.css',
 })
 export class Body {}
+  
