@@ -1,0 +1,47 @@
+
+public class BinarySearchProgram
+{
+    public static int binarySearchProgram(int[] numbers, int key)
+    {
+        int start = 0;
+        int end = numbers.Length - 1;
+
+        while (start <= end)
+        {
+            int mid = (start + end) / 2;
+
+            if (numbers[mid] == key)
+            {
+                return mid;
+            }
+
+            if (numbers[mid] < key)
+            {
+                start = mid + 1;
+            }
+            else
+            {
+                end = mid - 1;
+            }
+        }
+
+        return -1;
+    }
+
+    public static void Main(string[] args)
+    {
+        int[] numbers = { 2, 4, 6, 7, 8, 9 };
+        int key = 6;
+
+        int result = binarySearchProgram(numbers, key);
+
+        if (result == -1)
+        {
+            Console.WriteLine("Not Found");
+        }
+        else
+        {
+            Console.WriteLine("Found " + result);
+        }
+    }
+}

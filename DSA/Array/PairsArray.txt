@@ -1,0 +1,23 @@
+
+public class PairsArray
+{
+    public static void Main(string[] args)
+    {
+        int[] arr = { 2, 4, 6, 8, 10 };
+
+        for (int i = 0; i < arr.Length; i++)
+        {
+            int curr = arr[i];
+
+            for (int j = i + 1; j < arr.Length; j++)
+            {
+                Console.WriteLine("(" + curr + ", " + arr[j] + ")");
+            }
+
+            Console.WriteLine();
+        }
+
+        - Total Pairs 
+        Console.WriteLine(arr.Length*(arr.Length - 1)/2);
+    }
+}

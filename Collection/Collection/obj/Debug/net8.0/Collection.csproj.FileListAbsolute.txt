@@ -1,0 +1,15 @@
+E:\Restart\Collection\Collection\bin\Debug\net8.0\Collection.exe
+E:\Restart\Collection\Collection\bin\Debug\net8.0\Collection.deps.json
+E:\Restart\Collection\Collection\bin\Debug\net8.0\Collection.runtimeconfig.json
+E:\Restart\Collection\Collection\bin\Debug\net8.0\Collection.dll
+E:\Restart\Collection\Collection\bin\Debug\net8.0\Collection.pdb
+E:\Restart\Collection\Collection\obj\Debug\net8.0\Collection.GeneratedMSBuildEditorConfig.editorconfig
+E:\Restart\Collection\Collection\obj\Debug\net8.0\Collection.AssemblyInfoInputs.cache
+E:\Restart\Collection\Collection\obj\Debug\net8.0\Collection.AssemblyInfo.cs
+E:\Restart\Collection\Collection\obj\Debug\net8.0\Collection.csproj.CoreCompileInputs.cache
+E:\Restart\Collection\Collection\obj\Debug\net8.0\Collection.sourcelink.json
+E:\Restart\Collection\Collection\obj\Debug\net8.0\Collection.dll
+E:\Restart\Collection\Collection\obj\Debug\net8.0\refint\Collection.dll
+E:\Restart\Collection\Collection\obj\Debug\net8.0\Collection.pdb
+E:\Restart\Collection\Collection\obj\Debug\net8.0\Collection.genruntimeconfig.cache
+E:\Restart\Collection\Collection\obj\Debug\net8.0\ref\Collection.dll
