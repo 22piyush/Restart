@@ -1,0 +1,205 @@
+
+Component Communication
+=======================
+-Angular Components need to communicate(share data/logic) with each other.
+
+Parent -> Child       	inputs:[] & Property Binding
+Child  -> Parent        outputs:[] & Event Binding
+Sibling -> Sibling      Through the Parent
+Unrelated Components    Service , rxjs 
+Large Apps              NgRx (State management Library)
+
+
+inputs:['title']
+set title(){
+	// setter for title input variable
+	// this function gets invoked when a new value is assigned to 'title'
+}
+  
+  
+  
+Child to parent
+===============
+1. create an EventEmitter Object and emit that event with the data in child component
+   import { Component, EventEmitter, OnInit } from '@angular/core';
+   myEvent = new EventEmitter();
+   sendDataToParent() {
+    this.myEvent.emit(this.product);
+   }
+2. add that event information in outputs:[] of child component
+   outputs:['myEvent']
+3. add event listener in parent's HTML & TS
+   <app-child2 (myEvent)="getDataFromChild($event)"></app-child2>
+   getDataFromChild(data:any){
+      this.product = data;
+   }
+
+
+
+Assignment
+==========
+-Create a component(EmployeeCRUD), which holds array of employees.
+-Create 2 Child Components(EmployeeTable , EmployeeAdd)
+-Pass data from EmployeeCRUD to EmployeeTable, EmployeeTable should display the data in table
+-add delete button against every employee(row) to perform delete operation
+-EmployeeAdd component should have form to add a new Employee to the employee list
+-all the logic/functions should be present in Parent Component(EmployeeCRUD)
+
+
+
+component lifecycle hooks/method 
+================================
+-Components & Directives go through a series of lifecycle phases - from creation to destruction.
+-For Each Phase angular provides lifecycle hooks(methods)
+
+
+constructor - ngOnChanges - ngOnInit  - ngDoCheck - ngAfterContentInit - 
+ngAfterContentChecked - ngAfterViewInit - ngAfterViewChecked - ngOnDestroy. (1+8)
+
+afterNextRender(() => {
+});
+
+ 
+3 steps to use lifecycle hooks, they are:
+========================================
+1. Import Hook interfaces from '@angular/core' library
+   ex:- import {onChanges} from '@angular/core'
+
+2. Declare that component/directive and implement lifecycle hook interface
+   ex: class MyComponent implements onChanges{
+		}
+3. write the hook method and define the functionality of that method.
+		ex: class MyComponent implements onChange{
+			ngOnChanges(){
+				//logic
+			}
+		}	
+ex- ngOnChanges() is a method from 'OnChanges' interface
+
+
+The hooks/lifecycle methods are executed in this order:
+--------------------------------------------------------
+constructor()
+-Constructor is a typescript class feature, not angular specific.
+-Initialize class variables,dependency Injection.
+-No Business Logic should be written in constructor. 
+-Avoid : Http Requests, Complex Computations, DOM Manipulations
+
+
+ngOnChanges()
+-Called after constructor and before ngOnInit
+-ngOnchanges() will not be invoked if the component doesn't have inputs:[]
+-ngOnChanges() is invokekd whenever input property value changes
+-inside ngOnchanges() we can access previous and current value of a variable.
+
+
+ngOnInit()
+-Invoked for every component when a component gets Initialized. After Component's Properties have been initialized.
+-Called only once, after the first ngOnChanges. not after every ngOnchanges()
+-Time Consuming Logic goes here. Ex:- Fetching Data, Complex Computations
+
+
+ngDoCheck()
+-Invoked when the change detector of the given component is invoked. 
+-ngOnChanges can't detect if someone changes a property of an object or push an item into array. So ngDoCheck comes to recuse. data changes might be seen in child component UI but ngOnChanges is not being called.
+-By using ngDoCheck, we can monitor changes in complex objects that might not be caught by Angular's default change detection mechanism.
+
+
+ngAfterContentInit()  
+-Invoked after Angular performs any content projection into the components view 
+-Runs only once after the first ngDoCheck()
+-Use ngAfterContentInit to call something once after all of the content has been initialized
+
+
+ngAfterContentChecked() 
+-Invoked each time the content of the given component has been checked by the change detection mechanism of Angular.
+-is called after ngAfterContentInit for the first time.
+-is called after every subsequent ngDoCheck
+
+
+ngAfterViewInit() 
+-Invoked when the components view(and child view) has been fully initialized.
+-is called once after ngAfterContentChecked.
+-this is the best place for DOM manipulation. Access template elements using @ViewChild
+
+
+ngAfterViewChecked() 
+-is called after every subsequent ngAfterContentChecked.
+ 
+ 
+ngOnDestroy()
+-This method is invoked just before Angular destroys the component.
+-Clean up code.  ex:- clearInterval(),clearTimeout(); unsubscribe();
+
+
+
+
+Angular Change Detection Strategies
+====================================
+-Change Detection is Angulars mechanism for tracking data changes and updating the UI accordingly, ensuring the view always reflects the latest state.
+
+Role of Zone.js:
+-Angular relies on Zone.js to detect asynchronous events such as clicks, timers, promises, and HTTP responses. Zone.js patches browser APIs and notifies Angular when these events complete. Angular then triggers a change detection cycle, starting from the root component and checking the entire component tree.
+-Zone.js cannot identify which specific component changed, so Angular must check all components. This can cause performance overhead, especially in large applications. This default behavior is known as the Default Change Detection Strategy.
+
+
+A component is marked dirty when:
+-An event occurs within the component or its children
+-One of its input properties changes
+-The developer manually triggers it using ChangeDetectorRef
+
+
+There are 2 change detection strategies: 
+		1. Default  (CheckAlways)
+		2. OnPush   (CheckOnce)     Do Not check this component unless something important changes
+-By default, Angular uses the Default strategy.
+-In Default mode, whenever something happens (event, async call, input change, timer, observable emits data etc.), Angular checks all components in the component tree to see if anything changed ? this can become slow in large apps.
+
+OnPush
+======
+-When Zone.js triggers change detection, Angular starts from the root component and traverses the component tree. If it encounters an OnPush component, Angular checks whether it is marked as dirty. Only dirty components (and their children) are checked; otherwise, they are skipped, reducing unnecessary computations.
+
+
+
+
+
+
+
+Renderer2
+=========
+Renderer2 is a service provided by Angular that allows you to interact with the DOM in a platform-agnostic and safe way. It is often used to:
+	a. Create or modify DOM elements.
+	b. Add or remove attributes, classes, or styles.
+	c. Handle events.
+	
+
+@ViewChild & @viewChildren
+==========================
+-@ViewChild decorator is used to query a single DOM element from the DOM tree and manipulate it.
+	1. To get access to a child component from parent component class. or vice-versa
+	2. To get access to the DOM elements
+-@ViewChildren decorator returns the list of different native DOM elements in the form of QueryList, which contains the set of elements.
+-if we want to access multiple child references, then we have to use @ViewChildren.
+
+
+
+
+
+Programmatically rendering components
+======================================
+-There are two main ways to dynamically render a component: 
+	1. in Template File : NgComponentOutlet
+	2. in TypeScript : ViewContainerRef	
+https://angular.dev/guide/components/programmatic-rendering
+
+
+
+
+ViewContainerRef.createComponent()
+==================================
+-to load components dynamically rather than declaring them statically in the template.
+-useful when the component to be displayed depends on some user interaction, configuration, or data that isn't known at compile time.
+-It eliminates the need for the ComponentFactoryResolver
+
+	
+	
