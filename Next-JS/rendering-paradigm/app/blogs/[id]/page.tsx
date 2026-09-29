@@ -1,15 +1,16 @@
 
-
+export const dynamicParams = false;
+export const revalidate = 5;
 
 export async function generateStaticParams() {
     
-    const res = await fetch("https://jsonplaceholder.typicode.com/todos/")
+  const res = await fetch("https://jsonplaceholder.typicode.com/todos/")
 
-    const data = await res.json();
+  const data = await res.json();
 
-    return data.map((item: { id: number }) => ({
-        id: item.id.toString(),
-    }))
+  return data.map((item: { id: number }) => ({
+      id: item.id.toString(),
+  }))
 
 }
 
