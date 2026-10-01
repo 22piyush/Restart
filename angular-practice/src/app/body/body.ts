@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { ParentDemo } from '../components/parent-demo/parent-demo';
-import { Lifecycle } from '../components/lifecycle/lifecycle';
+import { ServiceComponent } from '../components/service-component/service-component';
 
 @Component({
   selector: 'app-body',
-  imports: [ParentDemo, Lifecycle],
+  imports: [ServiceComponent],
   templateUrl: './body.html',
   styleUrl: './body.css',
 })
