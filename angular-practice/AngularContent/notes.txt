@@ -1500,7 +1500,10 @@ How to use HttpClient
 	this.httpClient.get(this.users_url).subscribe(response => {
       console.log(response);
     })   
- 
+
+4. httpClient.get() return Observable, to get data or read data fron Observable we use two options 
+- subscribe() - Typescript File we use 
+- async pipe - Html File we used
 
 
 

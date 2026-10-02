@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 export class EmployeeService {
 
   httpClient = inject(HttpClient);
-  api_url = 'http://localhost:8080/api/employees';
+  api_url = 'https://jsonplaceholder.typicode.com/users';
 
   getAllEmployees() {
     return this.httpClient.get(this.api_url);
