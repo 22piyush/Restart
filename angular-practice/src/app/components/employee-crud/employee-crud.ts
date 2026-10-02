@@ -17,6 +17,9 @@ export class EmployeeCrud {
   fetchEmployee() {
     this.employees$ = this.employeeService.getAllEmployees();
     console.log(this.employees$);
+    this.employees$.subscribe((data) => {
+      console.log('Fetched Employees:', data);
+    });
   }
 
   deleteEmployee(id: any) {

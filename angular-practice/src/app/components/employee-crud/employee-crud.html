@@ -32,6 +32,7 @@
                         <tr>
                             <th>ID</th>
                             <th>Name</th>
+                            <th>Name With Email</th>
                             <th>Email</th>
                         </tr>
                     </thead>
@@ -40,6 +41,7 @@
                         <tr *ngFor="let employee of employees$ | async">
                             <td>{{ employee.id }}</td>
                             <td>{{ employee.name }}</td>
+                            <td>{{ employee.nameWithEmail() }}</td>
                             <td>{{ employee.email }}</td>
                             <td>
                                 <button class="btn btn-danger btn-sm" (click)="deleteEmployee(employee.id)">
