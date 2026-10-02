@@ -10,7 +10,6 @@ import { Observable } from 'rxjs';
   styleUrl: './employee-crud.css',
 })
 export class EmployeeCrud {
-
   employeeService = inject(EmployeeService);
 
   employees$: Observable<any> | null = null;
@@ -37,4 +36,12 @@ export class EmployeeCrud {
     });
   }
 
+  editEmployee(id: any, name: string, email: string) {
+    const empData = { name, email };
+    this.employeeService.updateEmployee(id, empData).subscribe((response) => {
+      console.log(`Employee with ID ${id} updated successfully:`, response);
+      // Refresh the employee list after updating an employee
+      this.fetchEmployee();
+    });
+  }
 }
