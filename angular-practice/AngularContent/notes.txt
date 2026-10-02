@@ -1510,7 +1510,7 @@ HttpClient vs fetch()
 -HttpClient supports RxJS operators, whereas fetch() does not.
 -fetch() requires manual JSON conversion using .json(), whereas HttpClient automatically parses JSON.
 -HttpClient supports Interceptors for request/response handling, whereas fetch() does not.
--HttpClient has built-in CSRF/XSRF protection, whereas fetch() does not.
+-HttpClient has built-in CSRF/XSRF protection, whereas fetch() does not. (Cross Site Request Forgery Protection - CSRF)
 -HttpClient supports strongly typed responses, whereas fetch() requires manual typing.
 -HttpClient provides centralized error handling, whereas fetch() needs manual handling.
 -HttpClient supports request cancellation using RxJS, whereas fetch() uses AbortController.

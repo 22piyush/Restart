@@ -13,10 +13,8 @@
 26 ===> Services // Commucation with backend services using HTTP
 27 ===> HttpClient Module CRUD Operations.
 28 ===> Models ,  Interface / Class Models // Interceptors
-
 29/30 ===> Observable & rxJS Operators
 31 ===>  rxJS Operators
-
 32 ===> Subject // Signals
 34 ===> Signal Effects //  Template Driven form 
 35 ===> Template Driven form 
@@ -24,12 +22,12 @@
 36 ===> Routing // Path Param
 37 ===> Routing Query Param
 38 ===> Lazy Loading // @defer // build project // deploy project
-
 39 ===> Angular Material
 40 ===> Angular Unit Testing
 41 ===> Unit Testing // NGRX ==> 50:00
 42 ===> NGRX
 43 ===> CRUD using NGRX
+
 44 ===> Project
 45 ===> Project Discuss
 46 ===> Batch Complete 🫡
