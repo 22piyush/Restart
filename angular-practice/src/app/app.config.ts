@@ -4,11 +4,12 @@ import { provideStore } from '@ngrx/store'; // or './routes' depending on your f
 import { authInterceptor } from './interceptors/auth-interceptor';
 import { withInterceptors } from '@angular/common/http';
 import { retryInterceptor } from './interceptors/retry-interceptor';
+import { errorInterceptor } from './interceptors/error-interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
-    provideHttpClient(withInterceptors([authInterceptor, retryInterceptor])),
+    provideHttpClient(withInterceptors([authInterceptor, errorInterceptor])),
     provideStore(),
   ],
 };
