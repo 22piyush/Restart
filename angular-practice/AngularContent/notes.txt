@@ -1631,6 +1631,7 @@ Authentication Vs Authorization
 observables
 ***********
 -Observables publish/emit data over the time asynchronously.
+(if we hit one API or URL and if we are using promise concept promise will return all data at one go where as  Observable has power or ability to split the response in chunks and return)
 -Observables help to manage asynchronous data, such as data coming from a backend service.
 -To use observables, Angular uses a library called Reactive Extensions (RxJS).
 -used for event handling, asynchronous programming, and handling multiple values.
