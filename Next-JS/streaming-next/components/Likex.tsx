@@ -1,8 +1,14 @@
 
-const Likex = async() => {
-  await new Promise((resolve) => setTimeout(resolve, 5000))
+import { useState } from "react"
+
+// async
+const Likex = () => {
+  // await new Promise((resolve) => setTimeout(resolve, 5000))
+
+  const [count , setCount] = useState(0)
+
   return (
-    <div>Likex</div>
+    <div>Likex - {count}</div>
   )
 }
 

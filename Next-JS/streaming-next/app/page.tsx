@@ -1,3 +1,6 @@
+"use client"
+
+
 import Comments from "@/components/Comments";
 import Likex from "@/components/Likex";
 import Views from "@/components/Views";

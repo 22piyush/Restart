@@ -1,0 +1,1585 @@
+## What is JavaScript ?
+====================
+-JavaScript is a dynamically typed checked language used to make web-pages interactive.
+-It allow us to manipulate DOM, handle events and make API calls.
+-It run both in Browser and on Server using Node.js.
+
+
+
+
+## What are the various data types in js?
+======================================
+In JavaScript, data types can be categorized into primitive and non-primitive types:
+
+Primitive data types
+--------------------
+-Number: Represents both integers and floating-point numbers.
+-String: Represents sequences of characters.
+-Boolean: Represents true or false values.
+-Undefined: A variable that has been declared but not assigned a value.
+-Null: Represents the intentional absence of any object value.
+-Symbol: A unique and immutable value used as object property keys.
+-BigInt: Represents integers with arbitrary precision.
+
+Non-primitive (Reference) data types
+------------------------------------
+-Object: Used to store collections of data.
+-Array: An ordered collection of data.
+-Function: A callable object.
+-Date: Represents dates and times.
+-RegExp: Represents regular expressions.
+-Map: A collection of keyed data items.
+-Set: A collection of unique values.
+
+The primitive types store a single value, while non-primitive types can store collections
+of data or complex entities.
+
+
+
+
+## How do you check the data type of a variable?
+================================================
+In JavaScript, we use the typeof operator to determine the data type of a variable. It returns the type as a string, such as string, number, boolean, undefined, or object. One important exception is that typeof null returns object due to a historical behavior in JavaScript.
+
+
+
+
+## What’s the difference between a JavaScript variable that is: null, undefined or undeclared?
+===========================================================================================
+null means the variable is intentionally assigned an null value indicate that a
+variable has no value. undefined means the variable is declared but no value has been assigned to it. An undeclared variable means the variable was never declared, and trying to access it normally results in a ReferenceError.
+
+
+
+
+## What are the differences between JavaScript variables created using let , var or const ?
+========================================================================================
+
+| Feature                       | var              | let              | const            |
+|------------------------------|------------------|------------------|------------------|
+| Scope                        | Function/Global  | Block            | Block            |
+| Initialization               | Optional         | Optional         | Required         |
+| Redeclaration                | Yes              | No               | No               |
+| Reassignment                 | Yes              | Yes              | No               |
+| Access before declaration    | undefined        | ReferenceError   | ReferenceError   |
+
+
+
+
+## Why should we avoid using the global scope in JavaScript?
+============================================================
+In the browser, JavaScript has a global scope, mainly represented by the window object. We should avoid putting too many variables and functions in the global scope because it can cause naming conflicts, unexpected overwrites, and make the code difficult to maintain. It also reduces modularity and can create security and compatibility issues. Instead, we should use local variables, function parameters, IIFEs, and JavaScript modules to keep the code properly scoped and organized
+
+
+
+
+## How do you convert a string to a number in JavaScript?
+==========================================================
+In JavaScript, we can convert a string to a number using Number(), parseInt(), parseFloat(), or the unary + operator. Number() converts the entire string, parseInt() converts it to an integer, and parseFloat() converts it to a decimal number
+-Example
+---------
+let a = "100";
+let b = "10.5";
+
+Number(a);       // 100
+parseInt(a);     // 100
+parseFloat(b);   // 10.5
++b;              // 10.5
+Number("abc"), parseInt("abc")    // NaN
+parseInt("3abc"), parseFloat("3abc") // 3
+
+
+
+
+## What are template literals and how are they used?
+====================================================
+Template literals are strings created using backticks. They allow us to easily insert variables and expressions using ${}, and they also support multi-line strings.
+-Example
+--------
+let name = "Piyush";
+let age = 24;
+let message = `My name is ${name} and I am ${age} years old.`;
+console.log(message);
+
+
+
+
+## Explain the concept of tagged templates?
+===========================================
+A tagged template allows us to pass a template literal to a function.
+The function can then process the string and its inserted values before returning the final result.
+-Example 
+--------
+function tag(strings, ...values) {
+	return strings[0] + values[0] + strings[1] + values[1] + strings[2];
+}
+const result = tag`Hello ${'world'}! How are ${'you'}?`;
+console.log(result); // "Hello world! How are you?"
+
+
+
+
+## Explain Scopes in javascript?
+=================================
+-Scope determine the visibility of veriables functions and objects.
+
+-Types of Scopes
+----------------
+1. Global Scope :- 
+A veriable declered outside any block or function. Accesible everywhere in the program.
+
+2. Function Scope :-
+A veriable declered inside a function. accessible only inside function this also local of function scope.  
+
+3. Block Scope :-
+Veriable declered using let or const in {}. accessible only inside block.
+
+4. Lexical Scope :-
+A function can access veriables from its parent scope, even if declered at multiple levels.
+
+
+
+
+## Explain Scope Chaining?
+==========================
+-Scope chain is the process used to find veriables when we try to access a veriable js checks Current Scope, Parent Scope, Global Scope.
+-It continue searching outward until the veriable is found this chain is nested is called scope chain.
+-If veriable not found its throw the reference error.
+
+-Example
+--------
+let a = 10;
+
+function outer() {
+    let b = 20;
+
+    function inner() {
+        let c = 30;
+
+        console.log(c); // 30 → current scope
+        console.log(b); // 20 → outer scope
+        console.log(a); // 10 → global scope
+    }
+
+    inner();
+}
+
+outer();
+
+
+
+
+## What are Symbol s used for in JavaScript?
+============================================
+Symbol is a primitive data type used to create unique values. It is mainly used as a unique key for object properties, which helps avoid naming conflicts when different parts of an application use the same object.
+
+-Examples
+---------
+let s1 = Symbol("id");
+let s2 = Symbol("id");
+console.log(s1 === s2); // false
+
+const id = Symbol("id");
+const user = {
+    name: "Piyush",
+    [id]: 101
+};
+console.log(user[id]); // 101
+
+
+
+
+## What are proxies in JavaScript used for?
+===========================================
+A Proxy in JavaScript is an object that acts as an intermediary between our code and another object. It allows us to intercept and customize operations such as getting, setting, or deleting properties. We use Proxies mainly for validation, logging, data transformation, access control, and reactive systems. For example, the get trap is called when we read a property, while the set trap is called when we assign a value. This allows us to add custom behavior without modifying the original object.
+
+-Example
+---------
+
+1. GET 
+------
+
+const user = {
+    name: "Piyush",
+    age: 24
+};
+
+const handler = {
+    get(target, property) {
+        console.log(`Accessing: ${property}`);
+        return target[property];
+    }
+};
+
+const proxyUser = new Proxy(user, handler);
+console.log(proxyUser.name);
+
+
+2. SET 
+------
+We can intercept this operation and perform validation.
+
+const user = {
+    name: "Piyush",
+    age: 24
+};
+
+const handler = {
+    set(target, property, value) {
+
+        if (property === "age" && value < 18) {
+            console.log("Age must be 18 or above");
+            return false;
+        }
+
+        target[property] = value;
+        return true;
+    }
+};
+
+const proxyUser = new Proxy(user, handler);
+
+proxyUser.age = 25;
+
+console.log(proxyUser.age);
+
+Output
+------
+25
+
+If we do:
+proxyUser.age = 15;
+
+Output:
+Age must be 18 or above
+
+The value will not be changed.
+
+
+
+## What is Reflect?
+====================
+Reflect provides a standard and consistent way to perform the underlying operation, and it handles some JavaScript edge cases better, especially with receivers, getters/setters, and inheritance.
+
+Interview answer
+Proxy is used to intercept and customize object operations, whereas Reflect is used to perform those operations programmatically. They are commonly used together: Proxy intercepts the operation, and Reflect performs the default behavior. This allows us to add custom logic while still preserving the normal behavior of the object.
+
+Why use Reflect inside Proxy?
+-----------------------------
+
+Instead of:
+return target[property];
+
+we can use:
+return Reflect.get(target, property);
+
+------------------------------------------------
+
+And instead of:
+target[property] = value;
+return true;
+
+we can use:
+return Reflect.set(target, property, value);
+
+
+
+
+
+## Explain the concept of “hoisting” in JavaScript
+===================================================
+Hoisting in JavaScript is a behavior where JavaScript moves the declarations of variables, functions, and classes to the top of their scope during the creation phase, before the code is executed.
+
+1. var Hoisting
+----------------
+The var declaration is hoisted, but its value is initially `undefined`.
+
+console.log(a); // undefined
+var a = 10;
+console.log(a); // 10
+
+JavaScript behaves roughly like:
+
+var a;
+console.log(a); // undefined
+a = 10;
+
+
+2. let Hoisting
+---------------
+let declarations are also hoisted, but they are **not initialized**.
+Accessing them before the declaration gives a **ReferenceError**.
+
+console.log(a); // ReferenceError
+let a = 10;
+
+This period is called the **Temporal Dead Zone (TDZ)**.
+
+
+3. const Hoisting
+-----------------
+const behaves like `let`.
+
+It is hoisted but not initialized, so accessing it before its declaration gives a **ReferenceError**.
+
+console.log(a); // ReferenceError
+const a = 10;
+
+
+4. Function Declaration Hoisting
+--------------------------------
+Function declarations are **fully hoisted**, so we can call the function before its declaration.
+
+sayHello();
+
+function sayHello() {
+    console.log("Hello");
+}
+Output:
+Hello
+
+
+5. Function Expression with var
+--------------------------------
+A function expression behaves like a `var` variable.
+Only the variable declaration is hoisted, not the function assignment.
+
+sayHello(); // TypeError
+
+var sayHello = function() {
+    console.log("Hello");
+};
+
+Before assignment, `sayHello` is `undefined`, so it cannot be called as a function.
+
+
+6. Class Hoisting
+-----------------
+Class declarations are hoisted but **not initialized**.
+Accessing the class before its declaration gives a `ReferenceError`.
+
+const user = new User(); // ReferenceError
+
+class User {
+}
+
+
+-Quick Comparison
+------------------
+
+Declaration              Before Declaration
+------------------------------------------------
+var                       undefined
+let                       ReferenceError
+const                     ReferenceError
+function declaration      Works
+function expression       TypeError (with var)
+class                     ReferenceError
+
+
+
+
+## Explain the difference in hoisting between var , let , and const
+===================================================================
+var, let, and const are all hoisted, but they behave differently. var is hoisted and initialized with undefined, so it can be accessed before its declaration. let and const are hoisted but not initialized, so accessing them before their declaration causes a ReferenceError because they are in the Temporal Dead Zone.
+
+-- const requires an initial value at the time of declaration, which means we cannot declare a const variable without assigning a value to it.
+-Example
+---------
+let name;          // ✅ allowed
+name = "Piyush";
+
+const name;        // ❌ not allowed
+const name = "Piyush"; // ✅
+
+
+
+
+## What is Temporal Dead Zone?
+==============================
+When we declered any veriable with let and const and when we try to access this veriable before its decleration so Js consider that part is Temporal Dead Zone. So let and const should be hoisted but we cannot use it before decleration.
+
+== OR we can Say 
+----------------
+TDZ is a type of technique or rule which helps developer to write error-free code.
+
+=> In JavaScript, when a file loaded then two things happens.
+
+1) Creation Phase
+2) Execution Phase
+
+In Creation Phase, all variables and functions are created in memory.
+
+-> For variable like var, it's created in memory and gets assigned undefined.
+
+-> For variable like let and const, it is created in a special zone known as Temporary Dead Zone.
+
+If you access the var variable before its declaration, it will return undefined. But if you try to access the let or const variable before its declaration, it will give you errors.
+
+IN SHORT:-
+Temporal Dead Zone helps developer write better code, error free code by restricting the use of variable before it's declarations.
+
+
+
+
+## How does hoisting affect function declarations and expressions?
+==================================================================
+
+Hoisting affects function declarations and function expressions differently.
+
+1. Function Declaration
+------------------------
+A function declaration is completely hoisted, which means both the function name and its function body are available before the line where the function is written.
+
+sayHello();
+
+function sayHello() {
+    console.log("Hello");
+}
+Output:
+Hello
+
+So, a function declaration can be called before its declaration because JavaScript hoists the entire function.
+
+
+2. Function Expression
+-----------------------
+A function expression is not hoisted as a function. The behavior depends on how the variable is declared.
+
+-Using var:
+-------------
+
+sayHello();
+
+var sayHello = function () {
+    console.log("Hello");
+};
+So: TypeError: sayHello is not a function 
+
+Here, var sayHello is hoisted and initialized with undefined, but the function assignment happens only when execution reaches that line.
+
+
+-Using let or const:
+--------------------
+
+sayHello();
+
+const sayHello = function () {
+    console.log("Hello");
+};
+
+Here, sayHello is hoisted but remains in the Temporal Dead Zone (TDZ) until its declaration is reached.
+So accessing it before declaration gives: ReferenceError
+
+
+
+
+## What problems can happen because of JavaScript hoisting?
+===========================================================
+Hoisting can cause unexpected behavior when variables or functions are used before their declarations. For example, a var variable is hoisted and initialized with undefined, while let and const are hoisted but remain in the Temporal Dead Zone, causing a ReferenceError if accessed before initialization. Function declarations are fully hoisted, whereas function expressions are not hoisted as functions. These differences can lead to bugs and confusion if the code relies on using declarations before they appear.
+
+Example:-
+---------
+var username = "Piyush";
+
+function test() {
+    console.log(username);
+
+    var username = "John";
+}
+
+test();
+
+Output
+-------
+We might expect: Piyush
+
+But because the local var username is hoisted:
+
+function test() {
+    var username;
+
+    console.log(username); // undefined
+
+    username = "John";
+}
+
+So the output is: undefined
+This is one reason hoisting can cause unexpected behavior.
+
+
+## What is the difference between == and === in JavaScript?
+== checks only the value and can convert the data type if needed. === checks both value and data type and does not convert the type.
+
+
+
+
+### JAVASCRIPT ITERATION AND CONTROL STATEMENTS
+============================================
+
+## What language constructs do you use for iterating over object properties and array items?
+=============================================================================================
+
+There are different ways to iterate over objects and arrays.
+
+
+A. ITERATING OVER OBJECT PROPERTIES
+-------------------------------------
+
+1. for...in loop
+
+- for...in is used to iterate over the properties (keys) of an object.
+- It can also iterate over inherited properties.
+- Object.hasOwn() can be used if we want only the object's own properties.
+
+Example:
+
+const obj = {
+    a: 1,
+    b: 2,
+    c: 3
+};
+
+for (const key in obj) {
+    if (Object.hasOwn(obj, key)) {
+        console.log(key, obj[key]);
+    }
+}
+
+
+2. Object.keys()
+
+- Object.keys() returns an array containing the object's own enumerable property names.
+- We can then use forEach() or for...of to iterate over them.
+
+Example:
+
+const obj = {
+    a: 1,
+    b: 2,
+    c: 3
+};
+
+Object.keys(obj).forEach((key) => {
+    console.log(key, obj[key]);
+});
+
+
+B. ITERATING OVER ARRAYS
+-------------------------
+
+1. for loop
+
+- Traditional way of iterating over an array.
+- We manually manage the index.
+
+Example:
+
+const numbers = [1, 2, 3, 4, 5];
+
+for (let i = 0; i < numbers.length; i++) {
+    console.log(numbers[i]);
+}
+
+
+2. forEach()
+
+- forEach() executes a function for every array element.
+- It is useful when we simply want to perform an operation on each element.
+
+Example:
+
+const numbers = [1, 2, 3, 4, 5];
+
+numbers.forEach((number) => {
+    console.log(number);
+});
+
+
+3. for...of
+
+- for...of directly gives us each element of an array.
+- We don't need to manually manage the index.
+
+Example:
+
+const numbers = [1, 2, 3, 4, 5];
+
+for (const number of numbers) {
+    console.log(number);
+}
+
+
+Other useful array methods:
+
+filter()
+- Creates a new array containing elements that satisfy a condition.
+
+map()
+- Creates a new array by transforming each element.
+
+reduce()
+- Combines all array elements into a single value.
+
+
+------------------------------------------------------------
+
+
+## What is the purpose of break and continue statements?
+=========================================================
+
+break:
+
+- break completely stops the loop.
+
+Example:
+
+for (let i = 0; i < 10; i++) {
+    if (i === 5) {
+        break;
+    }
+
+    console.log(i);
+}
+
+Output:
+0 1 2 3 4
+
+
+continue:
+
+- continue skips the current iteration and moves to the next iteration.
+
+Example:
+
+for (let i = 0; i < 10; i++) {
+    if (i === 5) {
+        continue;
+    }
+
+    console.log(i);
+}
+
+Output:
+0 1 2 3 4 6 7 8 9
+
+
+Simple difference:
+
+break    -> stops the entire loop
+continue -> skips only the current iteration
+
+
+------------------------------------------------------------
+
+
+## What is the ternary operator and how is it used?
+===================================================
+
+- The ternary operator is a short way of writing a simple if...else.
+- It has three parts:
+
+condition ? valueIfTrue : valueIfFalse
+
+Example:
+
+let result = (a > b) ? "a is greater" : "b is greater";
+
+If a > b is true:
+result = "a is greater"
+
+Otherwise:
+result = "b is greater"
+
+
+Simple meaning:
+
+if...else:
+
+if (a > b) {
+    result = "a is greater";
+} else {
+    result = "b is greater";
+}
+
+
+Ternary:
+
+result = a > b ? "a is greater" : "b is greater";
+
+
+------------------------------------------------------------
+
+
+## How do you access the index of an element in an array during iteration?
+==========================================================================
+
+We can get the index using forEach(), map(), entries(), or a traditional for loop.
+
+Using forEach():
+
+const array = ['a', 'b', 'c'];
+
+array.forEach((element, index) => {
+    console.log(index, element);
+});
+
+Output:
+
+0 a
+1 b
+2 c
+
+
+Here:
+
+- element = current array value
+- index = position of the element
+
+
+------------------------------------------------------------
+
+
+## What is the purpose of the switch statement?
+===============================================
+
+- switch is used when we need to compare one value against multiple possible values.
+- It is an alternative to writing many if...else if statements.
+
+Example:
+
+const day = "Monday";
+
+switch (day) {
+    case "Monday":
+        console.log("Start of week");
+        break;
+
+    case "Friday":
+        console.log("End of week");
+        break;
+
+    default:
+        console.log("Other day");
+}
+
+
+How it works:
+
+1. switch checks the value of day.
+2. It compares it with each case.
+3. When a matching case is found, its code executes.
+4. break stops the switch.
+5. default runs if no case matches.
+
+
+Important:
+
+- switch uses strict comparison (===) when matching cases.
+
+Simple meaning:
+
+switch -> useful when one value needs to be checked against multiple possible values.
+
+
+
+## What is REST Parameter in js?
+=================================
+Rest parameters in JavaScript allow a function to accept an any number of arguments and collect them into an array using the three dots (...) syntax.
+
+Example:-
+---------
+function sum(...numbers) {
+	return numbers.reduce((acc, curr) => acc + curr, 0);
+}
+
+console.log(sum(1, 2, 3, 4)); // Output: 10
+
+
+
+
+## What is SPREAD Operator in js?
+=================================
+The spread operator (... ) in JavaScript allows you to expand elements of an iterable
+(like an array or object) into individual elements. It is commonly used for copying arrays
+or objects, merging arrays or objects, and passing elements of an array as arguments to a
+function.
+
+Example:-
+----------
+
+// Copying an array
+const arr1 = [1, 2, 3];
+const arr2 = [...arr1];
+console.log(arr2); // Output: [1, 2, 3]
+
+// Merging arrays
+const arr3 = [4, 5, 6];
+const mergedArray = [...arr1, ...arr3];
+console.log(mergedArray); // Output: [1, 2, 3, 4, 5, 6]
+
+// Copying an object
+const obj1 = { a: 1, b: 2 };
+const obj2 = { ...obj1 };
+console.log(obj2); // Output: { a: 1, b: 2 }
+
+// Merging objects
+const obj3 = { c: 3, d: 4 };
+const mergedObject = { ...obj1, ...obj3 };
+console.log(mergedObject); // Output: { a: 1, b: 2, c: 3, d: 4 }
+
+// Passing array elements as function arguments
+const sum = (x, y, z) => x + y + z;
+const numbers = [1, 2, 3];
+console.log(sum(...numbers)); // Output: 6
+
+
+
+## What are the benefits of using spread syntax in JavaScript and how is it
+different from rest syntax?
+============================================================================
+
+-Spread syntax (... ) allows an iterable (like an array or string) to be expanded into
+individual elements. This is often used as a convenient and modern way to create new
+arrays or objects by combining existing ones
+
+Operation          Traditional                         Spread
+---------------------------------------------------------------------------
+Array Cloning      arr.slice()                        [...arr]
+
+Array Merging      arr1.concat(arr2)                  [...arr1, ...arr2]
+
+Object Cloning     Object.assign({}, obj)             { ...obj }
+
+Object Merging     Object.assign({}, obj1, obj2)      { ...obj1, ...obj2 }
+
+
+
+-Rest syntax is the opposite of what spread syntax does. It collects multiple arguments passed to a function and converts them into an array. This is often used in function parameters to handle a dynamic number of arguments.
+
+/ Using rest syntax in a function
+function sum(...numbers) {
+	return numbers.reduce((total, num) => total + num, 0);
+}
+console.log(sum(1, 2, 3)); // Output: 6
+
+
+
+
+## What are iterators and generators in JavaScript and what are they used for?
+==============================================================================
+In JavaScript, iterators and generators are used to work with sequences of values one at a time.
+
+
+Iterator
+--------
+An iterator is an object that allows us to access values one by one using the next() method.
+
+- An iterator must have a next() method.
+- The next() method returns an object with two properties:
+  - value: The current value.
+  - done: true when the iteration is finished, otherwise false.
+
+Example:
+
+const iterator = {
+    current: 0,
+
+    next() {
+        if (this.current <= 5) {
+            return { value: this.current++, done: false };
+        }
+
+        return { value: undefined, done: true };
+    }
+};
+
+console.log(iterator.next()); // { value: 0, done: false }
+console.log(iterator.next()); // { value: 1, done: false }
+console.log(iterator.next()); // { value: 2, done: false }
+
+
+Simple Definition:
+An iterator is an object that lets us access values one by one using the next() method.
+
+
+Generator
+---------
+A generator is a special function that can pause its execution and resume it later.
+
+- It uses the function* syntax.
+- It uses the yield keyword to pause execution and return a value.
+- Calling next() resumes the generator until the next yield.
+- A generator function returns an iterator object.
+
+Example:
+
+function* numberGenerator() {
+    yield 1;
+    yield 2;
+    yield 3;
+}
+
+const gen = numberGenerator();
+
+console.log(gen.next()); // { value: 1, done: false }
+console.log(gen.next()); // { value: 2, done: false }
+console.log(gen.next()); // { value: 3, done: false }
+console.log(gen.next()); // { value: undefined, done: true }
+
+
+Simple Definition:
+A generator is a special function that can pause its execution using yield and resume later using next().
+
+
+Iterator vs Generator
+=====================
+
+Iterator:
+- It is an object.
+- It has a next() method.
+- We manually implement the iteration logic.
+
+Generator:
+- It is a special function.
+- It uses function* and yield.
+- JavaScript automatically provides the next() method.
+- It makes creating iterators easier.
+
+
+Easy Way to Remember
+====================
+Iterator = Used to get values one by one.
+Generator = An easy way to create an iterator.
+
+
+
+
+## Function Declaration vs Function Expression in js?
+==================================================
+
+In JavaScript, functions can mainly be created using:
+
+1. Function Declaration
+2. Function Expression
+
+
+1. Function Declaration
+-----------------------
+
+A function declaration is created using the function keyword with a function name.
+
+Example:
+
+function foo() {
+    console.log("FOOOOO");
+}
+
+A function declaration is hoisted completely, so we can call it before its
+declaration.
+
+Example:
+
+foo(); // FOOOOO
+
+function foo() {
+    console.log("FOOOOO");
+}
+
+This works because the function declaration is hoisted with its complete body.
+
+
+2. Function Expression
+----------------------
+
+A function expression is when we assign a function to a variable.
+
+Example:
+
+var foo = function() {
+    console.log("FOOOOO");
+};
+
+The variable declaration is hoisted, but the function assignment is not.
+
+Example:
+
+foo(); // TypeError: foo is not a function
+
+var foo = function() {
+    console.log("FOOOOO");
+};
+
+Here, var foo is hoisted and initially has the value undefined.
+The function is assigned to foo only when this line is executed:
+
+var foo = function() {};
+
+
+Function Declaration vs Function Expression
+============================================
+
+Function Declaration:
+- Uses function keyword with a function name.
+- The complete function is hoisted.
+- Can be called before the function is declared.
+
+Example:
+
+foo();
+
+function foo() {
+    console.log("Hello");
+}
+
+
+Function Expression:
+- A function is assigned to a variable.
+- The variable declaration is hoisted, but the function assignment is not.
+- Cannot be safely called before the assignment.
+- Can use var, let, or const.
+
+Example:
+
+const foo = function() {
+    console.log("Hello");
+};
+
+
+Named Function Expression
+=========================
+
+A function expression can also have its own function name.
+
+Example:
+
+const myFunc = function namedFunc() {
+    console.log(namedFunc);
+};
+
+myFunc(); // Works
+
+The name "namedFunc" is accessible only inside the function.
+
+Trying to access it outside gives an error:
+
+console.log(namedFunc);
+// ReferenceError: namedFunc is not defined
+
+
+Important Interview Point
+=========================
+
+Function Declaration:
+- Fully hoisted.
+- Can be called before declaration.
+
+Function Expression:
+- Function is not hoisted as a usable function.
+- With var, the variable is hoisted as undefined.
+- With let/const, the variable is in the Temporal Dead Zone until initialized.
+
+
+Simple Interview Answer
+=======================
+
+A function declaration is a function defined using the function keyword,
+and its complete definition is hoisted, so it can be called before its
+declaration.
+
+A function expression is a function assigned to a variable. The function
+itself is not hoisted as a usable function, so it should be called only
+after the assignment.
+
+
+
+
+## What is the difference between a parameter and an argument?
+===============================================================
+
+Parameter:
+A parameter is a variable written in the function definition.
+
+Argument:
+An argument is the actual value passed to the function when we call it.
+
+Example:
+
+function add(a, b) {
+    return a + b;
+}
+
+add(2, 3);
+
+Here:
+- a and b are parameters.
+- 2 and 3 are arguments.
+
+Simple way to remember:
+
+Parameter = Variable in function definition.
+Argument = Actual value passed to the function.
+
+
+
+
+
+## call(), apply() and bind() in JavaScript
+=========================================
+
+call(), apply(), and bind() are used to control the value of "this"
+and pass arguments to a function.
+
+
+1. call()
+---------
+
+call() calls the function immediately.
+
+Syntax:
+
+function.call(thisArg, arg1, arg2, ...);
+
+Arguments are passed one by one.
+
+Example:
+
+function add(a, b) {
+    return a + b;
+}
+
+console.log(add.call(null, 1, 2)); // 3
+
+Here:
+- null is the value of "this".
+- 1 and 2 are passed as separate arguments.
+- The function executes immediately.
+
+
+2. apply()
+----------
+
+apply() also calls the function immediately.
+
+The main difference is that arguments are passed as an array.
+
+Syntax:
+
+function.apply(thisArg, [arg1, arg2, ...]);
+
+Example:
+
+function add(a, b) {
+    return a + b;
+}
+
+console.log(add.apply(null, [1, 2])); // 3
+
+Here:
+- null is the value of "this".
+- [1, 2] is passed as an array.
+- The function executes immediately.
+
+
+3. bind()
+---------
+
+bind() does NOT call the function immediately.
+
+It creates and returns a new function with the specified "this"
+value and arguments.
+
+Example:
+
+function greet() {
+    console.log("Hello " + this.name);
+}
+
+const user = {
+    name: "Piyush"
+};
+
+const newFunc = greet.bind(user);
+
+newFunc(); // Hello Piyush
+
+Here:
+- bind() sets "this" to user.
+- It returns a new function.
+- The new function can be called later.
+
+
+Main Difference
+===============
+
+call():
+- Calls the function immediately.
+- Arguments are passed individually.
+
+apply():
+- Calls the function immediately.
+- Arguments are passed as an array.
+
+bind():
+- Does not call the function immediately.
+- Returns a new function.
+- The returned function can be called later.
+
+
+Example of all three
+=====================
+
+function add(a, b) {
+    return a + b;
+}
+
+// call()
+console.log(add.call(null, 1, 2)); // 3
+
+// apply()
+console.log(add.apply(null, [1, 2])); // 3
+
+// bind()
+const newAdd = add.bind(null, 1, 2);
+console.log(newAdd()); // 3
+
+
+Easy Way to Remember
+====================
+
+call  → Call now + arguments separately
+
+apply → Call now + arguments as an array
+
+bind  → Bind now + call later
+
+
+Interview Answer
+================
+
+call() and apply() both call a function immediately with a specific
+"this" value. The main difference is that call() accepts arguments
+individually, while apply() accepts arguments as an array.
+
+bind() is different because it does not call the function immediately.
+It returns a new function with the specified "this" value, which can
+be called later.
+
+
+
+
+What is an Arrow Function?
+==========================
+An arrow function is a shorter syntax for writing functions in JavaScript. It was introduced in ES6. The main difference is that arrow functions do not have their own this; they inherit this from their surrounding lexical scope.
+
+Advantages
+----------
+-Concise syntax – less boilerplate compared to regular functions.
+-Lexical this – inherits this from the surrounding scope.
+-Cleaner callbacks – useful with map(), filter(), reduce(), setTimeout(), etc.
+-Implicit return – can return an expression without explicitly writing return.
+-Better readability – particularly for small functions and callback operations.
+
+Example
+-------
+const numbers = [1, 2, 3];
+const doubled = numbers.map((n) => n * 2);
+console.log(doubled); // [2, 4, 6]
+
+Diff Arrow and Normal Function 
+------------------------------
+Arrow functions and normal functions mainly differ in how they handle this. A normal function has its own this, which depends on how the function is called, while an arrow function inherits this lexically from its surrounding scope
+
+
+
+
+## What is the difference between function Person(){}, const person = Person(), and const person = new Person() in JavaScript?
+==============================================================================================================================
+
+1. function Person() {}
+-----------------------
+
+This is a function declaration.
+
+It only defines the function. It does NOT execute the function
+and does NOT create an object.
+
+Example:
+
+function Person() {
+    console.log("Person function called");
+}
+
+At this point, Person is just a function.
+
+--------------------------------------------------
+
+2. const person = Person()
+
+This calls Person as a normal function.
+
+Example:
+
+function Person() {
+    console.log("Person function called");
+}
+
+const person = Person();
+
+Output:
+Person function called
+
+Here:
+- Person() executes the function.
+- No new object is automatically created.
+- The return value of Person() is assigned to person.
+
+For example:
+
+function Person() {
+    return "Hello";
+}
+
+const person = Person();
+
+console.log(person); // Hello
+
+If the function does not return anything:
+
+function Person() {}
+
+const person = Person();
+
+console.log(person); // undefined
+
+--------------------------------------------------
+
+3. const person = new Person()
+
+This calls Person as a constructor.
+
+JavaScript creates a new object and uses Person to initialize it.
+
+Example:
+
+function Person(name) {
+    this.name = name;
+}
+
+const person = new Person("Piyush");
+
+console.log(person.name); // Piyush
+
+Here:
+- new creates a new object.
+- Person() executes as a constructor.
+- this refers to the newly created object.
+- The new object is assigned to person.
+
+
+
+
+# CALLBACK FUNCTION AND HIGHER-ORDER FUNCTION IN JAVASCRIPT
+===========================================================
+
+# CALLBACK FUNCTION
+--------------------
+
+A callback function is a function that is passed as an argument
+to another function, and the receiving function calls it.
+
+Example:
+
+function greet() {
+console.log("Hello");
+}
+
+function process(callback) {
+callback();
+}
+
+process(greet);
+
+Here:
+
+greet   -> Callback function
+process -> Higher-order function
+
+
+# HIGHER-ORDER FUNCTION
+------------------------
+
+A higher-order function is a function that accepts another
+function as an argument OR returns another function.
+
+Example 1: Accepts a function
+
+function process(callback) {
+callback();
+}
+
+process is a higher-order function because it accepts
+another function.
+
+Example 2: Returns a function
+
+function multiplyBy(x) {
+return function (y) {
+return x * y;
+};
+}
+
+multiplyBy is a higher-order function because it returns
+another function.
+
+## COMMON JAVASCRIPT HIGHER-ORDER FUNCTIONS
+
+map()        -> Higher-order function
+filter()     -> Higher-order function
+reduce()     -> Higher-order function
+forEach()    -> Higher-order function
+setTimeout() -> Higher-order function
+
+## CALLBACK EXAMPLES
+
+numbers.map(num => num * 2);
+
+num => num * 2
+-> Callback function
+
+numbers.filter(num => num > 10);
+
+num => num > 10
+-> Callback function
+
+numbers.forEach(num => console.log(num));
+
+num => console.log(num)
+-> Callback function
+
+setTimeout(() => console.log("Hello"), 1000);
+
+() => console.log("Hello")
+-> Callback function
+
+## EASY INTERVIEW TRICK
+
+Callback
+->
+Function being passed to another function
+
+Higher-Order Function
+->
+Function that accepts or returns another function
+
+## ONE-LINE INTERVIEW ANSWER
+
+"A callback is the function that is passed to another function,
+while a higher-order function is the function that accepts or
+returns another function."
+
+
+
+
+## What is Anonymous Function?
+------------------------------
+An anonymous function is a function without a name. We mainly use it when we need a function for a specific or one-time task, especially as a callback. For example, functions passed to setTimeout(), map(), filter(), and event handlers are commonly written as anonymous functions.
+
+Example:
+--------
+const greet = function () {
+console.log("Hello");
+};
+-Here, the function itself has no name. It is assigned to the variable greet.
+
+Why do we need Anonymous Function?
+-----------------------------------
+Anonymous functions are mainly used when we need a function temporarily, especially as a callback, and we don't need to reuse the function separately.
+
+Example:
+--------
+setTimeout(function () {
+   console.log("Hello");
+}, 1000);
+
+Here, the anonymous function is passed directly to setTimeout() as a callback.
+
+ADVANTAGES:
+-----------
+Useful for one-time operations.
+Good for callback functions.
+Avoids creating unnecessary function names.
+Makes small callback-based code concise.
+
+
+
+
+## What is recursion(recursive function) and how is it used in JavaScript?
+==========================================================================
+Recursion is a programming technique where a function calls itself to solve a problem.
+
+Example:
+--------
+function factorial(n) {
+  if (n === 0) {
+    return 1;
+  }
+  return n * factorial(n - 1);
+}
+console.log(factorial(4)); // Output: 24
+
+
+
+
+## What are default parameters and how are they used?
+==================================================
+Default parameters in JavaScript allow you to set default values for function parameters
+if no value or undefined is passed. This helps avoid undefined values
+
+Example
+-------
+function greet(name = 'Guest') {
+   console.log(`Hello, ${name}!`);
+}
+greet(); // Output: Hello, Guest!
+greet('Alice'); // Output: Hello, Alice!
+
+
+
+
+## What is IIFE?
+================
+-IIFE stands for Immediately Invoked Function Expression.
+-It is a function that is defined and executed immediately, without needing to call it separately.
+
+Example
+--------
+(function () {
+  console.log("Hello");
+})();
+Output: Hello
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

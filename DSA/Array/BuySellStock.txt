@@ -1,0 +1,29 @@
+// Online C# compiler (editor) for free
+// Write and run C# online using this editor.
+
+using System;
+
+public class HelloWorld {
+    public static void Main(string[] args) {
+
+        int[] prices = {7,1,5,3,6,4};
+        int buyPrice = int.MaxValue;
+        int maxProfit = 0;
+
+        foreach(int price in prices){
+            
+            if(buyPrice < price){
+
+                int profit = price - buyPrice;
+                maxProfit = Math.Max(maxProfit , profit);
+                
+            }else{
+                buyPrice = price;
+            }
+            
+        }
+
+        Console.WriteLine(maxProfit); //5
+        
+    }
+}
