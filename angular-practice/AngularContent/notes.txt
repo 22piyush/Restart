@@ -1771,7 +1771,7 @@ Hot and Cold Observables
 Subject
 =======
 -A Subject is a special type of Observable that allows both subscribing and emitting values.
--A Subject can Emit values & can be subscribed also.
+-A Subject can Emit(Publisher) values & can be subscribed also.
 -a normal Observable  is unicast ( 1 Producer per Subscriber)
 -a Subject is multicast  one emission is received by multiple subscribers. ( 1 producer sends values to many subscribers)
 -Subjects act like EventEmitters, maintaining a list of observers/subscribers.
@@ -1785,15 +1785,15 @@ Subject
 	Observable 							   Subjects  
 =================================================================================
 -Is just a function, no state        	-Has state. Stores data in memory
--Cold									-Hot   
+-Cold									         -Hot   
 -Code run for each observer           	-Same code run once for all observers
 -Creates only Observable             	-Can create and also listen Observable
  ( data producer alone )                 ( data producer and consumer )      
 
--Usage: 							    -Usage: 
+-Usage: 							            -Usage: 
 Simple Observable with only                        
 one Obeserver.                       	* Store data and modify frequently  
-										* Multiple observers listen to data
+										         * Multiple observers listen to data
 
 
 Observables
