@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { inject } from '@angular/core';
-import { Subject, switchMap } from 'rxjs';
+import { debounceTime, distinct, distinctUntilChanged, Subject, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-observable-demo3',
@@ -23,6 +23,10 @@ export class ObservableDemo3 {
 
     this.searchSubject
       .pipe(
+
+        debounceTime(500), // Wait for 500ms pause in events
+        distinctUntilChanged(), // Only emit if value is different from previous
+
         switchMap((value) => {
           console.log('API calling for:', value);
 
