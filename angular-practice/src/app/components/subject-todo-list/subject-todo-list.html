@@ -1,1 +1,13 @@
-<p>subject-todo-list works!</p>
+<h1 class="text-center">Todo List</h1>
+
+
+<ul>
+    <li *ngFor="let todo of todoArr$ | async">
+        {{ todo.id }} ======== {{todo.value}}
+        <button 
+            class="btn btn-danger" 
+            (click)="deleteTodo(todo.id)">
+            Delete
+        </button>
+    </li>
+</ul>
