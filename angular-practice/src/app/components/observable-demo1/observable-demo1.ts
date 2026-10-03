@@ -66,4 +66,10 @@ export class ObservableDemo1 {
       complete: () => console.log('completed'),
     });
   }
+
+
+
+
+  // MERGE MAP OPERATORS 
+  
 }

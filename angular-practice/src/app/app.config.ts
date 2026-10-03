@@ -8,8 +8,8 @@ import { errorInterceptor } from './interceptors/error-interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideBrowserGlobalErrorListeners(),
-    provideHttpClient(withInterceptors([authInterceptor, errorInterceptor])),
-    provideStore(),
+    // provideBrowserGlobalErrorListeners(),
+    // provideHttpClient(withInterceptors([authInterceptor, errorInterceptor])),
+    // provideStore(),
   ],
 };
