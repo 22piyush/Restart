@@ -12,6 +12,8 @@ import { EffectDemo1 } from '../components/effect-demo1/effect-demo1';
 import { FormDemo1 } from '../components/form-demo1/form-demo1';
 import { TemplateFormDemo } from '../components/template-form-demo/template-form-demo';
 import { ModelDrivenForm } from '../components/model-driven-form/model-driven-form';
+import { SignalFormDemo } from '../components/signal-form-demo/signal-form-demo';
+import { DynamicForm } from '../components/dynamic-form/dynamic-form';
 
 @Component({
   selector: 'app-body',
@@ -28,7 +30,9 @@ import { ModelDrivenForm } from '../components/model-driven-form/model-driven-fo
     // EffectDemo1,
     // FormDemo1,
     // TemplateFormDemo,
-    ModelDrivenForm
+    // ModelDrivenForm,
+    // SignalFormDemo
+    DynamicForm
   ],
   templateUrl: './body.html',
   styleUrl: './body.css',

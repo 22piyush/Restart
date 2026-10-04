@@ -1,0 +1,44 @@
+<p>dynamic-form works!</p>
+
+<form
+    [formGroup]="dynamicForm"
+    (ngSubmit)="submitForm()"
+>
+
+    <div *ngFor="let field of formFields">
+
+        <label>
+            {{ field.label }}
+        </label>
+
+        <input
+            [type]="field.type"
+            [formControlName]="field.name"
+        >
+
+        <div
+            *ngIf="
+                dynamicForm.get(field.name)?.touched &&
+                dynamicForm.get(field.name)?.invalid
+            "
+        >
+            {{ field.label }} is required.
+        </div>
+
+        <br>
+
+    </div>
+
+
+    <button type="submit">
+        Submit
+    </button>
+
+</form>
+
+
+<hr>
+
+<h3>Form Value</h3>
+
+<pre>{{ dynamicForm.value | json }}</pre>

@@ -2,5 +2,22 @@
 
 
 <form [formGroup]="registerForm">
-    
+    <p>FirstName: <input type="text" formControlName="firstName"></p>
+    <p>LastName: <input type="text" formControlName="lastName"></p>
+    <p>Email: <input type="text" formControlName="email"></p>
+
+    <div formGroupName="address">
+        <p>city: <input type="text" formControlName="city"></p>
+        <p>state: <input type="text" formControlName="state"></p>
+        <p>pincode: <input type="text" formControlName="pincode"></p>
+    </div>
+
+    <input type="reset" value="Reset">
+    <input type="submit" value="Submit">
+
+
 </form>
+
+<pre>
+    {{registerForm.value | json}}
+</pre>
