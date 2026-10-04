@@ -8,6 +8,7 @@ import { SubjectDemo1 } from '../components/subject-demo1/subject-demo1';
 import { SubjectTodo } from '../components/subject-todo/subject-todo';
 import { HttpDemo2 } from '../components/http-demo2/http-demo2';
 import { SignalDemo1 } from '../components/signal-demo1/signal-demo1';
+import { EffectDemo1 } from '../components/effect-demo1/effect-demo1';
 
 @Component({
   selector: 'app-body',
@@ -19,8 +20,9 @@ import { SignalDemo1 } from '../components/signal-demo1/signal-demo1';
     //   ObservableDemo3,
     // SubjectDemo1,
     // SubjectTodo,
-    HttpDemo2,
-    SignalDemo1,
+    // HttpDemo2,
+    // SignalDemo1,
+    EffectDemo1
   ],
   templateUrl: './body.html',
   styleUrl: './body.css',
