@@ -1,0 +1,453 @@
+TypeScript Interview Questions & Answers – Part 1
+======================================================
+
+1. What is TypeScript and how is it different from JavaScript?
+
+Answer:
+- TypeScript is a superset of JavaScript developed by Microsoft.
+- It adds static typing, interfaces, enums, and other features.
+- TypeScript code is compiled to JavaScript before running in the browser.
+
+Example: (TypeScript vs JavaScript)
+
+// JavaScript (No Types)
+function add(a, b) {
+    return a + b;
+}
+
+add(5, '10'); // No error (but risky)
+
+// TypeScript (With Types)
+function add(a: number, b: number): number {
+    return a + b;
+}
+
+add(5, 10);    // OK
+add(5, '10');  // Error: string is not assignable
+
+
+2. What are the basic data types in TypeScript?
+
+Answer:
+- TypeScript supports all JavaScript types and adds type annotations.
+- Common types: number, string, boolean, null, undefined, any, unknown, void, never, object, array, tuple, enum.
+
+Example: (Basic Data Types)
+let num: number = 10;
+let name: string = 'Angular';
+let isActive: boolean = true;
+let empty: null = null;
+let notDefined: undefined = undefined;
+let anything: any = 'Can be anything';
+let data: unknown = 100;
+let nothing: void = undefined;
+
+let arr: number[] = [1, 2, 3];
+let tuple: [string, number] = ['Age', 25];
+
+enum Role { Admin, User, Guest }
+let role: Role = Role.Admin;
+
+
+3. What is the difference between any, unknown and never types?
+
+Answer:
+- any: Disables type checking (use with caution).
+- unknown: Type-safe alternative to any.
+- never: Represents a value that never occurs (used in functions that never return).
+
+Example:
+let a: any = 'Hello';
+a = 123; // No error
+
+let b: unknown = 'Hi';
+// b.toUpperCase(); // Error
+if (typeof b === 'string') {
+    console.log(b.toUpperCase()); // OK
+}
+
+function throwError(msg: string): never {
+    throw new Error(msg);
+}
+
+
+4. What are interfaces in TypeScript and why are they used?
+
+Answer:
+- Interfaces define the structure of an object.
+- They help in type checking and code maintainability.
+- Widely used in Angular for component inputs, service responses, etc.
+
+Example:
+interface User {
+    id: number;
+    name: string;
+    email?: string; // optional
+}
+
+const user: User = {
+    id: 1,
+    name: 'John'
+};
+
+// Another way
+const user2: User = {
+    id: 2,
+    name: 'Alice',
+    email: 'alice@example.com'
+};
+
+
+5. What is the difference between a type and an interface?
+
+Answer:
+- Both are used to define types.
+- interface is mainly for object structures and can be extended/merged.
+- type can be used for primitives, unions, intersections, tuples, etc.
+
+Example:
+interface Product {
+    id: number;
+    name: string;
+}
+
+interface ElectronicProduct extends Product {
+    brand: string;
+}
+
+type ID = number | string;
+
+type ProductType = {
+    id: number;
+    name: string;
+};
+
+type Status = 'success' | 'error' | 'loading';
+
+
+6. What are union and intersection types in TypeScript?
+
+Answer:
+- Union (|): A value can be one of multiple types.
+- Intersection (&): Combines multiple types into one.
+
+Example:
+type StringOrNumber = string | number;
+
+let value: StringOrNumber = 10;
+value = 'Hello';
+
+type Person = { name: string };
+type Employee = { id: number };
+
+type Staff = Person & Employee;
+
+const staff: Staff = { name: 'John', id: 1 };
+
+
+7. What are enums in TypeScript and when do we use them?
+
+Answer:
+- Enums allow you to define a set of named constants.
+- Useful when you have a fixed set of related values (like roles, status codes, etc.).
+
+Example:
+enum Status {
+    Pending = 'PENDING',
+    InProgress = 'IN_PROGRESS',
+    Completed = 'COMPLETED'
+}
+
+let taskStatus: Status = Status.Pending;
+console.log(taskStatus); // PENDING
+
+
+8. What are classes in TypeScript and how are they different from interfaces?
+
+Answer:
+- Classes are blueprints for creating objects (with properties and methods).
+- Interfaces only define the structure, not implementation.
+
+Example:
+class Person {
+    constructor(public name: string, private age: number) {}
+
+    getDetails(): string {
+        return `Name: ${this.name}, Age: ${this.age}`;
+    }
+}
+
+const person = new Person('John', 25);
+console.log(person.getDetails()); // Name: John, Age: 25
+
+
+9. What are access modifiers in TypeScript?
+
+Answer:
+- public: Accessible from anywhere (default).
+- private: Accessible only within the class.
+- protected: Accessible within the class and its subclasses.
+- readonly: Value cannot be changed after initialization.
+
+Example:
+class User {
+    public name: string;
+    private age: number;
+    protected role: string;
+    readonly id: number;
+
+    constructor(name: string, age: number, role: string, id: number) {
+        this.name = name;
+        this.age = age;
+        this.role = role;
+        this.id = id;
+    }
+}
+
+// this.age is only accessible inside the class
+
+
+10. What are generics in TypeScript and why are they useful?
+
+Answer:
+- Generics allow you to create reusable components, functions, and classes.
+- They provide type safety while working with different data types.
+
+Example:
+function identity<T>(value: T): T {
+    return value;
+}
+
+let output1 = identity<string>('Hello');
+let output2 = identity<number>(100);
+
+// Generic with interface
+interface ApiResponse<T> {
+    data: T;
+    success: boolean;
+}
+
+const response: ApiResponse<string> = {
+    data: 'Data from API',
+    success: true
+};
+
+
+
+
+TypeScript Interview Questions & Answers – Part 2
+======================================================
+
+1. What is the difference between type alias and interface in TypeScript?
+
+Answer:
+
+Feature         Type Alias                    Interface
+Keyword         type                          interface
+Can represent   Objects, unions, primitives,  Only object structure
+                tuples, etc.
+Extension       Use &                         Use extends
+Declaration     Not supported                 Supported
+Merging
+Use Case        More flexible                 Better for object contracts
+
+Example:
+type UserType = {
+    id: number;
+    name: string;
+};
+
+interface UserInterface {
+    id: number;
+    name: string;
+}
+
+// Extending
+interface Admin extends UserInterface {
+    role: string;
+}
+
+
+2. What are optional properties and readonly properties in TypeScript?
+
+Answer:
+- Optional properties (?): A property that may or may not exist.
+- Readonly properties (readonly): A property that cannot be modified after initialization.
+
+Example:
+interface Employee {
+    id: number;
+    name: string;
+    email?: string;              // optional
+    readonly department: string; // readonly
+}
+
+const emp: Employee = {
+    id: 1,
+    name: 'John',
+    department: 'IT'
+};
+
+emp.email = 'john@example.com';  // OK
+// emp.department = 'HR';        // Error: Cannot assign
+
+
+3. What is a tuple in TypeScript and when would you use it?
+
+Answer:
+- A tuple is a fixed-length array with elements of specific types in a specific order.
+- Useful when you know the exact number and type of elements (e.g., API response, coordinates).
+
+Example:
+let user: [number, string, boolean] = [1, 'John', true];
+
+// Accessing
+console.log(user[0]); // 1
+console.log(user[1]); // John
+
+
+4. What are literal types in TypeScript?
+
+Answer:
+- Literal types allow you to specify exact values (not just types).
+- Useful for restricting values (e.g., status codes, roles).
+
+Example:
+type Status = 'success' | 'error' | 'loading';
+
+let status: Status = 'success'; // OK
+// status = 'failed';           // Error: Type 'failed' is not assignable
+
+function setStatus(s: Status) {
+    console.log('Status:', s);
+}
+
+
+5. What is the difference between a function declaration and a function expression in TypeScript?
+
+Answer:
+- Function declaration: Hoisted (can be called before definition).
+- Function expression: Not hoisted (variable is initialized at runtime).
+
+Example:
+// Function Declaration (Hoisted)
+greet();
+
+function greet() {
+    console.log('Hello!');
+}
+
+// Function Expression (Not Hoisted)
+// sayHello(); // Error
+
+const sayHello = function() {
+    console.log('Hi!');
+};
+
+sayHello(); // OK
+
+
+6. What are arrow functions in TypeScript and how are they different from regular functions?
+
+Answer:
+- Arrow functions provide a shorter syntax.
+- They do not have their own this (inherit from the parent scope).
+- Useful in callbacks and functional programming.
+
+Example:
+// Regular Function
+function add(a: number, b: number): number {
+    return a + b;
+}
+
+// Arrow Function
+const add = (a: number, b: number): number =>
+    a + b;
+
+// with single parameter
+const square = (n: number) => n * n;
+
+
+7. What is the purpose of the keyof operator in TypeScript?
+
+Answer:
+- keyof operator returns a union of all keys (property names) of a type.
+- Useful for creating reusable and type-safe functions.
+
+Example:
+interface Product {
+    id: number;
+    name: string;
+    price: number;
+}
+
+type ProductKeys = keyof Product; // 'id' | 'name' | 'price'
+
+function getValue(obj: Product, key: keyof Product) {
+    return obj[key];
+}
+
+const p: Product = { id: 1, name: 'Laptop', price: 50000 };
+console.log(getValue(p, 'name')); // Laptop
+
+
+8. What are mapped types in TypeScript?
+
+Answer:
+- Mapped types allow you to create a new type by transforming properties of an existing type.
+- Useful for making properties optional, readonly, etc.
+
+Example:
+interface User {
+    id: number;
+    name: string;
+    email: string;
+}
+
+// Make all properties optional
+type PartialUser = { [K in keyof User]?: User[K] };
+
+// Make all properties readonly
+type ReadonlyUser = { readonly [K in keyof User]: User[K] };
+
+
+9. What is a conditional type in TypeScript?
+
+Answer:
+- Conditional types allow you to define a type based on a condition (similar to if-else).
+- Useful for creating flexible and reusable types.
+
+Example:
+type IsString<T> = T extends string ? 'Yes' : 'No';
+
+type A = IsString<string>; // 'Yes'
+type B = IsString<number>; // 'No'
+
+// Real-world example
+type Message<T> = T extends string ? string : never;
+
+const msg: Message<string> = 'Hello';
+
+
+10. What is the infer keyword in TypeScript?
+
+Answer:
+- infer keyword is used in conditional types to infer (extract) a type from another type.
+- Commonly used with utility types and complex type manipulations.
+
+Example:
+type GetReturnType<T> =
+    T extends (...args: any[]) => infer R ? R : never;
+
+function getName() {
+    return 'John';
+}
+
+type NameType = GetReturnType<typeof getName>; // string
+
+function getUser() {
+    return { id: 1, name: 'Alice' };
+}
+
+type UserType = GetReturnType<typeof getUser>; // { id: number; name: string }
+
