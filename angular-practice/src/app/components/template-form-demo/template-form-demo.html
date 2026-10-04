@@ -1,0 +1,29 @@
+<p> template-form-demo works! </p>
+
+<div class="col-sm-4 offset-4">
+    <form #myForm="ngForm" (submit)="submitMyForm(myForm)">
+        FirstName: <input name="firstName" #fname="ngModel" ngModel required>
+
+        @if(fname.hasError('required')){
+            <span class="text-danger">First is Required</span>
+        }
+        @if(fname.hasError('minlength')){
+            <span class="text-danger">min 1</span>
+
+        }
+
+        lastName: <input name="lastName" #lname="ngModel" ngModel>
+        email: <input name="email" ngModel>
+
+        <div ngModelGroup="address">
+            <p>city: <input name="city" ngModel></p>
+            <p>state: <input name="state" ngModel></p>
+            <p>pncode: <input name="pincode" ngModel></p>
+        </div>
+
+        <input type="reset" value="Reset">
+        <input type="submit" value="Submit">
+    </form>
+
+    <pre>{{myForm.value | json }}</pre>
+</div>

@@ -9,6 +9,9 @@ import { SubjectTodo } from '../components/subject-todo/subject-todo';
 import { HttpDemo2 } from '../components/http-demo2/http-demo2';
 import { SignalDemo1 } from '../components/signal-demo1/signal-demo1';
 import { EffectDemo1 } from '../components/effect-demo1/effect-demo1';
+import { FormDemo1 } from '../components/form-demo1/form-demo1';
+import { TemplateFormDemo } from '../components/template-form-demo/template-form-demo';
+import { ModelDrivenForm } from '../components/model-driven-form/model-driven-form';
 
 @Component({
   selector: 'app-body',
@@ -22,7 +25,10 @@ import { EffectDemo1 } from '../components/effect-demo1/effect-demo1';
     // SubjectTodo,
     // HttpDemo2,
     // SignalDemo1,
-    EffectDemo1
+    // EffectDemo1,
+    // FormDemo1,
+    // TemplateFormDemo,
+    ModelDrivenForm
   ],
   templateUrl: './body.html',
   styleUrl: './body.css',
