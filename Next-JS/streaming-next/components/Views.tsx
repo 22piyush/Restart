@@ -1,10 +1,35 @@
-import React from 'react'
+"use client"
 
-const Views = async() => {
+import { useEffect, useState } from "react"
 
-  await new Promise((resolve) => setTimeout(resolve, 2000))
+const Views =() => {
+
+  const [posts, setPosts] = useState([]);
+
+  useEffect(()=>{
+
+    const fetchPost = async () => {
+      const res = await fetch('https://jsonplaceholder.typicode.com/posts/');
+      const data = await res.json();
+      setPosts(data);
+    }
+
+    fetchPost();
+
+  },[])
+
   return (
-    <div>10K Views</div>
+    <div>
+      {
+        posts.map(({ id, title, body }) => (
+          <div key={id}>
+            {id} - {title}
+            <div>{body}</div>
+            <hr></hr>
+          </div>
+        ))
+      }
+    </div>
   )
 
 }

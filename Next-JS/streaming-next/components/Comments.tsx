@@ -1,9 +1,13 @@
 
-const Comments = async() => {
-  await new Promise((resolve) => setTimeout(resolve, 4000))
-  return (
-    <div>Comments</div>
-  )
+const Comments = async () => {
+
+  // const res = await fetch(
+  //   "https://jsonplaceholder.typicode.com/posts/"
+  // )
+  // const data = await res.json();
+  // console.log(data)
+
+  return <div>Comments</div>
 }
 
 export default Comments

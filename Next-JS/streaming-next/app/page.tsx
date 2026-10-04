@@ -11,11 +11,12 @@ export default function Home() {
     <div>
 
       <Suspense fallback={<div>Loading Views...</div>}>
-        <Views />
+        {/* <Views /> */}
+        
       </Suspense>
       <br />
 
-      <Likex />
+      {/* <Likex /> */}
       <Comments />
     </div>
   );
