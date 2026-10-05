@@ -1,0 +1,24 @@
+
+
+using System;
+
+public class HelloWorld
+{
+    public static void Main(string[] args)
+    {
+        string str = "HelloWorld";
+
+        string substr = "";
+
+        int si = 0, ei = 5;
+
+        for(int i=si; i<ei; i++){
+            substr += str[i];
+        }
+
+        Console.WriteLine(substr); //Hello
+    }
+}
+
+   //Inbuild Method 
+    Console.WriteLine(str.Substring(0,5));  //Hello
