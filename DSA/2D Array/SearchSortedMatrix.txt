@@ -1,0 +1,40 @@
+
+Search for a key in row wise and col wise in sorted matrix.
+
+using System;
+
+public class HelloWorld
+{
+    public static void Main(string[] args)
+    {
+        int[,] matrix =
+        {
+            { 10, 20, 30, 40 },
+            { 15, 25, 35, 45 },
+            { 27, 29, 37, 48 },
+            { 32, 33, 39, 50 }
+        };
+
+        int key = 33;
+
+        int row = 0;
+        int col = matrix.GetLength(1) - 1;
+
+        while (row < matrix.GetLength(0) && col >= 0)
+        {
+            if (matrix[row, col] == key)
+            {
+                Console.WriteLine("Found at row: " + row + ", column: " + col);
+                break;
+            }
+            else if (matrix[row, col] > key)
+            {
+                col--;
+            }
+            else
+            {
+                row++;
+            }
+        }
+    }
+}

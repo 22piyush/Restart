@@ -1,0 +1,54 @@
+
+// Print Numbers in decreasing order.
+
+using System;
+
+public class Recursion
+{
+    public static void printDec(int n){
+      if(n == 1){
+        Console.WriteLine(n);
+        return;
+      }
+
+      Console.WriteLine(n+" ");
+      printDec(n-1);
+    }
+  
+    public static void Main(string[] args)
+    {
+        int n = 10;
+        printDec(n);
+    }
+}
+
+
+
+
+
+// Print Numbers in increasing order.
+
+
+using System;
+
+public class Recursion
+{
+
+    public static void printDec(int n){
+
+      if(n == 10){
+        Console.WriteLine(n);
+        return;
+      }
+
+      Console.WriteLine(n+" ");
+      printDec(n+1);
+
+    }
+  
+    public static void Main(string[] args)
+    {
+        int n = 1;
+        printDec(n);
+    }
+}

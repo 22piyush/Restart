@@ -1,0 +1,59 @@
+
+Diagonal Sum 
+LT -------> BR
+RT -------> LB
+
+1  2  3  4
+5  6  7  8
+9  10 11 12
+13 14 15 16
+
+LT -------> BR  1+6+11+16 = 34
+RT -------> LB  4+7+10+13 = 34
+
+3 X 3 matrix remove middle same element from total;
+
+
+using System;
+
+public class HelloWorld
+{
+    public static void Main(string[] args)
+    {
+        int[,] matrix =
+        {
+            { 1,  2,  3,  4 },
+            { 5,  6,  7,  8 },
+            { 9, 10, 11, 12 },
+            { 13, 14, 15, 16 }
+        };
+
+        int sum = 0;
+
+        int rows = matrix.GetLength(0);
+        int cols = matrix.GetLength(1);
+
+        for (int i = 0; i < rows; i++)
+        {
+            for (int j = 0; j < cols; j++)
+            {
+                if (i == j)
+                {
+                    sum += matrix[i, j];
+                }
+                else if (i + j == rows - 1)
+                {
+                    sum += matrix[i, j];
+                }
+            }
+        a}
+
+        Console.WriteLine("Diagonal Sum = " + sum);
+    }
+}
+
+
+
+
+
+

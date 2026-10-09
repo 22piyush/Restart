@@ -1,0 +1,64 @@
+
+
+1  2  3  4
+5  6  7  8
+9  10 11 12
+13 14 15 16
+
+
+output :- 1 2 3 4 5 6 7 8 9 10 11;
+
+
+using System;
+
+public class HelloWorld
+{
+    public static void Main(string[] args)
+    {
+        int[,] matrix =
+        {
+            { 1,  2,  3,  4 },
+            { 5,  6,  7,  8 },
+            { 9, 10, 11, 12 },
+            { 13, 14, 15, 16 }
+        };
+
+        int startRow = 0;
+        int startCol = 0;
+
+        int endRow = matrix.GetLength(0) - 1;
+        int endCol = matrix.GetLength(1) - 1;
+
+        while (startRow <= endRow && startCol <= endCol)
+        {
+            // Top
+            for (int j = startCol; j <= endCol; j++)
+            {
+                Console.Write(matrix[startRow, j] + " ");
+            }
+
+            // Right
+            for (int i = startRow + 1; i <= endRow; i++)
+            {
+                Console.Write(matrix[i, endCol] + " ");
+            }
+
+            // Bottom
+            for (int j = endCol - 1; j >= startCol; j--)
+            {
+                Console.Write(matrix[endRow, j] + " ");
+            }
+
+            // Left
+            for (int i = endRow - 1; i > startRow; i--)
+            {
+                Console.Write(matrix[i, startCol] + " ");
+            }
+
+            startRow++;
+            startCol++;
+            endRow--;
+            endCol--;
+        }
+    }
+}
