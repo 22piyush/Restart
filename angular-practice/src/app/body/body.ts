@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { EmployeeCrud } from '../components/employee-crud/employee-crud';
 import { CommentList } from '../components/comment-list/comment-list';
 import { ObservableDemo1 } from '../components/observable-demo1/observable-demo1';
@@ -14,7 +14,7 @@ import { TemplateFormDemo } from '../components/template-form-demo/template-form
 import { ModelDrivenForm } from '../components/model-driven-form/model-driven-form';
 import { SignalFormDemo } from '../components/signal-form-demo/signal-form-demo';
 import { DynamicForm } from '../components/dynamic-form/dynamic-form';
-import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
+import { RouterOutlet, RouterLink, RouterLinkActive, Router } from '@angular/router';
 
 @Component({
   selector: 'app-body',
@@ -41,4 +41,11 @@ import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
   templateUrl: './body.html',
   styleUrl: './body.css',
 })
-export class Body {}
+export class Body {
+  router = inject(Router);
+
+  doSomething() {
+    console.log('Hello');
+    this.router.navigateByUrl('aboutus');
+  }
+}
