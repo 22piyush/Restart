@@ -14,6 +14,7 @@ import { TemplateFormDemo } from '../components/template-form-demo/template-form
 import { ModelDrivenForm } from '../components/model-driven-form/model-driven-form';
 import { SignalFormDemo } from '../components/signal-form-demo/signal-form-demo';
 import { DynamicForm } from '../components/dynamic-form/dynamic-form';
+import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-body',
@@ -32,7 +33,10 @@ import { DynamicForm } from '../components/dynamic-form/dynamic-form';
     // TemplateFormDemo,
     // ModelDrivenForm,
     // SignalFormDemo
-    DynamicForm
+    // DynamicForm
+    RouterOutlet,
+    RouterLink,
+    RouterLinkActive,
   ],
   templateUrl: './body.html',
   styleUrl: './body.css',
