@@ -43,5 +43,52 @@ namespace Session_17.Controllers
             return $"Pid: {Pid}; Pname: {Pname}; Price: {Price}";
         }
 
+        public string Validate1(string Name, string Pwd)
+        {
+            if (Name == "Raju" && Pwd == "Admin")
+                return "Valid User";
+            else
+                return "Invalid User";
+        }
+
+        public string Validate2()
+        {
+            string Name = Request.QueryString["Name"];
+            string Pwd = Request.QueryString["Pwd"]; 
+            if (Name == "Raju" && Pwd == "Admin")
+                return "Valid User";
+            else
+                return "Invalid User";
+        }
+
+        [ActionName("SayHello1")]
+        public string SayHello()
+        {
+            return "Hello how are you?";
+        }
+
+        [ActionName("SayHello2")]
+        public string SayHello(string Name)
+        {
+            return "Hello " + Name + " how are you?";
+        }
+
+        [NonAction]
+        public string Display()
+        {
+            return "Non-Action Method";
+        }
+
+        public string Test()
+        {
+            string str = "Hello World";
+            return str;
+        }
+
+        public ViewResult Index()
+        {
+            return View();
+        }
+
     }
 }
