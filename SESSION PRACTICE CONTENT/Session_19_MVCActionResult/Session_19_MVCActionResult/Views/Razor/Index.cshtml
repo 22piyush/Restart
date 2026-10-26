@@ -1,0 +1,35 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+
+        @{ int Count = 0; }
+        @{ Count += 100; }
+        @{ Object obj = new Object(); }
+        @{ String str = "Hello World"; }
+
+        <h3>Va
+        lue of Count is: @Count</h3>
+        <h3>obj is of type: @obj.GetType() </h3>
+
+
+        @{
+            string date1 = DateTime.Now.ToShortDateString();
+            string date2 = DateTime.Now.ToLongDateString();
+            <h3>Short Date: @date1</h3>
+            <h3>Long Time: @date2</h3>
+        }
+
+    </div>
+</body>
+</html>

@@ -3,20 +3,12 @@
   "WorkspaceRootPath": "E:\\Restart\\SESSION PRACTICE CONTENT\\Session_19_MVCActionResult\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4A120A32-9C6A-4ABD-9F83-2ECFE3B97335}|Session_19_MVCActionResult\\Session_19_MVCActionResult.csproj|e:\\restart\\session practice content\\session_19_mvcactionresult\\session_19_mvcactionresult\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4A120A32-9C6A-4ABD-9F83-2ECFE3B97335}|Session_19_MVCActionResult\\Session_19_MVCActionResult.csproj|solutionrelative:session_19_mvcactionresult\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4A120A32-9C6A-4ABD-9F83-2ECFE3B97335}|Session_19_MVCActionResult\\Session_19_MVCActionResult.csproj|e:\\restart\\session practice content\\session_19_mvcactionresult\\session_19_mvcactionresult\\views\\razor\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4A120A32-9C6A-4ABD-9F83-2ECFE3B97335}|Session_19_MVCActionResult\\Session_19_MVCActionResult.csproj|solutionrelative:session_19_mvcactionresult\\views\\razor\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4A120A32-9C6A-4ABD-9F83-2ECFE3B97335}|Session_19_MVCActionResult\\Session_19_MVCActionResult.csproj|e:\\restart\\session practice content\\session_19_mvcactionresult\\session_19_mvcactionresult\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{4A120A32-9C6A-4ABD-9F83-2ECFE3B97335}|Session_19_MVCActionResult\\Session_19_MVCActionResult.csproj|solutionrelative:session_19_mvcactionresult\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4A120A32-9C6A-4ABD-9F83-2ECFE3B97335}|Session_19_MVCActionResult\\Session_19_MVCActionResult.csproj|e:\\restart\\session practice content\\session_19_mvcactionresult\\session_19_mvcactionresult\\views\\test\\mission.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{4A120A32-9C6A-4ABD-9F83-2ECFE3B97335}|Session_19_MVCActionResult\\Session_19_MVCActionResult.csproj|solutionrelative:session_19_mvcactionresult\\views\\test\\mission.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4A120A32-9C6A-4ABD-9F83-2ECFE3B97335}|Session_19_MVCActionResult\\Session_19_MVCActionResult.csproj|e:\\restart\\session practice content\\session_19_mvcactionresult\\session_19_mvcactionresult\\views\\shared\\contact.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{4A120A32-9C6A-4ABD-9F83-2ECFE3B97335}|Session_19_MVCActionResult\\Session_19_MVCActionResult.csproj|solutionrelative:session_19_mvcactionresult\\views\\shared\\contact.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{4A120A32-9C6A-4ABD-9F83-2ECFE3B97335}|Session_19_MVCActionResult\\Session_19_MVCActionResult.csproj|e:\\restart\\session practice content\\session_19_mvcactionresult\\session_19_mvcactionresult\\controllers\\razorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4A120A32-9C6A-4ABD-9F83-2ECFE3B97335}|Session_19_MVCActionResult\\Session_19_MVCActionResult.csproj|solutionrelative:session_19_mvcactionresult\\controllers\\razorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 28,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -34,54 +26,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Mission.cshtml",
-              "DocumentMoniker": "E:\\Restart\\SESSION PRACTICE CONTENT\\Session_19_MVCActionResult\\Session_19_MVCActionResult\\Views\\Test\\Mission.cshtml",
-              "RelativeDocumentMoniker": "Session_19_MVCActionResult\\Views\\Test\\Mission.cshtml",
-              "ToolTip": "E:\\Restart\\SESSION PRACTICE CONTENT\\Session_19_MVCActionResult\\Session_19_MVCActionResult\\Views\\Test\\Mission.cshtml",
-              "RelativeToolTip": "Session_19_MVCActionResult\\Views\\Test\\Mission.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAACAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "E:\\Restart\\SESSION PRACTICE CONTENT\\Session_19_MVCActionResult\\Session_19_MVCActionResult\\Views\\Razor\\Index.cshtml",
+              "RelativeDocumentMoniker": "Session_19_MVCActionResult\\Views\\Razor\\Index.cshtml",
+              "ToolTip": "E:\\Restart\\SESSION PRACTICE CONTENT\\Session_19_MVCActionResult\\Session_19_MVCActionResult\\Views\\Razor\\Index.cshtml*",
+              "RelativeToolTip": "Session_19_MVCActionResult\\Views\\Razor\\Index.cshtml*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-10-25T18:27:23.517Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Contact.cshtml",
-              "DocumentMoniker": "E:\\Restart\\SESSION PRACTICE CONTENT\\Session_19_MVCActionResult\\Session_19_MVCActionResult\\Views\\Shared\\Contact.cshtml",
-              "RelativeDocumentMoniker": "Session_19_MVCActionResult\\Views\\Shared\\Contact.cshtml",
-              "ToolTip": "E:\\Restart\\SESSION PRACTICE CONTENT\\Session_19_MVCActionResult\\Session_19_MVCActionResult\\Views\\Shared\\Contact.cshtml",
-              "RelativeToolTip": "Session_19_MVCActionResult\\Views\\Shared\\Contact.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-10-25T18:24:47.21Z",
+              "WhenOpened": "2026-10-26T17:25:39.079Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "E:\\Restart\\SESSION PRACTICE CONTENT\\Session_19_MVCActionResult\\Session_19_MVCActionResult\\Views\\Home\\Index.cshtml",
-              "RelativeDocumentMoniker": "Session_19_MVCActionResult\\Views\\Home\\Index.cshtml",
-              "ToolTip": "E:\\Restart\\SESSION PRACTICE CONTENT\\Session_19_MVCActionResult\\Session_19_MVCActionResult\\Views\\Home\\Index.cshtml",
-              "RelativeToolTip": "Session_19_MVCActionResult\\Views\\Home\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-10-25T18:13:12.47Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "HomeController.cs",
-              "DocumentMoniker": "E:\\Restart\\SESSION PRACTICE CONTENT\\Session_19_MVCActionResult\\Session_19_MVCActionResult\\Controllers\\HomeController.cs",
-              "RelativeDocumentMoniker": "Session_19_MVCActionResult\\Controllers\\HomeController.cs",
-              "ToolTip": "E:\\Restart\\SESSION PRACTICE CONTENT\\Session_19_MVCActionResult\\Session_19_MVCActionResult\\Controllers\\HomeController.cs",
-              "RelativeToolTip": "Session_19_MVCActionResult\\Controllers\\HomeController.cs",
-              "ViewState": "AgIAACQAAAAAAAAAAAAowDcAAAAAAAAAAAAAAA==",
+              "Title": "RazorController.cs",
+              "DocumentMoniker": "E:\\Restart\\SESSION PRACTICE CONTENT\\Session_19_MVCActionResult\\Session_19_MVCActionResult\\Controllers\\RazorController.cs",
+              "RelativeDocumentMoniker": "Session_19_MVCActionResult\\Controllers\\RazorController.cs",
+              "ToolTip": "E:\\Restart\\SESSION PRACTICE CONTENT\\Session_19_MVCActionResult\\Session_19_MVCActionResult\\Controllers\\RazorController.cs",
+              "RelativeToolTip": "Session_19_MVCActionResult\\Controllers\\RazorController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-25T18:12:10.394Z",
+              "WhenOpened": "2026-10-26T17:25:25.476Z",
               "EditorCaption": ""
             }
           ]

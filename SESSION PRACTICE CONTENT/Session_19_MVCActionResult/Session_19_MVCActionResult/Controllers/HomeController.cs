@@ -54,5 +54,24 @@ namespace Session_19_MVCActionResult.Controllers
             return View("~/Views/Test/Mission.cshtml");
         }
 
+        public ViewResult About()
+        {
+            return View();
+        }
+
+        public ViewResult Show(int id) { 
+        
+            if(id == 1)
+            {
+                return View("Show1");
+            }
+            else
+            {
+                return View("Show2");
+            }
+
+        }
+
+
     }
 }
