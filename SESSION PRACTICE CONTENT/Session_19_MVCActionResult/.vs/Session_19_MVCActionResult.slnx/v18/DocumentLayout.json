@@ -7,7 +7,7 @@
       "RelativeMoniker": "D:0:0:{4A120A32-9C6A-4ABD-9F83-2ECFE3B97335}|Session_19_MVCActionResult\\Session_19_MVCActionResult.csproj|solutionrelative:session_19_mvcactionresult\\controllers\\razorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4A120A32-9C6A-4ABD-9F83-2ECFE3B97335}|Session_19_MVCActionResult\\Session_19_MVCActionResult.csproj|e:\\restart\\session practice content\\session_19_mvcactionresult\\session_19_mvcactionresult\\views\\razor\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{4A120A32-9C6A-4ABD-9F83-2ECFE3B97335}|Session_19_MVCActionResult\\Session_19_MVCActionResult.csproj|E:\\Restart\\SESSION PRACTICE CONTENT\\Session_19_MVCActionResult\\session_19_mvcactionresult\\views\\razor\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{4A120A32-9C6A-4ABD-9F83-2ECFE3B97335}|Session_19_MVCActionResult\\Session_19_MVCActionResult.csproj|solutionrelative:session_19_mvcactionresult\\views\\razor\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
@@ -34,8 +34,7 @@
               "RelativeToolTip": "Session_19_MVCActionResult\\Views\\Razor\\Index.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-10-26T17:25:39.079Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-10-26T17:25:39.079Z"
             },
             {
               "$type": "Document",

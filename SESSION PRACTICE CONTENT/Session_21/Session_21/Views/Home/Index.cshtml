@@ -1,0 +1,40 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        <h2>Product Details</h2>
+
+        <table border="1" cellpadding="10" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>@ViewData["Id"]</td>
+                    <td>@ViewData["Name"]</td>
+                    <td>
+                        @{
+                            double? Price = Convert.ToDouble(ViewData["Price"]);
+                            Price = Price + Price * 0.1;
+
+                            @Price
+                        }
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+
+
+    </div>
+</body>
+</html>

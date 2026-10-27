@@ -1,0 +1,26 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Display</title>
+</head>
+<body>
+    <div>
+
+        <h2>List of Colors</h2>
+
+        @foreach (object color in (List<string>)ViewData["Colors"])
+        {
+            
+            <li>@color</li>
+
+        }
+    </div>
+</body>
+</html>
