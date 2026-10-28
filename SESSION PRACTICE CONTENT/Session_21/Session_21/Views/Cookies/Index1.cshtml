@@ -1,0 +1,151 @@
+﻿
+@{
+    Layout = null;
+
+    HttpCookie cookie = Request.Cookies["ProductCookie"];
+
+    int Id = 0;
+    string Name = "";
+    double Price = 0;
+
+    if (cookie != null)
+    {
+        int.TryParse(cookie["Id"], out Id);
+        Name = cookie["Name"] ?? "";
+        double.TryParse(cookie["Price"], out Price);
+    }
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Product Details</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f6fb;
+            color: #2c3652;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .product-card {
+            width: 420px;
+            max-width: 92%;
+            background: #fff;
+            border-radius: 12px;
+            padding: 28px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        .card-header {
+            border-bottom: 1px solid #e8eaf0;
+            padding-bottom: 18px;
+            margin-bottom: 20px;
+        }
+
+            .card-header h2 {
+                margin: 0 0 8px;
+                font-size: 23px;
+            }
+
+            .card-header p {
+                margin: 0;
+                color: #7b8499;
+                font-size: 14px;
+            }
+
+        .product-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #f0f1f5;
+            gap: 15px;
+        }
+
+            .product-row:last-of-type {
+                border-bottom: none;
+            }
+
+        .label {
+            color: #7b8499;
+            font-size: 14px;
+        }
+
+        .value {
+            font-size: 15px;
+            font-weight: 600;
+            text-align: right;
+            overflow-wrap: anywhere;
+        }
+
+        .price {
+            color: #16a36a;
+            font-size: 21px;
+        }
+
+        .status {
+            display: inline-block;
+            background: #e7f8ef;
+            color: #168653;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-top: 18px;
+        }
+
+        .empty-message {
+            text-align: center;
+            color: #dc3545;
+            padding: 20px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="product-card">
+        @if (cookie != null)
+        {
+            <div class="card-header">
+                <h2>Product Details</h2>
+                <p>Product information retrieved from cookies</p>
+            </div>
+
+            <div class="product-row">
+                <span class="label">Product ID</span>
+                <span class="value">@Id</span>
+            </div>
+
+            <div class="product-row">
+                <span class="label">Product Name</span>
+                <span class="value">@Name</span>
+            </div>
+
+            <div class="product-row">
+                <span class="label">Product Price</span>
+                <span class="value price">₹@Price.ToString("N2")</span>
+            </div>
+
+            <span class="status">Cookie Available</span>
+        }
+        else
+        {
+            <div class="empty-message">
+                <h3>Product Details Not Found</h3>
+                <p>Please create the product cookie first.</p>
+            </div>
+        }
+    </div>
+</body>
+</html>
