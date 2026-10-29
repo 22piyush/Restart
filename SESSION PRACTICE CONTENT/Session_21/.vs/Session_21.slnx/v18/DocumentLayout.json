@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "E:\\Restart\\SESSION PRACTICE CONTENT\\Session_21\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B47194F1-8650-4052-90FC-C2EFDE2DC9C8}|Session_21\\Session_21_MVCDataTransfer.csproj|e:\\restart\\session practice content\\session_21\\session_21\\controllers\\cookiescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B47194F1-8650-4052-90FC-C2EFDE2DC9C8}|Session_21\\Session_21_MVCDataTransfer.csproj|solutionrelative:session_21\\controllers\\cookiescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B47194F1-8650-4052-90FC-C2EFDE2DC9C8}|Session_21\\Session_21_MVCDataTransfer.csproj|e:\\restart\\session practice content\\session_21\\session_21\\views\\session\\index1.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B47194F1-8650-4052-90FC-C2EFDE2DC9C8}|Session_21\\Session_21_MVCDataTransfer.csproj|solutionrelative:session_21\\views\\session\\index1.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B47194F1-8650-4052-90FC-C2EFDE2DC9C8}|Session_21\\Session_21_MVCDataTransfer.csproj|e:\\restart\\session practice content\\session_21\\session_21\\views\\cookies\\index1.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B47194F1-8650-4052-90FC-C2EFDE2DC9C8}|Session_21\\Session_21_MVCDataTransfer.csproj|solutionrelative:session_21\\views\\cookies\\index1.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{B47194F1-8650-4052-90FC-C2EFDE2DC9C8}|Session_21\\Session_21_MVCDataTransfer.csproj|e:\\restart\\session practice content\\session_21\\session_21\\controllers\\sessioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B47194F1-8650-4052-90FC-C2EFDE2DC9C8}|Session_21\\Session_21_MVCDataTransfer.csproj|solutionrelative:session_21\\controllers\\sessioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 28,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -26,28 +26,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Index1.cshtml",
-              "DocumentMoniker": "E:\\Restart\\SESSION PRACTICE CONTENT\\Session_21\\Session_21\\Views\\Cookies\\Index1.cshtml",
-              "RelativeDocumentMoniker": "Session_21\\Views\\Cookies\\Index1.cshtml",
-              "ToolTip": "E:\\Restart\\SESSION PRACTICE CONTENT\\Session_21\\Session_21\\Views\\Cookies\\Index1.cshtml",
-              "RelativeToolTip": "Session_21\\Views\\Cookies\\Index1.cshtml",
-              "ViewState": "AgIAAHUAAAAAAAAAAAAAACwAAAAgAAAAAAAAAA==",
+              "DocumentMoniker": "E:\\Restart\\SESSION PRACTICE CONTENT\\Session_21\\Session_21\\Views\\Session\\Index1.cshtml",
+              "RelativeDocumentMoniker": "Session_21\\Views\\Session\\Index1.cshtml",
+              "ToolTip": "E:\\Restart\\SESSION PRACTICE CONTENT\\Session_21\\Session_21\\Views\\Session\\Index1.cshtml",
+              "RelativeToolTip": "Session_21\\Views\\Session\\Index1.cshtml",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAAABsAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-10-28T17:35:22.173Z",
+              "WhenOpened": "2026-10-29T15:54:50.061Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "CookiesController.cs",
-              "DocumentMoniker": "E:\\Restart\\SESSION PRACTICE CONTENT\\Session_21\\Session_21\\Controllers\\CookiesController.cs",
-              "RelativeDocumentMoniker": "Session_21\\Controllers\\CookiesController.cs",
-              "ToolTip": "E:\\Restart\\SESSION PRACTICE CONTENT\\Session_21\\Session_21\\Controllers\\CookiesController.cs",
-              "RelativeToolTip": "Session_21\\Controllers\\CookiesController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAYwB4AAAAAAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "SessionController.cs",
+              "DocumentMoniker": "E:\\Restart\\SESSION PRACTICE CONTENT\\Session_21\\Session_21\\Controllers\\SessionController.cs",
+              "RelativeDocumentMoniker": "Session_21\\Controllers\\SessionController.cs",
+              "ToolTip": "E:\\Restart\\SESSION PRACTICE CONTENT\\Session_21\\Session_21\\Controllers\\SessionController.cs",
+              "RelativeToolTip": "Session_21\\Controllers\\SessionController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-28T17:27:14.262Z",
+              "WhenOpened": "2026-10-29T15:51:54.874Z",
               "EditorCaption": ""
             }
           ]

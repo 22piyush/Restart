@@ -96,6 +96,7 @@
     <Compile Include="Controllers\CookiesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RazorController.cs" />
+    <Compile Include="Controllers\SessionController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -114,6 +115,7 @@
     <Content Include="Views\Test\Display1.cshtml" />
     <Content Include="Views\Cookies\Index.cshtml" />
     <Content Include="Views\Cookies\Index1.cshtml" />
+    <Content Include="Views\Session\Index1.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
