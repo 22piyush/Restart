@@ -11,4 +11,7 @@ export class ServiceComponent {
 
   // mathService = inject(MathService);
   // constructor(private mathService: MathService) {}
+
+  
+
 }

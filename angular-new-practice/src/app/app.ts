@@ -1,12 +1,12 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component } from '@angular/core';
+import { HttpDemo1 } from './components/http-demo1/http-demo1';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [HttpDemo1],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
-  protected readonly title = signal('angular-new-practice');
+
 }
