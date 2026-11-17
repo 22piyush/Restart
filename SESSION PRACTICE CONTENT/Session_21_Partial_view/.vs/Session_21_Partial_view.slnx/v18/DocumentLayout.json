@@ -1,0 +1,126 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\Restart\\SESSION PRACTICE CONTENT\\Session_21_Partial_view\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{D040330B-8271-4B81-BFB4-D63E4FE5B346}|Session_21_Partial_view\\Session_21_Partial_view.csproj|e:\\restart\\session practice content\\session_21_partial_view\\session_21_partial_view\\views\\customer\\displaycustomers.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D040330B-8271-4B81-BFB4-D63E4FE5B346}|Session_21_Partial_view\\Session_21_Partial_view.csproj|solutionrelative:session_21_partial_view\\views\\customer\\displaycustomers.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D040330B-8271-4B81-BFB4-D63E4FE5B346}|Session_21_Partial_view\\Session_21_Partial_view.csproj|e:\\restart\\session practice content\\session_21_partial_view\\session_21_partial_view\\controllers\\customercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D040330B-8271-4B81-BFB4-D63E4FE5B346}|Session_21_Partial_view\\Session_21_Partial_view.csproj|solutionrelative:session_21_partial_view\\controllers\\customercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D040330B-8271-4B81-BFB4-D63E4FE5B346}|Session_21_Partial_view\\Session_21_Partial_view.csproj|e:\\restart\\session practice content\\session_21_partial_view\\session_21_partial_view\\models\\customer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D040330B-8271-4B81-BFB4-D63E4FE5B346}|Session_21_Partial_view\\Session_21_Partial_view.csproj|solutionrelative:session_21_partial_view\\models\\customer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D040330B-8271-4B81-BFB4-D63E4FE5B346}|Session_21_Partial_view\\Session_21_Partial_view.csproj|e:\\restart\\session practice content\\session_21_partial_view\\session_21_partial_view\\views\\student\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D040330B-8271-4B81-BFB4-D63E4FE5B346}|Session_21_Partial_view\\Session_21_Partial_view.csproj|solutionrelative:session_21_partial_view\\views\\student\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D040330B-8271-4B81-BFB4-D63E4FE5B346}|Session_21_Partial_view\\Session_21_Partial_view.csproj|e:\\restart\\session practice content\\session_21_partial_view\\session_21_partial_view\\views\\shared\\_header.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D040330B-8271-4B81-BFB4-D63E4FE5B346}|Session_21_Partial_view\\Session_21_Partial_view.csproj|solutionrelative:session_21_partial_view\\views\\shared\\_header.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D040330B-8271-4B81-BFB4-D63E4FE5B346}|Session_21_Partial_view\\Session_21_Partial_view.csproj|e:\\restart\\session practice content\\session_21_partial_view\\session_21_partial_view\\controllers\\studentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D040330B-8271-4B81-BFB4-D63E4FE5B346}|Session_21_Partial_view\\Session_21_Partial_view.csproj|solutionrelative:session_21_partial_view\\controllers\\studentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 28,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DisplayCustomers.cshtml",
+              "DocumentMoniker": "E:\\Restart\\SESSION PRACTICE CONTENT\\Session_21_Partial_view\\Session_21_Partial_view\\Views\\Customer\\DisplayCustomers.cshtml",
+              "RelativeDocumentMoniker": "Session_21_Partial_view\\Views\\Customer\\DisplayCustomers.cshtml",
+              "ToolTip": "E:\\Restart\\SESSION PRACTICE CONTENT\\Session_21_Partial_view\\Session_21_Partial_view\\Views\\Customer\\DisplayCustomers.cshtml",
+              "RelativeToolTip": "Session_21_Partial_view\\Views\\Customer\\DisplayCustomers.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADAAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-11-15T17:58:27.966Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CustomerController.cs",
+              "DocumentMoniker": "E:\\Restart\\SESSION PRACTICE CONTENT\\Session_21_Partial_view\\Session_21_Partial_view\\Controllers\\CustomerController.cs",
+              "RelativeDocumentMoniker": "Session_21_Partial_view\\Controllers\\CustomerController.cs",
+              "ToolTip": "E:\\Restart\\SESSION PRACTICE CONTENT\\Session_21_Partial_view\\Session_21_Partial_view\\Controllers\\CustomerController.cs",
+              "RelativeToolTip": "Session_21_Partial_view\\Controllers\\CustomerController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-15T17:43:02.448Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Customer.cs",
+              "DocumentMoniker": "E:\\Restart\\SESSION PRACTICE CONTENT\\Session_21_Partial_view\\Session_21_Partial_view\\Models\\Customer.cs",
+              "RelativeDocumentMoniker": "Session_21_Partial_view\\Models\\Customer.cs",
+              "ToolTip": "E:\\Restart\\SESSION PRACTICE CONTENT\\Session_21_Partial_view\\Session_21_Partial_view\\Models\\Customer.cs",
+              "RelativeToolTip": "Session_21_Partial_view\\Models\\Customer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-15T17:41:47.294Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "E:\\Restart\\SESSION PRACTICE CONTENT\\Session_21_Partial_view\\Session_21_Partial_view\\Views\\Student\\Index.cshtml",
+              "RelativeDocumentMoniker": "Session_21_Partial_view\\Views\\Student\\Index.cshtml",
+              "ToolTip": "E:\\Restart\\SESSION PRACTICE CONTENT\\Session_21_Partial_view\\Session_21_Partial_view\\Views\\Student\\Index.cshtml",
+              "RelativeToolTip": "Session_21_Partial_view\\Views\\Student\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-11-15T16:44:14.85Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "StudentController.cs",
+              "DocumentMoniker": "E:\\Restart\\SESSION PRACTICE CONTENT\\Session_21_Partial_view\\Session_21_Partial_view\\Controllers\\StudentController.cs",
+              "RelativeDocumentMoniker": "Session_21_Partial_view\\Controllers\\StudentController.cs",
+              "ToolTip": "E:\\Restart\\SESSION PRACTICE CONTENT\\Session_21_Partial_view\\Session_21_Partial_view\\Controllers\\StudentController.cs",
+              "RelativeToolTip": "Session_21_Partial_view\\Controllers\\StudentController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-15T16:41:45.023Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "_Header.cshtml",
+              "DocumentMoniker": "E:\\Restart\\SESSION PRACTICE CONTENT\\Session_21_Partial_view\\Session_21_Partial_view\\Views\\Shared\\_Header.cshtml",
+              "RelativeDocumentMoniker": "Session_21_Partial_view\\Views\\Shared\\_Header.cshtml",
+              "ToolTip": "E:\\Restart\\SESSION PRACTICE CONTENT\\Session_21_Partial_view\\Session_21_Partial_view\\Views\\Shared\\_Header.cshtml",
+              "RelativeToolTip": "Session_21_Partial_view\\Views\\Shared\\_Header.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-11-15T16:35:12.561Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

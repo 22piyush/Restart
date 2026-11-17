@@ -1,0 +1,62 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\Restart\\SESSION PRACTICE CONTENT\\ActionResultMVC_Session_31\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{9EC1F0EB-7948-49A3-9885-9C395763AAE4}|ActionResultMVC_Session_31\\ActionResultMVC_Session_31.csproj|e:\\restart\\session practice content\\actionresultmvc_session_31\\actionresultmvc_session_31\\controllers\\resultscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9EC1F0EB-7948-49A3-9885-9C395763AAE4}|ActionResultMVC_Session_31\\ActionResultMVC_Session_31.csproj|solutionrelative:actionresultmvc_session_31\\controllers\\resultscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9EC1F0EB-7948-49A3-9885-9C395763AAE4}|ActionResultMVC_Session_31\\ActionResultMVC_Session_31.csproj|e:\\restart\\session practice content\\actionresultmvc_session_31\\actionresultmvc_session_31\\views\\results\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9EC1F0EB-7948-49A3-9885-9C395763AAE4}|ActionResultMVC_Session_31\\ActionResultMVC_Session_31.csproj|solutionrelative:actionresultmvc_session_31\\views\\results\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 28,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "E:\\Restart\\SESSION PRACTICE CONTENT\\ActionResultMVC_Session_31\\ActionResultMVC_Session_31\\Views\\Results\\Index.cshtml",
+              "RelativeDocumentMoniker": "ActionResultMVC_Session_31\\Views\\Results\\Index.cshtml",
+              "ToolTip": "E:\\Restart\\SESSION PRACTICE CONTENT\\ActionResultMVC_Session_31\\ActionResultMVC_Session_31\\Views\\Results\\Index.cshtml",
+              "RelativeToolTip": "ActionResultMVC_Session_31\\Views\\Results\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-11-16T16:18:00.939Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ResultsController.cs",
+              "DocumentMoniker": "E:\\Restart\\SESSION PRACTICE CONTENT\\ActionResultMVC_Session_31\\ActionResultMVC_Session_31\\Controllers\\ResultsController.cs",
+              "RelativeDocumentMoniker": "ActionResultMVC_Session_31\\Controllers\\ResultsController.cs",
+              "ToolTip": "E:\\Restart\\SESSION PRACTICE CONTENT\\ActionResultMVC_Session_31\\ActionResultMVC_Session_31\\Controllers\\ResultsController.cs",
+              "RelativeToolTip": "ActionResultMVC_Session_31\\Controllers\\ResultsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T16:12:33.769Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

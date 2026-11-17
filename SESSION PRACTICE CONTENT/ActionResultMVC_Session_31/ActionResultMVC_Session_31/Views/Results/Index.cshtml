@@ -1,0 +1,10 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Downloads</h2>
+
+<div class="list-group" style="max-width: 300px;">
+    @Html.ActionLink("Download PDF", "DownloadPDF", "Results", null, new { @class = "list-group-item list-group-item-action" })
+    @Html.ActionLink("Download Word", "DownloadWord", "Results", null, new { @class = "list-group-item list-group-item-action" })
+</div>

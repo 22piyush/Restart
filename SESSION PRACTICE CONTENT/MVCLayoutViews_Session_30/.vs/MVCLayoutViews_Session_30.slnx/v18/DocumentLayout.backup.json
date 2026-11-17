@@ -1,0 +1,41 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\Restart\\SESSION PRACTICE CONTENT\\MVCLayoutViews_Session_30\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{96E494AD-63F4-4217-81F2-9198959E07D8}|MVCLayoutViews_Session_30\\MVCLayoutViews_Session_30.csproj|e:\\restart\\session practice content\\mvclayoutviews_session_30\\mvclayoutviews_session_30\\views\\shared\\_sitemaster.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{96E494AD-63F4-4217-81F2-9198959E07D8}|MVCLayoutViews_Session_30\\MVCLayoutViews_Session_30.csproj|solutionrelative:mvclayoutviews_session_30\\views\\shared\\_sitemaster.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 28,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "_SiteMaster.cshtml",
+              "DocumentMoniker": "E:\\Restart\\SESSION PRACTICE CONTENT\\MVCLayoutViews_Session_30\\MVCLayoutViews_Session_30\\Views\\Shared\\_SiteMaster.cshtml",
+              "RelativeDocumentMoniker": "MVCLayoutViews_Session_30\\Views\\Shared\\_SiteMaster.cshtml",
+              "ToolTip": "E:\\Restart\\SESSION PRACTICE CONTENT\\MVCLayoutViews_Session_30\\MVCLayoutViews_Session_30\\Views\\Shared\\_SiteMaster.cshtml",
+              "RelativeToolTip": "MVCLayoutViews_Session_30\\Views\\Shared\\_SiteMaster.cshtml",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAADYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-11-16T14:45:16.305Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

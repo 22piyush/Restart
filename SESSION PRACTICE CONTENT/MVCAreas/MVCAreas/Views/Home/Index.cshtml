@@ -1,0 +1,26 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Site Home Page</title>
+</head>
+<body>
+    <div>
+        <h2>Hospital Management System</h2>
+
+        <h3>Patient Module</h3>
+        @Html.Action("Index", "Patient", new { area = "Patient" })
+
+        <h3>Doctor Module</h3>
+        @Html.Action("Index", "Doctor", new { area = "Doctor" })
+
+        <h3>Insurance Module</h3>
+        @Html.Action("Index", "Insurance", new { area = "Insurance" })
+
+    </div>
+</body>
+</html>

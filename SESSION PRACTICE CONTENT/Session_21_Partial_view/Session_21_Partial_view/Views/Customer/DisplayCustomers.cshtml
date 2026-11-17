@@ -1,0 +1,52 @@
+﻿@model List<Session_21_Partial_view.Models.Customer>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>Customers</title>
+        <style>
+            body {
+                font-family: Segoe UI, Arial, sans-serif;
+                background: #f2f4f8;
+                margin: 0;
+                padding: 20px;
+            }
+
+            h2 {
+                text-align: center;
+                color: #2c3e50;
+                margin-bottom: 25px;
+            }
+
+            .container {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 20px;
+            }
+        </style>
+    </head>
+    <body>
+    <h2>Customer List</h2>
+    <div class="container">
+         @foreach (var c in Model)
+         {
+            <div class="card">
+                <h3>@c.Name</h3>
+                <p>ID: @c.Custid</p>
+                <p>Account: @c.Account</p>
+                <p>City: @c.City</p>
+                <p>Balance: @c.Balance.ToString("C")</p>
+                <span class="badge @(c.Status ? "active" : "inactive")">
+                    @(c.Status ? "Active" : "Inactive")
+                </span>
+            </div>
+         }
+    </div>
+</body>
+</html>

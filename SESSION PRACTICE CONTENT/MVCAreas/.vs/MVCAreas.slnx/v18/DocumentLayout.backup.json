@@ -1,0 +1,147 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\Restart\\SESSION PRACTICE CONTENT\\MVCAreas\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{75B30C0D-E687-427E-A280-6A087ADC1658}|MVCAreas\\MVCAreas.csproj|e:\\restart\\session practice content\\mvcareas\\mvcareas\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{75B30C0D-E687-427E-A280-6A087ADC1658}|MVCAreas\\MVCAreas.csproj|solutionrelative:mvcareas\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75B30C0D-E687-427E-A280-6A087ADC1658}|MVCAreas\\MVCAreas.csproj|e:\\restart\\session practice content\\mvcareas\\mvcareas\\areas\\patient\\views\\patient\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{75B30C0D-E687-427E-A280-6A087ADC1658}|MVCAreas\\MVCAreas.csproj|solutionrelative:mvcareas\\areas\\patient\\views\\patient\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75B30C0D-E687-427E-A280-6A087ADC1658}|MVCAreas\\MVCAreas.csproj|e:\\restart\\session practice content\\mvcareas\\mvcareas\\global.asax.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{75B30C0D-E687-427E-A280-6A087ADC1658}|MVCAreas\\MVCAreas.csproj|solutionrelative:mvcareas\\global.asax.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75B30C0D-E687-427E-A280-6A087ADC1658}|MVCAreas\\MVCAreas.csproj|e:\\restart\\session practice content\\mvcareas\\mvcareas\\areas\\doctor\\doctorarearegistration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{75B30C0D-E687-427E-A280-6A087ADC1658}|MVCAreas\\MVCAreas.csproj|solutionrelative:mvcareas\\areas\\doctor\\doctorarearegistration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75B30C0D-E687-427E-A280-6A087ADC1658}|MVCAreas\\MVCAreas.csproj|e:\\restart\\session practice content\\mvcareas\\mvcareas\\areas\\doctor\\views\\doctor\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{75B30C0D-E687-427E-A280-6A087ADC1658}|MVCAreas\\MVCAreas.csproj|solutionrelative:mvcareas\\areas\\doctor\\views\\doctor\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75B30C0D-E687-427E-A280-6A087ADC1658}|MVCAreas\\MVCAreas.csproj|e:\\restart\\session practice content\\mvcareas\\mvcareas\\areas\\patient\\controllers\\patientcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{75B30C0D-E687-427E-A280-6A087ADC1658}|MVCAreas\\MVCAreas.csproj|solutionrelative:mvcareas\\areas\\patient\\controllers\\patientcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75B30C0D-E687-427E-A280-6A087ADC1658}|MVCAreas\\MVCAreas.csproj|e:\\restart\\session practice content\\mvcareas\\mvcareas\\areas\\insurance\\views\\insurance\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{75B30C0D-E687-427E-A280-6A087ADC1658}|MVCAreas\\MVCAreas.csproj|solutionrelative:mvcareas\\areas\\insurance\\views\\insurance\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 28,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Global.asax.cs",
+              "DocumentMoniker": "E:\\Restart\\SESSION PRACTICE CONTENT\\MVCAreas\\MVCAreas\\Global.asax.cs",
+              "RelativeDocumentMoniker": "MVCAreas\\Global.asax.cs",
+              "ToolTip": "E:\\Restart\\SESSION PRACTICE CONTENT\\MVCAreas\\MVCAreas\\Global.asax.cs",
+              "RelativeToolTip": "MVCAreas\\Global.asax.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-17T17:08:02.827Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DoctorAreaRegistration.cs",
+              "DocumentMoniker": "E:\\Restart\\SESSION PRACTICE CONTENT\\MVCAreas\\MVCAreas\\Areas\\Doctor\\DoctorAreaRegistration.cs",
+              "RelativeDocumentMoniker": "MVCAreas\\Areas\\Doctor\\DoctorAreaRegistration.cs",
+              "ToolTip": "E:\\Restart\\SESSION PRACTICE CONTENT\\MVCAreas\\MVCAreas\\Areas\\Doctor\\DoctorAreaRegistration.cs",
+              "RelativeToolTip": "MVCAreas\\Areas\\Doctor\\DoctorAreaRegistration.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-17T17:03:43.663Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "E:\\Restart\\SESSION PRACTICE CONTENT\\MVCAreas\\MVCAreas\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "MVCAreas\\Views\\Home\\Index.cshtml",
+              "ToolTip": "E:\\Restart\\SESSION PRACTICE CONTENT\\MVCAreas\\MVCAreas\\Views\\Home\\Index.cshtml*",
+              "RelativeToolTip": "MVCAreas\\Views\\Home\\Index.cshtml*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-11-17T17:02:09.03Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "E:\\Restart\\SESSION PRACTICE CONTENT\\MVCAreas\\MVCAreas\\Areas\\Patient\\Views\\Patient\\Index.cshtml",
+              "RelativeDocumentMoniker": "MVCAreas\\Areas\\Patient\\Views\\Patient\\Index.cshtml",
+              "ToolTip": "E:\\Restart\\SESSION PRACTICE CONTENT\\MVCAreas\\MVCAreas\\Areas\\Patient\\Views\\Patient\\Index.cshtml",
+              "RelativeToolTip": "MVCAreas\\Areas\\Patient\\Views\\Patient\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-11-17T17:01:39.787Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "PatientController.cs",
+              "DocumentMoniker": "E:\\Restart\\SESSION PRACTICE CONTENT\\MVCAreas\\MVCAreas\\Areas\\Patient\\Controllers\\PatientController.cs",
+              "RelativeDocumentMoniker": "MVCAreas\\Areas\\Patient\\Controllers\\PatientController.cs",
+              "ToolTip": "E:\\Restart\\SESSION PRACTICE CONTENT\\MVCAreas\\MVCAreas\\Areas\\Patient\\Controllers\\PatientController.cs",
+              "RelativeToolTip": "MVCAreas\\Areas\\Patient\\Controllers\\PatientController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-17T17:01:30.492Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "E:\\Restart\\SESSION PRACTICE CONTENT\\MVCAreas\\MVCAreas\\Areas\\Insurance\\Views\\Insurance\\Index.cshtml",
+              "RelativeDocumentMoniker": "MVCAreas\\Areas\\Insurance\\Views\\Insurance\\Index.cshtml",
+              "ToolTip": "E:\\Restart\\SESSION PRACTICE CONTENT\\MVCAreas\\MVCAreas\\Areas\\Insurance\\Views\\Insurance\\Index.cshtml",
+              "RelativeToolTip": "MVCAreas\\Areas\\Insurance\\Views\\Insurance\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-11-17T17:00:50.95Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "E:\\Restart\\SESSION PRACTICE CONTENT\\MVCAreas\\MVCAreas\\Areas\\Doctor\\Views\\Doctor\\Index.cshtml",
+              "RelativeDocumentMoniker": "MVCAreas\\Areas\\Doctor\\Views\\Doctor\\Index.cshtml",
+              "ToolTip": "E:\\Restart\\SESSION PRACTICE CONTENT\\MVCAreas\\MVCAreas\\Areas\\Doctor\\Views\\Doctor\\Index.cshtml",
+              "RelativeToolTip": "MVCAreas\\Areas\\Doctor\\Views\\Doctor\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-11-17T17:00:28.626Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
