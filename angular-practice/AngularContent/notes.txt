@@ -1728,7 +1728,7 @@ mergeMap() = map + mergeAll
     })).subscribe(innerObservableResponse => {
       console.log(innerObservableResponse)
     })
-
+      
 	 
 concatMap() = map + concatAll
     -Map values to inner observable, subscribe and emit in order.
