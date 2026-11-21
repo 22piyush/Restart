@@ -1,0 +1,27 @@
+<form>
+    <div>
+        <label>Email</label>
+        <input type="email" [formField]="loginForm.email">
+
+        @if (loginForm.email().touched() && loginForm.email().invalid()) {
+        @for (error of loginForm.email().errors(); track error) {
+        <p style="color: red;">{{ error.message }}</p>
+        }
+        }
+    </div>
+
+    <div>
+        <label>Password</label>
+        <input type="password" [formField]="loginForm.password">
+
+        @if (loginForm.password().touched() && loginForm.password().invalid()) {
+        @for (error of loginForm.password().errors(); track error) {
+        <p style="color: red;">{{ error.message }}</p>
+        }
+        }
+    </div>
+
+    <button type="submit" [disabled]="loginForm().invalid()">
+        Login
+    </button>
+</form>
