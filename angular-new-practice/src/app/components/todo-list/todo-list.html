@@ -1,0 +1,15 @@
+<h4>Two-way Binding</h4>
+<form>
+    Name: <input type="text" name="name" [(ngModel)]="name"> <br /><br />
+    Age: <input type="number" name="age" [(ngModel)]="age">
+</form>
+
+<style>
+    input.ng-invalid.ng-touched {
+        border: 1px solid red;
+    }
+
+    input.ng-valid.ng-touched {
+        border: 1px solid green;
+    }
+</style>
