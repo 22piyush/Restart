@@ -1,74 +1,158 @@
-﻿
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 
 namespace MVCWithADO.Models
 {
     public class StudentDal
     {
-        MySqlConnection con;
-        MySqlCommand cmd;
+        private readonly string connectionString;
 
         public StudentDal()
         {
-            string ConStr = ConfigurationManager.ConnectionStrings["ConStr"].ConnectionString;
+            ConnectionStringSettings settings = ConfigurationManager.ConnectionStrings["ConStr"];
 
-            con = new MySqlConnection(ConStr);
-            cmd = new MySqlCommand();
-            cmd.Connection = con;
-            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            if (settings == null || string.IsNullOrWhiteSpace(settings.ConnectionString))
+            {
+                throw new ConfigurationErrorsException("The ConStr connection string is missing.");
+            }
+
+            connectionString = settings.ConnectionString;
         }
 
-
-        public List<Student> SelectStudent(int? Sid, bool? Status)
+        public List<Student> SelectStudent(int? sid, bool? status)
         {
             List<Student> students = new List<Student>();
 
-            try
+            using (MySqlConnection connection = CreateConnection())
+            using (MySqlCommand command = CreateCommand(connection, "Student_Select"))
             {
-                cmd.Parameters.Clear();
+                command.Parameters.Add("p_Sid", MySqlDbType.Int32).Value =
+                    sid.HasValue ? (object)sid.Value : DBNull.Value;
+                command.Parameters.Add("p_Status", MySqlDbType.Bit).Value =
+                    status.HasValue ? (object)status.Value : DBNull.Value;
 
-                cmd.CommandText = "Student_Select";
+                connection.Open();
 
-                cmd.Parameters.AddWithValue("p_Sid",
-                    Sid.HasValue ? (object)Sid.Value : DBNull.Value);
-
-                cmd.Parameters.AddWithValue("p_Status",
-                    Status.HasValue ? (object)Status.Value : DBNull.Value);
-
-                con.Open();
-
-                using (MySqlDataReader dr = cmd.ExecuteReader())
+                using (MySqlDataReader reader = command.ExecuteReader())
                 {
-                    while (dr.Read())
+                    while (reader.Read())
                     {
-                        Student student = new Student();
-
-                        student.Sid = Convert.ToInt32(dr["Sid"]);
-                        student.Name = Convert.ToString(dr["Name"]);
-                        student.Class = Convert.ToInt32(dr["Class"]);
-                        student.Fees = Convert.ToDecimal(dr["Fees"]);
-                        student.Photo = Convert.ToString(dr["Photo"]);
-
-                        students.Add(student);
+                        students.Add(MapStudent(reader));
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
-            finally
-            {
-                con.Close();
             }
 
             return students;
         }
 
+        public bool InsertStudent(Student student)
+        {
+            if (student == null)
+            {
+                throw new ArgumentNullException("student");
+            }
 
+            using (MySqlConnection connection = CreateConnection())
+            using (MySqlCommand command = CreateCommand(connection, "Student_Insert"))
+            {
+                AddStudentParameters(command, student);
+                command.Parameters.Add("p_Status", MySqlDbType.Bit).Value = true;
 
+                connection.Open();
+                command.ExecuteNonQuery();
+                return true;
+            }
+        }
+
+        public bool UpdateStudent(Student student)
+        {
+            if (student == null)
+            {
+                throw new ArgumentNullException("student");
+            }
+
+            using (MySqlConnection connection = CreateConnection())
+            using (MySqlCommand command = CreateCommand(connection, "Student_Update"))
+            {
+                command.Parameters.Add("p_Sid", MySqlDbType.Int32).Value = student.Sid;
+                AddStudentParameters(command, student);
+
+                connection.Open();
+                command.ExecuteNonQuery();
+                return true;
+            }
+        }
+
+        public bool DeleteStudent(int sid)
+        {
+            using (MySqlConnection connection = CreateConnection())
+            using (MySqlCommand command = CreateCommand(connection, "Student_Delete"))
+            {
+                command.Parameters.Add("p_Sid", MySqlDbType.Int32).Value = sid;
+
+                connection.Open();
+
+                using (MySqlDataReader reader = command.ExecuteReader())
+                {
+                    do
+                    {
+                        for (int columnIndex = 0; columnIndex < reader.FieldCount; columnIndex++)
+                        {
+                            if (!string.Equals(reader.GetName(columnIndex), "AffectedRows", StringComparison.OrdinalIgnoreCase))
+                            {
+                                continue;
+                            }
+
+                            return reader.Read()
+                                && !reader.IsDBNull(columnIndex)
+                                && Convert.ToInt32(reader.GetValue(columnIndex)) > 0;
+                        }
+                    }
+                    while (reader.NextResult());
+                }
+
+                return false;
+            }
+        }
+
+        private MySqlConnection CreateConnection()
+        {
+            return new MySqlConnection(connectionString);
+        }
+
+        private static MySqlCommand CreateCommand(MySqlConnection connection, string procedureName)
+        {
+            return new MySqlCommand(procedureName, connection)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+        }
+
+        private static void AddStudentParameters(MySqlCommand command, Student student)
+        {
+            command.Parameters.Add("p_Name", MySqlDbType.VarChar, 50).Value =
+                (object)student.Name ?? DBNull.Value;
+            command.Parameters.Add("p_Class", MySqlDbType.Int32).Value =
+                student.Class.HasValue ? (object)student.Class.Value : DBNull.Value;
+            command.Parameters.Add("p_Fees", MySqlDbType.Decimal).Value =
+                student.Fees.HasValue ? (object)student.Fees.Value : DBNull.Value;
+            command.Parameters.Add("p_Photo", MySqlDbType.VarChar, 100).Value =
+                string.IsNullOrWhiteSpace(student.Photo) ? (object)string.Empty : student.Photo;
+        }
+
+        private static Student MapStudent(IDataRecord record)
+        {
+            return new Student
+            {
+                Sid = Convert.ToInt32(record["Sid"]),
+                Name = record["Name"] == DBNull.Value ? null : Convert.ToString(record["Name"]),
+                Class = record["Class"] == DBNull.Value ? (int?)null : Convert.ToInt32(record["Class"]),
+                Fees = record["Fees"] == DBNull.Value ? (decimal?)null : Convert.ToDecimal(record["Fees"]),
+                Photo = record["Photo"] == DBNull.Value ? null : Convert.ToString(record["Photo"])
+            };
+        }
     }
 }

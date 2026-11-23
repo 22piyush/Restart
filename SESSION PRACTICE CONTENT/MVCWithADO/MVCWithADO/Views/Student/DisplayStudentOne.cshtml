@@ -1,35 +1,44 @@
 ﻿
 @model MVCWithADO.Models.Student
 
-<h2 style="text-align:center;background-color:yellowgreen;color:orangered">
-    Student Details
-</h2>
+@{
+    ViewBag.Title = "Student Details";
+}
 
-<table border="1" align="center" class="table">
+<h2>Student Details</h2>
+
+<table class="table table-bordered">
     <tr>
         <th>Student ID</th>
-        <td>@Html.DisplayFor(S => S.Sid)</td>
+        <td>@Model.Sid</td>
     </tr>
     <tr>
         <th>Name</th>
-        <td>@Html.DisplayFor(S => S.Name)</td>
+        <td>@Model.Name</td>
     </tr>
     <tr>
         <th>Class</th>
-        <td>@Html.DisplayFor(S => S.Class)</td>
+        <td>@Model.Class</td>
     </tr>
     <tr>
         <th>Fees</th>
-        <td>@Html.DisplayFor(S => S.Fees)</td>
+        <td>@Model.Fees</td>
     </tr>
     <tr>
         <th>Photo</th>
         <td>
-            <img src="/Uploads/@Model.Photo" width="100" height="75" alt="No Image" />
+            @if (!string.IsNullOrEmpty(Model.Photo))
+            {
+                <img src="@Url.Content("~/Uploads/" + Model.Photo)" width="100" height="75" alt="Student photo" />
+            }
+            else
+            {
+                <span>No image</span>
+            }
         </td>
     </tr>
 </table>
 
-<div style="text-align:center">
-    @Html.ActionLink("Back to Student List", "DisplayStudent")
+<div>
+    @Html.ActionLink("Back to Student List", "DisplayStudent", null, new { @class = "btn btn-link" })
 </div>

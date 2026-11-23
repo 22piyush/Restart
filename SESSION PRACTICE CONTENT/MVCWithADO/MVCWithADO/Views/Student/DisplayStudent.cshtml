@@ -1,44 +1,59 @@
 ﻿
 @model IEnumerable<MVCWithADO.Models.Student>
 
-<h2 style="text-align:center;background-color:yellowgreen;color:orangered">
-    Student Details
-</h2>
+@{
+    ViewBag.Title = "Student Details";
+}
 
-<table border="1" align="center" class="table">
-    <tr>
+<h2>Student Details</h2>
+
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-warning">@TempData["Message"]</div>
+}
+
+<p>@Html.ActionLink("Add New Student", "AddStudent", null, new { @class = "btn btn-primary" })</p>
+
+<table class="table table-striped table-bordered align-middle">
+    <thead>
+      <tr>
         <th>@Html.DisplayNameFor(S => S.Sid)</th>
         <th>@Html.DisplayNameFor(S => S.Name)</th>
         <th>@Html.DisplayNameFor(S => S.Class)</th>
         <th>@Html.DisplayNameFor(S => S.Fees)</th>
         <th>@Html.DisplayNameFor(S => S.Photo)</th>
         <th>Actions</th>
-    </tr>
+      </tr>
+    </thead>
 
+    <tbody>
     @foreach (MVCWithADO.Models.Student student in Model)
     {
         <tr>
-            <td>@Html.DisplayFor(S => student.Sid)</td>
-            <td>@Html.DisplayFor(S => student.Name)</td>
-            <td>@Html.DisplayFor(S => student.Class)</td>
-            <td>@Html.DisplayFor(S => student.Fees)</td>
+            <td>@student.Sid</td>
+            <td>@student.Name</td>
+            <td>@student.Class</td>
+            <td>@student.Fees</td>
             <td>
-                <img src="/Uploads/@student.Photo" width="40" height="25" alt="No Image" />
+                @if (!string.IsNullOrEmpty(student.Photo))
+                {
+                    <img src="@Url.Content("~/Uploads/" + student.Photo)" width="40" height="25" alt="Student photo" />
+                }
+                else
+                {
+                    <span>No image</span>
+                }
             </td>
-            <td>
-                @Html.ActionLink("Details", "DisplayStudentOne", new { Sid = student.Sid })
-
-                @Html.ActionLink("Edit", "EditStudent", "Student", new { Sid = student.Sid }, null)
-
-                @Html.ActionLink("Delete", "DeleteStudent", new { Sid = student.Sid },
-                         new { onclick = "return confirm('Are you sure of deleting the record?')" })
+            <td class="text-nowrap">
+                @Html.ActionLink("Details", "DisplayStudentOne", new { sid = student.Sid }, new { @class = "btn btn-sm btn-info" })
+                @Html.ActionLink("Edit", "EditStudent", new { sid = student.Sid }, new { @class = "btn btn-sm btn-warning" })
+                @using (Html.BeginForm("DeleteStudent", "Student", new { sid = student.Sid }, FormMethod.Post, new { style = "display:inline" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this student?');">Delete</button>
+                }
             </td>
         </tr>
     }
-
-    <tr>
-        <td colspan="6" align="center">
-            @Html.ActionLink("Add New Student", "AddStudent")
-        </td>
-    </tr>
+    </tbody>
 </table>

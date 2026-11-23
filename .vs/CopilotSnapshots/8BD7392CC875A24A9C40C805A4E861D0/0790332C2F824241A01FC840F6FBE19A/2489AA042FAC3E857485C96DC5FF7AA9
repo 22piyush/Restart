@@ -1,0 +1,94 @@
+﻿using MVCWithADO.Models;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace MVCWithADO.Controllers
+{
+    public class StudentController : Controller
+    {
+        StudentDal dal;
+
+        public StudentController()
+        {
+            dal = new StudentDal();
+        }
+
+        // Display all students
+        public ViewResult DisplayStudent()
+        {
+            List<Student> students = dal.SelectStudent(null, null);
+            return View(students);
+        }
+
+        // Display single student
+        public ViewResult DisplayStudentOne(int Sid)
+        {
+            Student student = dal.SelectStudent(Sid, null).SingleOrDefault();
+            return View(student);
+        }
+
+        // GET: AddStudent
+        [HttpGet]
+        public ViewResult AddStudent()
+        {
+            return View();
+        }
+
+        // POST: AddStudent
+        [HttpPost]
+        public ActionResult AddStudent(Student student, HttpPostedFileBase selectedFile)
+        {
+            try
+            {
+                if (selectedFile != null && selectedFile.ContentLength > 0)
+                {
+                    string folderPath = Server.MapPath("~/Uploads/");
+
+                    if (!Directory.Exists(folderPath))
+                    {
+                        Directory.CreateDirectory(folderPath);
+                    }
+
+                    string fileExtension = Path.GetExtension(selectedFile.FileName);
+
+                    string newFileName = Guid.NewGuid().ToString() + fileExtension;
+
+                    selectedFile.SaveAs(Path.Combine(folderPath, newFileName));
+
+                    student.Photo = newFileName;
+                }
+
+                bool isSuccess = dal.InsertStudent(student);
+
+                if (isSuccess)
+                {
+                    return RedirectToAction("DisplayStudent");
+                }
+
+                ViewBag.Message = "Student not inserted.";
+                return View(student);
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Message = ex.Message;
+                return View(student);
+            }
+        }
+    
+        public ViewResult EditStudent(int Sid)
+        {
+            var student = dal.SelectStudent(Sid, null).Single();
+            return View(student);
+        }
+
+        public ActionResult UpdateStudent(Student student, HttpPostedFileBase selectedFile)
+        {
+
+        }
+    
+    }
+}

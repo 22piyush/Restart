@@ -1,0 +1,35 @@
+﻿
+@model MVCWithADO.Models.Student
+
+<h2 style="text-align:center;background-color:yellowgreen;color:orangered">
+    Student Details
+</h2>
+
+<table border="1" align="center" class="table">
+    <tr>
+        <th>Student ID</th>
+        <td>@Html.DisplayFor(S => S.Sid)</td>
+    </tr>
+    <tr>
+        <th>Name</th>
+        <td>@Html.DisplayFor(S => S.Name)</td>
+    </tr>
+    <tr>
+        <th>Class</th>
+        <td>@Html.DisplayFor(S => S.Class)</td>
+    </tr>
+    <tr>
+        <th>Fees</th>
+        <td>@Html.DisplayFor(S => S.Fees)</td>
+    </tr>
+    <tr>
+        <th>Photo</th>
+        <td>
+            <img src="/Uploads/@Model.Photo" width="100" height="75" alt="No Image" />
+        </td>
+    </tr>
+</table>
+
+<div style="text-align:center">
+    @Html.ActionLink("Back to Student List", "DisplayStudent")
+</div>
