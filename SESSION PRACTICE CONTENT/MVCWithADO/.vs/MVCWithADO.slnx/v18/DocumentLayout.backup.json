@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "E:\\Restart\\SESSION PRACTICE CONTENT\\MVCWithADO\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{9527E69B-8EFD-4A27-AE6F-DBA93E65CECD}|MVCWithADO\\MVCWithADO.csproj|e:\\restart\\session practice content\\mvcwithado\\mvcwithado\\models\\studentdal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9527E69B-8EFD-4A27-AE6F-DBA93E65CECD}|MVCWithADO\\MVCWithADO.csproj|solutionrelative:mvcwithado\\models\\studentdal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{9527E69B-8EFD-4A27-AE6F-DBA93E65CECD}|MVCWithADO\\MVCWithADO.csproj|E:\\Restart\\SESSION PRACTICE CONTENT\\MVCWithADO\\mvcwithado\\views\\student\\displaystudent.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{9527E69B-8EFD-4A27-AE6F-DBA93E65CECD}|MVCWithADO\\MVCWithADO.csproj|solutionrelative:mvcwithado\\views\\student\\displaystudent.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
@@ -17,10 +21,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{9527E69B-8EFD-4A27-AE6F-DBA93E65CECD}|MVCWithADO\\MVCWithADO.csproj|e:\\restart\\session practice content\\mvcwithado\\mvcwithado\\views\\student\\addstudent.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{9527E69B-8EFD-4A27-AE6F-DBA93E65CECD}|MVCWithADO\\MVCWithADO.csproj|solutionrelative:mvcwithado\\views\\student\\addstudent.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9527E69B-8EFD-4A27-AE6F-DBA93E65CECD}|MVCWithADO\\MVCWithADO.csproj|e:\\restart\\session practice content\\mvcwithado\\mvcwithado\\models\\studentdal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9527E69B-8EFD-4A27-AE6F-DBA93E65CECD}|MVCWithADO\\MVCWithADO.csproj|solutionrelative:mvcwithado\\models\\studentdal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{9527E69B-8EFD-4A27-AE6F-DBA93E65CECD}|MVCWithADO\\MVCWithADO.csproj|E:\\Restart\\SESSION PRACTICE CONTENT\\MVCWithADO\\mvcwithado\\models\\student.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -42,7 +42,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 28,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -54,20 +54,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "DisplayStudent.cshtml",
               "DocumentMoniker": "E:\\Restart\\SESSION PRACTICE CONTENT\\MVCWithADO\\MVCWithADO\\Views\\Student\\DisplayStudent.cshtml",
               "RelativeDocumentMoniker": "MVCWithADO\\Views\\Student\\DisplayStudent.cshtml",
               "ToolTip": "E:\\Restart\\SESSION PRACTICE CONTENT\\MVCWithADO\\MVCWithADO\\Views\\Student\\DisplayStudent.cshtml",
               "RelativeToolTip": "MVCWithADO\\Views\\Student\\DisplayStudent.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAALAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2026-11-22T16:27:07.799Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "DisplayStudentOne.cshtml",
               "DocumentMoniker": "E:\\Restart\\SESSION PRACTICE CONTENT\\MVCWithADO\\MVCWithADO\\Views\\Student\\DisplayStudentOne.cshtml",
               "RelativeDocumentMoniker": "MVCWithADO\\Views\\Student\\DisplayStudentOne.cshtml",
@@ -76,6 +76,19 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACUAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2026-11-22T16:56:56.461Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "StudentDal.cs",
+              "DocumentMoniker": "E:\\Restart\\SESSION PRACTICE CONTENT\\MVCWithADO\\MVCWithADO\\Models\\StudentDal.cs",
+              "RelativeDocumentMoniker": "MVCWithADO\\Models\\StudentDal.cs",
+              "ToolTip": "E:\\Restart\\SESSION PRACTICE CONTENT\\MVCWithADO\\MVCWithADO\\Models\\StudentDal.cs",
+              "RelativeToolTip": "MVCWithADO\\Models\\StudentDal.cs",
+              "ViewState": "AgIAAJ0AAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-23T16:05:14.669Z",
               "EditorCaption": ""
             },
             {
@@ -93,7 +106,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "EditStudent.cshtml",
               "DocumentMoniker": "E:\\Restart\\SESSION PRACTICE CONTENT\\MVCWithADO\\MVCWithADO\\Views\\Student\\EditStudent.cshtml",
               "RelativeDocumentMoniker": "MVCWithADO\\Views\\Student\\EditStudent.cshtml",
@@ -106,7 +119,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "AddStudent.cshtml",
               "DocumentMoniker": "E:\\Restart\\SESSION PRACTICE CONTENT\\MVCWithADO\\MVCWithADO\\Views\\Student\\AddStudent.cshtml",
               "RelativeDocumentMoniker": "MVCWithADO\\Views\\Student\\AddStudent.cshtml",
@@ -115,19 +128,6 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2026-11-23T16:06:07.351Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "StudentDal.cs",
-              "DocumentMoniker": "E:\\Restart\\SESSION PRACTICE CONTENT\\MVCWithADO\\MVCWithADO\\Models\\StudentDal.cs",
-              "RelativeDocumentMoniker": "MVCWithADO\\Models\\StudentDal.cs",
-              "ToolTip": "E:\\Restart\\SESSION PRACTICE CONTENT\\MVCWithADO\\MVCWithADO\\Models\\StudentDal.cs",
-              "RelativeToolTip": "MVCWithADO\\Models\\StudentDal.cs",
-              "ViewState": "AgIAAFgAAAAAAAAAAAAewJ0AAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-11-23T16:05:14.669Z",
               "EditorCaption": ""
             },
             {
