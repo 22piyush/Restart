@@ -7,10 +7,11 @@ import { TodoAdd } from './components/todo-add/todo-add';
 import { TodoList } from './components/todo-list/todo-list';
 import { ModelDrivenForm } from './components/model-driven-form/model-driven-form';
 import { SignalFormDemo } from './components/signal-form-demo/signal-form-demo';
+import { Counter } from './components/counter/counter';
 
 @Component({
   selector: 'app-root',
-  imports: [HttpDemo1, ObservableDemo1, ObservableDemo2, SubjectDemo2, TodoAdd, TodoList, ModelDrivenForm, SignalFormDemo],
+  imports: [HttpDemo1, ObservableDemo1, ObservableDemo2, SubjectDemo2, TodoAdd, TodoList, ModelDrivenForm, SignalFormDemo, Counter],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
