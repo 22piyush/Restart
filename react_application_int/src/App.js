@@ -1,26 +1,14 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import User from "./components/User";
 
-function App() {
+import React, { useState } from "react";
+import User from "./User";
 
-  const user = useSelector((state) => state.user.user);
+const App = () => {
+
+  const [name, setName] = useState("Piyush");
 
   return (
     <div>
-
-      <h1>Redux Example</h1>
-
-      <User />
-
-      {user ? (
-        <>
-          <h2>Name: {user.name}</h2>
-          <p>Email: {user.email}</p>
-        </>
-      ) : (
-        <h2>No user logged in</h2>
-      )}
+      <User name={name}/>
     </div>
   );
 }
