@@ -8,12 +8,14 @@ A Promise in JavaScript is an object that represents the eventual completion or 
 -Rejected:- The task failed, and an error is provided.
 
 
+
 ## What is Promise chaining?
 Promise Chaining in JavaScript is a technique used to execute multiple asynchronous operations one after another.
 
 In simple words, Promise Chaining means connecting multiple .then() methods together so that the next operation starts after the previous operation completes successfully.
 
 We use Promise Chaining when one asynchronous operation depends on the result of another asynchronous operation.
+
 
 
 ## What is async/await?
@@ -41,6 +43,8 @@ We commonly use async/await when:
 | Can become difficult to read with long chains.               | Usually easier to read and maintain.        |
 | Created using `new Promise()` when we need to construct one. | Uses the `async` keyword before a function. |
 | Returns a Promise when using the Promise API.                | An async function always returns a Promise. |
+
+
 
 
 ## What is Promise.all()?
@@ -191,3 +195,4 @@ In JavaScript, synchronous and asynchronous code describe how code gets executed
 In simple words:
 - Synchronous = One task at a time, step by step.
 - Asynchronous = Start a task and continue executing other code while waiting for that task to complete
+
