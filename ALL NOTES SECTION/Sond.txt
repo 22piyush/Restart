@@ -1,0 +1,193 @@
+
+## What are Promises?
+
+A Promise in JavaScript is an object that represents the eventual completion or failure of an asynchronous operation and it is used to handling asynchronous operations like API calls, File Loading, or time delays easier. It have three state 
+
+-Pending:- Task is in initial state
+-Fulfilled:- The task was completed successfully and the result is available.
+-Rejected:- The task failed, and an error is provided.
+
+
+## What is Promise chaining?
+Promise Chaining in JavaScript is a technique used to execute multiple asynchronous operations one after another.
+
+In simple words, Promise Chaining means connecting multiple .then() methods together so that the next operation starts after the previous operation completes successfully.
+
+We use Promise Chaining when one asynchronous operation depends on the result of another asynchronous operation.
+
+
+## What is async/await?
+Async/Await is a modern way of handling asynchronous operations in JavaScript. It makes asynchronous code easier to read, write, and understand.
+
+In simple words, async/await allows us to write asynchronous code that looks similar to synchronous code.
+
+It is built on top of Promises, which means async/await internally works with Promises.
+
+We commonly use async/await when:
+- Calling APIs.
+- Fetching data from a server.
+- Performing database operations.
+- Handling asynchronous tasks.
+
+
+
+## What is the difference between Promise and async/await?
+
+| **Promise**                                                  | **Async/Await**                             |
+| ------------------------------------------------------------ | ------------------------------------------- |
+| Uses `.then()` to handle success.                            | Uses `await` to wait for a Promise.         |
+| Uses `.catch()` to handle errors.                            | Commonly uses `try...catch`.                |
+| Uses Promise Chaining.                                       | Uses sequential-looking code.               |
+| Can become difficult to read with long chains.               | Usually easier to read and maintain.        |
+| Created using `new Promise()` when we need to construct one. | Uses the `async` keyword before a function. |
+| Returns a Promise when using the Promise API.                | An async function always returns a Promise. |
+
+
+## What is Promise.all()?
+
+Promise.all() is used to execute multiple Promises simultaneously and waits for all of them to fulfill.
+- If all Promises succeed, it returns an array of results.
+- If even one Promise fails, it rejects with that error.
+Example:
+const p1 = Promise.resolve("User Data");
+const p2 = Promise.resolve("Order Data");
+const p3 = Promise.resolve("Payment Data");
+
+Promise.all([p1, p2, p3])
+    .then((result) => {
+        console.log(result);
+    })
+    .catch((error) => {
+        console.log(error);
+    });
+
+Output:
+["User Data", "Order Data", "Payment Data"]
+Important: Waits for all Promises to succeed. If one rejects, the overall Promise rejects.
+
+
+
+## What is Promise.allSettled()?
+
+Promise.allSettled() waits for all Promises to finish, whether they are fulfilled or rejected.
+
+It returns the status and result of every Promise.
+
+Example:
+const p1 = Promise.resolve("User Data");
+const p2 = Promise.reject("Order API Failed");
+const p3 = Promise.resolve("Payment Data");
+
+Promise.allSettled([p1, p2, p3])
+    .then((result) => {
+        console.log(result);
+    });
+
+Output:
+[
+    { status: "fulfilled", value: "User Data" },
+    { status: "rejected", reason: "Order API Failed" },
+    { status: "fulfilled", value: "Payment Data" }
+]
+Important: It waits for every Promise and gives us both successful and failed results.
+
+
+## What is Promise.race()?
+
+Promise.race() returns the result of the first Promise that settles, whether it is fulfilled or rejected.
+
+Example:
+const p1 = new Promise((resolve) => {
+    setTimeout(() => resolve("Promise 1"), 3000);
+});
+
+const p2 = new Promise((resolve) => {
+    setTimeout(() => resolve("Promise 2"), 1000);
+});
+
+const p3 = new Promise((resolve) => {
+    setTimeout(() => resolve("Promise 3"), 2000);
+});
+
+Promise.race([p1, p2, p3])
+    .then((result) => {
+        console.log(result);
+    });
+
+Output:
+Promise 2
+Important: Whichever Promise settles first wins. It can be either success or failure.
+
+
+## What is Promise.any()?
+
+Promise.any() returns the result of the first successfully fulfilled Promise.
+
+It ignores rejected Promises and waits for another Promise to succeed. If all Promises reject, it returns an AggregateError.
+
+Example:
+const p1 = Promise.reject("Promise 1 Failed");
+
+const p2 = Promise.resolve("Promise 2 Success");
+
+const p3 = Promise.resolve("Promise 3 Success");
+
+Promise.any([p1, p2, p3])
+    .then((result) => {
+        console.log(result);
+    })
+    .catch((error) => {
+        console.log(error);
+    });
+
+
+Output:
+Promise 2 Success
+
+Important: It returns the first successful Promise and ignores failures unless all Promises fail.
+
+
+## What is Promise.finally()?
+
+Promise.finally() is a method that executes after a Promise is settled, whether it is fulfilled or rejected.
+
+It is generally used for cleanup operations, such as hiding a loading spinner or resetting a loading state.
+
+Example:
+const myPromise = new Promise((resolve, reject) => {
+    resolve("Data fetched successfully");
+});
+
+myPromise
+    .then((result) => {
+        console.log(result);
+    })
+    .catch((error) => {
+        console.log(error);
+    })
+    .finally(() => {
+        console.log("Promise completed");
+    });
+
+Output:
+Data fetched successfully
+Promise completed
+
+Important: finally() executes in both success and failure cases.
+
+
+
+## How do you handle errors in async/await?
+In JavaScript, we handle errors in Async/Await using the try...catch block.
+- try: Contains the code that might produce an error.
+- catch: Executes when an error occurs inside the try block.
+- finally: Executes whether an error occurs or not.
+
+
+## What is the difference between synchronous and asynchronous code?
+In JavaScript, synchronous and asynchronous code describe how code gets executed.
+- Synchronous Code: Executes one statement at a time. The next statement waits until the current statement finishes executing.
+- Asynchronous Code: Allows certain time-consuming operations to complete later without blocking the execution of the remaining synchronous code.
+In simple words:
+- Synchronous = One task at a time, step by step.
+- Asynchronous = Start a task and continue executing other code while waiting for that task to complete
