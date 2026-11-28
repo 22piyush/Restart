@@ -99,6 +99,7 @@ Improved Performance: By reducing the number of direct DOM manipulations, the Vi
 Optimized Updates: React intelligently determines the most efficient way to update the real DOM, minimizing costly reflows and repaints. 
 Simplified Development: The Virtual DOM makes it easier to work with complex UIs by abstracting away the complexities of direct DOM manipulation. 
 
+
  
 How does React Work? (Virtual DOM)
 ====================
@@ -188,31 +189,6 @@ Fiber Reconciler
  ----------------
  -React tells the DOM to render the changes that was created in the previous phase.
  -the Reconciliation phase can be interrupted, the Commit phase cannot.
-
-
-
-
-React Project - Folder Structure
-================================
-node_modules/	:  Provides npm packages to the entire workspace. Workspace-wide node_modules dependencies are visible to all projects.
-public/ 		:  Only files inside the `public` folder can be referenced from the HTML
-src/			:  Source files for the root-level application project.
-.gitignore		:  Specifies intentionally untracked files that Git should ignore.
-package.json	:  Configures npm package dependencies that are available to all projects in the workspace. 
-package-lock.json : Provides version information for all packages installed into node_modules by the npm client. 
-README.md		 : Introductory documentation for the application.
-
-
-
-
-React Project Flow
-==================
-1. index.html  --> <div id="root"></div> (container to inject component)
-2. index.js    --> root = ReactDOM.createRoot(document.getElementById('root'));
-				   root.render(<App />)
-                   where        what
-3. App.js      -->  AppComponent Code
-
 
 
 JSX
@@ -320,58 +296,6 @@ The React object
 -in cmd run the below command 
  npm view react version
  
- 
-
-React Emmet (react snippets - plugin)
-===========
-https://marketplace.visualstudio.com/items?itemName=rodrigovallades.es7-react-js-snippets
-
-IMR - import React from 'react';
-IMRD - import ReactDOM from 'react-dom'
-IMRC - import React, { Component } from 'react'
-IMPT -	import PropTypes from 'prop-types'
-RCC - React class component
-RCE - React class Export component
-RFC - React Functional Component
-RFCE - React Functional Export Component
-RMC - React Function Memo component
-RCONST - constructor with super
-RPC - React Class Pure Component
-RPCE - React Class Pure Export Component
-RAFC - React Arrow Function Component
-RAFCE - React Arrow Function export Component
-REN - render() { return( ) }
-SST - this.setState({ })
-
-
-extensions
-==========
-1. React Snippet
-2. ESLint
-3. prettier
-4. code spell checker
-5. gitlens
-6. vscode-icons
-7. Thunder Client
-
-
-
-Browser extension
-=================
-json viewer
-
-
-
-
-React Plugins
-=============
-1. React Developer Tools
-2. React-sight
-3. Redux DevTools
-   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-
-
-
 
 
 React.StrictMode
@@ -803,34 +727,6 @@ States
 -Keep the state minimal , avoid using state for static data. 
 
 
-
-State in Class Component
-========================
--class components have a state object , where all the state variables are declared. 
- To update state variables, setState() should be used;
--State object is usually initialized inside the constructor in class components.
--UI will not Re-render when we change state directly, setState() should be used.
-  this.counter = this.counter + 1; // re-render won't happpen
-  this.setState({counter:this.state.counter+1});  // re-render will happpen
--use setState() to change the state of react Component. 
- it ensures that render() gets called.
--If a piece of code needs to be executed only after the state has been updated, then 
- place that code in the callback function which is the second arguement to setState()
- Syntax: setState( StateObject, callbackFunction);
-  ex:    setState( {} , ()=>{} );
- 
- 
-Note:
------
--setState() actions are asynchronous. setState() doesn’t immediately mutate this.state.
--React may group multiple setState() calls in to a single update for better performance
--when we want to update the state based on the previous State value,
- we need to pass a function as an arguement to setState() instead passing an object.
- ex:- this.setState({ value: this.state.value + 1 });   
-      this.setState(prevState => ({ value: prevState.value + 1 }));   
-	
-
-
 State in Functional Component
 =============================
 -State in functional Component can be maintained using useState() hook.
@@ -859,134 +755,6 @@ State in Functional Component
 3. communicate between components		3. rendering dynamic changes
 4. props - Functional Comp				4. useState()      - Functional Comp
    this.props - class comp		  		   this.state={}   - Class Comp
-
-
-
-Assignments: 
-1. Have a paragraph & a toggle button, on click of the button control the visibility(Show/Hide) of the paragraph
-2. Create a text-area with maxLength=100, as the user keeps typing display updated Remaining characters.
-3. Create dropdown with state names, when user changes dropdown value, print the selected (stateName)dropdown value in a div
-4. have 2 inputBoxes, and a dropdown(+,-,*,/) and perform arithmetic operations
-5. create a input box, toggle the type of that input box to (text/password)
-6. create a counter example with 3 controls(increment,decrement,reset)
-7. Have a toggle button and control Dark/Light theme of a page.
-8. Temperature Converter (celcius to fahrenheit)
-
-
-
-How to use SweetAlert	
-=====================
-https://sweetalert2.github.io/#examples
-	
-1. npm i sweetalert2	
-2. import Swal from 'sweetalert2'	
-3. on button click call a function, which has the below code	
-	Swal.fire(	
-	  'Good job!',	
-	  'You clicked the button!',	
-	  'success'	
-	)	
-
-
-
-
-How to use react-modal
-======================
-1. npm i react-modal
-2. import Modal from 'react-modal';
-3. use below Modal code in the component  
-	  let [modalIsOpen, setIsOpen] = useState(false);
-	  function openModal() {
-		setIsOpen(true);
-	  }
-	  function closeModal() {
-		setIsOpen(false);
-	  }
-	 <>
-        <button onClick={openModal}>Open Modal</button>
-        <Modal
-            isOpen={modalIsOpen}
-            onRequestClose={closeModal}
-            contentLabel="Example Modal"
-        >
-            <h2>Hello Hiiiiiiiiiii</h2>
-            <button onClick={closeModal}>close</button>
-            <div>I am a modal</div>
-        </Modal>
-    </>
-
-
-
-How to use react-bootstrap modal
-================================
-1. npm install react-bootstrap bootstrap  
-2. import Modal from 'react-bootstrap/Modal';
-3. const [show, setShow] = useState(false);
-   const handleClose = () => setShow(false);
-   const handleShow = () => setShow(true);
-   
-   <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button>
-        </Modal.Footer>
-    </Modal>
-	<Button onClick={handleShow}>click me</Button>
-
-
-Search
-======
-1. Install react-js-search from npm
-   npm i react-js-search
-2. Import SearchBar in component
-   import SearchBar from 'react-js-search';
-3. use the below HTML
-   <SearchBar
-        onSearchTextChange={(term, filteredData) => {
-          setFilteredEmployees([...filteredData]);
-        }}
-        onSearchButtonClick={onSearchClick}
-        placeHolderText={"Search here..."}
-        data={employees}
-      />	  
-	   
-
-
-Pagination
-==========
-1. npm install react-paginate  
-2. import ReactPaginate from 'react-paginate';
-3. Add the below code in a component
-      <ReactPaginate
-        breakLabel="..."
-        nextLabel="next >"
-        onPageChange={handlePageClick}
-        pageRangeDisplayed={5}
-        pageCount={pageCount}
-        previousLabel="< previous"
-        renderOnZeroPageCount={null}
-      />
-Note: For complete code plz refer 'react_programs.txt' file
-
-
-Assignment
-==========
-1. create products.json with list of products. 
-   https://fakestoreapi.com/products
-2. display the products as cards
-3. add a Search bar to search products
-4. add pagination 
-5. Add 2 buttons to sort the products by price(asc,desc)
-6. crate a filter dropdown with category values(clothing/electronics), display the products of selected category only
-
 
 
 React Events
@@ -1086,42 +854,6 @@ Child To Parent:
 
 
 
-
-Assignment
-==========
-1. create 1 EmployeeCRUD component
-2. display list of employees in a table(data comes from an array)
-3. user should be able to delete Employee (ask user confirmation) 
-4. view the details of each employee in a modal (bootstrap Modal)
-5. add a new employee to the table (insert a new record to the array)
-   use SnackBar to display message ('Employ Added Successfully' - message should be maintained in a constant file)
-
-
-
-Assignment
-==========
-Todo CRUD Component with below functionalities
-1. Add Todo : User types a todo and clicks “Add” , add the item to the todo list
-2. Toggle Completion : User checks a checkbox to mark as completed or not completed
-3. Delete Todo : Each todo item should have a delete button to remove it from the list.
-4. Completed Count : Show the number of completed todos (e.g., 3 out of 5 tasks completed)
- 
-
-
-Component vs PureComponent
-==========================
--PureComponent is exactly the same as Component except that it handles the 
- 'shouldComponentUpdate' method for us. 
--When props or state changes, PureComponent will do a shallow comparison on both props and state.if there is a change in state/props, then only render() will be called. 
--A normal Component always calls render() when we update the state. even though there is no change in the last state data and current state data.
--Class components that extend the React.PureComponent class are treated as pure components.
-	Ex: class myComp extends React.PureComponent {
-		}
--in Functional components, re-render happens only if the state changes. 
--Every Functional Component is a Pure-Component.
-
-
-
 React Memo Component
 ====================
 -Introduced in React v16.6.  This improves performance.
@@ -1173,8 +905,6 @@ ex:
 
 
 
-
-
 LifeCycle Hooks
 ===============
 -Every component in React goes through a lifecycle of events.
@@ -1182,6 +912,7 @@ LifeCycle Hooks
 	1.Mounting - (constructor,getDerivedStateFromProps,render,componentDidMount)
 	2.Updating - (getDerivedStateFromProps,shouldComponentUpdate,render,getSnapshotBeforeUpdate, componentDidUpdate)
 	3.Unmounting - (componentWillUnmount)
+
 
 
 Mounting: means putting elements into the DOM.
@@ -1427,97 +1158,6 @@ NPM Libraries for Form Handling
 
 
 
-HTTP Methods
-============
-GET - Retrieve a resource/Retrieve data from DB
-	  search
-	  
-POST - to send data to server  ( sign up ) 
-       (create a resource/create a new record in DB)
-	   to fetch data securly    (send params in body not in URL)
-
-PUT - update data/create or replace a resource  
-	  update user's profile information 
-	  
-PATCH - update/modify a particular resource(partial update)
-        update user password
-
-DELETE - Remove a resource/delete a record from DB 
-		 Delete naukri account
-		 
-
-PUT vs POST
------------
--POST for CREATE operation, PUT is for create & update.
--PUT is idempotent, where POST is non-idempotent.
--Idempotence(producing the same result even if the same request is made multiple times)
--(PUT)if you retry a request N times, that should be equivalent to single request modification.
--(POST)if you retry the request N times, you will end up having N resources with N different URIs created on server
--Use PUT when you want to modify a singular resource which is already a part of resources collection.
--Use POST when you want to add a child resource under resources collection.
-
-
-PUT vs PATCH
-------------
--PUT is used to replace an existing resource. 
--PATCH is used to apply partial modifications to a resource.
-	
-	
-	
-http status codes
-=================
-1xx Informational  (100-Continue,101-switching Protocols,102-processing)
-2xx Success		   (200-OK,201-created,202-accepted,204-No Content)
-3xx Redirection	   (300-Multiple Choices,301-Moved Permanently,302-Found,304-Not Modified)
-4xx Client Error   (400-Bad Request,401-Unauthorized,403-Forbidden,404-Not Found)
-5xx Server Error   (500-Internal Server Error,502-Bad Gateway,503-Service Unavailable)
-
-
-
-Ways of Fetching Data
-=====================
-There are many ways to extract data from API in React:
-1. using fetch() , then()
-2. using async-await syntax
-3. using Axios library
-4. using custom hooks
-
-
-
-HTTP with fetch()
-=================
-fetch('https://jsonplaceholder.typicode.com/todos/1')
-  .then(response => response.json())
-  .then(finaldata => console.log(finaldata))
-
-
-
-Async Await
-===========
- const fetchProducts = async function () {
-    const products = await fetch("https://fakestoreapi.com/products");
-    const productsJSON = await products.json();
-    setProducts(productsJSON);
-  };
-
-
-
-
-HTTP with axios
-===============
-1. install axios
-   npm i axios
-2. import axios to component
-   import axios from 'axios';   
-3. Use the http methods
-    const fetchUsers = async () => {
-		const url = "https://jsonplaceholder.typicode.com/users";
-		const response = await axios.get(url);
-		setUsers(response.data);
-    };
-  
-
-
 		Axios												fetch()
 ===========================================================================
 -built-in XSRF protection.						-Fetch does not.
@@ -1528,101 +1168,6 @@ HTTP with axios
 -allows cancelling request and request timeout.	Fetch does not.
 -has the ability to intercept HTTP requests.	Fetch, by default, doesn’t 
 -has built-in support for download progress.	Fetch does not support upload progress.
-
-
-
-Create an Axios Instance
-========================
-1. Create a separate file named api.js(can be anything) and add the below code
-	import axios from 'axios';
-	const client = axios.create({
-	  baseURL: `http://jsonplaceholder.typicode.com/`
-	});
-	export default client;
-	
-2. Once the default instance is set up, it can then be used anywhere
-   import client from 'api.js'
-   client.get('/users')
-
-
-
-Making multiple requests with axios  
-===================================
-const promise1 = axios.get('https://api.github.com/users/defunkt')
-const promise2 = axios.get('https://api.github.com/users/evanphx')
-const [response1, response2] = await axios.all([promise1, promise2]);
-  
-
-
-Http Interceptors
-=================
--Interceptor is a feature that allows an application to intercept/modify requests or  responses before they are handled by  .then() or the .catch()
- 
- httpRequest ----> Interceptor ----> ModifiedRequest ----> Server
- ModifiedResponse<---- Interceptor <---- httpResponse <---- Server
-
-Request interceptor use cases:
--Assume you want to check before making a request if your credentials are valid. 
- So, instead of actually making an API call, you can check at the interceptor level that your credentials are valid.
--Assume you need to attach a token to every request made, instead of duplicating 
- the token addition logic at every Axios call, you can make an interceptor that 
- attaches a token on every request that is made.
-
-export function myInterceptor() {
-  axios.interceptors.request.use((req) => {
-    req.headers.authorization = "my secret token";
-    return req;
-  });
-}
--call the above function in app.js
-
-
-response interceptor use cases -
--Assume you got a response, and judging by the API responses you want to deduce that the user is logged in. 
- So, in the response interceptor, you can initialize a class that handles the user logged in state and 
- update it accordingly on the response object you received.
--Assume you have requested some API with valid API credentials, but you do not have the valid role to access the data. 
- So, you can trigger an alert from the response interceptor saying that the user is not allowed. 
- This way you'll be saved from the unauthorized API error handling that you would have to perform on every Axios request that you made.
- 
-url-->response-->interceptor-->modifiedResponse-->component
-
-axios.interceptors.response.use(
-  res => res,
-  err => {
-    if (err.response.status === 404) {
-      throw new Error(`${err.config.url} not found`);
-    }
-    throw err;
-  }
-);
-
-
-Run interceptor only for few APIs
----------------------------------
-axios.interceptors.request.use((req) => {
-    console.log(req);
-    if (req.url.includes("users")) {
-      req.headers.authorization = "my secret token";
-    }
-    return req;
- });
-
-
-remove an interceptor
----------------------
-const myInterceptor = axios.interceptors.request.use(function () {/*...*/});
-axios.interceptors.request.eject(myInterceptor);
-
-
-
-add interceptors to a custom instance of axios
------------------------------------------------
-const client = axios.create();
-client.interceptors.request.use((req) => { 
-	// Logic
-});
-
 
 
 
